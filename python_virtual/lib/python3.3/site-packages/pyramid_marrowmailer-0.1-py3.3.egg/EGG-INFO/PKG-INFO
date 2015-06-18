@@ -1,0 +1,129 @@
+Metadata-Version: 1.1
+Name: pyramid-marrowmailer
+Version: 0.1
+Summary: Pyramid integration package for marrow.mailer, formerly known as TurboMail
+Home-page: https://github.com/iElectric/pyramid_marrowmailer
+Author: UNKNOWN
+Author-email: domen@dev.si
+License: BSD
+Description: Pyramid integration package for "A highly efficient and modular mail delivery
+        framework for Python 2.6+ and 3.1+, formerly TurboMail."
+        
+        Currently it must be used with `pyramid_tm`, as `Mailer.send` only works
+        if `transaction`.commit() succeeded.
+        
+        INSTALL
+        =======
+        
+        ::
+        
+            $ env/bin/easy_install pyramid_marrowmailer
+        
+        
+        USAGE
+        =====
+        
+        If you have package installed, you can configure it in Pyramid like always::
+        
+            config.include('pyramid_marrowmailer')
+        
+        All settings `marrow.mailer` expects are prefixed with `mail.`. If you want
+        to use different prefix, set it with `pyramid_marrowmailer.prefix`.
+        
+        To see what options `marrow.mailer` support, see
+        `the documentation <https://github.com/marrow/marrow.mailer>`_. Note that
+        boolean options need a `.on` suffix. For example `mail.transport.debug.on = true`.
+        Options that need to be converted to integer, add `int` suffix. For example
+        `mail.transport.port.int = 1337`.
+        
+        `pyramid_marrowmailer` calls `Mailer.start` when `config.include('pyramid_marrowmailer')`
+        is called. `atexit` is used to register `Mailer.stop` to shutdown when wsgi server will exit.
+        
+        Note that `pyramid_marrowmailer` subclasses `marrow.mailer.Mailer` to provide support for
+        `transaction`. Class is importable from `pyramid_marrowmailer.TransactionMailer`
+        
+        You can accces `pyramid_marrowmailer.TransactionMailer` instance in two ways::
+        
+            mailer = request.mailer
+            message = mailer.new()
+            message.send()
+        
+        
+        Or::
+            
+            from pyramid_marrowmailer import get_mailer
+            mailer = get_mailer(request)
+            message = mailer.new()
+            message.send()
+        
+        
+        EXAMPLE
+        =======
+        
+        If we have paster `.ini` something like::
+        
+            mail.transport.use = smtp
+            mail.message.author = foobar@foo.com
+        
+        
+        Inside a view, we can do::
+        
+            mailer = request.mailer
+            message = mailer.new()
+            message.subject = "foobar2"
+            message.to = "foobar2@bar.com"
+            message.plain = "hi"
+            message.send()
+        
+        
+        TESTING
+        =======
+        
+        ::
+        
+            $ pip install nose coverage pep8 setuptools-flakes
+            $ ./pre-commit-check.sh
+        
+        
+        TODO
+        ====
+        
+        - Add support to use `marrow.mailer` without usage of `transaction`
+        Changelog
+        =========
+            
+        
+        0.1 (2012-09-17)
+        ----------------
+        
+        - Initial release.
+          [Domen Kožar]
+        pyramid_marrowmailer Copyright (c) 2012, Domen Kožar
+        All rights reserved.
+        
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions
+        are met:
+        1. Redistributions of source code must retain the above copyright
+           notice, this list of conditions and the following disclaimer.
+        2. Redistributions in binary form must reproduce the above copyright
+           notice, this list of conditions and the following disclaimer in the
+           documentation and/or other materials provided with the distribution.
+        3. The name of the author may not be used to endorse or promote products
+           derived from this software without specific prior written permission.
+        
+        THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+        IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+        OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+        IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+        INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+        NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+        DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+        THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+        (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+        THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+        
+Keywords: web wsgi pylons pyramid
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Framework :: Pyramid

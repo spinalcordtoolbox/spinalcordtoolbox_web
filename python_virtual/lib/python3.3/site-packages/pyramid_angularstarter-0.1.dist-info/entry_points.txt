@@ -1,0 +1,4 @@
+      [pyramid.scaffold]
+      angularjs=pyramid_angularstarter.scaffolds:AngularProjectTemplate
+      angularjs_w_user=pyramid_angularstarter.scaffolds:AngularProjectTemplateWUser
+      

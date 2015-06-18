@@ -1,0 +1,11 @@
+pyramid
+pyramid_tm
+marrow.mailer
+setuptools
+transaction
+
+[test]
+nose
+coverage
+setuptools-flakes
+pep8

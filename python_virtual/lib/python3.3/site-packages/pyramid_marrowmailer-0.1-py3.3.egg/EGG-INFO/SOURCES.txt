@@ -1,0 +1,15 @@
+HISTORY.rst
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+src/pyramid_marrowmailer/__init__.py
+src/pyramid_marrowmailer/tests.py
+src/pyramid_marrowmailer.egg-info/PKG-INFO
+src/pyramid_marrowmailer.egg-info/SOURCES.txt
+src/pyramid_marrowmailer.egg-info/dependency_links.txt
+src/pyramid_marrowmailer.egg-info/entry_points.txt
+src/pyramid_marrowmailer.egg-info/not-zip-safe
+src/pyramid_marrowmailer.egg-info/requires.txt
+src/pyramid_marrowmailer.egg-info/top_level.txt
