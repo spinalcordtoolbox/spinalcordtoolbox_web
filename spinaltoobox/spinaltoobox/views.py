@@ -1,9 +1,12 @@
 from pyramid.view import view_config
-from . import resource
-from . import schemas
 import colander
 from pyramid.httpexceptions import exception_response
 from .mailers import send_email
+
+
+from . import resource
+from . import schemas
+from . import models
 
 @view_config(route_name="home", 
              renderer="home.html")
@@ -90,3 +93,16 @@ def me_view(context, request):
 def validation_error_view(exc, request):
     request.response.status_int = 400
     return exc.asdict()
+
+
+########
+# get plugins get and execute
+########
+
+@view_config(route_name="api",
+             name='all_executable',
+             renderer='json')
+def executable_ctrl(context, request):
+
+    session = request.db
+    return [i[0] for i in session.query(models.RegisteredTool.name).all()]

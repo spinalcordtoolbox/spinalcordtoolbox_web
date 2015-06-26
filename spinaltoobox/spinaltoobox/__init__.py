@@ -3,11 +3,14 @@ from pyramid import authentication, authorization
 
 from sqlalchemy import engine_from_config
 from sqlalchemy.orm import sessionmaker
-from .resource import APIRoot 
-from .security import get_principals
-from .models import User
 from configparser import ConfigParser
 import logging
+
+from .resource import APIRoot
+from .security import get_principals
+from .models import User
+from .controler import PluginUpdater
+
 
 log = logging.getLogger(__name__)
 
@@ -57,6 +60,10 @@ def config_db(config, settings):
     # add db session to request
     config.add_request_method(db, reify=True)
 
+def config_plugins(config):
+
+    PluginUpdater(config)
+
 
 def config_routes(config):
     config.add_route('home', '/')
@@ -84,6 +91,7 @@ def main(global_config, **settings):
     config_jinja2(config)
     config_db(config, settings)
     config_routes(config)
+    config_plugins(config)
     config_auth_policy(config, settings)
     config_mailer(config)
     config.add_request_method(authenticated_user, reify=True)
