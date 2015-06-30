@@ -76,6 +76,7 @@ class PluginUpdater(object):
 class ToolboxRunner(object):
     """
     Class that can be used to execute script
+    TODO write a parent class that will be used to build runner for other software (niak)
     """
 
     def __init__(self, register_tool: models.RegisteredTool,
@@ -95,7 +96,7 @@ class ToolboxRunner(object):
 
     def run(self):
         """
-        Very basic blocking running mechanism that return stderr nd stdout
+        Running mechanism that return stderr and stdout
         :return:
         """
 
@@ -197,18 +198,15 @@ class ToolboxRunner(object):
             if return_code is None:
                 logging.info("The sidekick is still running (PID {}). Sending it a kill signal..."
                              .format(child.pid))
-                self.will_stop(child)
+                self.force_stop(child)
 
         return_code = child.poll()
-        if return_code > 0:
+        if return_code == 0:
             logging.error("The process has exited with a non-zero return code: {}".format(return_code))
+        else:
+            logging.info("The process was completed and returned 0 (success)")
 
-        logging.info("The process is done.")
-
-        # We only return the processed unit if it has been returned completely.
-        if stdout_is_close:
-            stdout_str = '\n'.join(stdout_lines)
-            return stdout_str
+        return return_code
 
 
     @staticmethod
@@ -222,10 +220,16 @@ class ToolboxRunner(object):
         stream.close()
 
     @staticmethod
-    def will_stop(sub_proc, including_parent=True):
+    def force_stop(sub_proc, including_parent=True):
+        """
+        Stops the execution of process and of its children
+        :param sub_proc a process with a pid attribute:
+        :param including_parent:
+        :return:
+        """
         parent = psutil.Process(sub_proc.pid)
         logging.info("Killing the sub-processes using psutil.")
-        for child in parent.get_children(recursive=True):
+        for child in parent.children(recursive=True):
             child.kill()
         if including_parent:
             parent.kill()
