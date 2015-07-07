@@ -39,7 +39,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/pquirion/travail/neuropoly/python_spinal_web/python_virtual"
+VIRTUAL_ENV="/Users/willispinaud/Dropbox/Amerique/Montreal/python_spinal_web/python_virtual"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

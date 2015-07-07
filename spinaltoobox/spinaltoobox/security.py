@@ -1,7 +1,7 @@
 """
 authentication policy/authorization policy
 """
-from . import models as m 
+from .models import models as m
 from pyramid import security
 
 

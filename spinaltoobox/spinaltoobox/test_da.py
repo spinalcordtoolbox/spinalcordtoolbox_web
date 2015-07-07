@@ -6,7 +6,7 @@ __author__ = 'Pierre-Olivier Quirion <pioliqui@gmail.com>'
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from .models import RegisteredTool
+from .models.models import RegisteredTool
 import json
 
 engine = create_engine("sqlite:////home/pquirion/travail/neuropoly/python_spinal_web/spinaltoobox/db.sqlite")

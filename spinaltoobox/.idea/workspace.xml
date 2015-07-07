@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4b1853fa-c70f-4ef6-b9f8-d5a1509a01b5" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/models/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/views/__init__.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spinaltoobox/templates/tool_controler.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/spinaltoobox/models.py" afterPath="$PROJECT_DIR$/spinaltoobox/models/models.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/spinaltoobox/views.py" afterPath="$PROJECT_DIR$/spinaltoobox/views/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/sinon/GPATH" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/sinon/GPATH" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/sinon/GRTAGS" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/sinon/GRTAGS" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/sinon/GSYMS" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/sinon/GSYMS" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/sinon/GTAGS" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/sinon/GTAGS" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/media/Modernizr 2 Logo.ai" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/media/Modernizr 2 Logo.ai" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/media/Modernizr 2 Logo.eps" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/media/Modernizr 2 Logo.eps" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/media/Modernizr 2 Logo.pdf" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/media/Modernizr 2 Logo.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/test/caniuse_files/Windsong-webfont.eot" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/test/caniuse_files/Windsong-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/test/caniuse_files/Windsong-webfont.otf" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/test/caniuse_files/Windsong-webfont.otf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/test/caniuse_files/Windsong-webfont.ttf" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/test/caniuse_files/Windsong-webfont.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/test/caniuse_files/Windsong-webfont.woff" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/modernizr/test/caniuse_files/Windsong-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/angular/angular.min.js.gzip" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/bower_components/angular/angular.min.js.gzip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/darwin-x64-v8-3.14/binding.node" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/darwin-x64-v8-3.14/binding.node" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/linux-ia32-v8-3.14/binding.node" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/linux-ia32-v8-3.14/binding.node" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/linux-x64-v8-3.14/binding.node" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/linux-x64-v8-3.14/binding.node" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/win32-ia32-v8-3.14/binding.node" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/win32-ia32-v8-3.14/binding.node" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/win32-x64-v8-3.14/binding.node" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/win32-x64-v8-3.14/binding.node" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/python3" afterPath="$PROJECT_DIR$/../python_virtual/bin/python3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/semver/semver.browser.js.gz" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/semver/semver.browser.js.gz" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/semver/semver.min.js.gz" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/semver/semver.min.js.gz" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/replace-ext/LICENSE" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/replace-ext/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/LICENSE" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/replace-ext/LICENSE" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/replace-ext/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/replace-ext/LICENSE" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/replace-ext/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/replace-ext/LICENSE" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/replace-ext/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/deprecated/LICENSE" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/deprecated/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/replace-ext/LICENSE" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/replace-ext/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/glob-watcher/LICENSE" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/glob-watcher/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox.egg-info/SOURCES.txt" afterPath="$PROJECT_DIR$/spinaltoobox.egg-info/SOURCES.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/__init__.py" afterPath="$PROJECT_DIR$/spinaltoobox/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/.bin/_mocha" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/.bin/_mocha" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/bin/_mocha" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/bin/_mocha" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/activate.csh" afterPath="$PROJECT_DIR$/../python_virtual/bin/activate.csh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/activate.fish" afterPath="$PROJECT_DIR$/../python_virtual/bin/activate.fish" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/templates/mailers/activate.html" afterPath="$PROJECT_DIR$/spinaltoobox/templates/mailers/activate.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/activate" afterPath="$PROJECT_DIR$/../python_virtual/bin/activate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/alembic" afterPath="$PROJECT_DIR$/../python_virtual/bin/alembic" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/strip-bom/node_modules/is-utf8/ansi.txt" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/strip-bom/node_modules/is-utf8/ansi.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/yargs/test/_/bin.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/yargs/test/_/bin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/libsass/script/bootstrap" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/libsass/script/bootstrap" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/libsass/script/branding" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/libsass/script/branding" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/.bin/cake" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/.bin/cake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/coffee-script/bin/cake" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/coffee-script/bin/cake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/libsass/script/cibuild" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/libsass/script/cibuild" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/has-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/has-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/strip-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/strip-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/supports-color/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/supports-color/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/dateformat/bin/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/dateformat/bin/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/repeating/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/repeating/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/has-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/has-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/strip-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/strip-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/supports-color/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/supports-color/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/dateformat/bin/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/dateformat/bin/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/repeating/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/repeating/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/has-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/has-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/strip-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/strip-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/supports-color/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/supports-color/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/dateformat/bin/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/dateformat/bin/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/repeating/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/repeating/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/has-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/has-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/strip-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/strip-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/supports-color/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/supports-color/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/dateformat/bin/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/dateformat/bin/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/repeating/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/repeating/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/has-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/has-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/strip-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/strip-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/supports-color/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/supports-color/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/has-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/has-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/strip-ansi/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/strip-ansi/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/supports-color/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/supports-color/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/dateformat/bin/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/dateformat/bin/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/repeating/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/repeating/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/v8flags/node_modules/user-home/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/v8flags/node_modules/user-home/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/strip-bom/cli.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/strip-bom/cli.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mkdirp/bin/cmd.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mkdirp/bin/cmd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/node_modules/mkdirp/bin/cmd.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/node_modules/mkdirp/bin/cmd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/mkdirp/bin/cmd.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/mkdirp/bin/cmd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/.bin/coffee" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/.bin/coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/coffee-script/bin/coffee" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/coffee-script/bin/coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/controler.py" afterPath="$PROJECT_DIR$/spinaltoobox/controler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/.bin/dateformat" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/.bin/dateformat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/.bin/dateformat" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/.bin/dateformat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/.bin/dateformat" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/.bin/dateformat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/.bin/dateformat" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/.bin/dateformat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/.bin/dateformat" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/.bin/dateformat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/development.ini" afterPath="$PROJECT_DIR$/development.ini" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/easy_install" afterPath="$PROJECT_DIR$/../python_virtual/bin/easy_install" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/migration/env.py" afterPath="$PROJECT_DIR$/migration/env.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/example.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/example.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/example.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/example.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/example.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/example.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/example.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/example.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/example.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/example.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/shelljs/scripts/generate-docs.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/shelljs/scripts/generate-docs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/bin/gulp.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/bin/gulp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/.bin/gulp" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/.bin/gulp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/has-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/has-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/has-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/has-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/has-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/has-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/has-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/has-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/.bin/has-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/.bin/has-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/.bin/has-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/.bin/has-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/html2text" afterPath="$PROJECT_DIR$/../python_virtual/bin/html2text" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/.bin/indent-string" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/.bin/indent-string" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/.bin/indent-string" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/.bin/indent-string" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/.bin/indent-string" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/.bin/indent-string" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/.bin/indent-string" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/.bin/indent-string" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/.bin/indent-string" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/.bin/indent-string" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/node_modules/.bin/jade" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/node_modules/.bin/jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/node_modules/jade/bin/jade" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/node_modules/jade/bin/jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/test/sass-spec/spec/benchmarks/large_empty.scss" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/test/sass-spec/spec/benchmarks/large_empty.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/mailers.py" afterPath="$PROJECT_DIR$/spinaltoobox/mailers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/mako-render" afterPath="$PROJECT_DIR$/../python_virtual/bin/mako-render" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/.bin/mkdirp" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/.bin/mkdirp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/node_modules/.bin/mkdirp" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/node_modules/.bin/mkdirp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/.bin/mkdirp" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/.bin/mkdirp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/.bin/mocha" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/.bin/mocha" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/bin/mocha" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/mocha/bin/mocha" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/.bin/node-sass" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/.bin/node-sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/node-sass" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/bin/node-sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/coffee-script/lib/coffee-script/parser.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/coffee-script/lib/coffee-script/parser.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/pcreate" afterPath="$PROJECT_DIR$/../python_virtual/bin/pcreate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/pdistreport" afterPath="$PROJECT_DIR$/../python_virtual/bin/pdistreport" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/pip-selfcheck.json" afterPath="$PROJECT_DIR$/../python_virtual/pip-selfcheck.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/pip3" afterPath="$PROJECT_DIR$/../python_virtual/bin/pip3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/pip" afterPath="$PROJECT_DIR$/../python_virtual/bin/pip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/prequest" afterPath="$PROJECT_DIR$/../python_virtual/bin/prequest" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/proutes" afterPath="$PROJECT_DIR$/../python_virtual/bin/proutes" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/pserve" afterPath="$PROJECT_DIR$/../python_virtual/bin/pserve" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/pshell" afterPath="$PROJECT_DIR$/../python_virtual/bin/pshell" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/ptweens" afterPath="$PROJECT_DIR$/../python_virtual/bin/ptweens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/pviews" afterPath="$PROJECT_DIR$/../python_virtual/bin/pviews" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/.bin/repeating" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/.bin/repeating" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/.bin/repeating" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/.bin/repeating" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/.bin/repeating" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/.bin/repeating" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/.bin/repeating" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/.bin/repeating" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/.bin/repeating" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/gulp-util/node_modules/dateformat/node_modules/meow/node_modules/indent-string/node_modules/.bin/repeating" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/templates/mailers/reset.html" afterPath="$PROJECT_DIR$/spinaltoobox/templates/mailers/reset.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/resource.py" afterPath="$PROJECT_DIR$/spinaltoobox/resource.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/vinyl-sourcemaps-apply/node_modules/source-map/test/run-tests.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/vinyl-sourcemaps-apply/node_modules/source-map/test/run-tests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/shelljs/scripts/run-tests.js" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/shelljs/scripts/run-tests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/test/sass-spec/sass-spec.rb" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/test/sass-spec/sass-spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/security.py" afterPath="$PROJECT_DIR$/spinaltoobox/security.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/.bin/semver" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/.bin/semver" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/semver/bin/semver" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/semver/bin/semver" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/.bin/shjs" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/.bin/shjs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/shelljs/bin/shjs" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/shelljs/bin/shjs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/libsass/script/spec" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/libsass/script/spec" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/strip-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/strip-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/strip-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/strip-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/strip-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/strip-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/strip-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/strip-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/.bin/strip-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/.bin/strip-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/.bin/strip-ansi" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/.bin/strip-ansi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/.bin/strip-bom" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/.bin/strip-bom" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/supports-color" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-angular-templatecache/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/supports-color" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/supports-color" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-coffee/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/supports-color" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/supports-color" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-concat/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/supports-color" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/supports-color" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/supports-color" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/.bin/supports-color" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/node_modules/chalk/node_modules/.bin/supports-color" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/.bin/supports-color" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/chalk/node_modules/.bin/supports-color" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/libsass/test-driver" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp-sass/node_modules/node-sass/libsass/test-driver" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/test_da.py" afterPath="$PROJECT_DIR$/spinaltoobox/test_da.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox.egg-info/top_level.txt" afterPath="$PROJECT_DIR$/spinaltoobox.egg-info/top_level.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/v8flags/node_modules/.bin/user-home" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/v8flags/node_modules/.bin/user-home" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/strip-bom/node_modules/is-utf8/utf8.txt" afterPath="$PROJECT_DIR$/spinaltoobox/client-src/node_modules/gulp/node_modules/vinyl-fs/node_modules/strip-bom/node_modules/is-utf8/utf8.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/waitress-serve" afterPath="$PROJECT_DIR$/../python_virtual/bin/waitress-serve" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../python_virtual/bin/wheel" afterPath="$PROJECT_DIR$/../python_virtual/bin/wheel" />
+    </list>
+    <ignored path="spinaltoobox.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="spinaltoobox" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="reset.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/mailers/reset.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.375">
+              <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.mako" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/index.mako">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signin.mako" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/signin.mako">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.9166667">
+              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav_bar.mako" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/nav_bar.mako">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auth.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/views/auth.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/views/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/views/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main_template.mako" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/main_template.mako">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contact.mako" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/contact.mako">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/spinaltoobox/cfg.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/models/models.py" />
+        <option value="$PROJECT_DIR$/migration/env.py" />
+        <option value="$PROJECT_DIR$/SQLAlchemy_Utils-0.30.11-py2.7.egg/sqlalchemy_utils/__init__.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/controler.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/security.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/resource.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/views/upload.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/views/myfiles.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/mailers.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/views/auth.py" />
+        <option value="$PROJECT_DIR$/development.ini" />
+        <option value="$PROJECT_DIR$/spinaltoobox/templates/brainbrowser.mako" />
+        <option value="$PROJECT_DIR$/spinaltoobox/templates/mailers/reset.html" />
+        <option value="$PROJECT_DIR$/spinaltoobox/templates/mailers/activate.html" />
+        <option value="$PROJECT_DIR$/spinaltoobox/test_da.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/views/views.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/__init__.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/templates/signin.mako" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="willis_merge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mailers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="FullScreen" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/spinaltoobox/views" />
+      <recent name="$PROJECT_DIR$/spinaltoobox/templates" />
+      <recent name="$PROJECT_DIR$/spinaltoobox/static" />
+      <recent name="$PROJECT_DIR$/spinaltoobox/models" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Pyramid server.spinaltoobox">
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Python.PyramidServer" factoryName="Pyramid server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="CONFIGURATION_FILE" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Tests in setup.py" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/setup.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="spinaltoobox" type="Python.PyramidServer" factoryName="Pyramid server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="spinaltoobox" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="CONFIGURATION_FILE" value="$PROJECT_DIR$/development.ini" />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Tests in setup.py" />
+      <item index="1" class="java.lang.String" itemvalue="Pyramid server.spinaltoobox" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b1853fa-c70f-4ef6-b9f8-d5a1509a01b5" name="Default" comment="" />
+      <created>1436291402005</created>
+      <option name="number" value="Default" />
+      <updated>1436291402005</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2532189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/mailers/reset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/models/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/models/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/static/scripts/views.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/willis_merge/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="28" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/upload.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/development.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/myfiles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/lib/spinaltoobox/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migration/env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLAlchemy_Utils-0.30.11-py2.7.egg/sqlalchemy_utils/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="11" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/lib/spinaltoobox/test_da.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alembic.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/secret_settings.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="58" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/models/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/static/scripts/views.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/myfiles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/brainbrowser.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.625">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/mailers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/schemas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/models/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/development.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/willis_merge/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/cfg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/brainviewer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/upload.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/myfiles.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/mailers/activate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.375">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/controler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/resource.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/security.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/test_da.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#106#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/upload.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/contact.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/mailers/reset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.375">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/index.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/main_template.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/auth.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/signin.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.9166667">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/nav_bar.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

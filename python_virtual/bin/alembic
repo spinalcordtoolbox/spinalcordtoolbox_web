@@ -1,4 +1,4 @@
-#!/home/pquirion/travail/neuropoly/python_spinal_web/python_virtual/bin/python
+#!/Users/willispinaud/Dropbox/Amerique/Montreal/python_spinal_web/python_virtual/bin/python
 # EASY-INSTALL-ENTRY-SCRIPT: 'alembic==0.7.6','console_scripts','alembic'
 __requires__ = 'alembic==0.7.6'
 import sys

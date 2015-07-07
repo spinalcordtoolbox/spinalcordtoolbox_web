@@ -8,7 +8,7 @@ import logging
 
 from .resource import APIRoot
 from .security import get_principals
-from .models import User
+from .models.models import User
 from .controler import PluginUpdater
 
 
@@ -61,14 +61,20 @@ def config_db(config, settings):
     config.add_request_method(db, reify=True)
 
 def config_plugins(config):
-
     PluginUpdater(config)
-
 
 def config_routes(config):
     config.add_route('home', '/')
-    config.scan()
+    config.add_route('myfiles','/myfiles')
+    config.add_route('brainbrowser','/viewer')
+    config.add_route('upload','/upload')
+    config.add_route('contact','/contact')
+    config.add_route('signin','/signin')
+    config.add_route('toolbox','/toolbox')
+    config.add_route('signup','/signup')
+    config.add_route('auth', '/sign/{action}')
     config.add_route("api", '/api/*traverse', factory=APIRoot)
+    config.scan()
 
 def config_auth_policy(config, settings):
     policy = authentication.AuthTktAuthenticationPolicy(settings['auth_secret'], get_principals, cookie_name="spinaltoobox_auth", hashalg="sha512")
@@ -88,10 +94,10 @@ def main(global_config, **settings):
     config_secrets(settings)
     config = Configurator(settings=settings)
     config_static(config)
-    config_jinja2(config)
+    config.include('pyramid_mako')
     config_db(config, settings)
     config_routes(config)
-    config_plugins(config)
+    #config_plugins(config)
     config_auth_policy(config, settings)
     config_mailer(config)
     config.add_request_method(authenticated_user, reify=True)

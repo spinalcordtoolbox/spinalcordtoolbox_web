@@ -1,11 +1,12 @@
 setup.py
 spinaltoobox/__init__.py
+spinaltoobox/cfg.py
+spinaltoobox/controler.py
 spinaltoobox/mailers.py
-spinaltoobox/models.py
 spinaltoobox/resource.py
 spinaltoobox/schemas.py
 spinaltoobox/security.py
-spinaltoobox/views.py
+spinaltoobox/test_da.py
 spinaltoobox.egg-info/PKG-INFO
 spinaltoobox.egg-info/SOURCES.txt
 spinaltoobox.egg-info/dependency_links.txt
@@ -13,3 +14,12 @@ spinaltoobox.egg-info/entry_points.txt
 spinaltoobox.egg-info/not-zip-safe
 spinaltoobox.egg-info/requires.txt
 spinaltoobox.egg-info/top_level.txt
+spinaltoobox/models/__init__.py
+spinaltoobox/models/models.py
+spinaltoobox/views/__init__.py
+spinaltoobox/views/auth.py
+spinaltoobox/views/brainviewer.py
+spinaltoobox/views/myfiles.py
+spinaltoobox/views/upload.py
+spinaltoobox/views/views.py
+willis_merge/__init__.py

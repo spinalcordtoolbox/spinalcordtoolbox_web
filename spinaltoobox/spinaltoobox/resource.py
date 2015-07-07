@@ -1,7 +1,7 @@
 """
 resources for traversal
 """
-from . import models as m
+from .models import models as m
 from pyramid import security
 from pyramid.httpexceptions import HTTPUnauthorized
 from  datetime import datetime , timedelta

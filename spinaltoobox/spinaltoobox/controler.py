@@ -16,7 +16,7 @@ import threading
 from sqlalchemy.exc import SQLAlchemyError
 
 try:
-    from . import models
+    from .models import models
     from . import cfg
 except SystemError:
     import models
