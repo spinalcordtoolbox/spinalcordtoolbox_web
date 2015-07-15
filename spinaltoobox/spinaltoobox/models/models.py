@@ -3,12 +3,13 @@ import os
 import simplejson as json
 from uuid import uuid4
 
-from sqlalchemy import Column, Integer, UnicodeText, Unicode, DateTime, ForeignKey, Float
+from sqlalchemy import Column, Integer, UnicodeText, Unicode, DateTime, ForeignKey, Float, LargeBinary
 from sqlalchemy.ext.declarative import declared_attr, declarative_base
 from sqlalchemy.ext.mutable import Mutable
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship, backref, synonym
 from sqlalchemy.types import TypeDecorator, VARCHAR
 from sqlalchemy_utils.types.password import PasswordType
+from cryptacular import bcrypt
 
 try:
     from spinaltoobox import cfg
@@ -74,25 +75,33 @@ class ModelBase(object):
 
 
 Base = declarative_base(cls=ModelBase)
-
+crypt = bcrypt.BCRYPTPasswordManager()
 
 ###################################################################################
 # Tables
 class User(Base):
-    email = Column(Unicode(1024), unique=False)
+    email = Column(Unicode(1024), unique=True)
     first_name = Column(Unicode(1024))
     last_name = Column(Unicode(1024))
-    #password = Column(PasswordType(schemes=['pbkdf2_sha512', ]), nullable=True)
-    password = Column(Unicode(1024), nullable=True)
+    password_ = Column('password', Unicode(60)) # Hash from bcrypt
+    @property
+    def password(self):
+        return self.password_
+    @password.setter
+    def password(self, password):
+        self.password_ = str(crypt.encode(password))
+    password = synonym('password_', descriptor=password)
 
     @classmethod
-    def by_mail(cls, mail, session):
-        return session.query(User).filter(User.email == mail).first()
+    def by_mail(cls, email, session):
+        return session.query(User).filter(User.email == email).first()
     def verify_password(self, password):
-        return self.password == password
+        'Return True if we have a matching password'
+        return crypt.check(self.password, password)
     def __repr__(self):
         return "<User(fullname='%s %s', email='%s')>" \
                % (self.first_name, self.last_name, self.email)
+
 
 class File(Base):
     filename = Column(Unicode(1024), unique=False)

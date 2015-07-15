@@ -10,11 +10,6 @@ def signin(request):
     session = request.db
     if email:
         user = User.by_mail(email, session)
-        print(user.password)
-        print(request.POST.get('email'))
-        print(request.POST.get('password'))
-        print(request.POST['password'])
-
         if user and user.verify_password(request.POST.get('password')):
             headers = remember(request, user.id)
         else:
