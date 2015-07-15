@@ -19,6 +19,32 @@
         </header>
 
 
+        <h3>Upload a file</h3>
+        <!-- Upload -->
+            <div class="container">
+            <div class="panel-body">
+
+              <!-- Standar Form -->
+              <h4>Select files from your computer</h4>
+              <form action="/upload_nii" method="post" accept-charset="utf-8"
+              enctype="multipart/form-data" id="js-upload-form">
+                <div class="form-inline">
+                  <div class="form-group">
+                    <input type="file" name="files-nii" id="files-nii" multiple>
+                  </div>
+                  <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+                </div>
+              </form>
+
+              <!-- Drop Zone -->
+              <h4>Or drag and drop files below</h4>
+              <div class="upload-drop-zone" id="drop-zone">
+                Just drag and drop files here
+              </div>
+            </div>
+            </div>
+        <!-- Upload -->
+
 
         <h3>My Files</h3>
         <div class="container">
@@ -26,26 +52,28 @@
             <thead>
               <tr>
                 <th>Image Name</th>
-                <th>Stat</th>
+                <th>Type</th>
                 <th>Size</th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr class="warning">
-                <td>Brain</td>
-                <td>Running</td>
-                <td>1 980ko</td>
-              </tr>
-              <tr class="success">
-                <td>Spinal Cord</td>
-                <td>Complete</td>
-                <td>123ko</td>
-              </tr>
-              <tr class="danger">
-                <td>Mouse brain</td>
-                <td>Error</td>
-                <td>0ko</td>
-              </tr>
+            % for item in user:
+            <tr class="success">
+                <td>${item.filename}</td>
+                <td>${item.type}</td>
+                <td>${item.localpath}</td>
+                <td><form action="/display_file" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="go_viewer" id="go_viewer" value="${item.localpath}">
+                    <button type="submit" class="btn btn-sm btn-primary">View</button>
+                  </form></td>
+                <td><form action="/delete_file" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="delete_file" id="delete_file" value="${item.id}">
+                    <button type="submit" class="btn btn-sm btn-warning">Delete</button>
+                  </form></td>
+            </tr>
+            % endfor
             </tbody>
           </table>
         </div>

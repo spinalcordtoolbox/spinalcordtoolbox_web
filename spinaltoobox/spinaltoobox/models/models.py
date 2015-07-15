@@ -3,9 +3,10 @@ import os
 import simplejson as json
 from uuid import uuid4
 
-from sqlalchemy import Column, Integer, UnicodeText, Unicode, DateTime
-from sqlalchemy.ext.declarative import declarative_base, declared_attr
+from sqlalchemy import Column, Integer, UnicodeText, Unicode, DateTime, ForeignKey, Float
+from sqlalchemy.ext.declarative import declared_attr, declarative_base
 from sqlalchemy.ext.mutable import Mutable
+from sqlalchemy.orm import relationship, backref
 from sqlalchemy.types import TypeDecorator, VARCHAR
 from sqlalchemy_utils.types.password import PasswordType
 
@@ -63,7 +64,7 @@ class MutableDict(Mutable, dict):
 ###################################################################################
 # Base model for Table
 class ModelBase(object):
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer,autoincrement=True, primary_key=True)
     created_on = Column(DateTime, default=datetime.datetime.now)
     updated_on = Column(DateTime, onupdate=datetime.datetime.now)
 
@@ -78,15 +79,40 @@ Base = declarative_base(cls=ModelBase)
 ###################################################################################
 # Tables
 class User(Base):
-    email = Column(Unicode(1024), unique=True)
+    email = Column(Unicode(1024), unique=False)
     first_name = Column(Unicode(1024))
     last_name = Column(Unicode(1024))
-    password = Column(PasswordType(schemes=['pbkdf2_sha512', ]), nullable=True)
+    #password = Column(PasswordType(schemes=['pbkdf2_sha512', ]), nullable=True)
+    password = Column(Unicode(1024), nullable=True)
 
+    @classmethod
+    def by_name(cls, name, session):
+        return session.query(User).filter(User.first_name == name).first()
+    def verify_password(self, password):
+        return self.password == password
     def __repr__(self):
         return "<User(fullname='%s %s', email='%s')>" \
                % (self.first_name, self.last_name, self.email)
 
+class File(Base):
+    filename = Column(Unicode(1024), unique=False)
+    localpath = Column(Unicode(1024), unique=True)
+    serverpath = Column(Unicode(1024), unique=True)
+    type = Column(Unicode(1024), unique=False)
+    size = Column(Float, unique=False)
+    user_id = Column(Unicode(1024), ForeignKey('user.id'))
+    user = relationship("User", backref='files', order_by='User.id')
+
+    def __repr__(self):
+        return "<File(filename='%s', type='%s', localpath='%s')>" \
+               % (self.filename, self.type, self.localpath)
+
+class Operation(Base):
+    args = Column(Unicode(1024), unique=False)
+    input_path = Column(Unicode(1024), unique=True)
+    output_path = Column(Unicode(1024), unique=True)
+    name = Column(Unicode(1024), ForeignKey("registeredtool.name"))
+    file_id = Column(Unicode(1024), ForeignKey("file.id"))
     
 class Command(Base):
     expire_on = Column(DateTime, nullable=False)

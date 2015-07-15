@@ -689,12 +689,13 @@ $(function() {
 
     /////////////////////
     // Load the volumes.
-    /////////////////////
+    ///////////////////// defaut:"static/js/viewer/models/t2.nii"
+
     viewer.loadVolumes({
       volumes: [
         {
           type: "nifti1",
-          nii_url: "static/js/viewer/models/t2.nii",
+          nii_url: $('#nii_path').val(),
           template: {
             element_id: "volume-ui-template",
             viewer_insert_class: "volume-viewer-display"

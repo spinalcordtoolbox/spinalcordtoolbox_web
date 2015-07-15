@@ -14,6 +14,15 @@
     </ol>
 
     <div class="row">
+        <!-- Sidebar -->
+        <aside class="col-md-4 sidebar sidebar-left">
+
+            <!-- The ToolBox-->
+            <%include file="toolbox.mako"/>
+
+            <!--/The ToolBox -->
+        </aside>
+        <!-- /Sidebar -->
 
         <!-- Article main content -->
         <article class="col-md-8 maincontent">
@@ -182,6 +191,7 @@
                   <div class="instructions">Shift-click to drag. Hold ctrl to measure distance.</div>
                 </div>
                 <div id="brainbrowser"></div>
+                <input type="hidden" id='nii_path' value="${file_path}">
               <!-- </div>
             </div> -->
             <script src="${request.static_url('spinaltoobox:static/js/viewer/jquery-1.6.4.min.js')}"></script>
@@ -210,14 +220,7 @@
         </article>
         <!-- /Article -->
 
-        <!-- Sidebar -->
-        <aside class="col-md-4 sidebar sidebar-right">
 
-            <!-- The ToolBox-->
-            <%include file="toolbox.mako"/>
-            <!--/The ToolBox -->
-        </aside>
-        <!-- /Sidebar -->
 
     </div>
 </div>	<!-- /container -->

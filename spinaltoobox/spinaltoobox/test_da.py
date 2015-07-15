@@ -6,15 +6,13 @@ __author__ = 'Pierre-Olivier Quirion <pioliqui@gmail.com>'
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from .models.models import RegisteredTool
+from spinaltoobox.models.models import User
 import json
 
-engine = create_engine("sqlite:////home/pquirion/travail/neuropoly/python_spinal_web/spinaltoobox/db.sqlite")
+engine = create_engine("sqlite:////Users/willispinaud/Dropbox/Amerique/Montreal/python_spinal_web/spinaltoobox/da.sqlite")
 Session = sessionmaker(bind=engine)
 session = Session()
 
-a = {'toto': 'lala'}
-aj = json.dumps(a)
-rt = RegisteredTool(name='tool1', options=a)
-
-session.add(rt)
+u = User(email="a@gmail.com", first_name="b", last_name="c", password="d")
+session.add(u)
+session.commit()

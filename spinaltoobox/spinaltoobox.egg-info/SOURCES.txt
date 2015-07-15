@@ -19,6 +19,7 @@ spinaltoobox/models/models.py
 spinaltoobox/views/__init__.py
 spinaltoobox/views/auth.py
 spinaltoobox/views/brainviewer.py
+spinaltoobox/views/forms.py
 spinaltoobox/views/myfiles.py
 spinaltoobox/views/upload.py
 spinaltoobox/views/views.py

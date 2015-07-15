@@ -1,5 +1,5 @@
-
 <!-- Fixed navbar -->
+
 <div class="navbar navbar-inverse navbar-fixed-top headroom">
     <div class="container">
         <div class="navbar-header">
@@ -15,32 +15,69 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
-                <li class="active">
+                 %if request.matched_route.name=='home':
+                    <li class="active">
+                 %else:
+                    <li>
+                 %endif
                     <a href="${request.route_url('home')}">Home</a>
-                </li>
-                <li class="dropdown">
+                 </li>
+                %if request.matched_route.name=='upload' or request.matched_route.name=='brainbrowser':
+                    <li class="dropdown active">
+                %else:
+                    <li>
+                %endif
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Viewer<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
+                        %if request.matched_route.name=='upload':
+                            <li class="active">
+                        %else:
+                            <li>
+                        %endif
                             <a href="${request.route_url('upload')}">Upload</a>
                         </li>
-                        <li class="active">
+                        %if request.matched_route.name=='brainbrowser':
+                            <li class="active">
+                        %else:
+                            <li>
+                        %endif
                             <a href="${request.route_url('brainbrowser')}">Viewer</a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="${request.route_url('myfiles')}">My Files</a>
+                %if request.matched_route.name=='myfiles':
+                    <li class="active">
+                %else:
+                    <li>
+                %endif
+                <a href="${request.route_url('myfiles')}">My Files</a>
                 </li>
                 <li>
                     <a href="http://sourceforge.net/p/spinalcordtoolbox/wiki/Home/">Documentation</a>
                 </li>
-                <li>
+                %if request.matched_route.name=='contact':
+                    <li class="active">
+                %else:
+                    <li>
+                %endif
                     <a href="${request.route_url('contact')}">Contact</a>
                 </li>
-                <li>
-                    <a class="btn" href="${request.route_url('signin')}">SIGN IN / SIGN UP</a>
+
+                % if request.authenticated_userid:
+                        <li><a class="btn" href="${request.route_url('signout')}">SIGN OUT</a>
+                %else:
+                        %if request.matched_route.name=='signin':
+                            <li class="active">
+                        %else:
+                            <li>
+                        %endif
+                            <a class="btn" href="${request.route_url('signin')}">SIGN IN / SIGN UP</a>
+                %endif
+
                 </li>
+
+
+
             </ul>
         </div>
         <!--/.nav-collapse -->

@@ -22,18 +22,18 @@
                         <p class="text-center text-muted">Lorem ipsum dolor sit amet, <a href="${request.route_url('signup')}">Register</a> adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis odio. </p>
                         <hr>
 
-                        <form>
+                        <form action="${request.route_url('signin')}" method="post">
                             <div class="top-margin">
                                 <label>Username/Email
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="first_name" class="form-control">
                             </div>
                             <div class="top-margin">
                                 <label>Password
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="password" class="form-control">
+                                <input type="password" name="password" class="form-control">
                             </div>
                             <hr>
                             <div class="row">
@@ -45,6 +45,7 @@
                                 </div>
                             </div>
                         </form>
+                        ##${login_form | n}
                     </div>
                 </div>
             </div>

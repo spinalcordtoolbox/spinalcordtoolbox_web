@@ -20,3 +20,6 @@ PEACEFUL_DEAD_CLOCK = 5
 INPUT_FILE_TAG = 'INPUT_FILE'
 OUTPUT_DIR_TAG = 'OUTPUT_FILE'
 EXEC_DIR_TAG = 'EXEC_DIR'
+
+#Id of the active user currently logged
+ACTIVE_USER = '3'

@@ -1,7 +1,7 @@
 """
 authentication policy/authorization policy
 """
-from .models import models as m
+'''from .models import models as m
 from pyramid import security
 
 
@@ -14,4 +14,13 @@ def get_principals(user_id, request):
     if u:
         return [u, security.Authenticated]
     else:
-        return []
+        return []'''
+
+from pyramid.security import Allow, Everyone, Authenticated
+
+class SecurityFactory(object):
+    __acl__ = [(Allow, Everyone, 'view'),
+               (Allow, Authenticated, 'user'), ]
+
+    def __init__(self, request):
+        pass

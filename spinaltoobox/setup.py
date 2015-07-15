@@ -13,13 +13,13 @@ requires = [
     'waitress',
     'sqlalchemy',
     'alembic',
-    'pyramid_jinja2',
     'passlib',
     'colander',
     'pyramid_marrowmailer',
     'html2text',
     'pyramid_tm',
-    'sqlalchemy-utils'
+    'sqlalchemy-utils',
+    'wtforms', 'deform'
     ]
 
 setup(name='spinaltoobox',

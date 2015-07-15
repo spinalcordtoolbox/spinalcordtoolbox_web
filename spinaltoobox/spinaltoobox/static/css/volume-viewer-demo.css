@@ -34,7 +34,18 @@
 }
 */
 
-#volume-viewer {
+.toolbox {
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  padding-bottom: 0;
+  text-align: center;
+
+  background: #cacbcd;
+  color: #F0F0F0;
+}
+
+#volume-viewer{
   padding: 0.5em;
   border-radius: 10px;
   background: #555555;

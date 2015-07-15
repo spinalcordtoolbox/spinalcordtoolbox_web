@@ -1,26 +1,21 @@
 from pyramid.view import view_config
 from .. import resource
 from .. import schemas
+from ..models import models
 import colander
-from pyramid.httpexceptions import exception_response
+from pyramid.httpexceptions import exception_response, HTTPFound
+
 from ..mailers import send_email
 
-@view_config(route_name='myfiles', renderer='myfiles.mako')
+@view_config(route_name='signup', renderer='signup.mako')
+@view_config(route_name='signin', renderer='signin.mako')
 @view_config(route_name='home', renderer='index.mako')
 @view_config(route_name='contact', renderer='contact.mako')
-@view_config(route_name='toolbox', renderer='toolbox.mako')
-def default(request):
+def default(context,request):
     return {}
 
-from pyramid.view import notfound_view_config
+from pyramid.view import notfound_view_config, forbidden_view_config
 from pyramid.response import Response
-
-@notfound_view_config()
-def notfound(request):
-    return Response('Not found, dude!', status='404 Not Found')
-
-
-
 
 
 @view_config(route_name="api",
@@ -33,10 +28,6 @@ def register_view(context, request):
     return {}
 
 
-@view_config(route_name="activ",
-             context=resource.UserContainer,
-             renderer="json",
-             request_method="POST")
 @view_config(route_name="api",
              context=resource.UserContainer,
              name="activate",
@@ -106,3 +97,30 @@ def me_view(context, request):
 def validation_error_view(exc, request):
     request.response.status_int = 400
     return exc.asdict()
+
+########
+# get plugins get and execute
+########
+
+@view_config(route_name="api",
+             name='all_executable',
+             renderer='json')
+def executable_ctrl(context, request):
+    session = request.db
+    return [i[0] for i in session.query(models.RegisteredTool.name).all()]
+
+######
+# Exception views
+######
+@notfound_view_config()
+def notfound(request):
+    return HTTPFound(location='/404')
+@view_config(route_name='404', renderer='exceptions/404.mako')
+def notFoundRender(context,request):
+    return {}
+@forbidden_view_config()
+def forbidden(request):
+    return HTTPFound(location='/403')
+@view_config(route_name='403', renderer='exceptions/403.mako')
+def forbiddenRender(context,request):
+    return {}

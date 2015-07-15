@@ -1,5 +1,13 @@
 <%inherit file="main_template.mako"/>
 <header id="head" class="secondary"></header>
+
+% if request.authenticated_userid:
+    Welcome <strong>${request.authenticated_userid}</strong> ::
+    <a href="${request.route_url('signout')}">Sign Out</a>
+%else:
+        <a href="${request.route_url('signin')}">You have to be registered.</a>
+%endif
+
 <!-- Upload -->
 <div class="container">
   <div class="panel panel-default">
@@ -8,10 +16,11 @@
 
       <!-- Standar Form -->
       <h4>Select files from your computer</h4>
-      <form action="/upload" method="post" enctype="multipart/form-data" id="js-upload-form">
+      <form action="/upload_nii" method="post" accept-charset="utf-8"
+      enctype="multipart/form-data" id="js-upload-form">
         <div class="form-inline">
           <div class="form-group">
-            <input type="file" name="files[]" id="js-upload-files" multiple>
+            <input type="file" name="files-nii" id="files-nii" multiple>
           </div>
           <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
         </div>
