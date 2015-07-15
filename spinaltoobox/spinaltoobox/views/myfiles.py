@@ -9,6 +9,7 @@ from .forms import form_render
              permission='user')
 def list_files(context, request):
     session = request.db
+    print(session.query(models.File).filter(models.File.user_id==request.authenticated_userid).all())
     return {'user':session.query(models.File).filter(models.File.user_id==ACTIVE_USER).all()}
 
 

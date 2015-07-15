@@ -1,4 +1,4 @@
-from pyramid.view import view_config
+from pyramid.view import view_config, forbidden_view_config
 from .forms import login_form_render
 from pyramid.httpexceptions import HTTPFound
 from pyramid.security import remember, forget
@@ -39,4 +39,9 @@ def signup(request):
 def sign_out(request):
     headers = forget(request)
     return HTTPFound(location=request.route_url('home'),
-                     headers=headers)
+                     headers=headers)\
+
+@view_config(route_name='signin', renderer='signin.mako')
+@forbidden_view_config(renderer='signin.mako')
+def signin(context,request):
+    return {}
