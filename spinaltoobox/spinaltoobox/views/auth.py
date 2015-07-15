@@ -6,15 +6,17 @@ from ..models.models import User
 
 @view_config(route_name='signin', renderer='string', request_method='POST')
 def signin(request):
-    first_name = request.POST.get('first_name')
+    email = request.POST.get('email')
     session = request.db
-    if first_name:
-        user = User.by_name(first_name, session)
+    if email:
+        user = User.by_mail(email, session)
         print(user.password)
-        print(request.POST.get('first_name'))
+        print(request.POST.get('email'))
         print(request.POST.get('password'))
-        if user and user.verify_password(request.POST.get('first_name')):
-            headers = remember(request, user.first_name)
+        print(request.POST['password'])
+
+        if user and user.verify_password(request.POST.get('password')):
+            headers = remember(request, user.id)
         else:
             headers = forget(request)
     else:
@@ -40,8 +42,3 @@ def sign_out(request):
     headers = forget(request)
     return HTTPFound(location=request.route_url('home'),
                      headers=headers)\
-
-@view_config(route_name='signin', renderer='signin.mako')
-@forbidden_view_config(renderer='signin.mako')
-def signin(context,request):
-    return {}

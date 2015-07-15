@@ -86,8 +86,8 @@ class User(Base):
     password = Column(Unicode(1024), nullable=True)
 
     @classmethod
-    def by_name(cls, name, session):
-        return session.query(User).filter(User.first_name == name).first()
+    def by_mail(cls, mail, session):
+        return session.query(User).filter(User.email == mail).first()
     def verify_password(self, password):
         return self.password == password
     def __repr__(self):

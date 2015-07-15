@@ -24,10 +24,10 @@
 
                         <form action="${request.route_url('signin')}" method="post">
                             <div class="top-margin">
-                                <label>Username/Email
+                                <label>Email
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" name="first_name" class="form-control">
+                                <input type="text" name="email" class="form-control">
                             </div>
                             <div class="top-margin">
                                 <label>Password

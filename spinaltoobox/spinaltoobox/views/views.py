@@ -8,6 +8,7 @@ from pyramid.httpexceptions import exception_response, HTTPFound
 from ..mailers import send_email
 
 @view_config(route_name='signup', renderer='signup.mako')
+@view_config(route_name='signin', renderer='signin.mako')
 @view_config(route_name='home', renderer='index.mako')
 @view_config(route_name='contact', renderer='contact.mako')
 def default(context,request):
@@ -117,9 +118,9 @@ def notfound(request):
 @view_config(route_name='404', renderer='exceptions/404.mako')
 def notFoundRender(context,request):
     return {}
-'''@forbidden_view_config()
+@forbidden_view_config()
 def forbidden(request):
     return HTTPFound(location='/403')
 @view_config(route_name='403', renderer='exceptions/403.mako')
 def forbiddenRender(context,request):
-    return {}'''
+    return {}

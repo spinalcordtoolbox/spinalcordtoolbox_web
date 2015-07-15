@@ -10,6 +10,7 @@ with open(os.path.join(here, 'CHANGES.md')) as f:
 
 requires = [
     'pyramid',
+    'cryptacular',
     'waitress',
     'sqlalchemy',
     'alembic',

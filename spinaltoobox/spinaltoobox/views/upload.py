@@ -5,6 +5,7 @@ import shutil
 from pyramid.response import Response
 from ..models import models
 from .forms import form_render
+from ..cfg import FILE_REP_TMP
 
 @view_config(route_name='upload',
              renderer='upload.mako',
@@ -21,8 +22,9 @@ def upload(request):
              renderer='brainbrowser.mako',
              permission='user')
 def upload_nii(request):
-    filename = request.POST['files-nii'].filename
+    userid = request.unauthenticated_userid #return the user.id without doing again the identification process
 
+    filename = request.POST['files-nii'].filename
     # ``input_file`` contains the actual file data which needs to be
     # stored somewhere.
     input_file = request.POST['files-nii'].file
@@ -33,7 +35,12 @@ def upload_nii(request):
     # and if you write to an untrusted location you will need to do
     # some extra work to prevent symlink attacks.
     #nii_filename = '%s.nii' % uuid.uuid4()
-    file_path = os.path.join('/Users/willispinaud/Dropbox/Amerique/Montreal/python_spinal_web/spinaltoobox/spinaltoobox/static/tmp', filename)
+    try:
+        os.mkdir(os.path.join(FILE_REP_TMP,str(userid)))
+    except FileExistsError:
+        print ('The folder already exist.')
+
+    file_path = os.path.join(os.path.join(FILE_REP_TMP,str(userid)), filename)
 
     # We first write to a temporary file to prevent incomplete files from
     # being used.
@@ -46,14 +53,15 @@ def upload_nii(request):
 
     # Now that we know the file has been fully saved to disk move it into place.
     os.rename(temp_file_path, file_path)
-    file_path_local = 'static/tmp/'+ filename
+    file_path_local = 'static/tmp/'+str(userid)+'/'+ filename #Dirty but will be deleted soon
 
     session = request.db
     u = models.File(filename = os.path.splitext(filename)[0],
                     serverpath = file_path_local,
                     localpath=file_path_local,
                     type = os.path.splitext(filename)[1],
-                    user_id = "3")
+                    user_id = userid
+)
     session.add(u)
     session.commit()
     return {'form':form_render,'file_path':file_path_local}

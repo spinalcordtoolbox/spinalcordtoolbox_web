@@ -74,8 +74,10 @@ def config_routes(config):
     config.add_route('403', '/403')
     config.add_route('myfiles','/myfiles',
                  factory='spinaltoobox.security.SecurityFactory')
-    config.add_route('displayFile','/display_file')
-    config.add_route('deleteFile','/delete_file')
+    config.add_route('displayFile','/display_file',
+                 factory='spinaltoobox.security.SecurityFactory')
+    config.add_route('deleteFile','/delete_file',
+                 factory='spinaltoobox.security.SecurityFactory')
     config.add_route('brainbrowser','/viewer')
     config.add_route('upload','/upload',
                  factory='spinaltoobox.security.SecurityFactory')
