@@ -3,7 +3,7 @@ from spinaltoobox.models import models
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 import os
-from .forms import form_render
+from ..forms import form_render
 @view_config(route_name='myfiles', renderer='myfiles.mako',
              permission='user')
 def list_files(context, request):

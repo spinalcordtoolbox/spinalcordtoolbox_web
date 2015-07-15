@@ -4,7 +4,7 @@ import uuid
 import shutil
 from pyramid.response import Response
 from ..models import models
-from .forms import form_render
+from ..forms import form_render
 from ..cfg import FILE_REP_TMP
 
 @view_config(route_name='upload',

@@ -2,31 +2,9 @@ import colander
 from deform_bootstrap import Form
 import deform
 from pyramid.view import view_config
-
-@colander.deferred
-def deferred_choices_widget(node, kw):
-    choices = kw.get('choices')
-    return deform.widget.SelectWidget(values=choices)
-
-@colander.deferred
-def deferred_default(node, kw):
-    return kw['default']
-
-choices = (
-    ('', '- Select -'),
-    ('habanero', 'Habanero'),
-    ('jalapeno', 'Jalapeno'),
-    ('chipotle', 'Chipotle')
-    )
 css_widget = deform.widget.TextInputWidget(
-            css_class='deform-widget-with-style')
-
-class Toolbox(colander.MappingSchema):
-    tools = colander.SchemaNode(
-        colander.String(),
-        default=deferred_default,
-        widget=deferred_choices_widget,
-        )
+            size=60, css_class='form-control')
+class toolboxForm(colander.MappingSchema):
     name = colander.SchemaNode(
         colander.String(),
         title='Name',
@@ -40,33 +18,42 @@ class Toolbox(colander.MappingSchema):
                                   validator=colander.Length(1))
     input = colander.SchemaNode(colander.String(),
                                        validator=colander.Length(max=100),
-                                        widget=css_widget,
                                        description='Input path')
     output = colander.SchemaNode(colander.String(),
                                        validator=colander.Length(max=100),
-                                        widget=css_widget,
                                        description='Output path')
 
-class loginForm(colander.MappingSchema):
+class RegisterForm(colander.MappingSchema):
     first_name = colander.SchemaNode(
         colander.String(),
-        widget=deform.widget.TextInputWidget(
-            css_class='top-margin'),
-        title='Username/Email',
+        validator=colander.Length(max=50, min=5),
+        widget = css_widget,
+        title='First name',
         )
-    Password = colander.SchemaNode(
+    last_name = colander.SchemaNode(
         colander.String(),
-        widget=deform.widget.TextInputWidget(
-            css_class='top-margin'),
-        title='Password',
+        validator=colander.Length(max=50, min=5),
+        widget = css_widget,
+        title='Last name',
         )
+    email = colander.SchemaNode(
+        colander.String(),
+        validator=colander.Email(),
+        widget = css_widget,
+        title='Email',
+        )
+    password = colander.SchemaNode(
+        colander.String(),
+        validator=colander.Length(min=5, max=100),
+        widget=deform.widget.PasswordWidget(size=20, css_class='form-control'),
+        description='Enter a password')
 
 
-schema = Toolbox().bind(choices=choices, default='')
+schema = toolboxForm()
 myform = Form(schema, buttons=('submit',))
 form_render = myform.render()
 
-schema_login = loginForm()
+schema_login = RegisterForm()
 login_form = Form(schema_login, buttons=('submit',))
 login_form_render = login_form.render()
 

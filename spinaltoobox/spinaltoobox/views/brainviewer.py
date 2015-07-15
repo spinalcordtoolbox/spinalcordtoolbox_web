@@ -1,6 +1,8 @@
+from deform import ValidationFailure
 from pyramid.response import Response
 from pyramid.view import view_config
-from .forms import form_render
+from ..forms import RegisterForm, form_render
+from deform_bootstrap import Form
 
 @view_config(route_name='brainbrowser', renderer='brainbrowser.mako')
 def brainbrowser(request):

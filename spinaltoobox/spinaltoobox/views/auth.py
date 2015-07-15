@@ -1,8 +1,10 @@
+from deform import ValidationFailure
 from pyramid.view import view_config, forbidden_view_config
-from .forms import login_form_render
+from ..forms import login_form_render, RegisterForm
 from pyramid.httpexceptions import HTTPFound
 from pyramid.security import remember, forget
 from ..models.models import User
+from deform_bootstrap import Form
 
 @view_config(route_name='signin', renderer='string', request_method='POST')
 def signin(request):
@@ -19,18 +21,30 @@ def signin(request):
     return HTTPFound(location=request.route_url('upload'),
                      headers=headers)
 
-@view_config(route_name='signup', renderer='signup.mako', request_method='POST')
+@view_config(route_name='signup',
+             renderer='signup.mako')
 def signup(request):
-    first_name = request.POST.get('first_name')
-    last_name = request.POST.get('last_name')
-    email = request.POST.get('email')
-    password = request.POST.get('password')
+    schema = RegisterForm()
+    myform = Form(schema, buttons=('Register',))
 
-    session = request.db
-    new_user = User(first_name=first_name,last_name=last_name,email=email,password=password)
-    session.add(new_user)
-    session.commit()
-    return HTTPFound(location=request.route_url('signin'))
+    if 'Register' in request.POST:
+        controls = request.POST.items()
+        try:
+            appstruct = myform.validate(controls)
+        except ValidationFailure as e:
+            return {'form':e.render(), 'values': False}
+        # Process the valid form data, do some work
+        session = request.db
+        new_user = User(first_name=appstruct['first_name'],
+                        last_name=appstruct['last_name'],
+                        email=appstruct['email'],
+                        password=appstruct['password'])
+        session.add(new_user)
+        session.commit()
+        return HTTPFound(location=request.route_url('signin'))
+
+    # We are a GET not a POST
+    return {"form": myform.render(), "values": None}
 
 @view_config(route_name='signout', renderer='string')
 def sign_out(request):

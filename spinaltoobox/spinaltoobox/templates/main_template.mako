@@ -43,6 +43,10 @@
         <script src="${request.static_url('spinaltoobox:static/js/jQuery.headroom.min.js')}"></script>
         <script src="${request.static_url('spinaltoobox:static/js/template.js')}"></script>
         <script src="${request.static_url('spinaltoobox:static/js/viewer/jquery-ui-1.8.10.custom.min.js')}"></script>
+        <script src="${request.static_url('spinaltoobox:static/js/deform.js')}"></script>
+        <script type="text/javascript">
+            deform.load()
+        </script>
         <script type="text/javascript">
             $("#view_more").click(function() {
                 $('html, body').animate({

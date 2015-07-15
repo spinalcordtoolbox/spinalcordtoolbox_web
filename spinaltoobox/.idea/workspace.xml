@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b1853fa-c70f-4ef6-b9f8-d5a1509a01b5" name="Default" comment="Updated User.password with bcrypt encryption">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/da.sqlite" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/static/tmp/labels.nii" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/static/tmp/248/labels.nii" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/static/tmp/t2.nii" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/static/tmp/204/t2.nii" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/static/tmp/248/t2.nii" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/static/tmp/t2_centerline_init.nii" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/static/tmp/204/t2_seg.nii" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/static/tmp/t2_seg_manual 2.nii" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/static/tmp/204/t2_seg_manual 2.nii" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/static/tmp/t2_seg_manual.nii" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spinaltoobox/static/tmp/warp_template2anat.nii" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spinaltoobox/test_da.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alembic.ini" afterPath="$PROJECT_DIR$/alembic.ini" />
+    <list default="true" id="4b1853fa-c70f-4ef6-b9f8-d5a1509a01b5" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spinaltoobox/static/css/_pgbackup/bootstrap-theme_1435616767.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spinaltoobox/static/css/_pgbackup/bootstrap-theme_1435616769.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spinaltoobox/static/css/_pgbackup/bootstrap.min_1435616767.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spinaltoobox/static/css/_pgbackup/bootstrap.min_1435616769.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spinaltoobox/static/css/_pgbackup/font-awesome.min_1435616767.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spinaltoobox/static/css/_pgbackup/font-awesome.min_1435616769.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spinaltoobox/static/css/_pgbackup/main_1435616767.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spinaltoobox/static/css/_pgbackup/main_1435616769.css" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/spinaltoobox/views/forms.py" afterPath="$PROJECT_DIR$/spinaltoobox/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/views/auth.py" afterPath="$PROJECT_DIR$/spinaltoobox/views/auth.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/development.ini" afterPath="$PROJECT_DIR$/development.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/models/models.py" afterPath="$PROJECT_DIR$/spinaltoobox/models/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/views/brainviewer.py" afterPath="$PROJECT_DIR$/spinaltoobox/views/brainviewer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/templates/main_template.mako" afterPath="$PROJECT_DIR$/spinaltoobox/templates/main_template.mako" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/views/myfiles.py" afterPath="$PROJECT_DIR$/spinaltoobox/views/myfiles.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/templates/signup.mako" afterPath="$PROJECT_DIR$/spinaltoobox/templates/signup.mako" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/templates/toolbox.mako" afterPath="$PROJECT_DIR$/spinaltoobox/templates/toolbox.mako" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/views/upload.py" afterPath="$PROJECT_DIR$/spinaltoobox/views/upload.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spinaltoobox/views/views.py" afterPath="$PROJECT_DIR$/spinaltoobox/views/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="spinaltoobox.iws" />
@@ -46,11 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spinaltoobox/models/models.py">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="85" column="35" selection-start-line="85" selection-start-column="35" selection-end-line="85" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.67729086">
+              <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -58,97 +58,93 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="alembic.ini" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/alembic.ini">
+      <file leaf-file-name="main_template.mako" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/main_template.mako">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+            <state vertical-scroll-proportion="-9.375">
+              <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="env.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/alembic/env.py">
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/static/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/alembic/README">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-6.185185">
+              <caret line="25" column="6" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="5903275ffc7_updated_user_password_with_bcrypt_.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/alembic/versions/5903275ffc7_updated_user_password_with_bcrypt_.py">
+      <file leaf-file-name="theme.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/static/css/theme.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+            <state vertical-scroll-proportion="-6.185185">
+              <caret line="93" column="16" selection-start-line="93" selection-start-column="12" selection-end-line="93" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.py.mako" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/alembic/script.py.mako">
+      <file leaf-file-name="common.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/static/css/common.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.185185">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/static/css/form.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signin.mako" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/signin.mako">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.791667">
+              <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signup.mako" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/signup.mako">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.5">
+              <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toolbox.mako" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/toolbox.mako">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="88" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/setup.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="12" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="upload.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spinaltoobox/views/upload.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myfiles.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spinaltoobox/views/myfiles.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="29" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auth.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="auth.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spinaltoobox/views/auth.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39697543">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
               <folding>
-                <element signature="e#0#59#0" expanded="true" />
+                <element signature="e#0#36#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -179,7 +175,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/spinaltoobox/templates/mailers/reset.html" />
         <option value="$PROJECT_DIR$/spinaltoobox/templates/mailers/activate.html" />
         <option value="$PROJECT_DIR$/spinaltoobox/static/css/main.css" />
         <option value="$PROJECT_DIR$/spinaltoobox/static/css/volume-viewer-demo.css" />
@@ -200,26 +195,17 @@
         <option value="$PROJECT_DIR$/spinaltoobox/templates/contact.mako" />
         <option value="$PROJECT_DIR$/spinaltoobox/static/js/volume-viewer.js" />
         <option value="$PROJECT_DIR$/spinaltoobox/templates/myfiles.mako" />
-        <option value="$PROJECT_DIR$/spinaltoobox/templates/main_template.mako" />
-        <option value="$PROJECT_DIR$/spinaltoobox/forms.py" />
         <option value="$PROJECT_DIR$/spinaltoobox/templates/forms.mako" />
-        <option value="$PROJECT_DIR$/spinaltoobox/templates/toolbox.mako" />
         <option value="$PROJECT_DIR$/spinaltoobox/templates/signinadelete" />
         <option value="$PROJECT_DIR$/spinaltoobox/templates/404.mako" />
         <option value="$PROJECT_DIR$/spinaltoobox/templates/brainbrowser.mako" />
-        <option value="$PROJECT_DIR$/spinaltoobox/views/brainviewer.py" />
         <option value="$PROJECT_DIR$/spinaltoobox/views/forms.py" />
-        <option value="$PROJECT_DIR$/spinaltoobox/templates/signup.mako" />
         <option value="$PROJECT_DIR$/spinaltoobox/templates/upload.mako" />
         <option value="$PROJECT_DIR$/spinaltoobox/templates/nav_bar.mako" />
         <option value="$PROJECT_DIR$/spinaltoobox/security.py" />
         <option value="$PROJECT_DIR$/spinaltoobox/templates/exceptions/404.mako" />
         <option value="$PROJECT_DIR$/spinaltoobox/templates/exceptions/403.mako" />
-        <option value="$PROJECT_DIR$/spinaltoobox/views/views.py" />
-        <option value="$PROJECT_DIR$/spinaltoobox/templates/signin.mako" />
-        <option value="$PROJECT_DIR$/spinaltoobox/views/myfiles.py" />
         <option value="$PROJECT_DIR$/spinaltoobox/cfg.py" />
-        <option value="$PROJECT_DIR$/spinaltoobox/views/upload.py" />
         <option value="$PROJECT_DIR$/spinaltoobox/__init__.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/alembicDB/env.py" />
@@ -229,7 +215,17 @@
         <option value="$PROJECT_DIR$/alembic.ini" />
         <option value="$PROJECT_DIR$/alembic/versions/5903275ffc7_updated_user_password_with_bcrypt_.py" />
         <option value="$PROJECT_DIR$/spinaltoobox/models/models.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/templates/signin.mako" />
+        <option value="$PROJECT_DIR$/spinaltoobox/views/upload.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/views/myfiles.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/templates/toolbox.mako" />
+        <option value="$PROJECT_DIR$/spinaltoobox/views/brainviewer.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/views/views.py" />
         <option value="$PROJECT_DIR$/spinaltoobox/views/auth.py" />
+        <option value="$PROJECT_DIR$/spinaltoobox/static/css/form.css" />
+        <option value="$PROJECT_DIR$/spinaltoobox/templates/main_template.mako" />
+        <option value="$PROJECT_DIR$/spinaltoobox/templates/signup.mako" />
+        <option value="$PROJECT_DIR$/spinaltoobox/forms.py" />
       </list>
     </option>
   </component>
@@ -333,39 +329,65 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spinaltoobox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spinaltoobox" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spinaltoobox" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alembic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spinaltoobox" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spinaltoobox" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alembic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="versions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -381,14 +403,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/spinaltoobox/static/css" />
       <recent name="$PROJECT_DIR$/spinaltoobox/templates/exceptions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/spinaltoobox" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/spinaltoobox/templates/exceptions" />
       <recent name="$PROJECT_DIR$/spinaltoobox/templates" />
       <recent name="$PROJECT_DIR$/spinaltoobox/static" />
-      <recent name="$PROJECT_DIR$/spinaltoobox" />
     </key>
   </component>
   <component name="RunManager" selected="Python.myfiles">
@@ -719,7 +742,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436990277352</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated User.password with bcrypt encryption - that works!">
+      <created>1436996533235</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1436996533235</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -733,7 +762,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32891566" sideWeight="0.4828326" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -746,7 +775,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2639485" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2639485" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891566" sideWeight="0.4892704" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891566" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -773,7 +802,8 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Redirection to sign-in page when 403 error" />
     <MESSAGE value="Each user has a separated folder for uploaded files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Each user has a separated folder for uploaded files" />
+    <MESSAGE value="Updated User.password with bcrypt encryption - that works!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated User.password with bcrypt encryption - that works!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -789,34 +819,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/static/js/upload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5555553">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/static/js/viewer/brainbrowser/volume-viewer/modules/loading_backup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/static/js/viewer/brainbrowser/volume-viewer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/SpinalCordWeb/spinalcordweb/static/js/viewer/brainbrowser/volume-viewer/modules/loading.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="352" column="34" selection-start-line="352" selection-start-column="34" selection-end-line="352" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spinaltoobox/static/js/viewer/brainbrowser/volume-viewer/modules/loading.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -861,13 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/main_template.mako">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.25">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../python_virtual/lib/python3.4/site-packages/deform/template.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -886,14 +881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/forms.mako">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.75">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -919,14 +906,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="17" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/nav_bar.mako">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.0">
@@ -939,14 +918,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="21" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/contact.mako">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4166666">
-          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -967,14 +938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/brainbrowser.mako">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.625">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/exceptions/403.mako">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.0">
@@ -983,60 +946,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/toolbox.mako">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.125">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/signup.mako">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.625">
-          <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/brainviewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/signin.mako">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0">
-          <caret line="35" column="62" selection-start-line="35" selection-start-column="62" selection-end-line="35" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/myfiles.mako">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.375">
           <caret line="66" column="47" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1070,7 +983,7 @@
         <state vertical-scroll-proportion="13.074074">
           <caret line="77" column="64" selection-start-line="77" selection-start-column="64" selection-end-line="77" selection-end-column="64" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1128,7 +1041,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#37#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1157,28 +1070,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spinaltoobox/models/models.py">
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/forms.mako">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="85" column="35" selection-start-line="85" selection-start-column="35" selection-end-line="85" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-3.75">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spinaltoobox/views/upload.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
+          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#36#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spinaltoobox/views/myfiles.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="29" />
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/contact.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.25">
+          <caret line="39" column="85" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/models/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="66" selection-start-line="82" selection-start-column="4" selection-end-line="85" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/brainviewer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#36#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/brainbrowser.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="41.875">
+          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/views/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
@@ -1187,10 +1152,84 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spinaltoobox/views/auth.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39697543">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding>
-            <element signature="e#0#59#0" expanded="true" />
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/toolbox.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/main_template.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.375">
+          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/signup.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.5">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/static/css/form.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/static/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.185185">
+          <caret line="25" column="6" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/static/css/theme.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.185185">
+          <caret line="93" column="16" selection-start-line="93" selection-start-column="12" selection-end-line="93" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/static/css/common.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.185185">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/templates/signin.mako">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.791667">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spinaltoobox/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67729086">
+          <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
