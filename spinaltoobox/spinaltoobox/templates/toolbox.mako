@@ -16,7 +16,7 @@
 
     </div>
     <div class="col-xs-12">
-        <h4>${values}</h4>
+        <h4>Nice picture.</h4>
         <p><img src="http://news360x.fr/wp-content/uploads/2015/04/197jtJO820150228124411brain.jpg" alt=""></p>
         <p>Qui, debitis, ad, neque reprehenderit laborum soluta dolor voluptate eligendi enim consequuntur eveniet recusandae rerum? Atque eos corporis provident tenetur.</p>
     </div>
@@ -26,6 +26,8 @@
 <script type="text/javascript">
     deform.load()
 </script>
+
+
 
 
 
