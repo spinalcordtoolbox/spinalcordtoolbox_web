@@ -12,6 +12,7 @@
         <li><a href="${request.route_url('home')}">Home</a></li>
         <li class="active">3D Viewer</li>
     </ol>
+    <br>
     <button class="fold_reply btn">Fold the toolbox</button>
     <div class="container">
         <div class="row">
@@ -71,14 +72,17 @@
                               J:<input id="voxel-j-{{VOLID}}" class="control-inputs">
                               K:<input id="voxel-k-{{VOLID}}" class="control-inputs">
                             </div>
+                              <br>
                             <div class="control-heading" id="world-coordinates-heading-{{VOLID}}">
                               World Coordinates:
+                                <br>
                             </div>
                             <div class="world-coords" data-volume-id="{{VOLID}}">
                               X:<input id="world-x-{{VOLID}}" class="control-inputs">
                               Y:<input id="world-y-{{VOLID}}" class="control-inputs">
                               Z:<input id="world-z-{{VOLID}}" class="control-inputs">
                             </div>
+                              <br>
                           </div>
 
                           <div id="intensity-value-div-{{VOLID}}">
@@ -87,16 +91,19 @@
                             </span>
                             <span id="intensity-value-{{VOLID}}" class="intensity-value"></span>
                           </div>
+                            <br>
 
                           <div id="color-map-{{VOLID}}">
                             <span class="control-heading" id="color-map-heading-{{VOLID}}">
                               Color Map:
                             </span>
                           </div>
+                            <br>
 
                           <div id="color-map-file-{{VOLID}}" class="color-map-file-div" data-volume-id="{{VOLID}}" >
                             <span class="control-heading">Color map file: </span><input type="file" name="color-map-file-{{VOLID}}" class="color-map-file">
                           </div>
+                            <br>
 
                         </div>
                         <div id="config-left">
@@ -153,7 +160,9 @@
                       <span class="control-heading">Panel size:</span>
                       <select id="panel-size">
                         <option value="128">128</option>
+                        <option value="200">200</option>
                         <option value="233" SELECTED>233</option>
+                        <option value="350">350</option>
                         <option value="512">512</option>
                       </select>
                       <span id="sync-volumes-wrapper">

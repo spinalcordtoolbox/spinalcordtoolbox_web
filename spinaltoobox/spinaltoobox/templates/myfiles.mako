@@ -60,17 +60,17 @@
             </thead>
             <tbody>
             % for item in user:
-            <tr class="success">
-                <td>${item.filename}</td>
-                <td>${item.type}</td>
-                <td>${item.localpath}</td>
-                <td><form action="/display_file" method="post" accept-charset="utf-8">
+            <tr class="success" >
+                <td style="vertical-align: middle;">${item.filename}</td>
+                <td style="vertical-align: middle;">${item.type}</td>
+                <td style="vertical-align: middle;">${item.size}kb</td>
+                <td style="vertical-align: middle;"><form action="/display_file" method="post" accept-charset="utf-8">
                     <input type="hidden" name="go_viewer" id="go_viewer" value="${item.localpath}">
-                    <button type="submit" class="btn btn-sm btn-primary">View</button>
+                    <button type="submit" class="btn btn-success pull-right navbar-btn">View</button>
                   </form></td>
-                <td><form action="/delete_file" method="post" accept-charset="utf-8">
+                <td style="vertical-align: middle;"><form action="/delete_file" method="post" accept-charset="utf-8">
                     <input type="hidden" name="delete_file" id="delete_file" value="${item.id}">
-                    <button type="submit" class="btn btn-sm btn-warning">Delete</button>
+                    <button type="submit" class="btn btn-warning pull-right navbar-btn">Delete</button>
                   </form></td>
             </tr>
             % endfor

@@ -1,25 +1,40 @@
 from deform import ValidationFailure
+import deform
 from pyramid.view import view_config, forbidden_view_config
-from ..forms import login_form_render, RegisterForm
+from ..forms import SigninForm, RegisterForm
 from pyramid.httpexceptions import HTTPFound
 from pyramid.security import remember, forget
 from ..models.models import User
 from deform_bootstrap import Form
 
-@view_config(route_name='signin', renderer='string', request_method='POST')
+@view_config(route_name='signin', renderer='signin.mako')
 def signin(request):
-    email = request.POST.get('email')
-    session = request.db
-    if email:
-        user = User.by_mail(email, session)
-        if user and user.verify_password(request.POST.get('password')):
-            headers = remember(request, user.id)
+    schema = SigninForm()
+    submit = deform.Button(name='Sign-in', css_class='btn btn-action text-right signin')
+    myform = Form(schema, buttons=(submit,))
+
+    if 'Sign-in' in request.POST:
+        controls = request.POST.items()
+        try:
+            appstruct = myform.validate(controls)
+        except ValidationFailure as e:
+            return {'form':e.render(), 'values': False}
+        # Process the valid form data, do some work
+        email = appstruct['email']
+        session = request.db
+        if email:
+            user = User.by_mail(email, session)
+            if user and user.verify_password(appstruct['password']):
+                headers = remember(request, user.id)
+            else:
+                headers = forget(request)
         else:
             headers = forget(request)
-    else:
-        headers = forget(request)
-    return HTTPFound(location=request.route_url('upload'),
-                     headers=headers)
+        return HTTPFound(location=request.route_url('myfiles'),
+                         headers=headers)
+    # We are a GET not a POST
+    return {"form": myform.render(), "values": None}
+
 
 @view_config(route_name='signup',
              renderer='signup.mako')

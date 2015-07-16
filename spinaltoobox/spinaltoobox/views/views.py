@@ -7,7 +7,6 @@ from pyramid.httpexceptions import exception_response, HTTPFound
 
 from ..mailers import send_email
 
-@view_config(route_name='signin', renderer='signin.mako')
 @view_config(route_name='home', renderer='index.mako')
 @view_config(route_name='contact', renderer='contact.mako')
 def default(context,request):

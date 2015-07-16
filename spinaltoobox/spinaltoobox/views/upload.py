@@ -56,11 +56,13 @@ def upload_nii(request):
     file_path_local = 'static/tmp/'+str(userid)+'/'+ filename #Dirty but will be deleted soon
 
     session = request.db
+    input_file.seek(0)
     u = models.File(filename = os.path.splitext(filename)[0],
                     serverpath = file_path_local,
                     localpath=file_path_local,
                     type = os.path.splitext(filename)[1],
-                    user_id = userid
+                    user_id = userid,
+                    size = len(input_file.read())
 )
     session.add(u)
     session.commit()

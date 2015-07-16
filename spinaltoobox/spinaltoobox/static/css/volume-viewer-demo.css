@@ -35,19 +35,15 @@
 */
 
 .toolbox {
-  -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
   padding-bottom: 0;
   text-align: center;
 
-  background: #cacbcd;
+  background: #bababa;
+  border: 1px solid #555555;
   color: #F0F0F0;
 }
 
 #volume-viewer{
-  padding: 0.5em;
-  border-radius: 10px;
   background: #555555;
   color: #F0F0F0;
 }
@@ -68,19 +64,17 @@
 }*/
 
 /*canvas.slice-display {
-  -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 1px 1px 1px 1px;
+  -webkit-border-radius: 1px 1px 1px 1px;
+  border-radius: 1px 1px 1px 1px;
   margin-left: 2px
-  
+
 }*/
 
 .slice-display {
-  -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
+  margin-top: 10px;
   margin-left: 2px
-  border: 5px solid red;
+  border: 5px solid blue;
 }
 
 
@@ -96,9 +90,6 @@
 }
 
 .volume-controls {
-  -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
   padding-bottom: 0;
   text-align: center;
 
@@ -110,9 +101,6 @@
 
 #global-controls {
   text-align: center;
-  -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
   padding-bottom: 0;
 }
 
@@ -132,15 +120,14 @@
 
 .control-inputs {
   border: none;
-  padding: 5
-  px;
+  padding: 5px;
   margin-left: 10px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  -moz-box-shadow: 1px 1px 0px 0px #787878;
-  -webkit-box-shadow: 1px 1px 0px 0px #787878;
-  box-shadow: 1px 1px 0px 0px #787878;
+  -moz-box-shadow: 2px 2px 0px 0px #787878;
+  -webkit-box-shadow: 2px 2px 0px 0px #787878;
+  box-shadow: 2px 2px 0px 0px #787878;
   width: 2em;
 }
 

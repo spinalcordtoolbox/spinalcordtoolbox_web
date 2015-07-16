@@ -22,29 +22,11 @@
                         <p class="text-center text-muted">Lorem ipsum dolor sit amet, <a href="${request.route_url('signup')}">Register</a> adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis odio. </p>
                         <hr>
 
-                        <form action="${request.route_url('signin')}" method="post">
-                            <div class="top-margin">
-                                <label>Email
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input type="text" name="email" class="form-control">
-                            </div>
-                            <div class="top-margin">
-                                <label>Password
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input type="password" name="password" class="form-control">
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <b><a href="">Forgot password?</a></b>
-                                </div>
-                                <div class="col-lg-4 text-right">
-                                    <button class="btn btn-action" type="submit">Sign in</button>
-                                </div>
-                            </div>
-                        </form>
+                        <div class="top-margin">
+                            ${form | n}
+                        </div>
+                        <hr>
+                        </div>
                         ##${login_form | n}
                     </div>
                 </div>

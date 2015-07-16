@@ -46,7 +46,20 @@ class RegisterForm(colander.MappingSchema):
         colander.String(),
         validator=colander.Length(min=5, max=100),
         widget=deform.widget.PasswordWidget(size=20, css_class='form-control'),
-        description='Enter a password')
+        description='Please enter a password length of at least 5 characters.')
+
+class SigninForm(colander.MappingSchema):
+    email = colander.SchemaNode(
+        colander.String(),
+        validator=colander.Email(),
+        widget = css_widget,
+        title='Email',
+        )
+    password = colander.SchemaNode(
+        colander.String(),
+        validator=colander.Length(min=5, max=100),
+        widget=deform.widget.PasswordWidget(size=20, css_class='form-control')
+        )
 
 
 schema = toolboxForm()
