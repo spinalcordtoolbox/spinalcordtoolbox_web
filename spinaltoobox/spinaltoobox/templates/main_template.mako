@@ -37,13 +37,14 @@
         <!--/The footer -->
 
         <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="${request.static_url('spinaltoobox:static/js/headroom.min.js')}"></script>
         <script src="${request.static_url('spinaltoobox:static/js/jQuery.headroom.min.js')}"></script>
         <script src="${request.static_url('spinaltoobox:static/js/template.js')}"></script>
-        <script src="${request.static_url('spinaltoobox:static/js/viewer/jquery-ui-1.8.10.custom.min.js')}"></script>
         <script src="${request.static_url('spinaltoobox:static/js/deform.js')}"></script>
+        <script src="${request.static_url('spinaltoobox:static/js/viewer/jquery-1.6.4.min.js')}"></script>
+        <script src="${request.static_url('spinaltoobox:static/js/viewer/jquery-ui-1.8.10.custom.min.js')}"></script>
         <script type="text/javascript">
             deform.load()
         </script>

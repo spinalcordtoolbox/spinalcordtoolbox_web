@@ -1,12 +1,12 @@
 
 # Executable/plugins
-EXEC_PATH = '/home/pquirion/travail/neuropoly/spinalcordtoolbox/bin'
-OLD_TYPE_JSON = '/home/pquirion/travail/neuropoly/data/old_struct'
+EXEC_PATH = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox/bin'
+OLD_TYPE_JSON = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/src/main/resources/viewRessouces/js/commandsInputGenerator/data/'
 
 # Where input files are stored
 FILE_REP_TMP = '/Users/willispinaud/Dropbox/Amerique/Montreal/python_spinal_web/spinaltoobox/spinaltoobox/static/tmp/'
 # INPUT_PATH = '/toolbox/input'
-INPUT_PATH = '/home/pquirion/travail/neuropoly/spinalcordtoolbox/testing/sct_testing_data/data/mt'
+INPUT_PATH = '/Users/willispinaud/Dropbox/Amerique/Montreal/sct_testing_data/data/mt'
 # Where results are stored
 OUTPUT_PATH = '/toolbox/output'
 

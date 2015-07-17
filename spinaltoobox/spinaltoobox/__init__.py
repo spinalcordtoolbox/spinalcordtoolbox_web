@@ -68,8 +68,6 @@ def config_plugins(config):
 
 def config_routes(config):
     config.add_route('home', '/')
-    config.add_route('blog', '/blog')
-    config.add_route('blog1', '/blog1')
     config.add_route('404', '/404')
     config.add_route('403', '/403')
     config.add_route('myfiles','/myfiles',
@@ -121,7 +119,7 @@ def main(global_config, **settings):
     config_mako(config)
     config_db(config, settings)
     config_routes(config)
-    #config_plugins(config)
+    config_plugins(config)
     #config_auth_policy(config, settings)
     config_mailer(config)
     config.add_request_method(authenticated_user, reify=True)

@@ -57,7 +57,8 @@
         <!-- Sidebar -->
         <aside class="col-sm-3 sidebar sidebar-right">
 
-            <div class="widget">
+            <div class="widget text-center">
+                <img src="${request.static_url('spinaltoobox:static/img/neuropoly-logo.png')}"/>
                 <h4>Address</h4>
                 <address>
                     2900 Boulevard Edouard-Montpetit, Montréal, QC H3T 1J4

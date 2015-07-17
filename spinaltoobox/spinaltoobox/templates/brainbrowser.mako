@@ -114,7 +114,7 @@
                             </div>
                             <div class="thresh-inputs">
                               <input id="min-threshold-{{VOLID}}" class="control-inputs thresh-input-left" value="0"/>
-                              <input id="max-threshold-{{VOLID}}" class="control-inputs thresh-input-right" value="255"/>
+                              <input id="max-threshold-{{VOLID}}" class="control-inputs thresh-input-right" value="1300"/>
                             </div>
                             <div class="slider volume-viewer-threshold" id="threshold-slider-{{VOLID}}"></div>
                           </div>
@@ -220,8 +220,6 @@
         </div>
     </div>	<!-- /container -->
 
-<script src="${request.static_url('spinaltoobox:static/js/viewer/jquery-1.6.4.min.js')}"></script>
-<script src="${request.static_url('spinaltoobox:static/js/viewer/jquery-ui-1.8.10.custom.min.js')}"></script>
 <script src="${request.static_url('spinaltoobox:static/js/viewer/ui.js')}"></script>
 <script src="${request.static_url('spinaltoobox:static/js/viewer/brainbrowser/brainbrowser.js')}"></script>
 <script src="${request.static_url('spinaltoobox:static/js/viewer/brainbrowser/core/tree-store.js')}"></script>

@@ -312,8 +312,8 @@ $(function() {
         slider.slider({
           range: true,
           min: 0,
-          max: 255,
-          values: [0, 255],
+          max: 1300,
+          values: [0, 1300],
           step: 1,
           slide: function(event, ui){
             var values = ui.values;
@@ -325,6 +325,7 @@ $(function() {
             // Update the volume and redraw.
             volume.intensity_min = values[0];
             volume.intensity_max = values[1];
+            console.log(values);
             viewer.redrawVolumes();
           },
           stop: function() {
@@ -340,7 +341,7 @@ $(function() {
           if (!BrainBrowser.utils.isNumeric(value)) {
             value = 0;
           }
-          value = Math.max(0, Math.min(value, 255));
+          value = Math.max(0, Math.min(value, 1300));
           this.value = value;
 
           // Update the slider.
@@ -356,9 +357,9 @@ $(function() {
           
           // Make sure input is numeric and in range.
           if (!BrainBrowser.utils.isNumeric(value)) {
-            value = 255;
+            value = 1300;
           }
-          value = Math.max(0, Math.min(value, 255));
+          value = Math.max(0, Math.min(value, 1300));
           this.value = value;
 
           // Update the slider.

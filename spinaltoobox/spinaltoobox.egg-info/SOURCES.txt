@@ -2,11 +2,11 @@ setup.py
 spinaltoobox/__init__.py
 spinaltoobox/cfg.py
 spinaltoobox/controler.py
+spinaltoobox/forms.py
 spinaltoobox/mailers.py
 spinaltoobox/resource.py
 spinaltoobox/schemas.py
 spinaltoobox/security.py
-spinaltoobox/test_da.py
 spinaltoobox.egg-info/PKG-INFO
 spinaltoobox.egg-info/SOURCES.txt
 spinaltoobox.egg-info/dependency_links.txt
@@ -16,10 +16,8 @@ spinaltoobox.egg-info/requires.txt
 spinaltoobox.egg-info/top_level.txt
 spinaltoobox/models/__init__.py
 spinaltoobox/models/models.py
-spinaltoobox/views/__init__.py
 spinaltoobox/views/auth.py
 spinaltoobox/views/brainviewer.py
-spinaltoobox/views/forms.py
 spinaltoobox/views/myfiles.py
 spinaltoobox/views/upload.py
 spinaltoobox/views/views.py

@@ -103,7 +103,7 @@ def validation_error_view(exc, request):
 @view_config(route_name="api",
              name='all_executable',
              renderer='json')
-def executable_ctrl(context, request):
+def executable_ctrl(request):
     session = request.db
     return [i[0] for i in session.query(models.RegisteredTool.name).all()]
 

@@ -1,10 +1,54 @@
 import colander
 from deform_bootstrap import Form
 import deform
-from pyramid.view import view_config
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from .models import models
+from deform.widget import OptGroup
 css_widget = deform.widget.TextInputWidget(
             size=60, css_class='form-control')
+
+def parseTools():
+    engine = create_engine("sqlite:////Users/willispinaud/Dropbox/Amerique/Montreal/python_spinal_web/spinaltoobox/dc.sqlite")
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    tools_list = [i[0] for i in session.query(models.RegisteredTool.name).all()]
+    tools = (
+            ('', '- Select -'),
+            OptGroup('Tools Part 1',
+                (tools_list[0],tools_list[0]),
+                (tools_list[1],tools_list[1])),
+            OptGroup('Tools Part 2',
+                (tools_list[2],tools_list[2]),
+                (tools_list[3],tools_list[3]))
+            )
+    session.close()
+    return tools
+
+def parseOpt():
+    engine = create_engine("sqlite:////Users/willispinaud/Dropbox/Amerique/Montreal/python_spinal_web/spinaltoobox/dc.sqlite")
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    opt_list = [i[0] for i in session.query(models.RegisteredTool.options).all()]
+    opt = (
+            ('', '- Select -'),
+            OptGroup('Opt Part 1',
+                (str(opt_list[0]),str(opt_list[0])),
+                (str(opt_list[1]),str(opt_list[1]))),
+            OptGroup('Opt Part 2',
+                (str(opt_list[2]),str(opt_list[2])),
+                (str(opt_list[3]),str(opt_list[3]))
+            ))
+    session.close()
+    return opt_list
+
+
 class toolboxForm(colander.MappingSchema):
+    tools = colander.SchemaNode(
+        colander.String(),
+        title='Tools',
+        widget=deform.widget.SelectWidget(values=parseTools())
+        )
     name = colander.SchemaNode(
         colander.String(),
         title='Name',
