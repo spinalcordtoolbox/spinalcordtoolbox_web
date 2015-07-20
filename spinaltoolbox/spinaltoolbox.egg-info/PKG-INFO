@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: spinaltoolbox
+Version: 0.0
+Summary: spinaltoolbox
+Home-page: UNKNOWN
+Author: Willis Pinaud & P-O Quirion
+Author-email: willispinaud@gmail.com & pioliqui@gmail.com
+License: UNKNOWN
+Description: # spinaltoolbox
+        
+        A cool project
+        
+        # 0.0
+        
+        - initial version
+Keywords: web pyramid spinal web toolbox
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Framework :: Pyramid
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Application
