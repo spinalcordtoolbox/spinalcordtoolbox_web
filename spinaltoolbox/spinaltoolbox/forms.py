@@ -9,6 +9,7 @@ css_widget = deform.widget.TextInputWidget(
             size=60, css_class='form-control')
 
 def parseTools():
+    return (())
     engine = create_engine("sqlite:////Users/willispinaud/Dropbox/Amerique/Montreal/python_spinal_web/spinaltoolbox/dc.sqlite")
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -26,6 +27,7 @@ def parseTools():
     return tools
 
 def parseOpt():
+    return (())
     engine = create_engine("sqlite:////Users/willispinaud/Dropbox/Amerique/Montreal/python_spinal_web/spinaltoolbox/dc.sqlite")
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -96,7 +98,7 @@ class SigninForm(colander.MappingSchema):
     email = colander.SchemaNode(
         colander.String(),
         validator=colander.Email(),
-        widget = css_widget,
+        widget=css_widget,
         title='Email',
         )
     password = colander.SchemaNode(

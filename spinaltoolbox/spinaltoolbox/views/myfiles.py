@@ -14,12 +14,12 @@ def list_files(context, request):
 
 @view_config(route_name='displayFile', renderer='brainbrowser.mako',request_method='POST',
              permission='user')
-def display_file(context,request):
+def display_file(context, request):
     return {'form':form_render,'file_path':request.POST['go_viewer']}
 
 @view_config(route_name='deleteFile', renderer='myfiles.mako',request_method='POST',
              permission='user')
-def delete_file(context,request):
+def delete_file(context, request):
     #request a new session
     session = request.db
     userid = request.unauthenticated_userid #return the user.id without doing again the identification process
