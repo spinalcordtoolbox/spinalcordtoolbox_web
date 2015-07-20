@@ -119,7 +119,7 @@ def main(global_config, **settings):
     config_mako(config)
     config_db(config, settings)
     config_routes(config)
-    config_plugins(config)
+    #config_plugins(config)
     #config_auth_policy(config, settings)
     config_mailer(config)
     config.add_request_method(authenticated_user, reify=True)
