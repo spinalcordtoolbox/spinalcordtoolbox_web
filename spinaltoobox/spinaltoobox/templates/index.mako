@@ -15,7 +15,7 @@
 <div class="container text-center">
     <br>
     <br>
-    <h2 class="thin">The best toolbox for spinal cord reconstruction.</h2>
+    <h2 class="thin">A web-toolbox for spinal cord reconstruction.</h2>
     <p class="text-muted">
     The Spinal Cord Toolbox is a comprehensive and open-source library of analysis tools for MRI, FMRI and DTI of spinal cord imaging data. Future upgrades will include new versions of the template and other methods for processing multi-parametric MRI data.</p>
 </div>

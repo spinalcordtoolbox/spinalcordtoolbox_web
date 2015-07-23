@@ -59,28 +59,22 @@ def upload_nii(request):
         input_file.seek(0)
         size = len(input_file.read())
     elif file_ext == '.gz':
-        print ("It's a Gzip file, let's unzip it!")
-        filename = os.path.splitext(filename)[0] # To delete the .gz extension in the file name
         file_path = os.path.join(os.path.join(FILE_REP_TMP,str(userid)), filename)
+        print ("It's a Gzip file, let's view it!")
         # We first write to a temporary file to prevent incomplete files from
         # being used.
         temp_file_path = file_path + '~'
 
-        #extract the file from the gzip
-        input_file.seek(0)
-        unzip_input_file = gzip.open(input_file, 'rb')
-
         # Finally write the data to a temporary file
-        unzip_input_file.seek(0)
+        input_file.seek(0)
         with open(temp_file_path, 'wb') as output_file:
-            shutil.copyfileobj(unzip_input_file, output_file)
+            shutil.copyfileobj(input_file, output_file)
 
         # Now that we know the file has been fully saved to disk move it into place.
         os.rename(temp_file_path, file_path)
-        unzip_input_file.seek(0)
-        size = len(unzip_input_file.read())
+        input_file.seek(0)
+        size = len(input_file.read())
 
-        file_ext = os.path.splitext(filename)[1]
     else:
         print ('Your file is neither a NIFI nor a MNC file !!! ')
         return HTTPFound(location=request.route_url('upload'))

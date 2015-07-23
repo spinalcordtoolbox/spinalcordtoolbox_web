@@ -56,6 +56,7 @@ def signup(request):
                         password=appstruct['password'])
         session.add(new_user)
         session.commit()
+
         return HTTPFound(location=request.route_url('signin'))
 
     # We are a GET not a POST
