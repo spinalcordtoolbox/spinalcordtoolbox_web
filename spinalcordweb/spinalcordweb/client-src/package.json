@@ -1,0 +1,10 @@
+{
+    "devDependencies": {
+        "coffee-script": "",
+        "gulp": "",
+        "gulp-angular-templatecache": "",
+        "gulp-coffee": "",
+        "gulp-concat": "",
+        "gulp-sass": ""
+    }
+}

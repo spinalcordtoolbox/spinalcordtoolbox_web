@@ -1,3 +1,0 @@
-# spinaltoolbox
-
-A cool project
