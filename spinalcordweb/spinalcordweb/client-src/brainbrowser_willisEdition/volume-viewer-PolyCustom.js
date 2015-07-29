@@ -398,12 +398,21 @@ $(function() {
       //Generate the volume selector to select the active panel
         //@TODO: Fix the list generation: Should be updated from scratch when a volume is loaded.
         //@TODO: AND we have to find a way to edit the BrainBrowser html code for each iteration (for the file browser)
-      if (vol_id>0){
-      $( "#volume-selection" ).append( "<option value="+(vol_id-1)+">Volume "+(vol_id-1)+"</option>" );
-      //The file explorer - part1
-      //generate the list of items
-      $("#list_sortable").append("<li><a id ='"+(vol_id-1)+"' href='#'><strong>Brain Volume_ID: </strong>"+(vol_id-1)+"</a></li>");
-      }
+          $( "#volume-selection, #list_sortable").empty(); //flush the list
+          for (var i=0;i<vol_id;i++){
+              $( "#volume-selection" ).append( "<option value="+(i)+">Volume "+(i)+"</option>" );
+              //The file explorer - part1
+              //generate the list of items
+              $("#list_sortable").append("<li><a id ='"+(i)+"'><strong>Brain Volume_ID: </strong>"+(i)+"</a></li>");
+
+              if (($('#volume-selection').children().length>1)&&(i==vol_id-1)){
+                  //that hide element in the select to avoid overlapping volume controls
+                  $("[id^=volume-panel-]").hide();
+                  $("#volume-panel-"+0).show();
+              }
+
+
+          }
 
 
 
