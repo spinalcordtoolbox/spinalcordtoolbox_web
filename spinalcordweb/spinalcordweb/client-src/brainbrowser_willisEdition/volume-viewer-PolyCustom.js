@@ -39,7 +39,7 @@ $(function() {
   /////////////////////////////////////
   window.viewer = BrainBrowser.VolumeViewer.start("brainbrowser", function(viewer) {
     var loading_div = $("#loading");
-      var array_id = [];
+
     var test_volume_switch = [{
           type: "nifti1",
           nii_url: "models/T1.nii.gz",
@@ -47,8 +47,6 @@ $(function() {
             element_id: "volume-ui-template",
             viewer_insert_class: "volume-viewer-display"
           }
-          // ,
-          // style : "display : none"
         },
         {
             type: "nifti1",
@@ -57,8 +55,6 @@ $(function() {
                 element_id: "volume-ui-template",
                 viewer_insert_class: "volume-viewer-display"
             }
-            // ,
-            // style : "display : none"
         },
         {
           type: "nifti1",
@@ -67,8 +63,8 @@ $(function() {
             element_id: "volume-ui-template",
             viewer_insert_class: "volume-viewer-display"
           }
-          // ,
-          // style : "display : none"
+            //,
+            //style : "display : none"
         }];
 
     ///////////////////////////
@@ -76,9 +72,9 @@ $(function() {
     ///////////////////////////
 
     $("#volume-type").change(function() {
-      $("#sync-volumes-wrapper").hide();
-      $("#volume-file").hide();
+      $("#sync-volumes-wrapper,#volume-file").hide();
 
+        //@TODO: delete these options but maybe add something for 4D volume?
       if ($(this).val() === "functional") {
         viewer.clearVolumes();
         viewer.loadVolume({
@@ -131,6 +127,7 @@ $(function() {
     });
 
       // Display only the volume selected.
+      // @TODO: add a 'on-click' function for the file explorer to display the right control panel if a volume is selected
     $("#volume-selection").change(function() {
       var volume_id = parseInt($(this).val());
       $("[id^=volume-panel-]").hide();
@@ -138,6 +135,7 @@ $(function() {
     });
 
     // Change viewer panel canvas size.
+      //@TODO: check if the size is really updated and not just interpolated
     $("#panel-size").change(function() {
       var size = parseInt($(this).val(), 10);
 
@@ -145,6 +143,7 @@ $(function() {
     });
 
     // Should cursors in all panels be synchronized?
+      // @TODO: This functionality is useless, should be deleted
     $("#sync-volumes").change(function() {
       var synced = $(this).is(":checked");
       if (synced) {
@@ -215,9 +214,9 @@ $(function() {
 
     // Load a new model from a file that the user has
     // selected.
+      //@TODO: add a filetype detection to load minc OR nift
+      //@TODO: Fix that to support gziped files
     $("#volume-file-submit").click(function() {
-
-        console.log(document.getElementById("header-file"));
 
         var new_volume_to_add = {
             type: "nifti1",
@@ -226,8 +225,6 @@ $(function() {
                 element_id: "volume-ui-template",
                 viewer_insert_class: "volume-viewer-display"
             }
-            // ,
-            // style : "display : none"
         };
 
         test_volume_switch.push(new_volume_to_add);
@@ -278,14 +275,15 @@ $(function() {
                 }
             },
             complete: function() {
-                loading_div.hide();
-                $("#brainbrowser-wrapper").slideDown({duration: 600});
+                //loading_div.hide();
+                //$("#brainbrowser-wrapper").slideDown({duration: 600});
 
-                viewer.volumes.forEach(function(vol){
-                    viewer.synced = true;});
-                var vol = viewer.volumes[1];
+                //function to sync all the volume and update the Voxel Coordinate at the same time
+                //viewer.volumes.forEach(function(vol){
+                //    viewer.synced = true;});
+                //var vol = viewer.volumes[1];
 
-                viewer.interaction_type = 1;
+                /*viewer.interaction_type = 1;
 
                 viewer.loadVolumeColorMapFromURL(0, 'color-maps/spectral-brainview.txt', "#FF0000", function() {
                     viewer.redrawVolumes();
@@ -350,7 +348,7 @@ $(function() {
                             var cursorpos = panel.getCursorPosition(volpos.slice_x, volpos.slice_y);
                             panel.drawMousePointer("#FFFFFF", cursorpos);
                         }
-                    }
+                    };
 
                     var mousedown = false;
 
@@ -380,7 +378,7 @@ $(function() {
                     }, false);
 
                     //}
-                });
+                });*/
                 //});
             }
         });
@@ -1001,16 +999,16 @@ $(function() {
     ////////////////////////////////////////
     // Set the size of slice display panels.
     ////////////////////////////////////////
-    //viewer.setDefaultPanelSize(256, 256);
+    viewer.setDefaultPanelSize(256, 256);
 
     ///////////////////
     // Start rendering.
     ///////////////////
     viewer.render();
 
-    var testDraw = function(canvas_buffer, ctx, params){
-        
-    }
+    //var testDraw = function(canvas_buffer, ctx, params){
+    //
+    //};
 
     /////////////////////
     // Load the volumes.
@@ -1062,13 +1060,15 @@ $(function() {
       },
       complete: function() {
         loading_div.hide();
-        $("#brainbrowser-wrapper").slideDown({duration: 600});
+        $("#brainbrowser-wrapper").show();
+        //$("#brainbrowser-wrapper").slideDown({duration: 600});
 
-        viewer.volumes.forEach(function(vol){
-        viewer.synced = true;});
-        var vol = viewer.volumes[1];
+        //viewer.volumes.forEach(function(vol){
+        //viewer.synced = true;});
 
-        viewer.interaction_type = 1;
+        //var vol = viewer.volumes[1];
+
+        /*viewer.interaction_type = 1;
 
           viewer.loadVolumeColorMapFromURL(0, 'color-maps/spectral-brainview.txt', "#FF0000", function() {
               viewer.redrawVolumes();
@@ -1080,8 +1080,9 @@ $(function() {
 
         viewer.loadVolumeColorMapFromURL(2, 'color-maps/FreeSurferColorLUT20120827.txt', "#FF0000", function() {
           viewer.redrawVolumes();
-        });
-        viewer.volumes.forEach(function(volume){
+        });*/
+
+        /*viewer.volumes.forEach(function(volume){
           volume.display.forEach(function(panel) {
             if(panel.axis === "xspace"){
               panel.invert_x = true;
@@ -1133,7 +1134,7 @@ $(function() {
                     var cursorpos = panel.getCursorPosition(volpos.slice_x, volpos.slice_y);
                     panel.drawMousePointer("#FFFFFF", cursorpos);
                   }
-                }
+                };
 
                 var mousedown = false;
 
@@ -1163,7 +1164,7 @@ $(function() {
                 }, false);
                 
               //}
-            });
+            });*/
         //});
       }
     });
