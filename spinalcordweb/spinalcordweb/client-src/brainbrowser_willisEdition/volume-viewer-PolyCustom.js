@@ -396,18 +396,18 @@ $(function() {
       var vol_id = event.volume_id;
 
       //Generate the volume selector to select the active panel
+        //@TODO: Fix the list generation: Should be updated from scratch when a volume is loaded.
+        //@TODO: AND we have to find a way to edit the BrainBrowser html code for each iteration (for the file browser)
       if (vol_id>0){
       $( "#volume-selection" ).append( "<option value="+(vol_id-1)+">Volume "+(vol_id-1)+"</option>" );
+      //The file explorer - part1
+      //generate the list of items
+      $("#list_sortable").append("<li><a id ='"+(vol_id-1)+"' href='#'><strong>Brain Volume_ID: </strong>"+(vol_id-1)+"</a></li>");
       }
 
-        //The file explorer - part1
-        //generate the list of items
-        if (vol_id>0) {
-            array_id.push(vol_id - 1);
-            for (var i in array_id) {
-                $("#list_sortable").append("<li><a id ='"+array_id[i]+"' href='#'><strong>Brain Volume_ID: </strong>"+array_id[i]+"</a></li>");
-            }
-        }
+
+
+
       container = $(container);
 
       container.find(".button").button();

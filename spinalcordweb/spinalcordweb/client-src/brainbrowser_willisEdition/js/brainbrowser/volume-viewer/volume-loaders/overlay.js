@@ -54,7 +54,7 @@
             blend_ratios: [],
             to_switch: [],
             to_hide: [],
-            images_order: [0, 1, 2], //@TODO: change this to a true constant who will display all the slices
+            images_order: (function(a,b){while(a--)b[a]=a;return b})(viewer.volumes.length,[]), //@TODO: when adding file will work replace that by []
             mask_overlay: false,
 
             //return all the slices (x,y,z)
@@ -184,7 +184,6 @@
     function blendImages(images, blend_ratios, target, mask_overlay, to_switch, to_hide, images_order) {
         var num_images = images.length;
         var tmp = 0;
-
         if (num_images === 1) {
             return images[0];
         }
