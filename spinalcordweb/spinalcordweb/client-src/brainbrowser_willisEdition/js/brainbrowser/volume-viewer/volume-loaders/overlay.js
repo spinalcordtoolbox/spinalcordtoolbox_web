@@ -222,44 +222,48 @@
 
                 //loop re-writed to plot images in the right order i = 0; i < cars.length; i++
                 for (num_images in images_order) {
-                    image = images[images_order[num_images]];
+                    if (!($.inArray(images_order[num_images], to_hide) > -1)){
+                        image = images[images_order[num_images]];
 
-                    if ((y < image.height && x < image.width) && (!($.inArray(images_order[num_images], to_hide) > -1))) {
+                        if (y < image.height && x < image.width)  {
 
-                        image_data = image.data;
+                            image_data = image.data;
 
-                        current = image_iter[num_images];
+                            //current = image_iter[num_images];
 
-                        //Red
-                        if ((image_data[pixel] > blend_ratios[1])) {
-                            target_data[pixel] = image_data[pixel];
+                            //Red
+                            if ((image_data[pixel] > blend_ratios[1])) {
+                                target_data[pixel] = image_data[pixel];
+                                target_data[pixel + 2] = image_data[pixel + 2];
+                                target_data[pixel + 1] = image_data[pixel + 1];
+                            }
+                            /*//Green
+                            if ((image_data[pixel + 1] > blend_ratios[1])) {
+                                target_data[pixel + 1] = image_data[pixel + 1];
+                            }
+                            //Blue
+                            if ((image_data[pixel + 2] > blend_ratios[1])) {
+                                target_data[pixel + 2] = image_data[pixel + 2];
+                            }*/
+
+                            /*
+                             if(mask_overlay){
+                             var image_alpha = image_data[current + 3]/255*alphas[i];
+                             //Red
+                             target_data[pixel] = target_data[pixel]*(1-image_alpha) + image_data[current]*image_alpha;
+                             //Green
+                             target_data[pixel + 1] = target_data[pixel + 1]*(1-image_alpha) + image_data[current + 1]*image_alpha;
+                             //Blue
+                             target_data[pixel + 2] = target_data[pixel + 2]*(1-image_alpha) + image_data[current + 2]*image_alpha;
+                             }
+                             */
+
+
+                            target_data[pixel + 3] = 255; //Time value @TODO: will be a problem with 4D volume...
+                            //alpha = alphas[num_images];
+
+                            //image_iter[num_images] += 4;
                         }
-                        //Green
-                        if ((image_data[pixel + 1] > blend_ratios[1])) {
-                            target_data[pixel + 1] = image_data[pixel + 1];
-                        }
-                        //Blue
-                        if ((image_data[pixel + 2] > blend_ratios[1])) {
-                            target_data[pixel + 2] = image_data[pixel + 2];
-                        }
-
-                        /*
-                         if(mask_overlay){
-                         var image_alpha = image_data[current + 3]/255*alphas[i];
-                         //Red
-                         target_data[pixel] = target_data[pixel]*(1-image_alpha) + image_data[current]*image_alpha;
-                         //Green
-                         target_data[pixel + 1] = target_data[pixel + 1]*(1-image_alpha) + image_data[current + 1]*image_alpha;
-                         //Blue
-                         target_data[pixel + 2] = target_data[pixel + 2]*(1-image_alpha) + image_data[current + 2]*image_alpha;
-                         }
-                         */
-
-
-                        target_data[pixel + 3] = 255;
-                        alpha = alphas[num_images];
-
-                        image_iter[num_images] += 4;
                     }
                 }
             }

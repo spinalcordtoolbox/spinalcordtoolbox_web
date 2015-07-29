@@ -683,7 +683,8 @@ $(function() {
         var blend_input_max = div.find("#blend-val-max");
         var switch_button = div.find("#switch_button");
         var order_button = div.find("#order_button");
-        var images_order = [0,1,2];
+        var images_order = (function(a,b){while(a--)b[a]=a;return b})(viewer.volumes.length-1,[]);
+          console.log(images_order);
         var to_switch = [];
         var to_hide = [];
 
