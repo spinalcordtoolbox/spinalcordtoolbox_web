@@ -1,0 +1,8 @@
+{
+  "name": "spinalcordweb",
+  "dependencies": {
+    "foundation": "",
+    "angular": "",
+    "angular-ui-router": ""
+  }
+}

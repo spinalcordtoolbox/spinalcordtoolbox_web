@@ -1,0 +1,12 @@
+pyramid
+waitress
+sqlalchemy
+alembic
+pyramid_jinja2
+pyramid_mako
+passlib
+colander
+pyramid_marrowmailer
+html2text
+pyramid_tm
+sqlalchemy_utils
