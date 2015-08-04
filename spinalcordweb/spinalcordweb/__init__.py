@@ -50,7 +50,6 @@ def config_static(config):
 
 def config_jinja2(config):
     config.include('pyramid_jinja2')
-    config.include('pyramid_chameleon')
     config.include('pyramid_mako')
     config.add_jinja2_renderer('.html')
     config.add_jinja2_search_path('templates', name='.html')

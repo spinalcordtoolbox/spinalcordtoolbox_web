@@ -22,7 +22,8 @@ Delete:
 ?Get:
 ->Show a file into the viewer?
 '''
-@resource(collection_path='/users/{user_id}/files', path='/users/{user_id}/files/{file_id}')
+@resource(collection_path='/users/{user_id}/files',
+          path='/users/{user_id}/files/{file_id}')
 class File(object):
 
     def __init__(self, request):
@@ -31,6 +32,9 @@ class File(object):
     @view(renderer='myfiles.mako')
     def collection_get(self):
         userid = self.request.matchdict['user_id']
+        if (userid != self.request.unauthenticated_userid): #test if the logged user is trying to access his own files
+            #add 'return http_forbidden'
+            true = True #delete that
         session = self.request.db
         return {'user':session.query(models.File).filter(models.File.user_id==userid).all()}
 
@@ -46,6 +50,7 @@ class File(object):
     def delete(self):
         session = self.request.db
         userid = self.request.matchdict['user_id']
+        #add user_id verification
         fileid = self.request.matchdict['file_id']
         #Find the file in the database
         file_to_delete = session.query(models.File).filter_by(id=fileid).first()

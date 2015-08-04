@@ -10,6 +10,9 @@ from pyramid.view import view_config
 from spinalcordweb.models import models
 from cornice import Service
 
+
+import simplejson as json
+
 '''RESTful users ressources'''
 
 @resource(collection_path='/users', path='/users/{user_id}')
@@ -21,14 +24,15 @@ class User(object):
     @view()
     def collection_get(self):
         session = self.request.db
-        return session.query(models.User.id).all()
+        all_user = session.query(models.User).all()
+        return [json.dumps(e.serialize()) for e in all_user]
 
-    @view(renderer='json')
+    @view()
     def get(self):
         userid = self.request.matchdict['user_id']
         session = self.request.db
-        user_base = session.query(models.User).all()
-        return {'user':session.query(models.User.id).filter_by(id=userid).first()}
+        user_selected = session.query(models.User).filter_by(id=userid).first()
+        return {'user':user_selected.serialize()}
 
     @view(renderer='json')
     def delete(self):
@@ -37,7 +41,8 @@ class User(object):
         selected_user = session.query(models.User).filter_by(id=userid).first()
         session.delete(selected_user)
         session.commit()
-        return {'user':session.query(models.User.id).all()}
+        all_user = session.query(models.User).all()
+        return [json.dumps(e.serialize()) for e in all_user]
 
 
 foobar = Service(name="foobar", path="/foobar")
@@ -77,7 +82,7 @@ def signin(request):
         email = appstruct['email']
         session = request.db
         if email:
-            user = User.by_mail(email, session)
+            user = models.User.by_mail(email, session)
             if user and user.verify_password(appstruct['password']):
                 headers = remember(request, user.id)
             else:

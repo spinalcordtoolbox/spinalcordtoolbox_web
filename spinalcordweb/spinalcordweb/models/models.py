@@ -98,9 +98,19 @@ class User(Base):
     def verify_password(self, password):
         'Return True if we have a matching password'
         return crypt.check(self.password, password)
+    def serialize(self):
+        return {
+            '_id': self.id,
+            'email': self.email,
+            'first_name': self.first_name,
+            'last_name': self.last_name
+            # other fields that you need in the json
+        }
     def __repr__(self):
         return "User%i(fullname='%s %s', email='%s')" \
                % (self.id,self.first_name, self.last_name, self.email)
+
+
 
 
 class File(Base):

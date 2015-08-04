@@ -23,7 +23,9 @@ def upload(request):
     finally:
         return {}
 
-upload = Service('upload','/upload','manage file upload')
+upload = Service('upload',
+                 '/upload',
+                 'manage file upload')
 
 @upload.get(renderer='upload.mako')
 def upload_get(request):
