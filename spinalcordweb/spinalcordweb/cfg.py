@@ -1,6 +1,6 @@
 
 
-PROJECT_ROOT = '/Users/willispinaud/Dropbox/Amerique/Montreal/angular-python-spinalcord/spinalcordweb/'
+PROJECT_ROOT = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/spinalcordweb/'
 # Executable/plugins
 EXEC_PATH = PROJECT_ROOT+'../../spinalcordtoolbox/bin'
 #OLD_TYPE_JSON = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/src/main/resources/viewRessouces/js/commandsInputGenerator/data/'

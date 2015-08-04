@@ -99,8 +99,8 @@ class User(Base):
         'Return True if we have a matching password'
         return crypt.check(self.password, password)
     def __repr__(self):
-        return "<User(fullname='%s %s', email='%s')>" \
-               % (self.first_name, self.last_name, self.email)
+        return "User%i(fullname='%s %s', email='%s')" \
+               % (self.id,self.first_name, self.last_name, self.email)
 
 
 class File(Base):

@@ -27,6 +27,7 @@
                 %else:
                     <li>
                 %endif
+##                 @TODO: fix dropdown on safari / menu doesn't work
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Viewer<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         %if request.matched_route.name=='upload':

@@ -3,7 +3,7 @@ from pyramid import authentication, authorization
 
 from sqlalchemy import engine_from_config
 from sqlalchemy.orm import sessionmaker
-from .resource import APIRoot 
+from .resource import APIRoot
 from .security import get_principals
 from .models.models import User
 from configparser import ConfigParser
@@ -50,6 +50,7 @@ def config_static(config):
 
 def config_jinja2(config):
     config.include('pyramid_jinja2')
+    config.include('pyramid_chameleon')
     config.include('pyramid_mako')
     config.add_jinja2_renderer('.html')
     config.add_jinja2_search_path('templates', name='.html')
@@ -71,7 +72,7 @@ def config_plugins(config):
     PluginUpdater(config)
 
 def config_routes(config):
-    config.add_route('home', '/')
+
     config.add_route('404', '/404')
     config.add_route('403', '/403')
     config.add_route('myfiles','/myfiles',
@@ -87,8 +88,11 @@ def config_routes(config):
                  factory='spinalcordweb.security.SecurityFactory')
     config.add_route('contact','/contact')
 
-    config.add_route('app','/app')
+    config.add_route('app','/app') #AngularJS test application
+    config.add_route('generate_ajax_data', '/ajax_view') #Ajax test request
+    config.add_route('homee', '/home') #Ajax test button
 
+    config.add_route('home', '/')
     config.add_route('signin','/signin')
     config.add_route('signout','/signout')
     config.add_route('toolbox','/toolbox')
@@ -116,6 +120,7 @@ def main(global_config, **settings):
     config = Configurator(settings=settings)
     config_static(config)
     config_jinja2(config)
+    config.include("cornice")
     config_db(config, settings)
     config_routes(config)
     config_auth_policy(config, settings)

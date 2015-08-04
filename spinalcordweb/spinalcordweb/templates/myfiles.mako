@@ -26,7 +26,7 @@
 
               <!-- Standar Form -->
               <h4>Select files from your computer</h4>
-              <form action="/upload_nii" method="post" accept-charset="utf-8"
+              <form action="/upload" method="POST" accept-charset="utf-8"
               enctype="multipart/form-data" id="js-upload-form">
                 <div class="form-inline">
                   <div class="form-group">

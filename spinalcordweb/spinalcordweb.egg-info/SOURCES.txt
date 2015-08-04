@@ -7,7 +7,6 @@ spinalcordweb/mailers.py
 spinalcordweb/resource.py
 spinalcordweb/schemas.py
 spinalcordweb/security.py
-spinalcordweb/views.py
 spinalcordweb.egg-info/PKG-INFO
 spinalcordweb.egg-info/SOURCES.txt
 spinalcordweb.egg-info/dependency_links.txt

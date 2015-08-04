@@ -4,8 +4,62 @@ from pyramid.view import view_config, forbidden_view_config
 from ..forms import SigninForm, RegisterForm
 from pyramid.httpexceptions import HTTPFound
 from pyramid.security import remember, forget
-from ..models.models import User
 from deform_bootstrap import Form
+from cornice.resource import resource, view
+from pyramid.view import view_config
+from spinalcordweb.models import models
+from cornice import Service
+
+'''RESTful users ressources'''
+
+@resource(collection_path='/users', path='/users/{user_id}')
+class User(object):
+
+    def __init__(self, request):
+        self.request = request
+
+    @view()
+    def collection_get(self):
+        session = self.request.db
+        return session.query(models.User.id).all()
+
+    @view(renderer='json')
+    def get(self):
+        userid = self.request.matchdict['user_id']
+        session = self.request.db
+        user_base = session.query(models.User).all()
+        return {'user':session.query(models.User.id).filter_by(id=userid).first()}
+
+    @view(renderer='json')
+    def delete(self):
+        userid = self.request.matchdict['user_id']
+        session = self.request.db
+        selected_user = session.query(models.User).filter_by(id=userid).first()
+        session.delete(selected_user)
+        session.commit()
+        return {'user':session.query(models.User.id).all()}
+
+
+foobar = Service(name="foobar", path="/foobar")
+@foobar.post(schema=RegisterForm,
+             renderer = 'signup.mako')
+def foobar_post(request):
+    # Process the valid form data, do some work
+    session = request.db
+    new_user = User(first_name=request.validated['first_name'],
+                    last_name=request.validated['last_name'],
+                    email=request.validated['email'],
+                    password=request.validated['password'])
+    session.add(new_user)
+    session.commit()
+    return HTTPFound(location=request.route_url('signin'))
+
+
+@foobar.get(renderer = 'signup.mako')
+def foobar_get(request):
+    schema = RegisterForm()
+    myform = Form(schema, buttons=('Register',))
+    return {"form": myform.render(), "values": None}
 
 @view_config(route_name='signin', renderer='signin.mako')
 def signin(request):
