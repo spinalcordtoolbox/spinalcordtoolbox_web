@@ -10,3 +10,13 @@ pyramid_marrowmailer
 html2text
 pyramid_tm
 sqlalchemy_utils
+cryptacular
+wtforms
+deform
+zope.sqlalchemy
+simplejson
+psutil
+pyramid_mako
+pyramid_debugtoolbar
+deform_bootstrap
+pyramid_chameleon

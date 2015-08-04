@@ -20,7 +20,7 @@ requires = [
     'pyramid_marrowmailer',
     'html2text',
     'pyramid_tm',
-    'sqlalchemy_utils'
+    'sqlalchemy_utils',
     'cryptacular',
     'wtforms',
     'deform',

@@ -32,7 +32,9 @@ class PluginUpdater(object):
     def __init__(self, config=None):
 
         self.session = config.registry.dbmaker()
-        plugin_list = self._load_old_plugins(config)
+        self.script_path = cfg.EXEC_PATH
+        # plugin_list = self._load_old_plugins(config)
+        plugin_list = self._load_plugins(config, self.script_path)
         self.rebuild_table(plugin_list)
 
     def rebuild_table(self, plugin_list):
@@ -48,6 +50,34 @@ class PluginUpdater(object):
             self.session.commit()
         except SQLAlchemyError:
             self.session.rollback()
+
+
+    def _load_plugins(self, config, script_path):
+
+        all_script = os.listdir(script_path)
+        sys.path
+
+        all_script.sort()
+
+        list_path = os.path.join(path, 'liste_scripts.json')
+        config_path = os.path.join(path, 'config')
+        with open(list_path) as fp:
+            tool_list = json.load(fp)
+
+        rtools = []
+        for script in tool_list:
+            if script['activateScript']:
+                name = script['title']
+                help_str = 'no help yet'
+                cfg_path = os.path.join(config_path, name + '_config.json')
+                if not os.path.isfile(cfg_path):
+                    continue
+                with open(cfg_path) as fp:
+                    options = json.load(fp)[0]
+                rtools.append(models.RegisteredTool(name=name, help_str=help_str, options=options))
+
+        return rtools
+
 
 
     def _load_old_plugins(self, config):

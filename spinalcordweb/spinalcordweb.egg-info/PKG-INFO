@@ -2,8 +2,8 @@ Metadata-Version: 1.1
 Name: spinalcordweb
 Version: 0.0
 Summary: spinalcordweb
-Home-page: UNKNOWN
-Author: UNKNOWN
+Home-page: spinalcordtoolbox.org
+Author: Willis Pinaud & Pierre Olivier Quirion
 Author-email: UNKNOWN
 License: UNKNOWN
 Description: # spinalcordweb
@@ -13,7 +13,7 @@ Description: # spinalcordweb
         # 0.0
         
         - initial version
-Keywords: web pyramid pylons
+Keywords: Spinal cord toolbox web mri
 Platform: UNKNOWN
 Classifier: Programming Language :: Python
 Classifier: Framework :: Pyramid
