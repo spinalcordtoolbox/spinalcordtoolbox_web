@@ -63,7 +63,5 @@ body {
 #loading {
   z-index: 999;
   position: absolute;
-  top: 65px;
-  left: 55px;
   font-size: 3em;
 }

@@ -57,6 +57,7 @@
       var request = new XMLHttpRequest();
       var result_type = options.result_type;
       var status;
+
       var parts = url.split("/");
       var filename = parts[parts.length-1];
 

@@ -494,7 +494,6 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
       canvas.height = default_panel_height;
       canvas.style.backgroundColor = "#000000";
       canvas.style.position = "absolute";
-      canvas.classList.add("slice-display");
       canvas.top = 5;
       canvas.left = 5;
       canvas.style["z-index"] = 0;
@@ -508,10 +507,8 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
       div.id = "div_" + axis_name + "_vol" + vol_id;
       div.appendChild(canvas);
       div.style.position = "relative";
-      div.style.height = default_panel_height + 0 + "px";
-      div.style.width = default_panel_width + 0 + "px";
-
-      div.classList.add("div-display");
+      div.style.height = default_panel_height + 10 + "px";
+      div.style.width = default_panel_width + 10 + "px";
       container.appendChild(div);
 
       var view_description;
@@ -558,9 +555,6 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
           canvas_buffer: canvasBuffer,
           view_description: view_description,
           canvas_layers: canvas_layers,
-          set_size:{
-            width: 233, height: 233, scale_image: true 
-          },
           image_translate: {
             x: default_panel_width/2,
             y: default_panel_height/2

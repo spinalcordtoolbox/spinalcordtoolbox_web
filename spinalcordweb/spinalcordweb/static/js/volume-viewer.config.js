@@ -51,6 +51,11 @@
       name: "Green",
       url: "static/js/viewer/color-maps/green.txt",
       cursor_color: "#FF0000"
+    },
+    {
+      name: "Freesurfer",
+      url: "static/js/viewer/color-maps/FreeSurferColorLUT20120827.txt",
+      cursor_color: "#FF0000"
     }
   ]);
     

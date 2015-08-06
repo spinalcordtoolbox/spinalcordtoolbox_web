@@ -218,10 +218,8 @@
         panel.canvas.width = width;
         panel.canvas.height = height;
 
-        panel.canvas_div.style.width = width + 10 + "px";
-        panel.canvas_div.style.height = height + 10 + "px";
-        panel.canvas_div.style.padding = "0px " + width + "px 0px 0px";
-        panel.canvas_div.id = "myBox"
+        panel.canvas_div.style.width = width + 10;
+        panel.canvas_div.style.height = height + 10;
 
         if(panel.canvas_layers){
           for(var i = 0; i < panel.canvas_layers.length; i++){
@@ -287,6 +285,7 @@
         panel.image_translate.x += dx;
         panel.image_translate.y += dy;
         panel.updated = true;
+        
       },
 
       /**
