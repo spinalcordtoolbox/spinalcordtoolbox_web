@@ -34,6 +34,10 @@ app
         templateUrl: 'category/list.html'
         controller: 'categoryList'
       )
+      .state('viewer',
+        url: '/viewer'
+        templateUrl: 'viewer/volume-viewer-PolyCustom.html'
+      )
       .state('login',
         url: '/login'
         templateUrl: 'user/login_form.html'
