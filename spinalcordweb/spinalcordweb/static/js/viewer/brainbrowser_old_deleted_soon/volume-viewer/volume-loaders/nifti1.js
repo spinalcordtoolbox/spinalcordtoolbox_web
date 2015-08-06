@@ -482,6 +482,16 @@
         volume.data[index] = value;
 
       },
+      //Add a set for alpha value - that dosn't work with 4D images I guess..
+      setAlphaValue : function(x, y, z, value){
+
+        var movsize = [ header[header.order[2]].space_length, header[header.order[1]].space_length ];
+        console.log('movesize:'+movsize);
+        var index =  z + (y)*movsize[0] + (x)*movsize[0]*movsize[1];
+        console.log('index:'+index);
+        volume.data[index] = value;
+
+      },
       
       getVoxelCoords: function() {
         var header = volume.header;

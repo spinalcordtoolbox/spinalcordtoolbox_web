@@ -932,7 +932,7 @@ $(function() {
                 value: 1,
                 slide: function(event, ui) {
                     var value = parseFloat(ui.value);
-                    //viewer.setTransparency(value);
+                    volume.setAlphaValue(1,1,value);
                     volume.display.refreshPanels();
 
                     alpha_input.val(value);
@@ -955,8 +955,7 @@ $(function() {
 
                 // Update slider and redraw volumes.
                 slider.slider("value", value);
-                //viewer.setTransparency(value);
-                volume.display.refreshPanels();
+                volume.setAlphaValue(1,1,value);
                 viewer.redrawVolumes();
             });
         });

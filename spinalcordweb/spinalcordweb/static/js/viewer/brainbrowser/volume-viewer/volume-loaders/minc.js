@@ -275,6 +275,7 @@
         volume.data[index] = value;
 
       },
+
       
       getVoxelCoords: function() {
         var header = volume.header;
