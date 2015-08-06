@@ -282,3 +282,15 @@ ul{
     background-image: url("http://demo.marcofolio.net/css_lists/images/hover.png");
     background-repeat: repeat-x;
 }
+
+.trash{
+    font-size:2em; 
+    color:rgb(4, 172, 247); 
+    height: 40px; 
+    text-align: right
+}
+.trash-hover{
+    color: red !important;
+    font-size: 3em !important;
+    border: yellow dashed 3px;
+}

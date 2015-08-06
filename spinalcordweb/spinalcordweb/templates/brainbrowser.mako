@@ -1,5 +1,6 @@
 <%inherit file="main_template.mako"/>
 
+<link type="text/css" href="${request.static_url('spinalcordweb:static/css/bootstrap/dist/css/bootstrap.min.css')}" rel="Stylesheet"/>
 <link type="text/css" href="${request.static_url('spinalcordweb:static/css/volume-viewer-demo.css')}" rel="Stylesheet"/>
 <link type="text/css" href="${request.static_url('spinalcordweb:static/css/common.css')}" rel="Stylesheet"/>
 <link type="text/css" href="${request.static_url('spinalcordweb:static/css/ui-darkness/jquery-ui-1.8.10.custom.css')}"
@@ -104,11 +105,13 @@
                 <div id="contrast-slider" class="slider volume-viewer-contrast"></div>
             </div>
 
+            <div > <!--style="display: flex;"-->
             <div id="sortable">
                 <ul id="list_sortable">
                 </ul>
             </div>
-
+            <span class="glyphicon glyphicon-trash trash" ></span>
+            </div>
             <div class="brightness-div" data-volume-id="{{VOLID}}">
                 <span class="control-heading" id="brightness-heading{{VOLID}}">Brightness (-1 to 1):</span>
                 <input class="control-inputs" value="0" id="brightness-val"/>

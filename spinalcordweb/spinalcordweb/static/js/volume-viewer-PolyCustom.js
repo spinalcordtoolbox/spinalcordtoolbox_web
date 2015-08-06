@@ -414,7 +414,7 @@ $(function() {
               $( "#volume-selection" ).append( "<option value="+(i)+">Volume "+(i)+"</option>" );
               //The file explorer - part1
               //generate the list of items
-              $("#list_sortable").append("<li><a id ='"+(i)+"'><strong>Brain Volume_ID: </strong>"+(i)+"</a></li>");
+              $("#list_sortable").append("<li><a id ='layer-"+(i)+"'><strong>Brain Volume_ID: </strong>"+(i)+"</a></li>");
 
               if (($('#volume-selection').children().length>1)&&(i==vol_id-1)){
                   //that hide element in the select to avoid overlapping volume controls
@@ -726,8 +726,7 @@ $(function() {
           $("#list_sortable").disableSelection();
           //Hide elements of the list on double click
           $("#list_sortable a").dblclick(function(event, ui) {
-              var volid = $(this).attr('id');
-              volid = parseInt(volid);
+              var volid = parseInt($(this).attr('id').split('-')[1]);
               //to add one element in the array
               if (!($.inArray(volid, to_hide) > -1)) {
                   to_hide.push(volid);
@@ -746,12 +745,40 @@ $(function() {
               viewer.redrawVolumes();
           });
           $("#list_sortable a").click(function(){
-             var volume_id = parseInt($(this).attr('id'));
+             var volume_id = parseInt($(this).attr('id').split('-')[1]);
               $("[id^=volume-panel-]").hide();
                 $("#volume-panel-"+volume_id).show();
               $("#list_sortable a").removeClass('onclick');
               $(this).addClass('onclick');
           });
+          $(".trash").droppable({
+                hoverClass:"trash-hover",
+                drop: function ( event, ui ) {
+                    var vol_selected = $(ui.draggable).children().attr('id').split('-')[1];
+                    console.log(test_volume_switch);
+                    test_volume_switch.splice(vol_selected, 1);
+                    console.log(test_volume_switch);
+                    //debugger;
+                    viewer.clearVolumes();
+                    viewer.loadVolumes({
+                        volumes:
+                            test_volume_switch
+                        ,
+                        overlay: {
+                            template: {
+                                element_id: "overlay-ui-template",
+                                viewer_insert_class: "overlay-viewer-display"
+                            },
+                            views: ["xspace", "yspace", "zspace"]
+                        },
+                      complete: function() {
+                        var size = $('.overlay-volume-controls').width()/3;
+                        viewer.setPanelSize(size, size, { scale_image: true });
+                        viewer.redrawVolumes();}
+                    });
+                    ui.draggable.remove();
+                }
+            });
 
         //Launch the re-organization of the slices
         order_button.change(function(){
