@@ -381,3 +381,7 @@ img.pull-left
 .signin{
     margin-top: 15px;
 }
+
+#navbar{
+    z-index: 50;
+}

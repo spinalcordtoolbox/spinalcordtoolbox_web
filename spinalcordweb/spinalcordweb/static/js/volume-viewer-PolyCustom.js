@@ -214,7 +214,11 @@ $(function() {
         $("<div></div>").append(img).dialog({
           title: "Slices",
           height: img.height,
-          width: img.width
+          width: img.width,
+      show: {
+        effect: "blind",
+        duration: 1000
+      }
         });
       };
 
@@ -700,7 +704,6 @@ $(function() {
         var switch_button = div.find("#switch_button");
         var order_button = div.find("#order_button");
         var images_order = (function(a,b){while(a--)b[a]=a;return b})(viewer.volumes.length-1,[]);
-          console.log(images_order);
         var to_switch = [];
         var to_hide = [];
 
@@ -1028,7 +1031,6 @@ $(function() {
     /////////////////////
     // Load the volumes.
     /////////////////////
-      console.log(viewer.volumes.length)
 
     viewer.loadVolumes({
       volumes:

@@ -233,7 +233,9 @@ canvas.slice-display {
     #overlay{
         width: 100%;
     }
+
 }
+
 /* File Browser LIST sortable */
 #sortable {
     width: 100%;
