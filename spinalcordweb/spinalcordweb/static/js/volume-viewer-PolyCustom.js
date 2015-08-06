@@ -147,6 +147,7 @@ $(function() {
       //This function resize dynamically the size of the panel when the window is resized
       $(window).resize(function(){
           var size = $('.overlay-volume-controls').width()/3;
+          size = size - 3.3;
           viewer.setPanelSize(size, size, { scale_image: true });
         viewer.redrawVolumes();
       });
@@ -607,6 +608,7 @@ $(function() {
                         },
                       complete: function() {
                         var size = $('.overlay-volume-controls').width()/3;
+                          size = size - 3.3;
                         viewer.setPanelSize(size, size, { scale_image: true });
                         viewer.redrawVolumes();}
                     });
@@ -685,6 +687,7 @@ $(function() {
             },
             complete: function() {
                         var size = $('.overlay-volume-controls').width()/3;
+                        size = size-3.3;
                         viewer.setPanelSize(size, size, { scale_image: true });
                         viewer.redrawVolumes();}
         });
@@ -1019,6 +1022,7 @@ $(function() {
         loading_div.hide();
         $("#brainbrowser-wrapper").show();
         var size = $('.overlay-volume-controls').width()/3;
+          size = size-3.3;
         viewer.setPanelSize(size, size, { scale_image: true });
         viewer.redrawVolumes();
 
@@ -1134,6 +1138,6 @@ $(function() {
 
 
 
-
+$('body').css('background-color', '#555555');
 });
 

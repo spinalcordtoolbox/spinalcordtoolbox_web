@@ -11,7 +11,7 @@
 <!-- container -->
 <div class="container-no-float">
     <div class="row">
-        <!--upper selection bar-->
+        <%doc><!--upper selection bar-->
         <div id="brainbrowser-wrapper">
             <div id="volume-viewer">
                 <div id="global-controls" class="volume-viewer-controls">
@@ -41,8 +41,8 @@
 
                     <div id="volume-file" class="file-select">
                         <div>
-                            <span class="control-heading">Header file: </span><%doc><input type="file" name="header-file"
-                                                                                 id="header-file"></%doc>
+                            <span class="control-heading">Header file: </span></%doc><%doc><input type="file" name="header-file"
+                                                                                 id="header-file"></%doc><%doc>
                         </div>
                         <div>
                             <span class="control-heading">Raw data file: </span><input type="file" name="raw-data-file"
@@ -65,11 +65,11 @@
                     <div class="instructions">Shift-click to drag. Hold ctrl to measure distance.</div>
                 </div>
             </div>
-        </div>
+        </div></%doc>
 
         <!-- Overlay Viewer and Control Inputs -->
         <script id="overlay-ui-template" type="x-volume-ui-template">
-            <div id="overlay" class="col-sm-12">
+            <div id="overlay" >
                 <!--Overlay Viewer-->
                 <!--@TODO: change the style to be responsive - cf old brainbrowser custom-->
                 <div id="overlay_viewer" class="overlay-viewer-display ">
