@@ -621,7 +621,7 @@ $(function() {
             });
               // Load a new model from a file that the user has
     // selected.
-      //@TODO: add a filetype detection to load minc OR nift
+      //@TODO: add a filetype detection to load minc OR nifti
       //@TODO: Fix that to support gziped files
    $("#header-file").change(function() {
         console.log('hello')
