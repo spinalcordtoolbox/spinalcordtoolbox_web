@@ -225,177 +225,7 @@ $(function() {
       img.src = canvas.toDataURL();
     });
 
-    // Load a new model from a file that the user has
-    // selected.
-      //@TODO: add a filetype detection to load minc OR nift
-      //@TODO: Fix that to support gziped files
-    $("#volume-file-submit").click(function() {
 
-        var new_volume_to_add = {
-            type: "nifti1",
-            nii_file: document.getElementById("header-file"),
-            template: {
-                element_id: "volume-ui-template",
-                viewer_insert_class: "volume-viewer-display"
-            }
-        };
-
-        test_volume_switch.push(new_volume_to_add);
-
-        viewer.loadVolumes({
-            volumes:
-                test_volume_switch
-            ,
-            overlay: {
-                template: {
-                    element_id: "overlay-ui-template",
-                    viewer_insert_class: "overlay-viewer-display"
-                },
-                views: ["xspace", "yspace", "zspace"],
-                views_description: {
-                    "xspace": [{
-                        x: 0.05,
-                        y: 0.05,
-                        text: 'A'
-                    },
-                        {
-                            x: 0.95,
-                            y: 0.05,
-                            text: 'P'
-                        }],
-                    "yspace": [{
-                        x: 0.05,
-                        y: 0.05,
-                        text: 'R'
-                    },
-                        {
-                            x: 0.95,
-                            y: 0.05,
-                            text: 'L'
-                        }],
-                    "zspace": [
-                        {
-                            x: 0.05,
-                            y: 0.05,
-                            text: 'R'
-                        },
-                        {
-                            x: 0.95,
-                            y: 0.05,
-                            text: 'L'
-                        }
-                    ]
-                }
-            },
-            complete: function() {
-                //loading_div.hide();
-                //$("#brainbrowser-wrapper").slideDown({duration: 600});
-
-                //function to sync all the volume and update the Voxel Coordinate at the same time
-                //viewer.volumes.forEach(function(vol){
-                //    viewer.synced = true;});
-                //var vol = viewer.volumes[1];
-
-                /*viewer.interaction_type = 1;
-
-                viewer.loadVolumeColorMapFromURL(0, 'color-maps/spectral-brainview.txt', "#FF0000", function() {
-                    viewer.redrawVolumes();
-                });
-
-                viewer.loadVolumeColorMapFromURL(1, 'color-maps/gray-scale.txt', "#FF0000", function() {
-                    viewer.redrawVolumes();
-                });
-
-                viewer.loadVolumeColorMapFromURL(2, 'color-maps/FreeSurferColorLUT20120827.txt', "#FF0000", function() {
-                    viewer.redrawVolumes();
-                });
-                viewer.volumes.forEach(function(volume){
-                    volume.display.forEach(function(panel) {
-                        if(panel.axis === "xspace"){
-                            panel.invert_x = true;
-                        }
-                    });
-                });
-
-                viewer.volumes[2].display.forEach(function(panel) {
-
-                    var label = 255;
-                    //if(panvol.data){
-                    var offset = [];
-                    var size = 0;
-
-
-                    for(var i = -size; i <= size; i++){
-                        for(var j = -size; j <= size; j++){
-                            for(var k = -size; k <= size; k++){
-                                var off = [i, j, k];
-                                offset.push(off);
-                            }
-                        }
-                    }
-
-                    var drawPixel = function(){
-                        var point = panel.getVoxelCoordinates();
-
-                        if(point){
-
-                            var x = point.i;
-                            var y = point.j;
-                            var z = point.k;
-
-                            for(var i = 0; i < offset.length; i++){
-                                var off = offset[i];
-                                viewer.volumes[1].setIntensityValue(x + off[0], y  + off[1], z  + off[2], label);
-                            }
-
-                            viewer.redrawVolumes();
-
-                        }
-                    };
-
-                    var drawMousePointer = function(x, y){
-
-                        var volpos = panel.getVolumePosition(x, y);
-                        if(volpos){
-                            panel.drawCurrentSlice();
-                            var cursorpos = panel.getCursorPosition(volpos.slice_x, volpos.slice_y);
-                            panel.drawMousePointer("#FFFFFF", cursorpos);
-                        }
-                    };
-
-                    var mousedown = false;
-
-                    var canvas = panel.canvas_layers[panel.canvas_layers.length - 1].canvas;
-
-                    canvas.addEventListener("mousedown", function () {
-                        mousedown = true;
-                        drawPixel();
-                    });
-
-                    canvas.addEventListener("mouseup", function () {
-                        mousedown = false;
-                    });
-
-                    canvas.addEventListener("mousemove", function (event) {
-                        var element = event.target;
-                        var top = 0;
-                        var left = 0;
-
-                        if(mousedown && !(event.ctrlKey || event.shiftKey)){
-                            drawPixel();
-                        }
-                        else{
-                            var rect = element.getBoundingClientRect();
-                            drawMousePointer(event.x - rect.left, event.y - rect.top);
-                        }
-                    }, false);
-
-                    //}
-                });*/
-                //});
-            }
-        });
-    });
 
 
     //////////////////////////////////
@@ -751,15 +581,19 @@ $(function() {
               $("#list_sortable a").removeClass('onclick');
               $(this).addClass('onclick');
           });
+          //This function delete a volume when dropped on the trash
+          //This is a real deletion inside the volume list, if you need to hide the volume, just double click on it!
           $(".trash").droppable({
                 hoverClass:"trash-hover",
                 drop: function ( event, ui ) {
+                    //get the volume id of the dragged element (this information is inside the id attribute)
                     var vol_selected = $(ui.draggable).children().attr('id').split('-')[1];
-                    console.log(test_volume_switch);
+                    //Splice is use to delete an element in an array
                     test_volume_switch.splice(vol_selected, 1);
-                    console.log(test_volume_switch);
-                    //debugger;
+                    //Clear every volume in order to redraw everything
                     viewer.clearVolumes();
+                    //remove the item in the list (this is just a security, because the loadVolume() will do it)
+                    ui.draggable.remove();
                     viewer.loadVolumes({
                         volumes:
                             test_volume_switch
@@ -776,9 +610,86 @@ $(function() {
                         viewer.setPanelSize(size, size, { scale_image: true });
                         viewer.redrawVolumes();}
                     });
-                    ui.draggable.remove();
+
                 }
             });
+
+
+            //Simulate click on the hidden file input
+          $('.add-volume').click(function(event) {
+              $('#header-file').click();
+            });
+              // Load a new model from a file that the user has
+    // selected.
+      //@TODO: add a filetype detection to load minc OR nift
+      //@TODO: Fix that to support gziped files
+   $("#header-file").change(function() {
+        console.log('hello')
+
+        var new_volume_to_add = {
+            type: "nifti1",
+            nii_file: document.getElementById("header-file"),
+            template: {
+                element_id: "volume-ui-template",
+                viewer_insert_class: "volume-viewer-display"
+            }
+        };
+
+        test_volume_switch.push(new_volume_to_add);
+        viewer.clearVolumes();
+
+        viewer.loadVolumes({
+            volumes:
+                test_volume_switch
+            ,
+            overlay: {
+                template: {
+                    element_id: "overlay-ui-template",
+                    viewer_insert_class: "overlay-viewer-display"
+                },
+                views: ["xspace", "yspace", "zspace"],
+                views_description: {
+                    "xspace": [{
+                        x: 0.05,
+                        y: 0.05,
+                        text: 'A'
+                    },
+                        {
+                            x: 0.95,
+                            y: 0.05,
+                            text: 'P'
+                        }],
+                    "yspace": [{
+                        x: 0.05,
+                        y: 0.05,
+                        text: 'R'
+                    },
+                        {
+                            x: 0.95,
+                            y: 0.05,
+                            text: 'L'
+                        }],
+                    "zspace": [
+                        {
+                            x: 0.05,
+                            y: 0.05,
+                            text: 'R'
+                        },
+                        {
+                            x: 0.95,
+                            y: 0.05,
+                            text: 'L'
+                        }
+                    ]
+                }
+            },
+            complete: function() {
+                        var size = $('.overlay-volume-controls').width()/3;
+                        viewer.setPanelSize(size, size, { scale_image: true });
+                        viewer.redrawVolumes();}
+        });
+    });
+
 
         //Launch the re-organization of the slices
         order_button.change(function(){

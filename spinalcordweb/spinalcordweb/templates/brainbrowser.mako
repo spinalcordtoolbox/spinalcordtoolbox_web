@@ -40,8 +40,8 @@
 
                 <div id="volume-file" class="file-select">
                     <div>
-                        <span class="control-heading">Header file: </span><input type="file" name="header-file"
-                                                                                 id="header-file">
+                        <span class="control-heading">Header file: </span><%doc><input type="file" name="header-file"
+                                                                                 id="header-file"></%doc>
                     </div>
                     <div>
                         <span class="control-heading">Raw data file: </span><input type="file" name="raw-data-file"
@@ -111,6 +111,8 @@
                 </ul>
             </div>
             <span class="glyphicon glyphicon-trash trash" ></span>
+            <div><span class="glyphicon glyphicon-plus add-volume" ></span><input type="file" name="header-file"
+                                                                                 id="header-file" style="display: none"></div>
             </div>
             <div class="brightness-div" data-volume-id="{{VOLID}}">
                 <span class="control-heading" id="brightness-heading{{VOLID}}">Brightness (-1 to 1):</span>

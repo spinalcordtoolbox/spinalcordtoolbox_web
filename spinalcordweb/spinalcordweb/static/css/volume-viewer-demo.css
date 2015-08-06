@@ -206,7 +206,6 @@ canvas.slice-display {
     position: absolute;
     left: 75%;
     width: 25%;
-    color: #ffff00;
     font: "Helvetica Neue Light";
 }
 .input-sm{
@@ -285,12 +284,22 @@ ul{
 
 .trash{
     font-size:2em; 
-    color:rgb(4, 172, 247); 
+    color: rgb(247, 0, 10);
     height: 40px; 
     text-align: right
 }
 .trash-hover{
-    color: red !important;
+    color: #ff8e00 !important;
     font-size: 3em !important;
-    border: yellow dashed 3px;
+    border: #ff0006 dashed 3px;
+}
+.add-volume{
+    font-size:2em;
+    color: rgb(0, 247, 3);
+    height: 40px;
+    text-align: right
+}
+.add-volume:hover{
+    color: #00ffe5 !important;
+    cursor: hand;
 }
