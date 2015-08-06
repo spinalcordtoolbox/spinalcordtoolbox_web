@@ -257,7 +257,8 @@
                              */
 
 
-                            target_data[pixel + 3] = image_data[pixel + 3]; //Alpha value @TODO: add a control for that
+                            target_data[pixel + 3] = 255; //image_data[pixel + 3]; //Alpha value @TODO: add a control for that
+
                             //alpha = alphas[num_images];
 
                             //image_iter[num_images] += 4;

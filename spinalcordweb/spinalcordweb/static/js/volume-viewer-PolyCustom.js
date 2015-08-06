@@ -722,7 +722,7 @@ $(function() {
           });
           $("#list_sortable").disableSelection();
           //Hide elements of the list on double click
-          $("a").dblclick(function(event, ui) {
+          $("#list_sortable a").dblclick(function(event, ui) {
               var volid = $(this).attr('id');
               volid = parseInt(volid);
               //to add one element in the array
@@ -742,11 +742,11 @@ $(function() {
               volume.display.refreshPanels();
               viewer.redrawVolumes();
           });
-          $("a").click(function(){
+          $("#list_sortable a").click(function(){
              var volume_id = parseInt($(this).attr('id'));
               $("[id^=volume-panel-]").hide();
                 $("#volume-panel-"+volume_id).show();
-              $("a").removeClass('onclick');
+              $("#list_sortable a").removeClass('onclick');
               $(this).addClass('onclick');
           });
 
