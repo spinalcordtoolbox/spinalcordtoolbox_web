@@ -18,10 +18,10 @@
             <h1 class="page-title">Manage my files.</h1>
         </header>
 
-
+        <div class="col-sm-8 col-lg-4">
         <h3>Upload a file</h3>
         <!-- Upload -->
-            <div class="container">
+
             <div class="panel-body">
 
               <!-- Standar Form -->
@@ -45,9 +45,9 @@
             </div>
         <!-- Upload -->
 
-
+        <div class="col-sm-8 col-lg-4 col-lg-offset-1">
         <h3>My Files</h3>
-        <div class="container">
+
           <table class="table table-striped">
             <thead>
               <tr>
@@ -76,8 +76,8 @@
             % endfor
             </tbody>
           </table>
-        </div>
 
+        </div>
     </article>
     <!-- /Article -->
 

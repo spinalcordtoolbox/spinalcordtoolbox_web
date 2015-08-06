@@ -41,12 +41,8 @@
         <script src="${request.static_url('spinalcordweb:static/js/headroom.min.js')}"></script>
         <script src="${request.static_url('spinalcordweb:static/js/jQuery.headroom.min.js')}"></script>
         <script src="${request.static_url('spinalcordweb:static/js/template.js')}"></script>
-        <script src="${request.static_url('spinalcordweb:static/js/deform.js')}"></script>
         <script src="${request.static_url('spinalcordweb:static/js/viewer/jquery-1.6.4.min.js')}"></script>
         <script src="${request.static_url('spinalcordweb:static/js/viewer/jquery-ui-1.8.10.custom.min.js')}"></script>
-        <script type="text/javascript">
-            deform.load()
-        </script>
         <script type="text/javascript">
             $("#view_more").click(function() {
                 $('html, body').animate({
