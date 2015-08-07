@@ -706,7 +706,7 @@
     dx += 2*dx*cursor_size;
     dy +=  2*dy*cursor_size;
 
-
+    //@todo: custom the shape of the cursor here
     context.moveTo(origx, origy);
     context.lineTo(origx + dx, origy);
     context.lineTo(origx + dx, origy - dy);

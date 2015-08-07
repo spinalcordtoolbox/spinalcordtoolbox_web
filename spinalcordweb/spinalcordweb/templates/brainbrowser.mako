@@ -1,7 +1,7 @@
 <%inherit file="main_template.mako"/>
 
-<link type="text/css" href="${request.static_url('spinalcordweb:static/css/bootstrap/dist/css/bootstrap.min.css')}"
-      rel="Stylesheet"/>
+## <link type="text/css" href="${request.static_url('spinalcordweb:static/css/bootstrap/dist/css/bootstrap.min.css')}"
+##       rel="Stylesheet"/>
 <link type="text/css" href="${request.static_url('spinalcordweb:static/css/volume-viewer-demo.css')}" rel="Stylesheet"/>
 <link type="text/css" href="${request.static_url('spinalcordweb:static/css/common.css')}" rel="Stylesheet"/>
 <link type="text/css" href="${request.static_url('spinalcordweb:static/css/ui-darkness/jquery-ui-1.8.10.custom.css')}"
@@ -11,7 +11,7 @@
 <!-- container -->
 <div class="container-no-float">
     <div class="row">
-        <%doc><!--upper selection bar-->
+        <!--upper selection bar-->
         <div id="brainbrowser-wrapper">
             <div id="volume-viewer">
                 <div id="global-controls" class="volume-viewer-controls">
@@ -41,8 +41,7 @@
 
                     <div id="volume-file" class="file-select">
                         <div>
-                            <span class="control-heading">Header file: </span></%doc><%doc><input type="file" name="header-file"
-                                                                                 id="header-file"></%doc><%doc>
+                            <span class="control-heading">Header file: </span>
                         </div>
                         <div>
                             <span class="control-heading">Raw data file: </span><input type="file" name="raw-data-file"
@@ -65,7 +64,7 @@
                     <div class="instructions">Shift-click to drag. Hold ctrl to measure distance.</div>
                 </div>
             </div>
-        </div></%doc>
+        </div>
 
         <!-- Overlay Viewer and Control Inputs -->
         <script id="overlay-ui-template" type="x-volume-ui-template">
@@ -112,11 +111,7 @@
                             <input class="control-inputs" value="100" id="blend-val-max"/>
 
                             <div id="blend-slider" class="slider volume-viewer-blend"></div>
-                            <input type="checkbox" class="button" id="switch_button"><label
-                                for="switch_button">switch_button</label>
 
-                            <input type="text" id="order_input"/>
-                            <input type="button" class="btn-xs" value="OK" id="order_button"/>
 
                         </div>
 

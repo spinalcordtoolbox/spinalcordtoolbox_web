@@ -209,11 +209,12 @@ canvas.slice-display {
     font: "Helvetica Neue Light";
 }
 .input-sm{
-    width: 20%;
+    width: 50px;
     border-radius: 5px;
 }
-.input{
+.control-inputs{
     border-radius: 5px;
+    width:50px;
 }
 #overlay{
     width: 75%;
@@ -302,8 +303,4 @@ ul{
 .add-volume:hover{
     color: #00ffe5 !important;
     cursor: hand;
-}
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
 }

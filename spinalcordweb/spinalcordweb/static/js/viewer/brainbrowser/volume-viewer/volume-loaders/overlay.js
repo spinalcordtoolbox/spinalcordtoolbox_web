@@ -52,7 +52,6 @@
             intensity_max: 255,
             volumes: [],
             blend_ratios: [],
-            to_switch: [],
             to_hide: [],
             images_order: (function(a,b){while(a--)b[a]=a;return b})(viewer.volumes.length,[]), //@TODO: when adding file will work replace that by []
             mask_overlay: false,
@@ -121,7 +120,6 @@
                     overlay_volume.blend_ratios,
                     image_creation_context.createImageData(max_width, max_height),
                     overlay_volume.mask_overlay,
-                    overlay_volume.to_switch,
                     overlay_volume.to_hide,
                     overlay_volume.images_order
                 );
@@ -181,21 +179,11 @@
     };
 
     // Blend the pixels of several images using the alpha value of each
-    function blendImages(images, blend_ratios, target, mask_overlay, to_switch, to_hide, images_order) {
+    function blendImages(images, blend_ratios, target, mask_overlay, to_hide, images_order) {
         var num_images = images.length;
         var tmp = 0;
         if (num_images === 1) {
             return images[0];
-        }
-
-        //Switch two different position
-        if (to_switch.length == 2) {
-            console.log(to_switch);
-            x = to_switch[0];
-            y = to_switch[1];
-            tmp = images[y];
-            images[y] = images[x];
-            images[x] = tmp;
         }
 
         var target_data = target.data;

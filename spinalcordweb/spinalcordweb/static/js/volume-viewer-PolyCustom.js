@@ -40,7 +40,7 @@ $(function() {
   window.viewer = BrainBrowser.VolumeViewer.start("brainbrowser", function(viewer) {
     var loading_div = $("#loading");
 
-    var test_volume_switch = [{
+    var volumes_files = [{
           type: "nifti1",
           nii_url: "static/js/viewer/models/T1.nii",
           template: {
@@ -532,10 +532,7 @@ $(function() {
         var slider = div.find(".slider");
         var blend_input_min = div.find("#blend-val-min");
         var blend_input_max = div.find("#blend-val-max");
-        var switch_button = div.find("#switch_button");
-        var order_button = div.find("#order_button");
         var images_order = (function(a,b){while(a--)b[a]=a;return b})(viewer.volumes.length-1,[]);
-        var to_switch = [];
         var to_hide = [];
 
 
@@ -590,14 +587,14 @@ $(function() {
                     //get the volume id of the dragged element (this information is inside the id attribute)
                     var vol_selected = $(ui.draggable).children().attr('id').split('-')[1];
                     //Splice is use to delete an element in an array
-                    test_volume_switch.splice(vol_selected, 1);
+                    volumes_files.splice(vol_selected, 1);
                     //Clear every volume in order to redraw everything
                     viewer.clearVolumes();
                     //remove the item in the list (this is just a security, because the loadVolume() will do it)
                     ui.draggable.remove();
                     viewer.loadVolumes({
                         volumes:
-                            test_volume_switch
+                            volumes_files
                         ,
                         overlay: {
                             template: {
@@ -637,12 +634,12 @@ $(function() {
             }
         };
 
-        test_volume_switch.push(new_volume_to_add);
+        volumes_files.push(new_volume_to_add);
         viewer.clearVolumes();
 
         viewer.loadVolumes({
             volumes:
-                test_volume_switch
+                volumes_files
             ,
             overlay: {
                 template: {
@@ -692,32 +689,6 @@ $(function() {
                         viewer.redrawVolumes();}
         });
     });
-
-
-        //Launch the re-organization of the slices
-        order_button.change(function(){
-            images_order = [0,1];
-            volume.images_order = images_order;
-            volume.display.refreshPanels();
-            viewer.redrawVolumes();
-        });
-
-        switch_button.change(function() {
-          if(switch_button.is(":checked")){
-              images_order = [0,0];
-              volume.images_order = images_order;
-            //volume.to_switch = [1,0];
-            volume.display.refreshPanels();
-            viewer.redrawVolumes();
-          }
-          else{
-              images_order = [1,1];
-              volume.images_order = images_order;
-              //volume.to_switch = [];
-              volume.display.refreshPanels();
-              viewer.redrawVolumes();
-          }
-        });
 
         // Slider to select blend value.
         slider.slider({
@@ -975,7 +946,7 @@ $(function() {
 
     viewer.loadVolumes({
       volumes:
-        test_volume_switch
+        volumes_files
       ,
       overlay: {
         template: {
