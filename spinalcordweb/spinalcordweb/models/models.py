@@ -8,7 +8,6 @@ from sqlalchemy.ext.declarative import declared_attr, declarative_base
 from sqlalchemy.ext.mutable import Mutable
 from sqlalchemy.orm import relationship, backref, synonym
 from sqlalchemy.types import TypeDecorator, VARCHAR
-from sqlalchemy_utils.types.password import PasswordType
 from cryptacular import bcrypt
 
 try:

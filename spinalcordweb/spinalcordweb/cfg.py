@@ -1,9 +1,10 @@
 
 
 # PROJECT_ROOT = '/Users/willispinaud/Dropbox/Amerique/Montreal/angular-python-spinalcord/spinalcordweb/'
-PROJECT_ROOT = '/home/poquirion/neuropoly/python_spinal_web/spinalcordweb/'
+PROJECT_ROOT = '/home/poquirion/neuropoly/spinalcordtoolbox_web/spinalcordweb/'
 # Executable/plugins
 EXEC_PATH = PROJECT_ROOT+'../../spinalcordtoolbox/scripts'
+EXEC_TMP = PROJECT_ROOT+'../scripts'
 #OLD_TYPE_JSON = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/src/main/resources/viewRessouces/js/commandsInputGenerator/data/'
 
 # Where input files are stored

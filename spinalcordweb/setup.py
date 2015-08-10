@@ -20,7 +20,6 @@ requires = [
     'pyramid_marrowmailer',
     'html2text',
     'pyramid_tm',
-    'sqlalchemy_utils',
     'cryptacular',
     'wtforms',
     'deform',
@@ -30,7 +29,10 @@ requires = [
     'pyramid_mako',
     'pyramid_debugtoolbar',
     'deform_bootstrap',
-    'pyramid_chameleon'
+    'pyramid_chameleon',
+    'numpy',
+    'scipy',
+    'nibabel'
     ]
 
 setup(name='spinalcordweb',

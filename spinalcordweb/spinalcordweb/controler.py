@@ -4,8 +4,10 @@ This module is ...
 
 import logging
 import os
+import pkgutil
 import psutil
 import queue
+import shutil
 import simplejson as json
 import subprocess
 import signal
@@ -19,22 +21,25 @@ try:
     from .models import models
     from . import cfg
 except SystemError:
-    import models
+    from models import models
     import cfg
 
 # @TODO Write doc
-# @TODO register plugins for there directory
+# @TODO register plugins from there spinalcordtoolbox directory
 
 __author__ = 'Pierre-Olivier Quirion <pioliqui@gmail.com>'
 
 
 class PluginUpdater(object):
-    def __init__(self, config=None):
+    def __init__(self, script_path, config=None, session=None):
 
-        self.session = config.registry.dbmaker()
-        self.script_path = cfg.EXEC_PATH
+        if config:
+            self.session = config.registry.dbmaker()
+        else:
+            self.session = session
+        # self.script_path = script_path
         # plugin_list = self._load_old_plugins(config)
-        plugin_list = self._load_plugins(config, self.script_path)
+        plugin_list = self._load_plugins(config, script_path)
         self.rebuild_table(plugin_list)
 
     def rebuild_table(self, plugin_list):
@@ -52,17 +57,25 @@ class PluginUpdater(object):
             self.session.rollback()
 
 
-    def _load_plugins(self, config, script_path):
+    def _load_plugins(self, config, script_path, reload = False):
 
-        all_script = os.listdir(script_path)
-        sys.path
 
-        all_script.sort()
+        # all_script = os.listdir(script_path)
+        if reload or not os.path.isdir(cfg.EXEC_TMP):
+            shutil.rmtree(cfg.EXEC_TMP)
+            shutil.copytree(script_path, cfg.EXEC_TMP)
+            subprocess.call(["/usr/bin/env", "2to3",  "-w", cfg.EXEC_TMP])
 
-        list_path = os.path.join(path, 'liste_scripts.json')
-        config_path = os.path.join(path, 'config')
-        with open(list_path) as fp:
-            tool_list = json.load(fp)
+        modules = pkgutil.iter_modules([cfg.EXEC_TMP])
+        # all_script = [ i for i in os.listdir(cfg.EXEC_TMP) if i.endswith(".py")]
+        sys.path.append(cfg.EXEC_TMP)
+
+        all_sct = []
+        for loader, mod_name, ispkg in modules:
+            module = loader.find_module(mod_name).load_module(mod_name)
+            pass
+
+
 
         rtools = []
         for script in tool_list:
@@ -272,9 +285,15 @@ if __name__ == "__main__":
 
     logging.basicConfig(level=logging.DEBUG)
 
-    engine = create_engine("sqlite:////home/pquirion/travail/neuropoly/python_spinal_web/spinalcordweb/db.sqlite")
+    engine = create_engine("sqlite:////home/pquirion/travail/neuropoly/spinalcordtoolbox_web/spinalcordweb/db.sqlite")
     Session = sessionmaker(bind=engine)
     session = Session()
+
+    pu = PluginUpdater(session=session, script_path="/home/poquirion/neuropoly/spinalcordtoolbox/scripts")
+
+    # pu._load_plugins(None, "/home/poquirion/neuropoly/spinalcordtoolbox/scripts")
+
+
 
     rt = session.query(models.RegisteredTool).filter(models.RegisteredTool.name == 'sct_propseg').first()
 
