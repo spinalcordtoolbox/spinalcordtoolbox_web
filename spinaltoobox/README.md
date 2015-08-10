@@ -1,3 +1,0 @@
-# spinaltoobox
-
-A cool project

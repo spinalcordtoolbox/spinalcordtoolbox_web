@@ -1,3 +1,5 @@
 python_virtual
 __pycache__/
 *.py[cod]
+.idea
+*/.idea

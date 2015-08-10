@@ -1,28 +1,72 @@
-The server has a some dependency that need to be instaled before it can run smoothly.
+# The iSpinalCordToolbox project[1] #
 
-We recommand instaling a python3 virtual env to make it run in `./python_virtual` with the following command
+This project is awesome.
 
-```virtualenv -p /path/to/python3``` path/to/python_spinal_web/python_virtual`
+# Setting Up
 
-then
+## Contents
 
-```source python_virtual/bin/activate```
+ - angular-seed - the frontend of the webapp
+ - pyrserve - the backend of the webapp
 
-this makes `./python_virtual/bin/` the "default python path" is your terminal, this means that pip an easy_install are also called from there.
+## Building the Angular App as Python Setuptool Package
 
-Some library are needed to have the server running
+Presteps
+ - Set up virtualenv and activate it
+ - Install npm
+ - Add setuptools files as per commit
 
-SQLAlchemy
-pyramid_tm
-html2text
-pyramid_marrowmailer
-colander
-passlib
-pyramid_jinja2
-alembic
-configparser
+Build Angular App
+```
+[Install NPM]
+cd angular-seed
+npm install
+```
 
-Most of them can be install with pip. In some case configparser needs to be installed with easy_install
+Package and Install as Package
+```
+[Activate a virtualenv]
+cd angular-seed
+python setup.py install
+```
+
+## Serving Angular App w/ Pyramid Dev Server
+
+Setup, see routes, and serve pyramid app
+```
+cd ../pyrserve/
+python setup.py develop
+proutes development.ini
+pserve development.ini --reload
+```
+
+Try URLs on localhost
+- [The Client App](http://localhost:6543/)
+- [The Server Root](http://localhost:6543/home)
+
+## How to create a new page in the client Angular App
+Presteps
+ - install yeoman
+ ```
+ npm install -g yo
+ npm install -g generator-angular
+ ```
+
+Call Yo to create your new page
+```
+yo angular:route mynewroute
+```
+
+[1]: https://github.com/neuropoly/spinalcordtoolbox_web
 
 
-you also need nodeJS installed
+
+
+
+
+
+
+
+
+
+
