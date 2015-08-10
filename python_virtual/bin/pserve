@@ -1,4 +1,4 @@
-#!/Users/willispinaud/Dropbox/Amerique/Montreal/pyrangular/spinalcordtoolbox_web/python_virtual/bin/python
+#!/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/python_virtual/bin/python
 # EASY-INSTALL-ENTRY-SCRIPT: 'pyramid==1.6a2','console_scripts','pserve'
 __requires__ = 'pyramid==1.6a2'
 import sys

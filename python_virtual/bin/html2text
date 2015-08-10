@@ -1,4 +1,4 @@
-#!/Users/willispinaud/Dropbox/Amerique/Montreal/pyrangular/spinalcordtoolbox_web/python_virtual/bin/python
+#!/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/python_virtual/bin/python
 # EASY-INSTALL-ENTRY-SCRIPT: 'html2text==2015.6.21','console_scripts','html2text'
 __requires__ = 'html2text==2015.6.21'
 import sys
