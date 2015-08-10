@@ -61,9 +61,9 @@ yo angular:route mynewroute
 ###Create a soft link to auto-update your changes
 ```
 [Activate a virtualenv]
-cd *your_virtualenv*/lib/python3.4/site-packages/app_egg/
+cd ../*your_virtualenv*/lib/python3.4/site-packages/app-0.1-py3.4.egg/
 ```
-Rename the app to app_old
+Delete the app directory or rename it
 ```
 ln -s ../../../../../client/app app
 ```
