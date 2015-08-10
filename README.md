@@ -11,25 +11,25 @@ This project is awesome.
 
 ## How to install it
 
-Presteps
+###Presteps
  - Set up virtualenv and activate it
  - Install npm
 
-Build Client side
+###Build Client side
 ```
 [Install NPM]
 cd client
 npm install
 ```
 
-Install Client side as Package
+###Install Client side as Package
 ```
 [Activate a virtualenv]
 cd client
 python setup.py install
 ```
 
-## Serving Client Side w/ Pyramid Dev Server
+### Serving Client Side w/ Pyramid Dev Server
 
 Setup, see routes, and serve pyramid app
 ```
@@ -43,7 +43,9 @@ Try URLs on localhost
 - [The Client App](http://localhost:6543/)
 - [The Server Root](http://localhost:6543/home)
 
-## How to create a new page in the client Angular App
+##Some tricks 
+
+### How to create a new page in the client Angular App
 Presteps
  - install yeoman
  ```
@@ -56,7 +58,7 @@ Call Yo to create your new page
 yo angular:route mynewroute
 ```
 
-##Create a soft link to auto-update your changes
+###Create a soft link to auto-update your changes
 ```
 [Activate a virtualenv]
 cd *your_virtualenv*/lib/python3.4/site-packages/app_egg/
