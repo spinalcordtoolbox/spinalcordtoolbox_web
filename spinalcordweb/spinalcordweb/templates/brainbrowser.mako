@@ -11,6 +11,7 @@
 <!-- container -->
 <div class="container-no-float">
     <div class="row">
+
         <!--upper selection bar-->
         <div id="brainbrowser-wrapper">
             <div id="volume-viewer">
@@ -95,17 +96,17 @@
                                     </ul>
                                 </div>
                             </div>
-
                         </div>
                         <!--/This is the layer explorer panel-->
-                        <div id="intensity-value-div-{{VOLID}}">
+
+                        <div class="row col-lg-4 center-block"><div id="intensity-value-div-{{VOLID}}">
                 <span class="control-heading" data-volume-id="{{VOLID}}">
                   Value:
                 </span>
                             <span id="intensity-value-{{VOLID}}" class="intensity-value"></span>
-                        </div>
+                        </div></div>
 
-                        <div class="form-inline blend-div" data-volume-id="{{VOLID}}">
+                        <div class="row col-lg-4 center-block"><div class="form-inline blend-div" data-volume-id="{{VOLID}}">
                             <span class="control-heading" id="blend-heading{{VOLID}}">Blend (0.0 to 255.0):</span>
                             <input class="control-inputs" value="0" id="blend-val-min"/>
                             <input class="control-inputs" value="100" id="blend-val-max"/>
@@ -113,20 +114,20 @@
                             <div id="blend-slider" class="slider volume-viewer-blend"></div>
 
 
-                        </div>
+                        </div></div>
 
-                        <div class="contrast-div" data-volume-id="{{VOLID}}">
+                        <div class="row col-lg-4 center-block"><div class="contrast-div" data-volume-id="{{VOLID}}">
                             <span class="control-heading" id="contrast-heading{{VOLID}}">Contrast (0.0 to 2.0):</span>
                             <input class="control-inputs" value="1.0" id="contrast-val"/>
 
                             <div id="contrast-slider" class="slider volume-viewer-contrast"></div>
-                        </div>
-                        <div class="brightness-div" data-volume-id="{{VOLID}}">
+                        </div></div>
+                        <div class="row col-lg-4 center-block"><div class="brightness-div" data-volume-id="{{VOLID}}">
                             <span class="control-heading" id="brightness-heading{{VOLID}}">Brightness (-1 to 1):</span>
                             <input class="control-inputs" value="0" id="brightness-val"/>
 
                             <div id="brightness-slider" class="slider volume-viewer-brightness"></div>
-                        </div>
+                        </div></div>
                     </div>
                 </div>
             </div>

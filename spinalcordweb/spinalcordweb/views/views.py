@@ -7,6 +7,9 @@ from pyramid.httpexceptions import exception_response, HTTPFound
 from pyramid.view import notfound_view_config, forbidden_view_config
 from ..mailers import send_email
 
+from ..cfg import FILE_REP_TMP
+import os
+
 #Just some default route doing nothing
 @view_config(route_name='app', renderer='app.mako')
 @view_config(route_name='home', renderer='index.mako')

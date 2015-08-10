@@ -3,4 +3,4 @@
  */
   var app;
 
-  app = angular.module('app', ['ui.router', 'app.views']);
+  app = angular.module('app', ['ui.router', 'app.views', 'jsTree.directive']);

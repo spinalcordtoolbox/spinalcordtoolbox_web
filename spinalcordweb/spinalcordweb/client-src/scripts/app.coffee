@@ -34,6 +34,10 @@ app
         templateUrl: 'category/list.html'
         controller: 'categoryList'
       )
+      .state('tree',
+        url: '/jstree'
+        templateUrl: 'filetree/tree.html'
+      )
       .state('viewer',
         url: '/viewer'
         templateUrl: 'viewer/volume-viewer-PolyCustom.html'

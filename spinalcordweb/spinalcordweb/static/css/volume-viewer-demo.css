@@ -285,14 +285,14 @@ ul{
 
 .trash{
     font-size:2em; 
-    color: rgb(247, 0, 10);
+    color: rgb(4, 24, 247);
     height: 40px; 
-    text-align: right
+    text-align: right;
 }
 .trash-hover{
-    color: #ff8e00 !important;
+    color: #38ff00 !important;
     font-size: 3em !important;
-    border: #ff0006 dashed 3px;
+    border: #ff00aa dashed 3px;
 }
 .add-volume{
     font-size:2em;
