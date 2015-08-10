@@ -1,4 +1,4 @@
-# The iSpinalCordToolbox project[1] #
+# [The iSpinalCordToolbox project](https://github.com/neuropoly/spinalcordtoolbox_web) #
 
 This project is awesome.
 
@@ -6,35 +6,34 @@ This project is awesome.
 
 ## Contents
 
- - angular-seed - the frontend of the webapp
- - pyrserve - the backend of the webapp
+ - client - the AngularJS frontend of the webapp
+ - server - the Pyramid backend of the webapp
 
-## Building the Angular App as Python Setuptool Package
+## How to install it
 
 Presteps
  - Set up virtualenv and activate it
  - Install npm
- - Add setuptools files as per commit
 
-Build Angular App
+Build Client side
 ```
 [Install NPM]
-cd angular-seed
+cd client
 npm install
 ```
 
-Package and Install as Package
+Install Client side as Package
 ```
 [Activate a virtualenv]
-cd angular-seed
+cd client
 python setup.py install
 ```
 
-## Serving Angular App w/ Pyramid Dev Server
+## Serving Client Side w/ Pyramid Dev Server
 
 Setup, see routes, and serve pyramid app
 ```
-cd ../pyrserve/
+cd ../server/
 python setup.py develop
 proutes development.ini
 pserve development.ini --reload
@@ -57,7 +56,16 @@ Call Yo to create your new page
 yo angular:route mynewroute
 ```
 
-[1]: https://github.com/neuropoly/spinalcordtoolbox_web
+##Create a soft link to auto-update your changes
+```
+[Activate a virtualenv]
+cd *your_virtualenv*/lib/python3.4/site-packages/app_egg/
+```
+Rename the app to app_old
+```
+ln -s ../../../../../client/app app
+```
+
 
 
 
