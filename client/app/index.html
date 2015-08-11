@@ -18,6 +18,7 @@
     <link rel='stylesheet' href='bower_components/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
   </head>
   <body ng-app="angularSeedApp">
+  <div class="wrapper">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -40,8 +41,9 @@
     <div class="container">
     <div ng-view=""></div>
     </div>
+    </div>
 
-    <footer class="footer">
+    <footer class="footer" sticky-footer=".wrapper">
       <div class="container">
         <p><span class="glyphicon glyphicon-heart"></span> from the iSCToolbox team</p>
       </div>
@@ -74,7 +76,7 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
-    <script src=bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
 
     <script src="bower_components/ng-file-upload/ng-file-upload-shim.js"></script> <!-- for no html5 browsers support -->
 <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
@@ -92,7 +94,7 @@
         <script src="scripts/controllers/tools.js"></script>
         <script src="scripts/controllers/arguments.js"></script>
         <script src="scripts/controllers/callfilebrowser.js"></script>
-        <script src="scripts/controllers/headercontroller.js"></script>
+        <script src="scripts/directives/sticky-footer.js"></script>
         <!-- endbuild -->
 </body>
 </html>
