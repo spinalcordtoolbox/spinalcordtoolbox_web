@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name angularSeedApp.controller:ToolboxCtrl
+ * @name angularSeedApp.controller:BrowserCtrl
  * @description
- * # ToolboxCtrl
+ * # BrowserCtrl
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-    .controller('ToolboxCtrl', ['$scope', '$route', 'SharedDataService',
+    .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService',
     function($scope, $route, SharedDataService) {
       $scope.NewFile = SharedDataService;
 

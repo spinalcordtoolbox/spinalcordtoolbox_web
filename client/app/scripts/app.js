@@ -27,18 +27,18 @@ angular
         controller: 'ViewerCtrl',
         controllerAs: 'viewer'
       })
-      .when('/toolbox', {
-        templateUrl: 'views/toolbox.html',
-        controller: 'ToolboxCtrl',
-        controllerAs: 'toolbox'
+      .when('/browser', {
+        templateUrl: 'views/browser.html',
+        controller: 'BrowserCtrl',
+        controllerAs: 'browser'
       })
       .when('/file-upload', {
         templateUrl: 'views/file-upload.html',
         controller: 'FileUploadCtrl',
         controllerAs: 'fileUpload'
       })
-      .when('/generale', {
-        templateUrl: 'views/generale.html'
+      .when('/toolbox', {
+        templateUrl: '../views/toolbox.html'
       })
       .otherwise({
         redirectTo: '/'

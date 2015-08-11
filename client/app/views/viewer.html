@@ -1,7 +1,5 @@
 <link type="text/css" href="styles/volume-viewer-demo.css" rel="Stylesheet"/>
-<link type="text/css" href="styles/common.css" rel="Stylesheet"/>
-<link type="text/css" href="styles/jquery-ui-1.8.10.custom.css"
-    rel="Stylesheet"/>
+<link type="text/css" href="bower_components/jquery-ui/themes/ui-lightness/jquery-ui.css" rel="Stylesheet"/>
 <header id="head" class="secondary"></header>
 <!-- container -->
 <div class="container-no-float">
@@ -197,12 +195,12 @@
     <!--The Loader    -->
     <div class="col-lg-offset-5 col-md-offset-5 col-xs-offset-5" id="loading"
         style="display: none; margin-top: 10%;"><img
-    src="${request.static_url('server:static/img/ajax-loader.gif')}"/></div>
+    src="images/ajax-loader.gif"/></div>
     <div id="brainbrowser"></div>
     <input type="hidden" id='nii_path' value="${file_path}"/>
 </div>
 </div>
-<script src="scripts/brainbrowser/viewer/ui.js')}"></script>
+<script src="bower_components/jquery-ui/jquery-ui.js"></script>
 <script src="scripts/brainbrowser/viewer/brainbrowser/brainbrowser.js"></script>
 <script src="scripts/brainbrowser/viewer/brainbrowser/core/tree-store.js"></script>
 <script src="scripts/brainbrowser/viewer/brainbrowser/lib/config.js"></script>
@@ -219,6 +217,6 @@
 <script src="scripts/brainbrowser/viewer/brainbrowser/volume-viewer/volume-loaders/overlay.js"></script>
 <script src="scripts/brainbrowser/viewer/brainbrowser/volume-viewer/volume-loaders/minc.js"></script>
 <script src="scripts/brainbrowser/viewer/brainbrowser/volume-viewer/volume-loaders/nifti1.js"></script>
-<script src="scripts/brainbrowser/viewer/gunzip.min.js"></script>
+<script src="bower_components/gzip-js/lib/gzip.js"></script>
 <script src="scripts/brainbrowser/volume-viewer.config.js"></script>
 <script src="scripts/brainbrowser/volume-viewer-PolyCustom.js"></script>

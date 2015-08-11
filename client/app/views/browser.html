@@ -1,0 +1,16 @@
+<div class="row">
+
+  <h2>In Controller </h2>
+  <input type="text" ng-model="Product.name"/> <br/>
+  <input type="text" ng-model="Product.price"/>
+
+  <h3>Product {{Product.name}} costs {{Product.price}} </h3>
+
+  <div class="col-md-4 tree-browser">
+    <a href="/tree">File Browser</a>
+    <js-tree id="jstree" tree-plugins="checkbox" tree-events="changed:changedCB" tree-ajax="/tree"></js-tree>
+  </div>
+  <div class="col-md-8 file-viewer">
+    <pre>{{fileViewer}}</pre>
+  </div>
+</div>

@@ -31,7 +31,7 @@
 // BrainBrowser Volume Viewer.
 $(function() {
   "use strict";
-  
+
   $(".button").button();
 
   /////////////////////////////////////
@@ -538,20 +538,20 @@ $(function() {
 
 
           //The file explorer - part2
-          $("#list_sortable").sortable({
-              start: function(event, ui){
-                  ui.item.startPos = ui.item.index();
-              },
-              //move a slide when it's drag and drop into the list
-              update: function(event, ui) {
-                  //alert("New position: " + ui.item.index() + " last position: " + ui.item.startPos);
-                  images_order.splice(ui.item.index(), 0, images_order.splice(ui.item.startPos, 1)[0]);
-                  volume.images_order = images_order;
-                  volume.display.refreshPanels();
-                  viewer.redrawVolumes();
-              }
-          });
-          $("#list_sortable").disableSelection();
+          $("#list_sortable")
+            .sortable({
+                start: function(event, ui){
+                    ui.item.startPos = ui.item.index();
+                },
+                //move a slide when it's drag and drop into the list
+                update: function(event, ui) {
+                    //alert("New position: " + ui.item.index() + " last position: " + ui.item.startPos);
+                    images_order.splice(ui.item.index(), 0, images_order.splice(ui.item.startPos, 1)[0]);
+                    volume.images_order = images_order;
+                    volume.display.refreshPanels();
+                    viewer.redrawVolumes();
+                }
+            });
           //Hide elements of the list on double click
           $("#list_sortable a").dblclick(function(event, ui) {
               var volid = parseInt($(this).attr('id').split('-')[1]);
