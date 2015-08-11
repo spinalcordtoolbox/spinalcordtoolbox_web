@@ -23,6 +23,17 @@ def upload(request):
     finally:
         return {}
 
+#FetchFile
+resource = Service('resource',
+                 '/resource',
+                 'Fetch the content of a txt file')
+
+@resource.get()
+def resource_get(request):
+    return {'resource':request.GET['resource']}
+
+
+#UploadFile
 upload = Service('upload',
                  '/upload',
                  'manage file upload')
@@ -31,21 +42,22 @@ upload = Service('upload',
 def upload_get(request):
     return {}
 
-@upload.post(renderer='myfiles.mako')
+@upload.post()  #renderer='myfiles.mako')
 def upload_post(request):
     userid = request.unauthenticated_userid #return the user.id without doing again the identification process
+    userid = request.POST['username']
     # Make a directory for the current user
     try:
         os.mkdir(os.path.join(FILE_REP_TMP,str(userid)))
     except FileExistsError:
         print ('The folder already exist.')
 
-    filename = request.POST['files-nii'].filename
+    filename = request.POST['file'].filename
     file_ext = os.path.splitext(filename)[1]
 
     # ``input_file`` contains the actual file data which needs to be
     # stored somewhere.
-    input_file = request.POST['files-nii'].file
+    input_file = request.POST['file'].file
 
 
     if file_ext == '.nii':
@@ -104,7 +116,8 @@ def upload_post(request):
                     )
     session.add(u)
     session.commit()
-    return {'form':form_render,'file_path':file_path_local,'user':session.query(models.File).filter(models.File.user_id==userid).all()}
+    #return {'form':form_render,'file_path':file_path_local,'user':session.query(models.File).filter(models.File.user_id==userid).all()}
+    return {}
 
 @view_config(route_name='upload_nii',
              request_method='POST',

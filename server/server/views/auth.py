@@ -25,7 +25,7 @@ class User(object):
     def collection_get(self):
         session = self.request.db
         all_user = session.query(models.User).all()
-        return [json.dumps(e.serialize()) for e in all_user]
+        return [e.serialize() for e in all_user]
 
     @view()
     def get(self):
@@ -34,7 +34,7 @@ class User(object):
         user_selected = session.query(models.User).filter_by(id=userid).first()
         return {'user':user_selected.serialize()}
 
-    @view(renderer='json')
+    @view()
     def delete(self):
         userid = self.request.matchdict['user_id']
         session = self.request.db
@@ -42,7 +42,7 @@ class User(object):
         session.delete(selected_user)
         session.commit()
         all_user = session.query(models.User).all()
-        return [json.dumps(e.serialize()) for e in all_user]
+        return [e.serialize() for e in all_user]
 
 
 foobar = Service(name="foobar", path="/foobar")

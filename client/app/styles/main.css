@@ -81,3 +81,28 @@ body {
     border-bottom: 0;
   }
 }
+
+/*Tree Browser style*/
+
+.tree-browser {
+overflow: auto;
+}
+.file-viewer {
+padding-left: 50px;
+overflow: auto;
+}
+
+/*File upload style*/
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 200px;
+    height: 65px;
+    text-align: center;
+    color: skyblue;
+    /*padding-top: 25px;*/
+    margin: 10px;
+}
+.dragover {
+    border: 5px dashed blue;
+}

@@ -29,7 +29,7 @@ class File(object):
     def __init__(self, request):
         self.request = request
 
-    @view(renderer='myfiles.mako')
+    @view()
     def collection_get(self):
         userid = self.request.matchdict['user_id']
         if (userid != self.request.unauthenticated_userid): #test if the logged user is trying to access his own files

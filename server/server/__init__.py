@@ -55,7 +55,7 @@ def config_routes(config):
     config.add_route('toolbox','/toolbox')
     config.add_route('signup','/signup')
     config.add_route('auth', '/sign/{action}')
-    #config.scan()
+    config.scan()
     config.add_route("api", '/api/*traverse')
 
 def config_db(config, settings):

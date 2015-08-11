@@ -15,7 +15,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'jsTree.directive',
+    'ngFileUpload',
+    'angular-loading-bar'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -33,6 +36,11 @@ angular
         templateUrl: 'views/toolbox.html',
         controller: 'ToolboxCtrl',
         controllerAs: 'toolbox'
+      })
+      .when('/file-upload', {
+        templateUrl: 'views/file-upload.html',
+        controller: 'FileUploadCtrl',
+        controllerAs: 'fileUpload'
       })
       .otherwise({
         redirectTo: '/'

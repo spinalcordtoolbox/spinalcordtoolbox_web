@@ -1,1 +1,8 @@
-<p>This is the toolbox view.</p>
+<div class="row">
+<div class="col-md-4 tree-browser">
+<a href="/tree">Mon super file browser en AngularJS</a>
+    <js-tree tree-plugins="checkbox,dnd" tree-events="select_node:nodeSelected;deselect_node:nodeDeselected" tree-ajax="/tree"></js-tree>
+</div>
+<div class="col-md-8 file-viewer">
+<pre><code>{{fileViewer}}</pre></code>
+</div>
