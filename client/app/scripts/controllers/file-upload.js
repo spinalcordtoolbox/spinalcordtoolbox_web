@@ -8,7 +8,10 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-    .controller('FileUploadCtrl', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
+    .controller('FileUploadCtrl', ['$scope', 'Upload', '$timeout', 'SharedDataService', function ($scope, Upload, $timeout, SharedDataService) {
+        $scope.NewFile = SharedDataService;
+    
+
     $scope.$watch('files', function () {
         $scope.upload($scope.files);
     });
@@ -37,8 +40,12 @@ angular.module('angularSeedApp')
                     $timeout(function() {
                         $scope.log = 'file: ' + config.file.name + ', Response: ' + JSON.stringify(data) + '\n' + $scope.log;
                     });
+                    console.log(config.file.name);
+                    $scope.NewFile.text = config.file.name;
+                    $scope.NewFile.state = true;
                 });
             }
         }
+        $scope.NewFile.state = false;
     };
 }]);

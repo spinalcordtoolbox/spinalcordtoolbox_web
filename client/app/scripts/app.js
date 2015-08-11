@@ -23,14 +23,9 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+        templateUrl: 'views/viewer.html',
+        controller: 'ViewerCtrl',
+        controllerAs: 'viewer'
       })
       .when('/toolbox', {
         templateUrl: 'views/toolbox.html',
@@ -41,6 +36,9 @@ angular
         templateUrl: 'views/file-upload.html',
         controller: 'FileUploadCtrl',
         controllerAs: 'fileUpload'
+      })
+      .when('/generale', {
+        templateUrl: 'views/generale.html'
       })
       .otherwise({
         redirectTo: '/'

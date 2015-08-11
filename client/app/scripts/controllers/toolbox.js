@@ -8,10 +8,17 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-    .controller('ToolboxCtrl', ['$scope', 'FetchFileFactory',
-    function($scope, FetchFileFactory) {
+    .controller('ToolboxCtrl', ['$scope', '$route', 'SharedDataService',
+    function($scope, $route, SharedDataService) {
+      $scope.NewFile = SharedDataService;
 
       $scope.fileViewer = 'Please select a file to view its contents';
+
+        $scope.$watch('NewFile.state', function () {
+        if ($scope.NewFile.state){
+          $route.reload();
+        }
+    });
 
       $scope.changedCB = function(e, data) {
       	var nodeChecked = new Array();
