@@ -1,3 +1,40 @@
-<div ng-controller="ToolsCtrl" >
-<button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
+<div ng-controller="ToolsCtrl">
+  <div class="row">
+    <!--<div class="col-lg-6">
+      <div class="input-group">
+        <label class="control-label" for="sctTools">Select a Tool</label>
+        <select id="sctTools" name="sctTools" class="form-control">
+          <option value="1">sct-align</option>
+          <option value="2">sct-transform</option>
+        </select>
+      </div>
+      &lt;!&ndash; /input-group &ndash;&gt;
+    </div>-->
+    <div class="row col-lg-7 col-md-7">
+      <div class="input-inline">
+        <label>Select a Tool:
+          <select class="form-control" ng-model="toolSelected" ng-options="tool.displayName for tool in tools">
+            <option value="">-- choose a SCTool --</option>
+          </select>
+        </label>
+        <br/>
+      </div>
+      <!-- /input-group -->
+    </div>
+    <!-- /.col-lg-6 -->
+    <div class="row col-lg-7 col-md-7">
+      <div class="input-group">
+        <input id="inputs" name="inputs" type="text" placeholder="Inputs" class="form-control disabled" required="" ng-model="inputs">
+        <span class="input-group-btn">
+        <button class="btn btn-success" type="button" ng-click="compute()">Go!</button>
+      </span>
+      </div>
+      <!-- /input-group -->
+    </div>
+    <!-- /.col-lg-6 -->
+  </div>
+  <!-- /.row -->
+  <div class="row">
+    <h5>A short description for the tool selected: {{toolSelected.description}}</h5>
+  </div>
 </div>

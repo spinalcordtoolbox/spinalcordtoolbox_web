@@ -18,7 +18,7 @@
     <link rel='stylesheet' href='bower_components/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
   </head>
   <body ng-app="angularSeedApp">
-  <div class="wrapper">
+
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -41,9 +41,8 @@
     <div class="container">
     <div ng-view=""></div>
     </div>
-    </div>
 
-    <footer class="footer" sticky-footer=".wrapper">
+    <footer class="footer">
       <div class="container">
         <p><span class="glyphicon glyphicon-heart"></span> from the iSCToolbox team</p>
       </div>
@@ -95,6 +94,8 @@
         <script src="scripts/controllers/arguments.js"></script>
         <script src="scripts/controllers/callfilebrowser.js"></script>
         <script src="scripts/directives/sticky-footer.js"></script>
+        <script src="scripts/services/get-tools.js"></script>
+        <script src="scripts/services/gettools.js"></script>
         <!-- endbuild -->
 </body>
 </html>

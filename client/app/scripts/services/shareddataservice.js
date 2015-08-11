@@ -12,7 +12,8 @@ angular.module('angularSeedApp')
      var NewFile = {
         path: '',
         text: '',
-        state: false
+        state: false,
+        pathArray: []
     };
     return NewFile;
 });

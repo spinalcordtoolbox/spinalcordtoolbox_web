@@ -29,7 +29,9 @@ angular.module('angularSeedApp')
         }
         $scope.$apply(function () {
           $scope.fileViewer = nodePath;
+          $scope.NewFile.pathArray = nodePath;
         });
+
       };
 
       $scope.brainbrowser = function (pathArray) {
