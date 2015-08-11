@@ -2,7 +2,7 @@
 * BrainBrowser: Web-based Neurological Visualization Tools
 * (https://brainbrowser.cbrain.mcgill.ca)
 *
-* Copyright (C) 2011 
+* Copyright (C) 2011
 * The Royal Institution for the Advancement of Learning
 * McGill University
 *
@@ -217,9 +217,10 @@ canvas.slice-display {
     width:50px;
 }
 #overlay{
-    width: 75%;
-}
+  position: absolute;
+  left: 10px;
 
+}
 .overlay-viewer-display {
     /*text-align: -webkit-center;*/
     display: -webkit-inline-box;
@@ -269,8 +270,9 @@ ul{
 }
 #sortable ul li a:hover {
     color: #FFFFFF;
-    background-image: url("http://demo.marcofolio.net/css_lists/images/hover.png");
+    background-image: url("../images/hover.png");
     background-repeat: repeat-x;
+  cursor: pointer;
 }
 
 #sortable ul li a strong {
@@ -279,14 +281,14 @@ ul{
 
 .onclick {
     color: #AAAAAA;
-    background-image: url("http://demo.marcofolio.net/css_lists/images/hover.png");
+    background-image: url("../images/hover.png");
     background-repeat: repeat-x;
 }
 
 .trash{
-    font-size:2em; 
+    font-size:2em;
     color: rgb(4, 24, 247);
-    height: 40px; 
+    height: 40px;
     text-align: right;
 }
 .trash-hover{

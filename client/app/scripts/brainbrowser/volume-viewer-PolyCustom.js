@@ -583,6 +583,7 @@ $(function() {
           //This is a real deletion inside the volume list, if you need to hide the volume, just double click on it!
           $(".trash").droppable({
                 hoverClass:"trash-hover",
+                tolerance: "touch",
                 drop: function ( event, ui ) {
                     //get the volume id of the dragged element (this information is inside the id attribute)
                     var vol_selected = $(ui.draggable).children().attr('id').split('-')[1];
@@ -590,8 +591,8 @@ $(function() {
                     volumes_files.splice(vol_selected, 1);
                     //Clear every volume in order to redraw everything
                     viewer.clearVolumes();
-                    //remove the item in the list (this is just a security, because the loadVolume() will do it)
-                    ui.draggable.remove();
+                    /*//remove the item in the list (this is just a security, because the loadVolume() will do it)
+                    ui.draggable.remove();*/
                     viewer.loadVolumes({
                         volumes:
                             volumes_files

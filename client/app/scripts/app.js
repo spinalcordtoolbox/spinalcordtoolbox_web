@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'jsTree.directive',
     'ngFileUpload',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -38,7 +39,12 @@ angular
         controllerAs: 'fileUpload'
       })
       .when('/toolbox', {
-        templateUrl: '../views/toolbox.html'
+        templateUrl: 'views/toolbox.html',
+      })
+      .when('/tools', {
+        templateUrl: 'views/tools.html',
+        controller: 'ToolsCtrl',
+        controllerAs: 'tools'
       })
       .otherwise({
         redirectTo: '/'
