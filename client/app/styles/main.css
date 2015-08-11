@@ -22,6 +22,7 @@ body {
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
 }
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
@@ -35,6 +36,10 @@ body {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+  position: absolute;
+  bottom: 0px;
+  z-index: 9999;
+  background-color: #ffffff;
 }
 
 .container-narrow > hr {
@@ -42,33 +47,48 @@ body {
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+/*@todo: configure the css for responsive display*/
+/*@media screen and (min-width: 768px) {
   .container {
     max-width: 730px;
   }
-}
+}*/
 
 /*Tree Browser style*/
 
 .tree-browser {
-overflow: auto;
+  overflow: auto;
+  max-height: 50vh;
 }
+
 .file-viewer {
-padding-left: 50px;
-overflow: auto;
+  margin: auto;
+  overflow: auto;
+  max-height: 25vh;
 }
 
 /*File upload style*/
 .drop-box {
-    background: #F8F8F8;
-    border: 5px dashed #DDD;
-    width: 200px;
-    height: 65px;
-    text-align: center;
-    color: skyblue;
-    /*padding-top: 25px;*/
-    margin: 10px;
+  background: #F8F8F8;
+  border: 5px dashed #DDD;
+  width: auto;
+  height: 100px;
+  text-align: center;
+  color: slategrey;
+  padding-top: 33px;
 }
+
 .dragover {
-    border: 5px dashed blue;
+  border: 5px dashed blue;
+}
+
+/*Scroll bar hack*/
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }

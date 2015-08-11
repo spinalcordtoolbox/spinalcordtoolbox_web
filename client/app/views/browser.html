@@ -1,9 +1,4 @@
-<div ng-controller="BrowserCtrl">
-  <h2>File Browser</h2>
-  <!-- <input type="text" ng-model="NewFile.path" /> <br/>
-        <input type="text" ng-model="NewFile.text" /> -->
-  <h3>Path {{NewFile.path}} Name: {{NewFile.text}} </h3>
-
+<div ng-controller="BrowserCtrl" >
   <div class="tree-browser">
     <a href="/tree">File Browser</a>
     <js-tree id="jstree" tree-plugins="checkbox" tree-events="changed:changedCB" tree-ajax="/tree"></js-tree>
@@ -12,4 +7,4 @@
   <div class="file-viewer">
     <pre><code>{{fileViewer}}</code></pre>
   </div>
-</div>
+  </div>

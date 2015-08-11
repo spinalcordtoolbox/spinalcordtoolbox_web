@@ -217,8 +217,7 @@ canvas.slice-display {
     width:50px;
 }
 #overlay{
-  position: absolute;
-  left: 10px;
+  width: 75%;
 
 }
 .overlay-viewer-display {

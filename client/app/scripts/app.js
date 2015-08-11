@@ -19,7 +19,8 @@ angular
     'jsTree.directive',
     'ngFileUpload',
     'angular-loading-bar',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'mgcrea.ngStrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -45,6 +46,16 @@ angular
         templateUrl: 'views/tools.html',
         controller: 'ToolsCtrl',
         controllerAs: 'tools'
+      })
+      .when('/arguments', {
+        templateUrl: 'views/arguments.html',
+        controller: 'ArgumentsCtrl',
+        controllerAs: 'arguments'
+      })
+      .when('/CallFileBrowser', {
+        templateUrl: 'views/callfilebrowser.html',
+        controller: 'CallfilebrowserCtrl',
+        controllerAs: 'CallFileBrowser'
       })
       .otherwise({
         redirectTo: '/'

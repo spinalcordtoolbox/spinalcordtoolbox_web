@@ -10,7 +10,7 @@
 angular.module('angularSeedApp')
     .controller('FileUploadCtrl', ['$scope', 'Upload', '$timeout', 'SharedDataService', function ($scope, Upload, $timeout, SharedDataService) {
         $scope.NewFile = SharedDataService;
-    
+
 
     $scope.$watch('files', function () {
         $scope.upload($scope.files);

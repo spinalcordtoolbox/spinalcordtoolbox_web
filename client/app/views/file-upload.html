@@ -1,31 +1,27 @@
 <div ng-controller="FileUploadCtrl">
-<h2>Uploader</h2>
+  <br/>
+  <input type="text" class="form-control" placeholder="Username" ng-model="username"></br>
 
-<h3>Path: {{NewFile.path}} Name: {{NewFile.text}} </h3>
+  <div class="btn btn-default" ngf-select ng-model="file" ngf-multiple="false" style="display: none"><span
+    class="glyphicon glyphicon-fire text-warning" aria-hidden="true"></span> Select File
+  </div>
 
-Username
-<input type="text" ng-model="username"></br></br>
-watching model:
-<div class="btn btn-default" ngf-select ng-model="file" ngf-multiple="false"><span
-  class="glyphicon glyphicon-fire text-warning" aria-hidden="true"></span> Select File
-</div>
-<br/><br/>
-on file change multiple:
-<div class="btn btn-default" ngf-select ngf-change="upload($files)" ngf-multiple="true"><span
-  class="glyphicon glyphicon-upload text-success" aria-hidden="true"></span> Select File
-</div>
-<br/><br/>
-Drop File:
-<div ngf-drop ngf-select ng-model="files" class="drop-box"
-     ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
-     accept="image/*,application/pdf">Drop pdfs or images here or click to upload
-</div>
-<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-<br/>
-Files:
-<ul>
-  <li ng-repeat="f in files" style="font:smaller">{{f.name}}</li>
-</ul>
-Upload Log:
-<pre>{{log}}</pre>
+  <div class="btn btn-default btn-group-justified" ngf-select ngf-change="upload($files)" ngf-multiple="true"><span
+    class="glyphicon glyphicon-upload text-success" aria-hidden="true"></span> Select File
+  </div>
+  <br/><br/>
+  Or:
+  <div ngf-drop ngf-select ng-model="files" class="drop-box"
+       ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+       accept="image/*,application/pdf,*.nii">Drop .nii, other files here or click to upload
+  </div>
+  <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+  <br/>
+
+  Files:
+  <ul>
+    <li ng-repeat="f in files" style="font:smaller">{{f.name}}</li>
+  </ul>
+  Upload Log:
+  <pre>{{log}}</pre>
 </div>
