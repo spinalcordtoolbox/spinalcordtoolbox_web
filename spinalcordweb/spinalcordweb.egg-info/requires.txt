@@ -24,3 +24,4 @@ scipy
 nibabel
 matplotlib
 sympy
+dipy

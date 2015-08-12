@@ -1,0 +1,109 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 10px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+  z-index: 9999;
+  background-color: #ffffff;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Responsive: Portrait tablets and up */
+/*@todo: configure the css for responsive display*/
+/*@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}*/
+
+/*Tree Browser style*/
+
+.tree-browser {
+  overflow: auto;
+  max-height: 50vh;
+}
+
+.file-viewer {
+  margin: auto;
+  overflow: auto;
+  max-height: 25vh;
+}
+
+/*File upload style*/
+.drop-box {
+  background: #F8F8F8;
+  border: 5px dashed #DDD;
+  width: auto;
+  height: 100px;
+  text-align: center;
+  color: slategrey;
+  padding-top: 33px;
+}
+
+.dragover {
+  border: 5px dashed blue;
+}
+
+/*Scroll bar hack*/
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 40px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #f5f5f5;
+}
