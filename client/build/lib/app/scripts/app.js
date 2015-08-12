@@ -15,24 +15,48 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'jsTree.directive',
+    'ngFileUpload',
+    'angular-loading-bar',
+    'ui.bootstrap',
+    'mgcrea.ngStrap',
+    'schemaForm'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/viewer.html',
+        controller: 'ViewerCtrl',
+        controllerAs: 'viewer'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/browser', {
+        templateUrl: 'views/browser.html',
+        controller: 'BrowserCtrl',
+        controllerAs: 'browser'
+      })
+      .when('/file-upload', {
+        templateUrl: 'views/file-upload.html',
+        controller: 'FileUploadCtrl',
+        controllerAs: 'fileUpload'
       })
       .when('/toolbox', {
         templateUrl: 'views/toolbox.html',
-        controller: 'ToolboxCtrl',
-        controllerAs: 'toolbox'
+      })
+      .when('/tools', {
+        templateUrl: 'views/tools.html',
+        controller: 'ToolsCtrl',
+        controllerAs: 'tools'
+      })
+      .when('/arguments', {
+        templateUrl: 'views/arguments.html',
+        controller: 'ArgumentsCtrl',
+        controllerAs: 'arguments'
+      })
+      .when('/CallFileBrowser', {
+        templateUrl: 'views/callfilebrowser.html',
+        controller: 'CallfilebrowserCtrl',
+        controllerAs: 'CallFileBrowser'
       })
       .otherwise({
         redirectTo: '/'

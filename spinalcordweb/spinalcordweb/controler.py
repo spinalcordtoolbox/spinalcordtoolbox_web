@@ -310,6 +310,22 @@ class ToolboxRunner(object):
             parent.kill()
 
 
+class LogSct:
+
+    all_my_log = {}
+
+    @classmethod
+    def add_new(cls,queue):
+        pass
+        cls.all_my_log[id(queue)] = queue
+
+        return
+
+    def getlog(self, queue_id):
+
+        return self.all_my_log[queue_id].get()
+
+
 
 class SctTool(object):
 
@@ -381,7 +397,7 @@ if __name__ == "__main__":
     session = Session()
 
     # pu = PluginUpdater(session=session, script_path="../../../spinalcordtoolbox/scripts", reload=False)
-    pu = PluginUpdater(session=session, script_path="/home/poquirion/neuropoly/spinalcordtoolbox/scripts", reload=False)
+    pu = PluginUpdater(session=session, script_path="/home/poquirion/neuropoly/spinalcordtoolbox/scripts", reload=True)
 
     # pu._load_plugins(None, "/home/poquirion/neuropoly/spinalcordtoolbox/scripts")
 

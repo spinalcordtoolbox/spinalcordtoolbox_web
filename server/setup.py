@@ -3,14 +3,15 @@ import os
 from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(here, 'README.txt')) as f:
+with open(os.path.join(here, 'README.md')) as f:
     README = f.read()
-with open(os.path.join(here, 'CHANGES.txt')) as f:
+with open(os.path.join(here, 'CHANGES.md')) as f:
     CHANGES = f.read()
 
 requires = [
     'pyramid',
     'waitress',
+    'sqlalchemy',
     'alembic',
     'pyramid_jinja2',
     'pyramid_mako',
@@ -19,7 +20,6 @@ requires = [
     'pyramid_marrowmailer',
     'html2text',
     'pyramid_tm',
-    'sqlalchemy_utils',
     'cryptacular',
     'wtforms',
     'deform',
@@ -30,7 +30,14 @@ requires = [
     'pyramid_debugtoolbar',
     'deform_bootstrap',
     'pyramid_chameleon',
-    'cornice'
+
+    'numpy',
+    'scipy',
+    'nibabel',
+    'matplotlib',
+    'sympy',
+    'dipy'
+
     ]
 
 setup(name='server',

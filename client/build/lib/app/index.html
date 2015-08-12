@@ -14,49 +14,39 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link rel="stylesheet" href="bower_components/jstree/dist/themes/default/style.css" />
+    <link rel='stylesheet' href='bower_components/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
   </head>
   <body ng-app="angularSeedApp">
+
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">angularSeed</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
+      <nav class="navbar navbar-default" role="navigation" bs-navbar>
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#/"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> iSCToolbox</a>
         </div>
-      </div>
+        <ul class="nav navbar-nav">
+          <li data-match-route="/$"><a href="#/">Viewer</a></li>
+          <li data-match-route="/toolbox"><a href="#/toolbox">Toolbox</a></li>
+          <li data-match-route="/browser"><a href="#/browser">Browser</a></li>
+          <li data-match-route="/file-upload"><a href="#/file-upload">File Upload</a></li>
+        </ul>
+      </nav>
     </div>
 
     <div class="container">
     <div ng-view=""></div>
     </div>
 
-    <div class="footer">
+    <footer class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p><span class="glyphicon glyphicon-heart"></span> from the iSCToolbox team</p>
       </div>
-    </div>
+    </footer>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -74,6 +64,8 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jstree/dist/jstree.js"></script>
+    <script src="bower_components/jstree-directive/jsTree.directive.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -81,14 +73,32 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+
+    <script type="text/javascript" src="bower_components/tv4/tv4.js"></script>
+    <script type="text/javascript" src="bower_components/objectpath/lib/ObjectPath.js"></script>
+    <script type="text/javascript" src="bower_components/angular-schema-form/dist/schema-form.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
+
+    <script src="bower_components/ng-file-upload/ng-file-upload-shim.js"></script> <!-- for no html5 browsers support -->
+<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+<script type='text/javascript' src='bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/toolbox.js"></script>
+        <script src="scripts/controllers/browser.js"></script>
+        <script src="scripts/controllers/file-upload.js"></script>
+        <script src="scripts/services/fetchfilefactory.js"></script>
+        <script src="scripts/controllers/viewer.js"></script>
+        <script src="scripts/services/shareddataservice.js"></script>
+        <script src="scripts/controllers/tools.js"></script>
+        <script src="scripts/controllers/arguments.js"></script>
+        <script src="scripts/controllers/callfilebrowser.js"></script>
+        <script src="scripts/services/gettools.js"></script>
         <!-- endbuild -->
 </body>
 </html>

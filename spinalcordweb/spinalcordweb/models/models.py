@@ -204,7 +204,7 @@ class RegisteredTool(Base):
         "{EXEC_DIR_TAG}/exec.ext -i {INPUT_FILE_TAG} -o {OUTPUT_DIR_TAG} [--option other_options ...] "
 
         """
-        opt = self._parse_options(self.options)
+        opt = self._parse_options(self.options, self.name)
 
         opt = ' '. join(['{} {}'.format(k, v)
                         for k, v in opt.items()])

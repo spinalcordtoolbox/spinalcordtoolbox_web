@@ -4,9 +4,13 @@ from sqlalchemy.orm import sessionmaker
 from pyramid import authentication, authorization
 from .models.models import User
 from configparser import ConfigParser
+import logging
+
 from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from .security import SecurityFactory
+
+log = logging.getLogger(__name__)
 
 def db(request):
     """every request will have a session associated with it. and will
