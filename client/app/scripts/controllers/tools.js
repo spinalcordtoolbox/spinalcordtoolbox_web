@@ -28,10 +28,7 @@ angular.module('angularSeedApp')
     $scope.change = function(){
       $scope.schema = $scope.toolSelected.schema;
     };
-
-
-
-
+    
     $scope.form = [
       "*"
     ];
