@@ -21,3 +21,6 @@ deform_bootstrap
 pyramid_chameleon
 numpy
 scipy
+nibabel
+matplotlib
+sympy

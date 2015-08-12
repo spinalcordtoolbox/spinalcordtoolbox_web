@@ -1,11 +1,12 @@
 
 
 # PROJECT_ROOT = '/Users/willispinaud/Dropbox/Amerique/Montreal/angular-python-spinalcord/spinalcordweb/'
-PROJECT_ROOT = '/home/poquirion/neuropoly/spinalcordtoolbox_web/spinalcordweb/'
+# PROJECT_ROOT = '/home/poquirion/neuropoly/spinalcordtoolbox_web/spinalcordweb/'
+PROJECT_ROOT = '/home/pquirion/travail/neuropoly/python_spinal_web/spinalcordweb/'
 # Executable/plugins
 EXEC_PATH = PROJECT_ROOT+'../../spinalcordtoolbox/scripts'
 EXEC_TMP = PROJECT_ROOT+'../scripts'
-#OLD_TYPE_JSON = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/src/main/resources/viewRessouces/js/commandsInputGenerator/data/'
+
 
 # Where input files are stored
 FILE_REP_TMP = PROJECT_ROOT+'spinalcordweb/static/tmp/'
@@ -27,3 +28,4 @@ OUTPUT_DIR_TAG = 'OUTPUT_FILE'
 EXEC_DIR_TAG = 'EXEC_DIR'
 
 
+GET_PARSER = 'get_parser'

@@ -30,9 +30,13 @@ requires = [
     'pyramid_debugtoolbar',
     'deform_bootstrap',
     'pyramid_chameleon',
+
     'numpy',
     'scipy',
-    'nibabel'
+    'nibabel',
+    'matplotlib',
+    'sympy'
+
     ]
 
 setup(name='spinalcordweb',

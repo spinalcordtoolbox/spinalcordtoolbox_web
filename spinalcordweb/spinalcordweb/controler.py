@@ -1,20 +1,20 @@
 """
 This module is ...
 """
-
+import importlib
 import logging
 import os
 import pkgutil
 import psutil
 import queue
 import shutil
-import simplejson as json
 import subprocess
 import signal
 import sys
 import time
 import threading
 
+import simplejson as json
 from sqlalchemy.exc import SQLAlchemyError
 
 try:
@@ -31,7 +31,7 @@ __author__ = 'Pierre-Olivier Quirion <pioliqui@gmail.com>'
 
 
 class PluginUpdater(object):
-    def __init__(self, script_path, config=None, session=None):
+    def __init__(self, script_path, config=None, session=None, reload=False):
 
         if config:
             self.session = config.registry.dbmaker()
@@ -39,7 +39,7 @@ class PluginUpdater(object):
             self.session = session
         # self.script_path = script_path
         # plugin_list = self._load_old_plugins(config)
-        plugin_list = self._load_plugins(config, script_path)
+        plugin_list = self._load_plugins(config, script_path,reload=reload)
         self.rebuild_table(plugin_list)
 
     def rebuild_table(self, plugin_list):
@@ -57,23 +57,26 @@ class PluginUpdater(object):
             self.session.rollback()
 
 
-    def _load_plugins(self, config, script_path, reload = False):
+    def _load_plugins(self, config, script_path, reload=False):
 
 
         # all_script = os.listdir(script_path)
         if reload or not os.path.isdir(cfg.EXEC_TMP):
-            shutil.rmtree(cfg.EXEC_TMP)
+            shutil.rmtree(cfg.EXEC_TMP, ignore_errors=True)
             shutil.copytree(script_path, cfg.EXEC_TMP)
-            subprocess.call(["/usr/bin/env", "2to3",  "-w", cfg.EXEC_TMP])
+            subprocess.call(["/usr/bin/env", "2to3-3.4",  "-w", cfg.EXEC_TMP])
 
         modules = pkgutil.iter_modules([cfg.EXEC_TMP])
         # all_script = [ i for i in os.listdir(cfg.EXEC_TMP) if i.endswith(".py")]
-        sys.path.append(cfg.EXEC_TMP)
-
+        sys.path.insert(cfg.EXEC_TMP+"/../", 0)
+        import scripts
         all_sct = []
         for loader, mod_name, ispkg in modules:
-            module = loader.find_module(mod_name).load_module(mod_name)
-            pass
+            module = importlib.import_module('.'+mod_name, package="scripts")
+           # module = loader.find_module(mod_name).load_module(mod_name)
+            if getattr(module, cfg.GET_PARSER, None):
+                # has a get parser function
+                print(module)
 
 
 
@@ -289,7 +292,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    pu = PluginUpdater(session=session, script_path="/home/poquirion/neuropoly/spinalcordtoolbox/scripts")
+    pu = PluginUpdater(session=session, script_path="../../../spinalcordtoolbox/scripts", reload=False)
 
     # pu._load_plugins(None, "/home/poquirion/neuropoly/spinalcordtoolbox/scripts")
 
