@@ -20,7 +20,8 @@ angular
     'ngFileUpload',
     'angular-loading-bar',
     'ui.bootstrap',
-    'mgcrea.ngStrap'
+    'mgcrea.ngStrap',
+    'schemaForm'
   ])
   .config(function ($routeProvider) {
     $routeProvider
