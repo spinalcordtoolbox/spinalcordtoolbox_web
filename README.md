@@ -15,29 +15,14 @@ Runnig 'python setup.py develop' should install all that you need in your virtua
 Did not forget to add the package you add for additional developpement in the setup.py file
 
 
-pyramid,
-waitress,
-sqlalchemy,
-alembic,
-pyramid_jinja2,
-pyramid_mako,
-passlib,
-colander,
-pyramid_marrowmailer,
-html2text,
-pyramid_tm,
-sqlalchemy_util,
-cryptacular,
-wtforms,
-deform,
-zope.sqlalchemy,
-simplejson,
-psutil,
-pyramid_mako,
-pyramid_debugtoolbar,
-deform_bootstrap,
-pyramid_chameleo,
-
-
-
 You need nodeJS to be installed so potential js goodies will work, the database is sqlite3, do not ferget to have that install too.
+
+lib that need to be there to compyle numpy, scipy, matplotlib...
+libfreetype6 
+libfreetype6-dev
+lapack
+gfortran
+gcc
+etc...
+would be good to hav a .deb that do all that
+

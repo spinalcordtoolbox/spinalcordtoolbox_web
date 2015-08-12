@@ -6,6 +6,7 @@ import logging
 import os
 import pkgutil
 import psutil
+import platform
 import queue
 import shutil
 import subprocess
@@ -39,7 +40,7 @@ class PluginUpdater(object):
             self.session = session
         # self.script_path = script_path
         # plugin_list = self._load_old_plugins(config)
-        plugin_list = self._load_plugins(config, script_path,reload=reload)
+        plugin_list = self._load_plugins(config, script_path, reload=reload)
         self.rebuild_table(plugin_list)
 
     def rebuild_table(self, plugin_list):
@@ -67,32 +68,25 @@ class PluginUpdater(object):
             subprocess.call(["/usr/bin/env", "2to3-3.4",  "-w", cfg.EXEC_TMP])
 
         modules = pkgutil.iter_modules([cfg.EXEC_TMP])
-        # all_script = [ i for i in os.listdir(cfg.EXEC_TMP) if i.endswith(".py")]
-        sys.path.insert(cfg.EXEC_TMP+"/../", 0)
-        import scripts
-        all_sct = []
+        sys.path.insert(0, "{}/../".format(cfg.EXEC_TMP))
+        importlib.__import__(cfg.SCT_TMP_PKG, globals(), locals(), [], 0)
+        sct_tools = []
         for loader, mod_name, ispkg in modules:
-            module = importlib.import_module('.'+mod_name, package="scripts")
-           # module = loader.find_module(mod_name).load_module(mod_name)
-            if getattr(module, cfg.GET_PARSER, None):
-                # has a get parser function
-                print(module)
+            module = importlib.import_module('.'+mod_name, package=cfg.SCT_TMP_PKG)
+            get_parser = getattr(module, cfg.GET_PARSER, None)
+            if get_parser:
+                parser = get_parser()
+                options = {}
+                for o in parser.options.values():
+                    if not getattr(o, cfg.OPTION_DEPRECATED, None):
+                        options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
 
+                # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
+                sct_tools.append(models.RegisteredTool(name=mod_name,
+                                                       help_str=parser.usage.description,
+                                                       options=options))
 
-
-        rtools = []
-        for script in tool_list:
-            if script['activateScript']:
-                name = script['title']
-                help_str = 'no help yet'
-                cfg_path = os.path.join(config_path, name + '_config.json')
-                if not os.path.isfile(cfg_path):
-                    continue
-                with open(cfg_path) as fp:
-                    options = json.load(fp)[0]
-                rtools.append(models.RegisteredTool(name=name, help_str=help_str, options=options))
-
-        return rtools
+        return sct_tools
 
 
 
@@ -119,6 +113,16 @@ class PluginUpdater(object):
         return rtools
 
 
+def get_platform():
+    """
+    TODO ADD windows support
+    :return: platform name
+    """
+    if "linux" in platform.platform().lower():
+        return "linux"
+    else:
+        return "osx"
+
 class ToolboxRunner(object):
     """
     Class that can be used to execute script
@@ -137,7 +141,31 @@ class ToolboxRunner(object):
         self.fill_cmd_template = {
             cfg.INPUT_FILE_TAG: input_file_path,
             cfg.EXEC_DIR_TAG: bin_dir,
-            cfg.OUTPUT_DIR_TAG:output_dir}
+            cfg.OUTPUT_DIR_TAG: output_dir}
+
+
+
+    def toolbox_env(self):
+        """
+        @TODO could be worth it to clean the env var to be minimal
+        :return:
+        """
+
+        SCT_DIR= cfg.SPINALCORDTOOLBOX
+
+        PATH=[cfg.SPINALCORD_BIN]
+
+        PATH.append("{}/{}".format(cfg.SPINALCORD_BIN,get_platform()))
+
+        PYTHONPATH="{}/scripts".format(cfg.SPINALCORDTOOLBOX)
+
+        all_env = os.environ
+
+        all_env["PATH"] = ":".join(PATH) + ":" + all_env["PATH"]
+        all_env["PYTHONPATH"] = PYTHONPATH
+        all_env["SCT_DIR"] = SCT_DIR
+
+        return all_env
 
 
     def run(self):
@@ -153,7 +181,8 @@ class ToolboxRunner(object):
                                  stderr=subprocess.PIPE,
                                  stdin=subprocess.PIPE,
                                  stdout=subprocess.PIPE,
-                                 bufsize=1)
+                                 bufsize=1,
+                                 env=self.toolbox_env())
 
         completion_time = 0
         process_is_done = False
@@ -281,6 +310,64 @@ class ToolboxRunner(object):
             parent.kill()
 
 
+
+class SctTool(object):
+
+    def __init__(self, name, options, help_str, input_path, output_path):
+        """ Has the same variable than the models.models.RegisteredTool
+
+        @TODO use input and output from __init__, not  cfg.INPUT_FILE_TAG
+        and  cfg.OUTPUT_DIR_TAG
+        :param name:
+        :param options:
+        :param help_str:
+        """
+
+        self.name = name
+        self.options = options
+        self.help_str = help_str
+
+
+    def _parse_options(self, options, name):
+        """
+
+        :param options:
+        :return:
+        """
+        ret_dict = {}
+        for o in options.values():
+            if o['name'] == '-i':
+                value = '{{{}}}'.format(cfg.INPUT_FILE_TAG)
+            elif o['name'] == '-o':
+                value = '{{{}}}'.format(cfg.OUTPUT_DIR_TAG)
+            else:
+                value = o.get("value") if o.get("value") else o.get("default_value")
+
+            if value:
+                ret_dict[o["name"]] = value
+            elif o["mandatory"]:
+                raise IOError("option {} in {} is mandatory but not provided".format(o["name"], name))
+
+        return ret_dict
+
+    @property
+    def cmd(self):
+        """
+        :return:
+        string of the form
+        "{EXEC_DIR_TAG}/exec.ext -i {INPUT_FILE_TAG} -o {OUTPUT_DIR_TAG} [--option other_options ...] "
+
+        """
+        opt = self._parse_options(self.options)
+
+        opt = ' '. join(['{} {}'.format(k, v)
+                        for k, v in opt.items()])
+
+
+        return "{{{0}}}/{1} {2}".format(cfg.EXEC_DIR_TAG, self.name, opt)
+        # return "echo 33 "
+
+
 if __name__ == "__main__":
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
@@ -288,11 +375,13 @@ if __name__ == "__main__":
 
     logging.basicConfig(level=logging.DEBUG)
 
-    engine = create_engine("sqlite:////home/pquirion/travail/neuropoly/spinalcordtoolbox_web/spinalcordweb/db.sqlite")
+    # engine = create_engine("sqlite:////home/pquirion/travail/neuropoly/spinalcordtoolbox_web/spinalcordweb/db.sqlite")
+    engine = create_engine("sqlite:////home/poquirion/neuropoly/spinalcordtoolbox_web/spinalcordweb/db.sqlite")
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    pu = PluginUpdater(session=session, script_path="../../../spinalcordtoolbox/scripts", reload=False)
+    # pu = PluginUpdater(session=session, script_path="../../../spinalcordtoolbox/scripts", reload=False)
+    pu = PluginUpdater(session=session, script_path="/home/poquirion/neuropoly/spinalcordtoolbox/scripts", reload=False)
 
     # pu._load_plugins(None, "/home/poquirion/neuropoly/spinalcordtoolbox/scripts")
 
@@ -300,9 +389,9 @@ if __name__ == "__main__":
 
     rt = session.query(models.RegisteredTool).filter(models.RegisteredTool.name == 'sct_propseg').first()
 
-    plugins_path = cfg.EXEC_PATH
+    plugins_path = cfg.SPINALCORD_BIN
 
     tbr = ToolboxRunner(
-        rt, plugins_path, '{}/mt1.nii.gz'.format(cfg.INPUT_PATH), cfg.OUTPUT_PATH)
+        rt, plugins_path, '{}/t2.nii'.format(cfg.INPUT_PATH), cfg.OUTPUT_PATH)
 
     tbr.run()

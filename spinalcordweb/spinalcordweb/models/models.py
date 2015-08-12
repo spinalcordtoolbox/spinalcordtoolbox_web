@@ -136,15 +136,27 @@ class RegisteredTool(Base):
     help_str = Column('help', UnicodeText)
 
 
-    def _parse_options(self, options):
+    def _parse_options(self, options, name):
         """
-        Might me better to have that is in the models.RegisteredTool
-        class but hey will see later.
 
         :param options:
         :return:
         """
-        return self._parse_options_old_style(options)
+        ret_dict = {}
+        for o in options.values():
+            if o['name'] == '-i':
+                value = '{{{}}}'.format(cfg.INPUT_FILE_TAG)
+            elif o['name'] == '-o':
+                value = '{{{}}}'.format(cfg.OUTPUT_DIR_TAG)
+            else:
+                value = o.get("value") if o.get("value") else o.get("default_value")
+
+            if value:
+                ret_dict[o["name"]] = value
+            elif o["mandatory"]:
+                raise IOError("option {} in {} is mandatory but not provided".format(o["name"], name))
+
+        return ret_dict
 
     def _parse_options_old_style(self, options):
 
@@ -192,10 +204,10 @@ class RegisteredTool(Base):
         "{EXEC_DIR_TAG}/exec.ext -i {INPUT_FILE_TAG} -o {OUTPUT_DIR_TAG} [--option other_options ...] "
 
         """
-        mandatory, optional = self._parse_options(self.options)
+        opt = self._parse_options(self.options)
 
-        opt = ' '. join(['{} {}'.format(k, v['value'])
-                        for k, v in mandatory.items()])
+        opt = ' '. join(['{} {}'.format(k, v)
+                        for k, v in opt.items()])
 
 
         return "{{{0}}}/{1} {2}".format(cfg.EXEC_DIR_TAG, self.name, opt)

@@ -35,7 +35,8 @@ requires = [
     'scipy',
     'nibabel',
     'matplotlib',
-    'sympy'
+    'sympy',
+    'dipy'
 
     ]
 
