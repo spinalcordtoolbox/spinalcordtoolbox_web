@@ -13,3 +13,4 @@ scripts/*
 client/node_modules/*
 client/build/*
 client/app/bower_components/*
+server/server/static/tmp/*
