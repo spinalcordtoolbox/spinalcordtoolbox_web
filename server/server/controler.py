@@ -15,7 +15,7 @@ import sys
 import time
 import threading
 
-import simplejson as json
+import jsonpickle
 from sqlalchemy.exc import SQLAlchemyError
 
 try:
@@ -67,24 +67,67 @@ class PluginUpdater(object):
             shutil.copytree(script_path, cfg.EXEC_TMP)
             subprocess.call(["/usr/bin/env", "2to3-3.4",  "-w", cfg.EXEC_TMP])
 
-        modules = pkgutil.iter_modules([cfg.EXEC_TMP])
+        modules = pkgutil.iter_modules(path=["/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/scripts"])
         sys.path.insert(0, "{}/../".format(cfg.EXEC_TMP))
-        importlib.__import__(cfg.SCT_TMP_PKG, globals(), locals(), [], 0)
+        # importlib.__import__(cfg.SCT_TMP_PKG, globals(), locals(), [], 0)
+        importlib.__import__("scripts", globals(), locals(), [], 0)
         sct_tools = []
         for loader, mod_name, ispkg in modules:
+
             module = importlib.import_module('.'+mod_name, package=cfg.SCT_TMP_PKG)
-            get_parser = getattr(module, cfg.GET_PARSER, None)
+
+            get_parser = getattr(getattr(module, "Script", None), cfg.GET_PARSER, None)
             if get_parser:
                 parser = get_parser()
                 options = {}
                 for o in parser.options.values():
                     if not getattr(o, cfg.OPTION_DEPRECATED, None):
                         options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
+                        #add a value key for user parameters
+                        options[o.name]['value']=None
 
                 # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                 sct_tools.append(models.RegisteredTool(name=mod_name,
                                                        help_str=parser.usage.description,
                                                        options=options))
+
+            get_parser = getattr(getattr(module, mod_name.split('_')[1].capitalize()+"Script", None), cfg.GET_PARSER, None)
+            if get_parser:
+                try:
+                    print(mod_name)
+                    parser = get_parser()
+                    options = {}
+                    for o in parser.options.values():
+                        if not getattr(o, cfg.OPTION_DEPRECATED, None):
+                            options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
+                            #add a value key for user parameters
+                            options[o.name]['value']=None
+
+                    # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
+                    sct_tools.append(models.RegisteredTool(name=mod_name,
+                                                           help_str=parser.usage.description,
+                                                           options=options))
+                except:
+                    continue
+
+            get_parser = getattr(getattr(module, "ScriptProcessSegmentation", None), cfg.GET_PARSER, None)
+            if get_parser:
+                try:
+                    print(mod_name)
+                    parser = get_parser()
+                    options = {}
+                    for o in parser.options.values():
+                        if not getattr(o, cfg.OPTION_DEPRECATED, None):
+                            options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
+                            #add a value key for user parameters
+                            options[o.name]['value']=None
+
+                    # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
+                    sct_tools.append(models.RegisteredTool(name=mod_name,
+                                                           help_str=parser.usage.description,
+                                                           options=options))
+                except:
+                    continue
 
         return sct_tools
 
@@ -161,7 +204,7 @@ class ToolboxRunner(object):
 
         all_env = os.environ
 
-        all_env["PATH"] = ":".join(PATH) + ":" + all_env["PATH"]
+        all_env["PATH"] = ":".join(PATH) + ":" + all_env["PATH"]+":"+cfg.PATHFSLBIN
         all_env["PYTHONPATH"] = PYTHONPATH
         all_env["SCT_DIR"] = SCT_DIR
 
@@ -176,7 +219,7 @@ class ToolboxRunner(object):
 
         cmd = self.rt.cmd.format(**self.fill_cmd_template)
         logging.info('Executing {0}'.format(cmd))
-
+        cmd = "python2.7 " + cmd #@todo: fix that to be more flexible
         child = subprocess.Popen(cmd.split(' '),
                                  stderr=subprocess.PIPE,
                                  stdin=subprocess.PIPE,
@@ -376,19 +419,19 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
 
     # engine = create_engine("sqlite:////home/pquirion/travail/neuropoly/spinalcordtoolbox_web/spinalcordweb/db.sqlite")
-    engine = create_engine("sqlite:////home/poquirion/neuropoly/spinalcordtoolbox_web/spinalcordweb/db.sqlite")
+    engine = create_engine("sqlite:////Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/db.sqlite")
     Session = sessionmaker(bind=engine)
     session = Session()
 
     # pu = PluginUpdater(session=session, script_path="../../../spinalcordtoolbox/scripts", reload=False)
-    pu = PluginUpdater(session=session, script_path="/home/poquirion/neuropoly/spinalcordtoolbox/scripts", reload=True)
+    pu = PluginUpdater(session=session, script_path="/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox/scripts", reload=True)
 
-    # pu._load_plugins(None, "/home/poquirion/neuropoly/spinalcordtoolbox/scripts")
+    #pu._load_plugins(None, "/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox/scripts")
 
 
 
     rt = session.query(models.RegisteredTool).filter(models.RegisteredTool.name == 'sct_propseg').first()
-
+    print(jsonpickle.dumps(rt))
     plugins_path = cfg.SPINALCORD_BIN
 
     tbr = ToolboxRunner(

@@ -1,6 +1,4 @@
-CHANGES.txt
 MANIFEST.in
-README.txt
 alembic.ini
 development.ini
 production.ini

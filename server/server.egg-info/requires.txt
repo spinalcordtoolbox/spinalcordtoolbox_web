@@ -1,5 +1,6 @@
 pyramid
 waitress
+sqlalchemy
 alembic
 pyramid_jinja2
 pyramid_mako
@@ -8,7 +9,6 @@ colander
 pyramid_marrowmailer
 html2text
 pyramid_tm
-sqlalchemy_utils
 cryptacular
 wtforms
 deform
@@ -19,4 +19,9 @@ pyramid_mako
 pyramid_debugtoolbar
 deform_bootstrap
 pyramid_chameleon
-cornice
+numpy
+scipy
+nibabel
+matplotlib
+sympy
+dipy
