@@ -20,12 +20,12 @@ py_virtual/*
 scripts/
 scripts/*
 scripts
-client/app/bower_components
-client/app/bower_components/
-client/app/bower_components/*
 client/node_modules
 client/node_modules/
 client/node_modules/*
 client/build
 client/build/
 client/build/*
+client/app/bower_components
+client/app/bower_components/
+client/app/bower_components/*
