@@ -32,12 +32,12 @@
 * @property {string} axis The name of the axis being displayed (xspace, yspace or zspace).
 * @property {object} slice The slice currently being displayed.
 * @property {object} canvas Reference to the canvas area used for drawing.
-* @property {object} context The 2D context of the canvas. 
+* @property {object} context The 2D context of the canvas.
 * @property {object} image_center The **x** and **y** coordinates of the
 *   center of the slice currently being displayed.
-* @property {number} zoom The current zoom level of the panel. 
-* @property {object} cursor The current **x** and **y** coordinates of the cursor. 
-* @property {object} mouse The current **x** and **y** coordinates of the mouse. 
+* @property {number} zoom The current zoom level of the panel.
+* @property {object} cursor The current **x** and **y** coordinates of the cursor.
+* @property {object} mouse The current **x** and **y** coordinates of the mouse.
 * @description
 * Object representing an individual canvas panel.
 */
@@ -54,13 +54,13 @@
   * * **volume_id** The ID of the volume being displayed on the panel.
   * * **axis** The axis being displayed on the panel (xspace, yspace or zspace).
   * * **canvas** The canvas on which to draw slices.
-  * * **image_center** An object containing the starting **x** and **y** positions of 
+  * * **image_center** An object containing the starting **x** and **y** positions of
   *     the slice image center.
   * * **updated** Boolean value indicating whether the panel should be redrawn.
   *
   * @returns {object} Panel object used to control display of a slice.
   * @description
-  * Factory function to produce the panel object used to control the 
+  * Factory function to produce the panel object used to control the
   * display of a slice.
   * ```js
   * BrainBrowser.VolumeViewer.createPanel({
@@ -97,7 +97,7 @@
   * @name VolumeViewer.Panel Events:sliceupdate
   *
   * @description
-  * Triggered when the slice being displayed is updated. 
+  * Triggered when the slice being displayed is updated.
   * The following information will be passed in the event object:
   *
   * * **event.volume**: the volume on which the slice was updated.
@@ -167,7 +167,7 @@
     options = options || {};
 
     var old_zoom_level = 0;
-    
+
     // Where the cursor used to be.
     var old_cursor_position = {
       x: 0,
@@ -285,7 +285,7 @@
         panel.image_translate.x += dx;
         panel.image_translate.y += dy;
         panel.updated = true;
-        
+
       },
 
       /**
@@ -347,7 +347,7 @@
       * ```
       */
       updateVolumePosition: function(x, y) {
-        
+
         var volume = panel.volume;
 
         var slice_xy = panel.getVolumePosition(x, y);
@@ -360,7 +360,7 @@
           volume.position_continuous[panel.slice.height_space.name] = slice_xy.slice_y;
           panel.updated = true;
         }
-        
+
       },
 
       /**
@@ -405,7 +405,7 @@
           slice_x : slice_x,
           slice_y : slice_y
         };
-        
+
       },
       /**
       * @doc function
@@ -435,7 +435,7 @@
       * ```
       */
       updateSlice: function(callback) {
-        
+
         clearTimeout(update_timeout);
         if (BrainBrowser.utils.isFunction(callback)) {
           update_callbacks.push(callback);
@@ -444,7 +444,7 @@
         update_timeout = setTimeout(function() {
           var volume = panel.volume;
           var slice;
-          
+
           slice = volume.slice(panel.axis);
 
           setSlice(panel, slice);
@@ -509,13 +509,13 @@
         if (!panel.updated) {
           return;
         }
-        
+
         var canvas = panel.canvas;
         var context = panel.context;
         var frame_width = 4;
         var half_frame_width = frame_width / 2;
         var tm = null;
-        
+
         context.globalAlpha = 255;
         context.save();
         context.setTransform(1, 0, 0, 1, 0, 0);
@@ -560,20 +560,20 @@
             canvas_layer.draw(canvas_layer.canvas_buffer, ctx, params);
           }
         }
-        
+
         panel.triggerEvent("draw", {
           volume: panel.volume,
           cursor: cursor,
           canvas: canvas,
           context: context
         });
-        
+
         //drawCursor(panel, cursor_color);
 
         if (active) {
           context.save();
           context.setTransform(1, 0, 0, 1, 0, 0);
-          context.strokeStyle = "#EC2121";
+          context.strokeStyle = "#0000FF";
           context.lineWidth = frame_width;
           context.strokeRect(
             half_frame_width,
@@ -666,7 +666,7 @@
 
   // Draw the cursor at its current position on the canvas.
   function drawCursor(panel, color, coords, ctx) {
-    
+
     var context = ctx;
     var cursor;
     var zoom = panel.zoom;
@@ -685,9 +685,9 @@
     }else{
       cursor = panel.getCursorPosition();
     }
-    
+
     context.save();
-    
+
     context.strokeStyle = color;
     context.fillStyle = color;
 
@@ -699,7 +699,7 @@
     context.lineWidth = 0.25;
     dx = panel.slice.width_space.step;
     dy = panel.slice.height_space.step;
-    
+
     origx = x - dx*cursor_size;
     origy = y + dy*cursor_size;
 
@@ -736,7 +736,7 @@
       context.moveTo(panel.anchor.x, panel.anchor.y);
       context.lineTo(cursor.x, cursor.y);
       context.stroke();
-      
+
     }
 
     context.restore();
@@ -748,7 +748,7 @@
   function drawSlice(panel) {
     var image = panel.slice_image;
     var origin;
-    
+
     var image_width = Math.abs(panel.slice.width_space.space_length*panel.slice.width_space.step);
     var image_height = Math.abs(panel.slice.height_space.space_length*panel.slice.height_space.step);
 
@@ -758,7 +758,7 @@
       panel.context.imageSmoothingEnabled = panel.smooth_image;
       panel.context_buffer.putImageData(image, 0, 0);
       panel.context.drawImage(panel.canvas_buffer, origin.x, origin.y, image_width, image_height );
-      
+
     }
 
     if(panel.view_description){
@@ -778,7 +778,7 @@
     var slice = panel.slice;
     var x = -Math.abs(slice.width_space.step * slice.width_space.space_length)/2;
     var y = -Math.abs(slice.height_space.step * slice.height_space.space_length)/2;
-    
+
     return {
       x: x,
       y: y

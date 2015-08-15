@@ -13,7 +13,8 @@ angular.module('angularSeedApp')
         path: '',
         text: '',
         state: false,
-        pathArray: []
+        pathArray: [],
+        relative_pathArray: []
     };
     return NewFile;
 });

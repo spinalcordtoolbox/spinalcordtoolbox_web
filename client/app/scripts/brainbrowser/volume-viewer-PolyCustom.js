@@ -41,31 +41,20 @@ $(function() {
     var loading_div = $("#loading");
 
     var volumes_files = [{
-          type: "nifti1",
-          nii_url: "static/js/viewer/models/T1.nii",
-          template: {
-            element_id: "volume-ui-template",
-            viewer_insert_class: "volume-viewer-display"
-          }
-        },
-        {
-            type: "nifti1",
-            nii_url: "static/js/viewer/models/T1.nii",
-            template: {
-                element_id: "volume-ui-template",
-                viewer_insert_class: "volume-viewer-display"
-            }
-        },
-        {
-          type: "nifti1",
-          nii_url: "static/js/viewer/models/T1_aseg2.nii",
-          template: {
-            element_id: "volume-ui-template",
-            viewer_insert_class: "volume-viewer-display"
-          }
-            //,
-            //style : "display : none"
-        }];
+      type: "nifti1",
+      nii_url: "static/js/viewer/models/T1.nii",
+      template: {
+        element_id: "volume-ui-template", viewer_insert_class: "volume-viewer-display"
+      }
+    }, {
+      type: "nifti1",
+      nii_url: "static/js/viewer/models/T1.nii",
+      template: {element_id: "volume-ui-template", viewer_insert_class: "volume-viewer-display"}
+    }, {
+      type: "nifti1",
+      nii_url: "static/js/viewer/models/T1_aseg2.nii",
+      template: {element_id: "volume-ui-template", viewer_insert_class: "volume-viewer-display"}
+    }];
 
     ///////////////////////////
     // Set up global UI hooks.
@@ -146,7 +135,7 @@ $(function() {
       //Better than the selector for the size of the panel
       //This function resize dynamically the size of the panel when the window is resized
       $(window).resize(function(){
-          var size = $('.overlay-volume-controls').width()/3;
+          var size = 0.75*($('.overlay-volume-controls').width())/3;
           size = size - 3.3;
           viewer.setPanelSize(size, size, { scale_image: true });
         viewer.redrawVolumes();
@@ -551,7 +540,7 @@ $(function() {
                     volume.display.refreshPanels();
                     viewer.redrawVolumes();
                 }
-            });
+            })
           //Hide elements of the list on double click
           $("#list_sortable a").dblclick(function(event, ui) {
               var volid = parseInt($(this).attr('id').split('-')[1]);
@@ -583,7 +572,7 @@ $(function() {
           //This is a real deletion inside the volume list, if you need to hide the volume, just double click on it!
           $(".trash").droppable({
                 hoverClass:"trash-hover",
-                tolerance: "touch",
+                tolerance:"touch",
                 drop: function ( event, ui ) {
                     //get the volume id of the dragged element (this information is inside the id attribute)
                     var vol_selected = $(ui.draggable).children().attr('id').split('-')[1];
@@ -591,8 +580,8 @@ $(function() {
                     volumes_files.splice(vol_selected, 1);
                     //Clear every volume in order to redraw everything
                     viewer.clearVolumes();
-                    /*//remove the item in the list (this is just a security, because the loadVolume() will do it)
-                    ui.draggable.remove();*/
+                    //remove the item in the list (this is just a security, because the loadVolume() will do it)
+                    ui.draggable.remove();
                     viewer.loadVolumes({
                         volumes:
                             volumes_files
@@ -605,7 +594,7 @@ $(function() {
                             views: ["xspace", "yspace", "zspace"]
                         },
                       complete: function() {
-                        var size = $('.overlay-volume-controls').width()/3;
+                        var size = 0.75*($('.overlay-volume-controls').width())/3;
                           size = size - 3.3;
                         viewer.setPanelSize(size, size, { scale_image: true });
                         viewer.redrawVolumes();}
@@ -684,7 +673,7 @@ $(function() {
                 }
             },
             complete: function() {
-                        var size = $('.overlay-volume-controls').width()/3;
+                        var size = 0.75*($('.overlay-volume-controls').width())/3;
                         size = size-3.3;
                         viewer.setPanelSize(size, size, { scale_image: true });
                         viewer.redrawVolumes();}
@@ -993,7 +982,7 @@ $(function() {
       complete: function() {
         loading_div.hide();
         $("#brainbrowser-wrapper").show();
-        var size = $('.overlay-volume-controls').width()/3;
+        var size = 0.75*($('.overlay-volume-controls').width())/3;
           size = size-3.3;
         viewer.setPanelSize(size, size, { scale_image: true });
         viewer.redrawVolumes();

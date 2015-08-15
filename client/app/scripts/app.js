@@ -15,17 +15,18 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
+    //'ngTouch',
     'jsTree.directive',
     'ngFileUpload',
     'angular-loading-bar',
     'ui.bootstrap',
-    'mgcrea.ngStrap',
-    'schemaForm'
+    //'mgcrea.ngStrap',
+    'schemaForm',
+    'ngStorage'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/viewer', {
         templateUrl: 'views/viewer.html',
         controller: 'ViewerCtrl',
         controllerAs: 'viewer'
@@ -41,7 +42,7 @@ angular
         controllerAs: 'fileUpload'
       })
       .when('/toolbox', {
-        templateUrl: 'views/toolbox.html',
+        templateUrl: 'views/toolbox.html'
       })
       .when('/tools', {
         templateUrl: 'views/tools.html',
@@ -59,6 +60,11 @@ angular
         controllerAs: 'CallFileBrowser'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/',
+        templateUrl: 'views/toolbox.html'
       });
-  });
+  })
+  .config(['$resourceProvider', function ($resourceProvider) {
+    // Don't strip trailing slashes from calculated URLs
+    $resourceProvider.defaults.stripTrailingSlashes = false;
+  }]);

@@ -107,3 +107,18 @@ body {
   height: 40px;
   background-color: #f5f5f5;
 }
+
+.blue{
+  background-color: blue;
+  color: yellow;
+  border: 2px solid red;
+}
+
+.popover{
+  width: 100%;
+  max-width: 100%;
+}
+.popover-content {
+  width: 100%;
+  max-width: 100%;
+}
