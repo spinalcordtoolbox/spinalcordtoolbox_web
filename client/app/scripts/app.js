@@ -15,17 +15,20 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
+    //'ngTouch',
     'jsTree.directive',
     'ngFileUpload',
     'angular-loading-bar',
     'ui.bootstrap',
-    'mgcrea.ngStrap',
-    'schemaForm'
+    //'mgcrea.ngStrap',
+    'schemaForm',
+    'firebase',
+    'ngStorage',
+    'luegg.directives'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/viewer', {
         templateUrl: 'views/viewer.html',
         controller: 'ViewerCtrl',
         controllerAs: 'viewer'
@@ -42,6 +45,7 @@ angular
       })
       .when('/toolbox', {
         templateUrl: 'views/toolbox.html',
+        controller: 'ToolboxCtrl'
       })
       .when('/tools', {
         templateUrl: 'views/tools.html',
@@ -58,7 +62,33 @@ angular
         controller: 'CallfilebrowserCtrl',
         controllerAs: 'CallFileBrowser'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl',
+        controllerAs: 'register'
+      })
+      .when('/console', {
+        templateUrl: 'views/console.html',
+        controller: 'ConsoleCtrl',
+        controllerAs: 'console'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/',
+        templateUrl: 'views/toolbox.html'
       });
-  });
+  })
+  .config(['$resourceProvider', function ($resourceProvider) {
+    // Don't strip trailing slashes from calculated URLs
+    $resourceProvider.defaults.stripTrailingSlashes = false;
+  }])
+  .factory("Auth", ["$firebaseAuth",
+    function($firebaseAuth) {
+      var ref = new Firebase("https://isct.firebaseio.com");
+      return $firebaseAuth(ref);
+    }
+  ]);

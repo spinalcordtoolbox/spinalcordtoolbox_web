@@ -12,7 +12,7 @@ down_revision = '375df472bf1'
 
 from alembic import op
 import sqlalchemy as sa
-from spinalcordweb.models.models import JSONEncodedDict
+from server.models.models import JSONEncodedDict
 
 
 def upgrade():

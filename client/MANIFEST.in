@@ -1,1 +1,1 @@
-recursive-include app *.js *.css *.html *.ico *.png *.gif *.jpg *.ttf *.svg *.eot *.woff *.woff2
+recursive-include app

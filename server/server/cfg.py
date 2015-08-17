@@ -1,11 +1,9 @@
-
-
 # PROJECT_ROOT = '/Users/willispinaud/Dropbox/Amerique/Montreal/angular-python-spinalcord/spinalcordweb/'
-PROJECT_ROOT = '/home/poquirion/neuropoly/spinalcordtoolbox_web/spinalcordweb/'
+PROJECT_ROOT = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/'
 # PROJECT_ROOT = '/home/pquirion/travail/neuropoly/python_spinal_web/spinalcordweb/'
 
 # TOOLBOX PATH
-SPINALCORDTOOLBOX = "/home/poquirion/neuropoly/spinalcordtoolbox"
+SPINALCORDTOOLBOX = "/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox"
 SPINALCORD_BIN = "{}/bin".format(SPINALCORDTOOLBOX)
 
 # Executable/plugins
@@ -17,11 +15,11 @@ EXEC_PATH = PROJECT_ROOT+'../../spinalcordtoolbox/scripts'
 
 
 # Where input files are stored
-FILE_REP_TMP = PROJECT_ROOT+'spinalcordweb/static/tmp/'
+FILE_REP_TMP = PROJECT_ROOT+'server/static/tmp/'
 # INPUT_PATH = '/toolbox/input'
-INPUT_PATH = '/mnt/agrile/toolbox/input'
+INPUT_PATH = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/server/static/js/viewer/models'
 # Where results are stored
-OUTPUT_PATH = '/mnt/agrile/toolbox/output'
+OUTPUT_PATH = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/server/static/tmp/willis'
 
 
 PROCESS_LOOP_SLEEP = 0.05
@@ -38,6 +36,7 @@ EXEC_DIR_TAG = 'EXEC_DIR'
 
 GET_PARSER = 'get_parser'
 
+PATHFSLBIN = '/usr/local/fsl/bin/'
 
 OPTION_TRANSMIT = \
     ("default_value",
@@ -47,7 +46,7 @@ OPTION_TRANSMIT = \
      "name",
      "type_value",
      "order",
-     "exemple")
+     "example")
 
 OPTION_DEPRECATED = "deprecated"
 OPTION_ORDER = "order"

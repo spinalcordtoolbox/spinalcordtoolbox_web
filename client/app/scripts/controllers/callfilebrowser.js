@@ -8,35 +8,41 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-    .controller('CallfilebrowserCtrl', function ($scope, $modal, $log) {
+    .controller('CallfilebrowserCtrl', ['$scope', '$modal','$localStorage', function ($scope, $modal, $localStorage) {
 
-      $scope.items = ['item1', 'item2', 'item3'];
+      // Retrieving a cookie
+    $scope.$storage = $localStorage.$default({
+      volumes_files: [{
+        type: "nifti1",
+        nii_url: "static/js/viewer/models/T1.nii",
+        template: {
+          element_id: "volume-ui-template", viewer_insert_class: "volume-viewer-display"
+        }
+      }, {
+        type: "nifti1",
+        nii_url: "static/js/viewer/models/T1.nii",
+        template: {element_id: "volume-ui-template", viewer_insert_class: "volume-viewer-display"}
+      }, {
+        type: "nifti1",
+        nii_url: "static/js/viewer/models/T1_aseg2.nii",
+        template: {element_id: "volume-ui-template", viewer_insert_class: "volume-viewer-display"}
+      }]
+    });
 
-      $scope.animationsEnabled = true;
-
-      $scope.open = function (size) {
+      $scope.open = function () {
 
         var modalInstance = $modal.open({
-          animation: $scope.animationsEnabled,
+          animation: true,
           templateUrl: '../views/browser.html',
-          controller: 'BrowserCtrl',
-          size: size,
-          resolve: {
-            items: function () {
-              return $scope.items;
-            }
-          }
+          controller: 'BrowserCtrl'
         });
 
-        modalInstance.result.then(function (selectedItem) {
-          $scope.selected = selectedItem;
-        }, function () {
-          $log.info('Modal dismissed at: ' + new Date());
-        });
-      };
+        modalInstance.result.then(
+        );
+      }  ;
 
-      $scope.toggleAnimation = function () {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-      };
 
-    });
+
+
+
+    }]);

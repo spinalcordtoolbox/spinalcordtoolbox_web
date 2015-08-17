@@ -30,15 +30,16 @@
           <a class="navbar-brand" href="#/"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> iSCToolbox</a>
         </div>
         <ul class="nav navbar-nav">
-          <li data-match-route="/$"><a href="#/">Viewer</a></li>
+          <li data-match-route="/viewer"><a href="#/viewer">Viewer</a></li>
           <li data-match-route="/toolbox"><a href="#/toolbox">Toolbox</a></li>
           <li data-match-route="/browser"><a href="#/browser">Browser</a></li>
           <li data-match-route="/file-upload"><a href="#/file-upload">File Upload</a></li>
+          <!--<li data-match-route="/login"><a href="#/login">Login</a></li>-->
         </ul>
       </nav>
     </div>
 
-    <div class="container">
+    <div>
     <div ng-view=""></div>
     </div>
 
@@ -64,6 +65,8 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <!--<script src="bower_components/angular-strap/dist/angular-strap.js"></script>-->
+    <!--<script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>-->
     <script src="bower_components/jstree/dist/jstree.js"></script>
     <script src="bower_components/jstree-directive/jsTree.directive.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -72,19 +75,28 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
+
     <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+    <!--<script src="bower_components/angular-touch/angular-touch.js"></script>-->
+
 
     <script type="text/javascript" src="bower_components/tv4/tv4.js"></script>
     <script type="text/javascript" src="bower_components/objectpath/lib/ObjectPath.js"></script>
     <script type="text/javascript" src="bower_components/angular-schema-form/dist/schema-form.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
+    <script type="text/javascript" src="bower_components/ngstorage/ngStorage.min.js"></script>
 
     <script src="bower_components/ng-file-upload/ng-file-upload-shim.js"></script> <!-- for no html5 browsers support -->
 <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
 <script type='text/javascript' src='bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
+<script type='text/javascript' src='bower_components/angular-scroll-glue/src/scrollglue.js'></script>
+
+
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -99,6 +111,11 @@
         <script src="scripts/controllers/arguments.js"></script>
         <script src="scripts/controllers/callfilebrowser.js"></script>
         <script src="scripts/services/gettools.js"></script>
+        <script src="scripts/services/filebrowser.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/console.js"></script>
+        <script src="scripts/controllers/toolbox.js"></script>
         <!-- endbuild -->
 </body>
 </html>
