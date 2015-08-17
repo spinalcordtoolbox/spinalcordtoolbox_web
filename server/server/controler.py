@@ -14,6 +14,7 @@ import signal
 import sys
 import time
 import threading
+import uuid
 
 import simplejson as json
 from sqlalchemy.exc import SQLAlchemyError
@@ -144,7 +145,7 @@ class ToolboxRunner(object):
         self.fill_cmd_template = {
             cfg.EXEC_DIR_TAG: bin_dir}
 
-        self.process_uid = process_uid
+        self.process_uid = process_uid if process_uid else uuid.uuid1()
 
     def toolbox_env(self):
         """
@@ -179,7 +180,7 @@ class ToolboxRunner(object):
         logging.info('Executing {0}'.format(cmd))
 
         child = subprocess.Popen(cmd.split(' '),
-                                 stderr=subprocess.PIPE,
+                                 stderr=subprocess.STDOUT,
                                  stdin=subprocess.PIPE,
                                  stdout=subprocess.PIPE,
                                  bufsize=1,
@@ -190,8 +191,6 @@ class ToolboxRunner(object):
         stdout_is_close = False
         interrupt_the_process = False
 
-        # (stdout, stderr) = child.communicate()
-
         stdout_queue = queue.Queue()
         stdout_monitor_thread = threading.Thread(
             target=self.read_from_stream,
@@ -200,13 +199,8 @@ class ToolboxRunner(object):
 
         stdout_monitor_thread.daemon = True
         stdout_monitor_thread.start()
-
-        stderr_monitor_thread = threading.Thread(
-            target=self.read_from_stream,
-            args=(child.stderr, self._activity, None, True),
-            )
-        stderr_monitor_thread.daemon = True
-        stderr_monitor_thread.start()
+        # add the process and log to the registry
+        SCTLog.register_process(self.process_uid, stdout_queue, child)
 
         # stdout_lines = []
         while not (process_is_done or stdout_is_close):
@@ -319,7 +313,7 @@ class SCTLog(object):
         TODO: Store the info in a database
     """
 
-    registered_process = {}
+    _registered_process = {}
 
     def __init__(self, uid):
 
@@ -328,23 +322,32 @@ class SCTLog(object):
         self._queue = queue.Queue # DEBUG !!!
         # self._subprocess = self.registered_queue.get(uid)[1]
         self._subprocess = subprocess.Popen() # DEBUG !!!
-        self._data = self.registered_process.get(uid)[2]
+        self._data = self._registered_process.get(uid)[2]
         if self.queue is None:
             raise KeyError("{} is not a registered queue".format(uid))
 
 
     @classmethod
-    def register_queue(cls, uid, new_queue, new_subprocess):
+    def register_process(cls, uid, new_queue, new_subprocess):
+        """ Add new process info to the class
+
+        :param uid: the process uid
+        :param new_queue: a queue.Queue() object
+        :param new_subprocess: a subprocess.POPEN() object
+        :return: cls(uid)
+        """
 
         data = {}
         data['registration_Time'] = time.time()
-        cls.registered_process[uid] = (new_queue, new_subprocess, data)
+        if cls._registered_process.get(uid):
+            raise KeyError("process already registered{}".format(uid))
+        cls._registered_process[uid] = (new_queue, new_subprocess, data)
 
         return cls(uid)
 
     @classmethod
     def all_uid(cls):
-        return cls.registered_process.keys()
+        return cls._registered_process.keys()
 
     def log_tail(self, maxline = 1):
         """ Used to get a log feed line
@@ -373,10 +376,10 @@ class SCTLog(object):
 
     @classmethod
     def flush_garbage(cls):
-        for key, process in cls.registered_process.items():
+        for key, process in cls._registered_process.items():
             one_day = 86400
             if (time.time() - process[2]['registration_Time']) > one_day and not process[1]:
-                cls.registered_process.pop(key, None)
+                cls._registered_process.pop(key, None)
 
 
 class SCTExec(object):
