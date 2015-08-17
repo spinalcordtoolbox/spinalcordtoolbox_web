@@ -36,7 +36,8 @@ angular.module('angularSeedApp')
 
         }
         $scope.$apply(function () {
-          $scope.fileViewer = nodePath;
+          $scope.fileViewer = nodePath[0];
+          $scope.filename = nodePath[0].replace(/^.*[\\\/]/, '');
           $scope.NewFile.pathArray = nodePath;
           $scope.relative_path = relative_nodePath;
           $scope.NewFile.relative_pathArray = relative_nodePath;
@@ -64,6 +65,7 @@ angular.module('angularSeedApp')
 
 
         }
+
 
         /*$scope.$storage.volumes_files = volumes_files;
         $timeout(function() {

@@ -89,5 +89,10 @@ def download_get(request):
     if os.path.isfile(file_id):
         return response.FileResponse(file_id, request=request, cache_max_age=3000)
     elif os.path.isdir(file_id):
-        return {}
         #Gzip it
+        return {"c'est tout gzipé"}
+    elif type(file_id)==type([]):
+            #Gzip tout et test si les fichiers existent
+            return {"c'est tout gzipé"}
+    else:
+        return {'error':'argument error'}
