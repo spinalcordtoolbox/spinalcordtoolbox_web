@@ -3,6 +3,7 @@ alembic.ini
 development.ini
 production.ini
 setup.py
+t2_centerline.txt
 server/__init__.py
 server/cfg.py
 server/controler.py
@@ -233,6 +234,7 @@ server/static/scripts/vendor.js
 server/static/scripts/views.js
 server/static/styles/foundation.css
 server/static/styles/main.css
+server/static/tmp/anonymous:-JwnxBGE6rnUgDRh1-0v/csa.txt
 server/templates/app.mako
 server/templates/brainbrowser.mako
 server/templates/brainbrowser_old.mako
@@ -253,9 +255,10 @@ server/templates/upload.mako
 server/templates/exceptions/403.mako
 server/templates/exceptions/404.mako
 server/views/__init__.py
-server/views/angular_view.py
 server/views/auth.py
 server/views/brainviewer.py
+server/views/file-manger.py
 server/views/myfiles.py
+server/views/toolbox.py
 server/views/upload.py
 server/views/views.py

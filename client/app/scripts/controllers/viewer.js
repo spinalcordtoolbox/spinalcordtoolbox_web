@@ -8,21 +8,233 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('ViewerCtrl', function ($scope, $localStorage, $modal) {
+  .controller('ViewerCtrl', function ($scope, $localStorage, $modal, getJSONcolors) {
 
     $scope.$storage = $localStorage;
+    var volumes_files = $scope.$storage.volumes_files;
+
+    var testDraw = function (canvas_buffer, ctx, params) {
+    };
+
+    //Brush size, if == 0.5 it's deactivated
+    $scope.sizeBrush = 0.5; //Brush size in 3D
+    $scope.setSizeBrush = function (size) {
+      $scope.sizeBrush = size;
+      console.log($scope.sizeBrush);
+    };
+
+    //Brush for label, if == 0.5 it's deactivated
+    $scope.sizeBrushLabel = 0.5; //Brush size in 3D
+    $scope.setSizeBrushLabel = function (size) {
+      $scope.sizeBrushLabel = size;
+      console.log($scope.sizeBrushLabel);
+    };
+    $scope.addLabel = function(point){
+      console.log('i:'+point.i+' j:'+point.j+' k:'+point.k);
+    };
+
+
+    var layer_id = 0; //volume id of the selected layer
+
+    $scope.JSONColors = getJSONcolors.getdata();
+    $scope.colorSelected = {
+      "FIELD1": "0",
+      "FIELD2": "Unknown",
+      "FIELD3": "255",
+      "FIELD4": "255",
+      "FIELD5": "255",
+      "FIELD6": "0"
+    };
+    $scope.color = $scope.colorSelected.FIELD3 + "," + $scope.colorSelected.FIELD4 + "," + $scope.colorSelected.FIELD5;
+    $scope.$watch('colorSelected', function () {
+      $scope.colorSelected = JSON.parse($scope.colorSelected);
+      $scope.color = $scope.colorSelected.FIELD3 + "," + $scope.colorSelected.FIELD4 + "," + $scope.colorSelected.FIELD5;
+    });
 
     $scope.open = function () {
-
-      var modalInstance = $modal.open({
+      $modal.open({
         animation: true,
         templateUrl: '../views/browser.html',
-        controller: 'BrowserCtrl',
+        controller: 'BrowserCtrl'
       });
+    };
 
-      modalInstance.result.then(
-      );
 
+    var load_params = {
+      volumes: volumes_files
+      ,
+      overlay: {
+        template: {
+          element_id: "overlay-ui-template",
+          viewer_insert_class: "overlay-viewer-display"
+        },
+        views: ["xspace", "yspace", "zspace"],
+        canvas_layers: [
+          {
+            draw: testDraw
+          }
+        ],
+        views_description: {
+          "xspace": [{
+            x: 0.05,
+            y: 0.05,
+            text: 'P'
+          },
+            {
+              x: 0.95,
+              y: 0.05,
+              text: 'A'
+            }],
+          "yspace": [{
+            x: 0.05,
+            y: 0.05,
+            text: 'L'
+          },
+            {
+              x: 0.95,
+              y: 0.05,
+              text: 'R'
+            }],
+          "zspace": [
+            {
+              x: 0.05,
+              y: 0.05,
+              text: 'L'
+            },
+            {
+              x: 0.95,
+              y: 0.05,
+              text: 'R'
+            }
+          ]
+        }
+      },
+      complete: function () {
+
+        $("#loading").hide();
+        $("#brainbrowser-wrapper").show();
+        var size = 0.75 * ($('.overlay-volume-controls').width()) / 3;
+        size = size - 3.3;
+        viewer.setPanelSize(size, size, {scale_image: true});
+        viewer.redrawVolumes();
+
+        viewer.volumes.forEach(function () {
+          viewer.synced = true;
+        });
+
+        viewer.interaction_type = 1;
+        /*
+         viewer.loadVolumeColorMapFromURL(2, 'color-maps/FreeSurferColorLUT20120827.txt', "#FF0000", function() {
+         viewer.redrawVolumes();
+         });*/
+
+        //Rotate panel xspace 180d
+        viewer.volumes.forEach(function (volume) {
+          volume.display.forEach(function (panel) {
+            if (panel.axis === "xspace") {
+              panel.invert_x = true;
+            }
+          });
+        });
+
+        // volumes_files.length : Select the overlay layer
+        viewer.volumes[volumes_files.length].display.forEach(function (panel) {
+
+          var drawPixel = function () {
+            console.log(viewer.volumes[1]);
+            var offset = [];
+            for (var i = -$scope.sizeBrush; i <= $scope.sizeBrush; i++) {
+              for (var j = -$scope.sizeBrush; j <= $scope.sizeBrush; j++) {
+                for (var k = -$scope.sizeBrush; k <= $scope.sizeBrush; k++) {
+                  var off = [i, j, k];
+                  offset.push(off);
+                }
+              }
+            }
+            var point = panel.getVoxelCoordinates();
+
+            if (point) {
+
+              var x = point.i;
+              var y = point.j;
+              var z = point.k;
+
+              for (var i = 0; i < offset.length; i++) {
+                var off = offset[i];
+                viewer.volumes[layer_id].setIntensityValue(x + off[0], y + off[1], z + off[2], $scope.colorSelected.FIELD1);
+              }
+              viewer.redrawVolumes();
+            }
+          };
+
+          var drawLabel = function () {
+
+            var offset = [];
+            for (var i = -$scope.sizeBrushLabel; i <= $scope.sizeBrushLabel; i++) {
+              for (var j = -$scope.sizeBrushLabel; j <= $scope.sizeBrushLabel; j++) {
+                for (var k = -$scope.sizeBrushLabel; k <= $scope.sizeBrushLabel; k++) {
+                  var off = [i, j, k];
+                  offset.push(off);
+                }
+              }
+            }
+            var point = panel.getVoxelCoordinates();
+
+            if ($scope.sizeBrushLabel===0){$scope.addLabel(point);}
+
+
+            if (point) {
+
+              var x = point.i;
+              var y = point.j;
+              var z = point.k;
+
+              for (var i = 0; i < offset.length; i++) {
+                var off = offset[i];
+                viewer.volumes[layer_id].setIntensityValue(x + off[0], y + off[1], z + off[2], $scope.colorSelected.FIELD1);
+              }
+              viewer.redrawVolumes();
+            }
+          };
+
+          var drawMousePointer = function (x, y) {
+
+            var volpos = panel.getVolumePosition(x, y);
+            if (volpos) {
+              panel.drawCurrentSlice();
+              var cursorpos = panel.getCursorPosition(volpos.slice_x, volpos.slice_y);
+              panel.drawMousePointer("#FFFFFF", cursorpos);
+            }
+          };
+
+          var mousedown = false;
+
+          var canvas = panel.canvas_layers[panel.canvas_layers.length - 1].canvas;
+
+          canvas.addEventListener("mousedown", function () {
+            mousedown = true;
+            drawPixel();
+            drawLabel();
+          });
+
+          canvas.addEventListener("mouseup", function () {
+            mousedown = false;
+          });
+
+          canvas.addEventListener("mousemove", function (event) {
+            var element = event.target;
+            if (mousedown && !(event.ctrlKey || event.shiftKey)) {
+              drawPixel();
+              drawLabel();
+            }
+            else {
+              var rect = element.getBoundingClientRect();
+              drawMousePointer(event.x - rect.left, event.y - rect.top);
+            }
+          }, false);
+
+        });
+      }
     };
 
     /*
@@ -53,9 +265,6 @@ angular.module('angularSeedApp')
      * Author: Willis Pinaud <willispinaud@gmail.com>
      */
 
-// This script is meant to be a demonstration of how to
-// use most of the functionality available in the
-// BrainBrowser Volume Viewer.
     $(".button").button();
 
     /////////////////////////////////////
@@ -63,8 +272,6 @@ angular.module('angularSeedApp')
     /////////////////////////////////////
     window.viewer = BrainBrowser.VolumeViewer.start("brainbrowser", function (viewer) {
       var loading_div = $("#loading");
-
-      var volumes_files = $scope.$storage.volumes_files;
 
       ///////////////////////////
       // Set up global UI hooks.
@@ -242,7 +449,8 @@ angular.module('angularSeedApp')
           $("#volume-selection").append("<option value=" + (i) + ">Volume " + (i) + "</option>");
           //The file explorer - part1
           //generate the list of items
-          $("#list_sortable").append("<li><a id ='layer-" + (i) + "'><strong>Brain Volume_ID: </strong>" + (i) + "</a></li>");
+          //$("#list_sortable").append("<li><a id ='layer-" + (i) + "'><strong>Brain Volume_ID: </strong>" + (i) + "</a></li>");
+          $("#list_sortable").append("<li><a id ='layer-" + (i) + "'><span class='glyphicon glyphicon-eye-open push-left'></span><strong> -  Brain Volume_ID: </strong>" + (i) + "</a></li>");
 
           if (($('#volume-selection').children().length > 1) && (i == vol_id - 1)) {
             //that hide element in the select to avoid overlapping volume controls
@@ -556,6 +764,7 @@ angular.module('angularSeedApp')
             if (!($.inArray(volid, to_hide) > -1)) {
               to_hide.push(volid);
               $(this).css("text-decoration", "line-through");
+              $(this).children('span').toggleClass("glyphicon-eye-open glyphicon-eye-close");
             }
             else {
               //to delete one element of the array
@@ -563,6 +772,7 @@ angular.module('angularSeedApp')
                 return value != volid;
               });
               $(this).css("text-decoration", "none");
+              $(this).children('span').toggleClass("glyphicon-eye-close glyphicon-eye-open");
             }
 
             volume.to_hide = to_hide;
@@ -570,9 +780,9 @@ angular.module('angularSeedApp')
             viewer.redrawVolumes();
           });
           $("#list_sortable a").click(function () {
-            var volume_id = parseInt($(this).attr('id').split('-')[1]);
+            layer_id = parseInt($(this).attr('id').split('-')[1]);
             $("[id^=volume-panel-]").hide();
-            $("#volume-panel-" + volume_id).show();
+            $("#volume-panel-" + layer_id).show();
             $("#list_sortable a").removeClass('onclick');
             $(this).addClass('onclick');
           });
@@ -590,23 +800,7 @@ angular.module('angularSeedApp')
               viewer.clearVolumes();
               //remove the item in the list (this is just a security, because the loadVolume() will do it)
               ui.draggable.remove();
-              viewer.loadVolumes({
-                volumes: volumes_files
-                ,
-                overlay: {
-                  template: {
-                    element_id: "overlay-ui-template",
-                    viewer_insert_class: "overlay-viewer-display"
-                  },
-                  views: ["xspace", "yspace", "zspace"]
-                },
-                complete: function () {
-                  var size = 0.75 * ($('.overlay-volume-controls').width()) / 3;
-                  size = size - 3.3;
-                  viewer.setPanelSize(size, size, {scale_image: true});
-                  viewer.redrawVolumes();
-                }
-              });
+              viewer.loadVolumes(load_params);
 
             }
           });
@@ -635,57 +829,7 @@ angular.module('angularSeedApp')
             volumes_files.push(new_volume_to_add);
             viewer.clearVolumes();
 
-            viewer.loadVolumes({
-              volumes: volumes_files
-              ,
-              overlay: {
-                template: {
-                  element_id: "overlay-ui-template",
-                  viewer_insert_class: "overlay-viewer-display"
-                },
-                views: ["xspace", "yspace", "zspace"],
-                views_description: {
-                  "xspace": [{
-                    x: 0.05,
-                    y: 0.05,
-                    text: 'A'
-                  },
-                    {
-                      x: 0.95,
-                      y: 0.05,
-                      text: 'P'
-                    }],
-                  "yspace": [{
-                    x: 0.05,
-                    y: 0.05,
-                    text: 'R'
-                  },
-                    {
-                      x: 0.95,
-                      y: 0.05,
-                      text: 'L'
-                    }],
-                  "zspace": [
-                    {
-                      x: 0.05,
-                      y: 0.05,
-                      text: 'R'
-                    },
-                    {
-                      x: 0.95,
-                      y: 0.05,
-                      text: 'L'
-                    }
-                  ]
-                }
-              },
-              complete: function () {
-                var size = 0.75 * ($('.overlay-volume-controls').width()) / 3;
-                size = size - 3.3;
-                viewer.setPanelSize(size, size, {scale_image: true});
-                viewer.redrawVolumes();
-              }
-            });
+            viewer.loadVolumes(load_params);
           });
 
           // Slider to select blend value.
@@ -934,172 +1078,10 @@ angular.module('angularSeedApp')
       ///////////////////
       viewer.render();
 
-      /*var testDraw = function(canvas_buffer, ctx, params){
-
-      };*/
-
       /////////////////////
       // Load the volumes.
       /////////////////////
-      viewer.loadVolumes({
-        volumes: volumes_files
-        ,
-        overlay: {
-          template: {
-            element_id: "overlay-ui-template",
-            viewer_insert_class: "overlay-viewer-display"
-          },
-          views: ["xspace", "yspace", "zspace"],
-          views_description: {
-            "xspace": [{
-              x: 0.05,
-              y: 0.05,
-              text: 'P'
-            },
-              {
-                x: 0.95,
-                y: 0.05,
-                text: 'A'
-              }],
-            "yspace": [{
-              x: 0.05,
-              y: 0.05,
-              text: 'L'
-            },
-              {
-                x: 0.95,
-                y: 0.05,
-                text: 'R'
-              }],
-            "zspace": [
-              {
-                x: 0.05,
-                y: 0.05,
-                text: 'L'
-              },
-              {
-                x: 0.95,
-                y: 0.05,
-                text: 'R'
-              }
-            ]
-          }
-        },
-        complete: function () {
-          loading_div.hide();
-          $("#brainbrowser-wrapper").show();
-          var size = 0.75 * ($('.overlay-volume-controls').width()) / 3;
-          size = size - 3.3;
-          viewer.setPanelSize(size, size, {scale_image: true});
-          viewer.redrawVolumes();
-
-          //$("#brainbrowser-wrapper").slideDown({duration: 600});
-
-          //viewer.volumes.forEach(function(vol){
-          //viewer.synced = true;});
-
-          //var vol = viewer.volumes[1];
-
-          /*viewer.interaction_type = 1;
-
-           viewer.loadVolumeColorMapFromURL(0, 'color-maps/spectral-brainview.txt', "#FF0000", function() {
-           viewer.redrawVolumes();
-           });
-
-           viewer.loadVolumeColorMapFromURL(1, 'color-maps/gray-scale.txt', "#FF0000", function() {
-           viewer.redrawVolumes();
-           });
-
-           viewer.loadVolumeColorMapFromURL(2, 'color-maps/FreeSurferColorLUT20120827.txt', "#FF0000", function() {
-           viewer.redrawVolumes();
-           });*/
-
-          /*viewer.volumes.forEach(function(volume){
-           volume.display.forEach(function(panel) {
-           if(panel.axis === "xspace"){
-           panel.invert_x = true;
-           }
-           });
-           });
-
-           viewer.volumes[2].display.forEach(function(panel) {
-
-           var label = 255;
-           //if(panvol.data){
-           var offset = [];
-           var size = 0;
-
-
-           for(var i = -size; i <= size; i++){
-           for(var j = -size; j <= size; j++){
-           for(var k = -size; k <= size; k++){
-           var off = [i, j, k];
-           offset.push(off);
-           }
-           }
-           }
-
-           var drawPixel = function(){
-           var point = panel.getVoxelCoordinates();
-
-           if(point){
-
-           var x = point.i;
-           var y = point.j;
-           var z = point.k;
-
-           for(var i = 0; i < offset.length; i++){
-           var off = offset[i];
-           viewer.volumes[1].setIntensityValue(x + off[0], y  + off[1], z  + off[2], label);
-           }
-
-           viewer.redrawVolumes();
-
-           }
-           };
-
-           var drawMousePointer = function(x, y){
-
-           var volpos = panel.getVolumePosition(x, y);
-           if(volpos){
-           panel.drawCurrentSlice();
-           var cursorpos = panel.getCursorPosition(volpos.slice_x, volpos.slice_y);
-           panel.drawMousePointer("#FFFFFF", cursorpos);
-           }
-           };
-
-           var mousedown = false;
-
-           var canvas = panel.canvas_layers[panel.canvas_layers.length - 1].canvas;
-
-           canvas.addEventListener("mousedown", function () {
-           mousedown = true;
-           drawPixel();
-           });
-
-           canvas.addEventListener("mouseup", function () {
-           mousedown = false;
-           });
-
-           canvas.addEventListener("mousemove", function (event) {
-           var element = event.target;
-           var top = 0;
-           var left = 0;
-
-           if(mousedown && !(event.ctrlKey || event.shiftKey)){
-           drawPixel();
-           }
-           else{
-           var rect = element.getBoundingClientRect();
-           drawMousePointer(event.x - rect.left, event.y - rect.top);
-           }
-           }, false);
-
-           //}
-           });*/
-          //});
-        }
-      });
+      viewer.loadVolumes(load_params);
 
     });
 

@@ -1,0 +1,195 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'zlib' ]
+2 info using npm@2.11.2
+3 info using node@v0.12.6
+4 verbose install initial load of /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/package.json
+5 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt/package.json
+6 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-angular-templates/package.json
+7 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-autoprefixer/package.json
+8 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-concurrent/package.json
+9 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-contrib-clean/package.json
+10 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-contrib-concat/package.json
+11 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-contrib-connect/package.json
+12 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-contrib-copy/package.json
+13 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-contrib-cssmin/package.json
+14 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-contrib-htmlmin/package.json
+15 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-contrib-imagemin/package.json
+16 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-contrib-jshint/package.json
+17 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-contrib-uglify/package.json
+18 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-contrib-watch/package.json
+19 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-filerev/package.json
+20 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-google-cdn/package.json
+21 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-karma/package.json
+22 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-newer/package.json
+23 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-ng-annotate/package.json
+24 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-svgmin/package.json
+25 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-usemin/package.json
+26 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/grunt-wiredep/package.json
+27 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/jasmine-core/package.json
+28 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/jit-grunt/package.json
+29 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/jshint-stylish/package.json
+30 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/karma/package.json
+31 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/karma-jasmine/package.json
+32 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/karma-phantomjs-launcher/package.json
+33 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/phantomjs/package.json
+34 verbose installManyTop reading scoped package data from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/time-grunt/package.json
+35 info package.json grunt-angular-templates@0.5.7 No license field.
+36 info package.json grunt@0.4.5 No license field.
+37 info package.json grunt-contrib-clean@0.6.0 No license field.
+38 info package.json grunt-contrib-concat@0.5.1 No license field.
+39 info package.json grunt-contrib-connect@0.9.0 No license field.
+40 info package.json grunt-contrib-copy@0.7.0 No license field.
+41 info package.json grunt-contrib-cssmin@0.12.3 No license field.
+42 info package.json grunt-contrib-htmlmin@0.4.0 No license field.
+43 info package.json grunt-contrib-imagemin@0.9.4 No license field.
+44 info package.json grunt-contrib-uglify@0.7.0 No license field.
+45 info package.json grunt-contrib-jshint@0.11.2 No license field.
+46 info package.json grunt-contrib-watch@0.6.1 No license field.
+47 info package.json grunt-filerev@2.3.1 license should be a valid SPDX license expression
+48 info package.json grunt-google-cdn@0.4.3 license should be a valid SPDX license expression
+49 info package.json grunt-svgmin@2.0.1 No license field.
+50 info package.json grunt-wiredep@2.0.0 No license field.
+51 verbose readDependencies loading dependencies from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/package.json
+52 silly cache add args [ 'zlib', null ]
+53 verbose cache add spec zlib
+54 silly cache add parsed spec { raw: 'zlib',
+54 silly cache add   scope: null,
+54 silly cache add   name: 'zlib',
+54 silly cache add   rawSpec: '',
+54 silly cache add   spec: '*',
+54 silly cache add   type: 'range' }
+55 silly addNamed zlib@*
+56 verbose addNamed "*" is a valid semver range for zlib
+57 silly addNameRange { name: 'zlib', range: '*', hasData: false }
+58 silly mapToRegistry name zlib
+59 silly mapToRegistry using default registry
+60 silly mapToRegistry registry https://registry.npmjs.org/
+61 silly mapToRegistry uri https://registry.npmjs.org/zlib
+62 verbose addNameRange registry:https://registry.npmjs.org/zlib not in flight; fetching
+63 verbose request uri https://registry.npmjs.org/zlib
+64 verbose request no auth needed
+65 info attempt registry request try #1 at 16:50:07
+66 verbose request id 51bdfd6ddb8925a3
+67 verbose etag "EBQNZSBGN9EL34IT3BLYCYHQA"
+68 http request GET https://registry.npmjs.org/zlib
+69 http 304 https://registry.npmjs.org/zlib
+70 silly get cb [ 304,
+70 silly get   { date: 'Sun, 16 Aug 2015 20:50:08 GMT',
+70 silly get     via: '1.1 varnish',
+70 silly get     'cache-control': 'max-age=60',
+70 silly get     etag: '"EBQNZSBGN9EL34IT3BLYCYHQA"',
+70 silly get     age: '33',
+70 silly get     connection: 'keep-alive',
+70 silly get     'x-served-by': 'cache-jfk1020-JFK',
+70 silly get     'x-cache': 'HIT',
+70 silly get     'x-cache-hits': '1',
+70 silly get     'x-timer': 'S1439758208.090037,VS0,VE0',
+70 silly get     vary: 'Accept' } ]
+71 verbose etag https://registry.npmjs.org/zlib from cache
+72 verbose get saving zlib to /Users/willispinaud/.npm/registry.npmjs.org/zlib/.cache.json
+73 silly addNameRange number 2 { name: 'zlib', range: '*', hasData: true }
+74 silly addNameRange versions [ 'zlib',
+74 silly addNameRange   [ '1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.5' ] ]
+75 silly addNamed zlib@1.0.5
+76 verbose addNamed "1.0.5" is a plain semver version for zlib
+77 silly cache afterAdd zlib@1.0.5
+78 verbose afterAdd /Users/willispinaud/.npm/zlib/1.0.5/package/package.json not in flight; writing
+79 verbose afterAdd /Users/willispinaud/.npm/zlib/1.0.5/package/package.json written
+80 silly install resolved [ { name: 'zlib',
+80 silly install resolved     description: 'Simple, synchronous deflate/inflate for buffers',
+80 silly install resolved     version: '1.0.5',
+80 silly install resolved     homepage: 'https://github.com/kkaefer/node-zlib',
+80 silly install resolved     author: { name: 'Konstantin Käfer', email: 'kkaefer@gmail.com' },
+80 silly install resolved     repository: { type: 'git', url: 'git://github.com/kkaefer/node-zlib.git' },
+80 silly install resolved     engines: { node: '>=0.2.0' },
+80 silly install resolved     licenses: [ [Object] ],
+80 silly install resolved     main: './lib/zlib',
+80 silly install resolved     _npmJsonOpts:
+80 silly install resolved      { file: '/Users/kkaefer/.npm/zlib/1.0.5/package/package.json',
+80 silly install resolved        contributors: false,
+80 silly install resolved        serverjs: false,
+80 silly install resolved        wscript: true },
+80 silly install resolved     _id: 'zlib@1.0.5',
+80 silly install resolved     scripts: { preinstall: 'node-waf clean || true; node-waf configure build' },
+80 silly install resolved     dependencies: {},
+80 silly install resolved     devDependencies: {},
+80 silly install resolved     _engineSupported: true,
+80 silly install resolved     _npmVersion: '1.0.23',
+80 silly install resolved     _nodeVersion: 'v0.4.9',
+80 silly install resolved     _defaultsLoaded: true,
+80 silly install resolved     dist:
+80 silly install resolved      { shasum: '6e7c972fc371c645a6afb03ab14769def114fcc0',
+80 silly install resolved        tarball: 'http://registry.npmjs.org/zlib/-/zlib-1.0.5.tgz' },
+80 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+80 silly install resolved     directories: {},
+80 silly install resolved     _shasum: '6e7c972fc371c645a6afb03ab14769def114fcc0',
+80 silly install resolved     _resolved: 'https://registry.npmjs.org/zlib/-/zlib-1.0.5.tgz',
+80 silly install resolved     _from: 'zlib@*',
+80 silly install resolved     bugs: { url: 'https://github.com/kkaefer/node-zlib/issues' },
+80 silly install resolved     readme: 'ERROR: No README data found!' } ]
+81 info install zlib@1.0.5 into /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client
+82 info installOne zlib@1.0.5
+83 verbose installOne of zlib to /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client not in flight; installing
+84 verbose lock using /Users/willispinaud/.npm/_locks/zlib-b3202da350df194c.lock for /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib
+85 silly install write writing zlib 1.0.5 to /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib
+86 verbose unbuild node_modules/zlib
+87 silly gentlyRm /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib is being purged from base /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client
+88 verbose gentlyRm don't care about contents; nuking /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib
+89 verbose tar unpack /Users/willispinaud/.npm/zlib/1.0.5/package.tgz
+90 verbose tar unpacking to /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib
+91 silly gentlyRm /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib is being purged
+92 verbose gentlyRm don't care about contents; nuking /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib
+93 silly gunzTarPerm modes [ '755', '644' ]
+94 silly gunzTarPerm extractEntry .gitignore
+95 silly gunzTarPerm extractEntry configure
+96 silly gunzTarPerm extractEntry index.js
+97 silly gunzTarPerm extractEntry LICENSE
+98 silly gunzTarPerm extractEntry Makefile
+99 silly gunzTarPerm extractEntry package.json
+100 silly gunzTarPerm extractEntry README.md
+101 silly gunzTarPerm extractEntry wscript
+102 silly gunzTarPerm extractEntry lib/zlib.js
+103 silly gunzTarPerm extractEntry src/node-zlib.cc
+104 silly gunzTarPerm extractEntry test/deflate.test.js
+105 silly gunzTarPerm extractEntry test/inflate.test.js
+106 verbose write writing to /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib/package.json
+107 info preinstall zlib@1.0.5
+108 verbose unsafe-perm in lifecycle false
+109 info zlib@1.0.5 Failed to exec preinstall script
+110 verbose unlock done using /Users/willispinaud/.npm/_locks/zlib-b3202da350df194c.lock for /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib
+111 verbose stack Error: zlib@1.0.5 preinstall: `node-waf clean || true; node-waf configure build`
+111 verbose stack spawn ENOENT
+111 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:17:16)
+111 verbose stack     at ChildProcess.emit (events.js:110:17)
+111 verbose stack     at maybeClose (child_process.js:1015:16)
+111 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
+112 verbose pkgid zlib@1.0.5
+113 verbose cwd /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/app
+114 error Darwin 14.5.0
+115 error argv "node" "/usr/local/bin/npm" "install" "zlib"
+116 error node v0.12.6
+117 error npm  v2.11.2
+118 error file sh
+119 error code ELIFECYCLE
+120 error errno ENOENT
+121 error syscall spawn
+122 error zlib@1.0.5 preinstall: `node-waf clean || true; node-waf configure build`
+122 error spawn ENOENT
+123 error Failed at the zlib@1.0.5 preinstall script 'node-waf clean || true; node-waf configure build'.
+123 error This is most likely a problem with the zlib package,
+123 error not with npm itself.
+123 error Tell the author that this fails on your system:
+123 error     node-waf clean || true; node-waf configure build
+123 error You can get their info via:
+123 error     npm owner ls zlib
+123 error There is likely additional logging output above.
+124 verbose exit [ 1, true ]
+125 verbose unbuild node_modules/zlib
+126 info preuninstall zlib@1.0.5
+127 info uninstall zlib@1.0.5
+128 verbose unbuild rmStuff zlib@1.0.5 from /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules
+129 info postuninstall zlib@1.0.5
+130 silly gentlyRm /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib is being purged from base /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client
+131 verbose gentlyRm don't care about contents; nuking /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib
+132 silly vacuum-fs purging /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules/zlib
+133 silly vacuum-fs quitting because other entries in /Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/client/node_modules

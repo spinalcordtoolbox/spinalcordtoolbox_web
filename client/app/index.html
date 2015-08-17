@@ -34,6 +34,7 @@
           <li data-match-route="/toolbox"><a href="#/toolbox">Toolbox</a></li>
           <li data-match-route="/browser"><a href="#/browser">Browser</a></li>
           <li data-match-route="/file-upload"><a href="#/file-upload">File Upload</a></li>
+          <!--<li data-match-route="/login"><a href="#/login">Login</a></li>-->
         </ul>
       </nav>
     </div>
@@ -88,6 +89,13 @@
     <script src="bower_components/ng-file-upload/ng-file-upload-shim.js"></script> <!-- for no html5 browsers support -->
 <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
 <script type='text/javascript' src='bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
+
+
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -103,6 +111,8 @@
         <script src="scripts/controllers/callfilebrowser.js"></script>
         <script src="scripts/services/gettools.js"></script>
         <script src="scripts/services/filebrowser.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/register.js"></script>
         <!-- endbuild -->
 </body>
 </html>

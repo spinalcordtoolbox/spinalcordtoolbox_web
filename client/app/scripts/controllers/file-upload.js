@@ -8,8 +8,14 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-    .controller('FileUploadCtrl', ['$scope', 'Upload', '$timeout', 'SharedDataService', function ($scope, Upload, $timeout, SharedDataService) {
-        $scope.NewFile = SharedDataService;
+    .controller('FileUploadCtrl', ['$scope', 'Upload', '$timeout', 'SharedDataService', "Auth", function ($scope, Upload, $timeout, SharedDataService, Auth) {
+    $scope.NewFile = SharedDataService;
+    $scope.auth = Auth;
+
+    // any time auth status updates, add the user data to scope
+    $scope.auth.$onAuth(function(authData) {
+      $scope.authData = authData;
+    });
 
 
     $scope.$watch('files', function () {
@@ -29,7 +35,8 @@ angular.module('angularSeedApp')
                 Upload.upload({
                     url: '/upload',
                     fields: {
-                        'username': $scope.username
+                        'username': $scope.authData.uid.split(':')[1]
+                        //'username': $scope.username
                     },
                     file: file
                 }).progress(function (evt) {

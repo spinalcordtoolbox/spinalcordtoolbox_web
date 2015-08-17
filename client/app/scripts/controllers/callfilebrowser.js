@@ -34,7 +34,7 @@ angular.module('angularSeedApp')
         var modalInstance = $modal.open({
           animation: true,
           templateUrl: '../views/browser.html',
-          controller: 'BrowserCtrl',
+          controller: 'BrowserCtrl'
         });
 
         modalInstance.result.then(

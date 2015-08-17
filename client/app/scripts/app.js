@@ -22,6 +22,7 @@ angular
     'ui.bootstrap',
     //'mgcrea.ngStrap',
     'schemaForm',
+    'firebase',
     'ngStorage'
   ])
   .config(function ($routeProvider) {
@@ -59,6 +60,16 @@ angular
         controller: 'CallfilebrowserCtrl',
         controllerAs: 'CallFileBrowser'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl',
+        controllerAs: 'register'
+      })
       .otherwise({
         redirectTo: '/',
         templateUrl: 'views/toolbox.html'
@@ -67,4 +78,10 @@ angular
   .config(['$resourceProvider', function ($resourceProvider) {
     // Don't strip trailing slashes from calculated URLs
     $resourceProvider.defaults.stripTrailingSlashes = false;
-  }]);
+  }])
+  .factory("Auth", ["$firebaseAuth",
+    function($firebaseAuth) {
+      var ref = new Firebase("https://isct.firebaseio.com");
+      return $firebaseAuth(ref);
+    }
+  ]);

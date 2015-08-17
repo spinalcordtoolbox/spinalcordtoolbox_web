@@ -1,6 +1,26 @@
 <link type="text/css" href="styles/volume-viewer-demo.css" rel="Stylesheet"/>
 <link type="text/css" href="bower_components/jquery-ui/themes/ui-lightness/jquery-ui.css" rel="Stylesheet"/>
-<button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
+
+<!--<div class="container">-->
+  <!--<form role="form">-->
+<!--<div class="form-inline">-->
+
+<!--<button type="button" class="btn btn-warning" ng-click="open()">Open me!</button>-->
+
+<!--<select class="form-control input-sm" ng-model="colorSelected" style="background-color:rgb({{color}});">-->
+  <!--<option value="">-&#45;&#45; Select a color -&#45;&#45;</option>-->
+  <!--<option value="{{color}}" ng-repeat="color in JSONColors">-->
+    <!--{{color.FIELD2}}-->
+  <!--</option>-->
+<!--</select>-->
+<!--<input class="btn btn-alert" type="button" ng-click="setSizeBrush(0.5);" value="Deactivate Brush">-->
+<!--<input class="btn btn-success" type="button" ng-click="setSizeBrush(0);" value="Activate Brush">-->
+  <!--<input class="btn btn-alert" type="button" ng-click="setSizeBrushLabel(0.5);" value="Deactivate Label">-->
+<!--<input class="btn btn-success" type="button" ng-click="setSizeBrushLabel(0);" value="Activate Label">-->
+<!--</div>-->
+    <!--</form>-->
+<!--</div>-->
+
   <!--upper selection bar-->
   <div id="brainbrowser-wrapper">
     <div id="volume-viewer">
@@ -232,6 +252,6 @@
 <script src="scripts/brainbrowser/viewer/brainbrowser/volume-viewer/volume-loaders/overlay.js"></script>
 <script src="scripts/brainbrowser/viewer/brainbrowser/volume-viewer/volume-loaders/minc.js"></script>
 <script src="scripts/brainbrowser/viewer/brainbrowser/volume-viewer/volume-loaders/nifti1.js"></script>
-<script src="bower_components/gzip-js/lib/gzip.js"></script>
+<script src="scripts/brainbrowser/viewer/brainbrowser/gunzip/gunzip.min.js"></script>
 <script src="scripts/brainbrowser/volume-viewer.config.js"></script>
 

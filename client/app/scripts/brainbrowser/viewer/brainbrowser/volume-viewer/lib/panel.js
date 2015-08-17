@@ -526,11 +526,18 @@
           panel.zoom = Math.min((panel.canvas.width/(panel.slice.width_space.space_length*panel.slice.width_space.step)), panel.canvas.height/(panel.slice.height_space.space_length*panel.slice.height_space.step));
         }
 
+        //Custom code (testing)
         if(panel.invert_x){
           panel.transformation_matrix = [-panel.zoom, 0, 0, panel.zoom, panel.image_translate.x, panel.image_translate.y];
         }else{
           panel.transformation_matrix = [panel.zoom, 0, 0, panel.zoom, panel.image_translate.x, panel.image_translate.y];
         }
+        //ORIGINAL CODE
+        /*if(panel.invert_x){
+          panel.transformation_matrix = [-panel.zoom, 0, 0, panel.zoom, panel.image_translate.x, panel.image_translate.y];
+        }else{
+          panel.transformation_matrix = [panel.zoom, 0, 0, panel.zoom, panel.image_translate.x, panel.image_translate.y];
+        }*/
 
         tm = panel.transformation_matrix;
         context.setTransform(tm[0], tm[1], tm[2], tm[3], tm[4], tm[5]);

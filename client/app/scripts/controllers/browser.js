@@ -8,8 +8,8 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService', '$localStorage','$location','$window',
-    function ($scope, $route, SharedDataService, $localStorage, $location,$window) {
+  .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService', '$localStorage','$location','$window','$timeout',
+    function ($scope, $route, SharedDataService, $localStorage, $location,$window,$timeout) {
       $scope.$storage = $localStorage;
 
       $scope.NewFile = SharedDataService; //it's use to connect upload & browser to detect change and update the tree
@@ -17,11 +17,11 @@ angular.module('angularSeedApp')
       $scope.fileViewer = 'Please select a file to view its contents';
       $scope.relative_path = '';
 
-      $scope.$watch('NewFile.state', function () {
+      /*$scope.$watch('NewFile.state', function () {
         if ($scope.NewFile.state) { //Update the tree when a file is uploaded
           $route.reload();
         }
-      });
+      });*/
 
       $scope.changedCB = function (e, data) {
         var nodeChecked = [];
@@ -64,14 +64,16 @@ angular.module('angularSeedApp')
 
 
         }
-        $scope.$storage.volumes_files = volumes_files;
 
+        /*$scope.$storage.volumes_files = volumes_files;
+        $timeout(function() {
+        }, 2000);
         if ($location.path()==="/viewer"){
           $window.location.reload();
         }
         else{
           $location.path("viewer");
-        }
+        }*/
 
 
       };

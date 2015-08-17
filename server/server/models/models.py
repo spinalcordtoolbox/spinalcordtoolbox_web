@@ -114,16 +114,31 @@ class User(Base):
 
 class File(Base):
     filename = Column(Unicode(1024), unique=False)
-    localpath = Column(Unicode(1024), unique=True)
-    serverpath = Column(Unicode(1024), unique=True)
+    serverpath = Column(Unicode(1024), unique=False)
+    localpath = Column(Unicode(1024), unique=False)
     type = Column(Unicode(1024), unique=False)
     size = Column(Float, unique=False)
+    text = Column(Unicode(1024), unique=False)
+    type = Column(Unicode(1024), unique=False)
+    children = Column(Unicode(1024), unique=False)
+    icon = Column(Unicode(1024), unique=False)
     user_id = Column(Unicode(1024), ForeignKey('user.id'))
     user = relationship("User", backref='files', order_by='User.id')
 
     def __repr__(self):
         return "<File(filename='%s', type='%s', localpath='%s')>" \
                % (self.filename, self.type, self.localpath)
+
+class tree(Base):
+    rel_path = Column(Unicode(1024), unique=False)
+    parent = Column(Unicode(1024), unique=False)
+    id = Column(Unicode(1024), unique=False, primary_key=True)
+    size = Column(Float, unique=False)
+    text = Column(Unicode(1024), unique=False)
+    type = Column(Unicode(1024), unique=False)
+    # children = Column(Unicode(1024), unique=False)
+    icon = Column(Unicode(1024), unique=False)
+
 
 class Operation(Base):
     args = Column(Unicode(1024), unique=False)

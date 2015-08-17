@@ -19,7 +19,7 @@ FILE_REP_TMP = PROJECT_ROOT+'server/static/tmp/'
 # INPUT_PATH = '/toolbox/input'
 INPUT_PATH = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/server/static/js/viewer/models'
 # Where results are stored
-OUTPUT_PATH = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/server/static/tmp/2'
+OUTPUT_PATH = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/server/static/tmp/willis'
 
 
 PROCESS_LOOP_SLEEP = 0.05

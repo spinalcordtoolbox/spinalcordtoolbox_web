@@ -17,13 +17,14 @@ angular.module('angularSeedApp')
 
     $scope.$watch('NewFile.pathArray', function () {
       $scope.inputs = $scope.NewFile.pathArray;
+      //$scope.$$childTail.model['1'] = $scope.NewFile.pathArray;
     });
 
     //Launch the tool with the user's config
     $scope.compute = function (tool_name, args_user, inputs) {
       //envoyer les arg à la fonction choisie sur le server !
       console.log("le nom du tool:" + tool_name);
-      console.log("les registered tools:" + args_user);
+      console.log(args_user);
       console.log("le path des inputs:" + inputs);
       var args_tool = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
 
@@ -34,7 +35,7 @@ angular.module('angularSeedApp')
 
           if (arg_tool["order"] == arg_user_order) {
 
-            arg_tool["value"] = args_user[arg_user_order]
+            arg_tool["value"] = args_user[arg_user_order];
             console.log(arg_tool["value"])
           }
 
@@ -60,6 +61,13 @@ angular.module('angularSeedApp')
         var default_value = arg["default_value"];
         var order = arg["order"];
         var example = arg["example"];
+        var mandatory = arg["mandatory"];
+        var mandatoryClass = "";
+
+        /*if (mandatory){
+          description = "Mandatory: "+description;
+          mandatoryClass = "mandatory";
+        }*/
 
 
         if ((example) && (example.length > 1) && (typeof(example) === "object")) {
@@ -69,11 +77,14 @@ angular.module('angularSeedApp')
             "default": default_value,
             "description": description,
             "order": order,
-            "enum": example
+            "enum": example,
+            "x-schema-form": {
+              "htmlClass": mandatoryClass
+
+            }
           };
         }
         else if (name) {
-          console.log(example);
           prop[order] = {
             "title": name,
             "type": "string",
@@ -81,7 +92,8 @@ angular.module('angularSeedApp')
             "description": description,
             "order": order,
             "x-schema-form": {
-              "placeholder": example
+              "placeholder": example,
+              "htmlClass": mandatoryClass
             }
           };
         }
