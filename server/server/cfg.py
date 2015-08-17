@@ -46,7 +46,8 @@ OPTION_TRANSMIT = \
      "mandatory",
      "name",
      "type_value",
-     "order")
+     "order",
+     "exemple")
 
 OPTION_DEPRECATED = "deprecated"
 OPTION_ORDER = "order"
