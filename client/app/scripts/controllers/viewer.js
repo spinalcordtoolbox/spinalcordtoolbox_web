@@ -756,7 +756,7 @@ angular.module('angularSeedApp')
                 volume.display.refreshPanels();
                 viewer.redrawVolumes();
               }
-            })
+            });
           //Hide elements of the list on double click
           $("#list_sortable a").dblclick(function (event, ui) {
             var volid = parseInt($(this).attr('id').split('-')[1]);

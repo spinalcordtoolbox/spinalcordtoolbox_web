@@ -23,7 +23,8 @@ angular
     //'mgcrea.ngStrap',
     'schemaForm',
     'firebase',
-    'ngStorage'
+    'ngStorage',
+    'luegg.directives'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -43,7 +44,8 @@ angular
         controllerAs: 'fileUpload'
       })
       .when('/toolbox', {
-        templateUrl: 'views/toolbox.html'
+        templateUrl: 'views/toolbox.html',
+        controller: 'ToolboxCtrl'
       })
       .when('/tools', {
         templateUrl: 'views/tools.html',
@@ -69,6 +71,11 @@ angular
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl',
         controllerAs: 'register'
+      })
+      .when('/console', {
+        templateUrl: 'views/console.html',
+        controller: 'ConsoleCtrl',
+        controllerAs: 'console'
       })
       .otherwise({
         redirectTo: '/',
