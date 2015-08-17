@@ -13,6 +13,6 @@ outputs/*
 py_virtual/*
 scripts/*
 client/node_modules/*
-#client/build/*
+client/build/*
 client/app/bower_components/*
 server/server/static/tmp/*
