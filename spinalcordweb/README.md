@@ -1,3 +1,0 @@
-# spinalcordweb
-
-A cool project

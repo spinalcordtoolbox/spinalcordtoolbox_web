@@ -123,6 +123,9 @@ def get_platform():
     else:
         return "osx"
 
+
+
+
 class ToolboxRunner(object):
     """
     Class that can be used to execute script
@@ -130,7 +133,7 @@ class ToolboxRunner(object):
     """
 
     def __init__(self, register_tool: models.RegisteredTool,
-                 bin_dir: str, input_file_path: str, output_dir: str):
+                 bin_dir: str, process_uid=None):
 
         self.rt = register_tool
 
@@ -139,11 +142,9 @@ class ToolboxRunner(object):
         self._timeout_once_done = cfg.TIMEOUT
 
         self.fill_cmd_template = {
-            cfg.INPUT_FILE_TAG: input_file_path,
-            cfg.EXEC_DIR_TAG: bin_dir,
-            cfg.OUTPUT_DIR_TAG: output_dir}
+            cfg.EXEC_DIR_TAG: bin_dir}
 
-
+        self.process_uid = process_uid
 
     def toolbox_env(self):
         """
@@ -207,7 +208,7 @@ class ToolboxRunner(object):
         stderr_monitor_thread.daemon = True
         stderr_monitor_thread.start()
 
-        stdout_lines = []
+        # stdout_lines = []
         while not (process_is_done or stdout_is_close):
 
             now = time.time()
@@ -237,10 +238,10 @@ class ToolboxRunner(object):
             #     break
 
             # Handle the standard output from the child process
-            if child.stdout:
-                while not stdout_queue.empty():
-                    stdout_lines.append(stdout_queue.get_nowait())
-            else:
+            if not child.stdout:
+                # while not stdout_queue.empty():
+                #     stdout_lines.append(stdout_queue.get_nowait())
+            # else:
                 interrupt_the_process = False
                 stdout_is_close = True
                 process_is_done = True
@@ -310,8 +311,75 @@ class ToolboxRunner(object):
             parent.kill()
 
 
+class SCTLog(object):
+    """ Store and retrieve information about a toolbox subprocess
 
-class SctTool(object):
+        This class is somehow dangerous since it keeps growing and growing
+        The flush_garbage method should be called in the server periodically
+        TODO: Store the info in a database
+    """
+
+    registered_process = {}
+
+    def __init__(self, uid):
+
+        self._uid = uid
+        # self._queue = self.registered_queue.get(uid)[0]
+        self._queue = queue.Queue # DEBUG !!!
+        # self._subprocess = self.registered_queue.get(uid)[1]
+        self._subprocess = subprocess.Popen() # DEBUG !!!
+        self._data = self.registered_process.get(uid)[2]
+        if self.queue is None:
+            raise KeyError("{} is not a registered queue".format(uid))
+
+
+    @classmethod
+    def register_queue(cls, uid, new_queue, new_subprocess):
+
+        data = {}
+        data['registration_Time'] = time.time()
+        cls.registered_process[uid] = (new_queue, new_subprocess, data)
+
+        return cls(uid)
+
+    @classmethod
+    def all_uid(cls):
+        return cls.registered_process.keys()
+
+    def log_tail(self, maxline = 1):
+        """ Used to get a log feed line
+        :maxline: maximjum number on line returned
+        :return: new log line
+        """
+        nline = 0
+        lines = []
+        while (not self._queue.empty() or nline < maxline):
+            lines.append(self._queue.get_nowait())
+            self.data['processed'] = lines[-1]
+            nline += 1
+        return lines
+
+    def old_log(self):
+        """
+        :return: all previously logged data
+        """
+        return self._data['processed']
+
+    def running(self):
+        """
+        :return: True if process still running Flase otherwise
+        """
+        return self._subprocess.poll()
+
+    @classmethod
+    def flush_garbage(cls):
+        for key, process in cls.registered_process.items():
+            one_day = 86400
+            if (time.time() - process[2]['registration_Time']) > one_day and not process[1]:
+                cls.registered_process.pop(key, None)
+
+
+class SCTExec(object):
 
     def __init__(self, name, options, help_str, input_path, output_path):
         """ Has the same variable than the models.models.RegisteredTool
@@ -336,12 +404,8 @@ class SctTool(object):
         """
         ret_dict = {}
         for o in options.values():
-            if o['name'] == '-i':
-                value = '{{{}}}'.format(cfg.INPUT_FILE_TAG)
-            elif o['name'] == '-o':
-                value = '{{{}}}'.format(cfg.OUTPUT_DIR_TAG)
-            else:
-                value = o.get("value") if o.get("value") else o.get("default_value")
+
+            value = o.get("value") if o.get("value") else o.get("default_value")
 
             if value:
                 ret_dict[o["name"]] = value
