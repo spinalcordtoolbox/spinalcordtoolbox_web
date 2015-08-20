@@ -1,25 +1,30 @@
 <link type="text/css" href="styles/volume-viewer-demo.css" rel="Stylesheet"/>
 <link type="text/css" href="bower_components/jquery-ui/themes/ui-lightness/jquery-ui.css" rel="Stylesheet"/>
 
-<!--<div class="container">-->
-  <!--<form role="form">-->
-<!--<div class="form-inline">-->
+<div class="container" style="background-color: #f2f2f2;">
+  <form role="form">
+<div class="form-inline" >
 
-<!--<button type="button" class="btn btn-warning" ng-click="open()">Open me!</button>-->
+<button type="button" class="btn btn-warning" ng-click="open()">Open me!</button>
 
-<!--<select class="form-control input-sm" ng-model="colorSelected" style="background-color:rgb({{color}});">-->
-  <!--<option value="">-&#45;&#45; Select a color -&#45;&#45;</option>-->
-  <!--<option value="{{color}}" ng-repeat="color in JSONColors">-->
-    <!--{{color.FIELD2}}-->
-  <!--</option>-->
-<!--</select>-->
-<!--<input class="btn btn-alert" type="button" ng-click="setSizeBrush(0.5);" value="Deactivate Brush">-->
-<!--<input class="btn btn-success" type="button" ng-click="setSizeBrush(0);" value="Activate Brush">-->
-  <!--<input class="btn btn-alert" type="button" ng-click="setSizeBrushLabel(0.5);" value="Deactivate Label">-->
-<!--<input class="btn btn-success" type="button" ng-click="setSizeBrushLabel(0);" value="Activate Label">-->
-<!--</div>-->
-    <!--</form>-->
-<!--</div>-->
+<select class="form-control input-sm" tooltip="Pick the brush color" ng-model="colorSelected" style="background-color:rgb({{color}});">
+  <option value="">--- Select a color ---</option>
+  <option value="{{color}}" ng-repeat="color in JSONColors">
+    {{color.FIELD2}}
+  </option>
+</select>
+<input class="btn btn-alert" type="button" ng-click="setSizeBrush(0.5);" value="Deactivate Brush">
+<input class="btn btn-success" type="button" ng-click="setSizeBrush(0);" value="Activate Brush">
+  <input type="number" name="input" tooltip="Select the brush size" ng-model="sizeBrush"
+         min="0" max="10" required>
+  <input class="btn btn-alert" type="button" ng-click="setSizeBrushLabel(0.5);" value="Deactivate Label">
+<input class="btn btn-success" type="button" ng-click="setSizeBrushLabel(0);" value="Activate Label">
+  <span class="glyphicon glyphicon-info-sign infoglyph" tooltip-placement="bottom" tooltip="Click - Select the volume, you can modify it's properties on the right panel
+            Double Click - Hide and Show the volume
+            Drag and Drop for positioning layers (the last volume in the list is the first show in the viewer)"></span>
+</div>
+    </form>
+</div>
 
   <!--upper selection bar-->
   <div id="brainbrowser-wrapper">
@@ -92,8 +97,6 @@
             <span class="glyphicon glyphicon-trash trash"></span>
             <br>
             <span class="glyphicon glyphicon-plus add-volume"></span>
-
-
 
             <input type="file" name="header-file" id="header-file" style="display: none">
 

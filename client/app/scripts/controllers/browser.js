@@ -9,10 +9,12 @@
  */
 angular.module('angularSeedApp')
   .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService', '$localStorage','$location','$window','$timeout',
-    function ($scope, $route, SharedDataService, $localStorage, $location,$window,$timeout) {
+    '$http',
+    function ($scope, $route, SharedDataService, $localStorage, $location, $window, $timeout, $http) {
       $scope.$storage = $localStorage;
-
       $scope.NewFile = SharedDataService; //it's use to connect upload & browser to detect change and update the tree
+
+      $scope.tree_path = "/tree/"+$scope.$storage.uid;
 
       $scope.fileViewer = 'Please select a file to view its contents';
       $scope.relative_path = '';
@@ -29,15 +31,14 @@ angular.module('angularSeedApp')
         var relative_nodePath = [];
         nodeChecked = angular.element("#jstree").jstree('get_checked');
         for (var i in nodeChecked) {
-          nodePath.push(angular.element("#jstree").jstree("get_node", nodeChecked[i]).original.path);
           if (angular.element("#jstree").jstree("get_node", nodeChecked[i]).original.type === 'file'){
             relative_nodePath.push(angular.element("#jstree").jstree("get_node", nodeChecked[i]).original.rel_path);
+            nodePath.push(angular.element("#jstree").jstree("get_node", nodeChecked[i]).original.path);
           }
 
         }
         $scope.$apply(function () {
-          $scope.fileViewer = nodePath[0];
-          $scope.filename = nodePath[0].replace(/^.*[\\\/]/, '');
+          $scope.fileViewer = nodePath;
           $scope.NewFile.pathArray = nodePath;
           $scope.relative_path = relative_nodePath;
           $scope.NewFile.relative_pathArray = relative_nodePath;
@@ -67,7 +68,7 @@ angular.module('angularSeedApp')
         }
 
 
-        /*$scope.$storage.volumes_files = volumes_files;
+        $scope.$storage.volumes_files = volumes_files;
         $timeout(function() {
         }, 2000);
         if ($location.path()==="/viewer"){
@@ -75,7 +76,7 @@ angular.module('angularSeedApp')
         }
         else{
           $location.path("viewer");
-        }*/
+        }
 
 
       };
@@ -83,7 +84,3 @@ angular.module('angularSeedApp')
     }
   ]);
 
-
-//   .each(function(index) {
-// nodeChecked.push($(this).attr('path'));
-// });

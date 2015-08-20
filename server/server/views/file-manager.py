@@ -1,14 +1,16 @@
-import os
+import os, zipfile
+import io
 from ..cfg import FILE_REP_TMP
 from cornice import Service
 import jsonpickle
 from server.models import models
 from pyramid import response
+import zlib
 #####
 # AngularJS - File Tree
 #####
 tree = Service('tree',
-                 '/tree',
+                 '/tree/{uid}',
                  'generate the json for JSTree')
 
 def path_to_db(path,session,tag):
@@ -22,7 +24,7 @@ def path_to_db(path,session,tag):
     if os.path.isdir(path):
         d['type'] = "directory"
         d['children'] = [path_to_db(os.path.join(path,x),session,0) for x in os.listdir(path)]
-        d['icon'] = ""
+        d['icon'] = "glyphicon glyphicon-folder-open"
     else:
         d['type'] = "file"
         d['icon'] = "glyphicon glyphicon-file"
@@ -49,9 +51,10 @@ def tree_get(request):
     :param request:
     :return:
     '''
+    uid = request.matchdict['uid']
     session = request.db
     session.query(models.tree).delete()
-    files = path_to_db(os.path.abspath(FILE_REP_TMP),session,1)
+    files = path_to_db(os.path.abspath(os.path.join(FILE_REP_TMP,uid)),session,1)
     fileTree = session.query(models.tree).all()
     filesT = []
     for file in fileTree:
@@ -85,14 +88,18 @@ download = Service('download',
 
 @download.get()
 def download_get(request):
-    file_id = request.GET['id']
-    if os.path.isfile(file_id):
-        return response.FileResponse(file_id, request=request, cache_max_age=3000)
-    elif os.path.isdir(file_id):
-        #Gzip it
-        return {"c'est tout gzipé"}
-    elif type(file_id)==type([]):
-            #Gzip tout et test si les fichiers existent
-            return {"c'est tout gzipé"}
+    file_id = jsonpickle.loads(request.GET['id'])
+    #test if the get argument is in the right format
+    if type(file_id)==type([]):
+        zip_filename = "isct_download.zip"
+        # The zip compressor
+        zf = zipfile.ZipFile(zip_filename, "w")
+        for fpath in file_id:
+            # Add files, rename it and add compression (zipfile.ZIP_DEFLATED)
+            zf.write(fpath, arcname=os.path.basename(fpath), compress_type=zipfile.ZIP_DEFLATED)
+        # Must close zip for all contents to be written
+        zf.close()
+        #TODO fix the file response, should have a real file not just the name of the zipfile in the root
+        return response.FileResponse("isct_download.zip", request=request, cache_max_age=3000)
     else:
         return {'error':'argument error'}

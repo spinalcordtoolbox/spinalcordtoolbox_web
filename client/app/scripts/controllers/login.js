@@ -8,8 +8,9 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('LoginCtrl', ["$scope", "Auth",
-    function($scope, Auth) {
+  .controller('LoginCtrl', ["$scope", "Auth", "$localStorage",
+    function($scope, Auth, $localStorage) {
+      $scope.$storage = $localStorage;
 
       var auth = Auth;
       $scope.auth = Auth;
@@ -19,6 +20,8 @@ angular.module('angularSeedApp')
       // any time auth status updates, add the user data to scope
       auth.$onAuth(function(authData) {
         $scope.authData = authData;
+        $scope.$storage.uid = authData.uid.split(':')[1];
+
       });
 
       $scope.login = function() {

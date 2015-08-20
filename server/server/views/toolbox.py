@@ -60,8 +60,7 @@ def sctoolbox_post(request):
     tbr = ToolboxRunner(
         rt,
         plugins_path,
-        inputs[0],
-        cfg.OUTPUT_PATH
+        1
     )
 
     tbr.run()

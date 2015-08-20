@@ -91,4 +91,8 @@ angular
       var ref = new Firebase("https://isct.firebaseio.com");
       return $firebaseAuth(ref);
     }
-  ]);
+  ])
+  .config(['$compileProvider',
+    function ($compileProvider) {
+      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);
+    }]);

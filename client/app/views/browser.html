@@ -1,13 +1,15 @@
 <div ng-controller="BrowserCtrl" >
   <div class="tree-browser">
-    <a href="/tree">File Browser</a>
-    <js-tree id="jstree" tree-plugins="checkbox" tree-events="changed:changedCB" tree-ajax="/tree"></js-tree>
+    <a href="{{tree_path}}">File Browser</a>
+    <js-tree id="jstree" tree-plugins="checkbox" tree-events="changed:changedCB" tree-ajax={{tree_path}} </js-tree>
   </div>
-  <button type="button" class="btn btn-default center-block" ng-click="brainbrowser(relative_path)">Visualize selected!</button>
+  <button type="button" class="btn btn-default center-block" ng-click="refresh()">Refresh Tree</button>
+  <button type="button" class="btn btn-default center-block" ng-click="brainbrowser(relative_path)">Visualize Selected</button>
+  <button type="button" class="btn btn-default center-block" ng-click="delete(path)">Delete Selected</button>
   <div class="file-viewer">
     <pre><code>{{fileViewer}}</code></pre>
   </div>
 
-  <a target="_self" href="/download?id={{fileViewer}}" download="{{filename}}">Download!</a>
+  <a target="_self" href="/download?id={{fileViewer}}" download="isct_download.zip">Download Selected!</a>
 
-  </div>
+</div>

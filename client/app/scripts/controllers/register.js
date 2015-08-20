@@ -8,7 +8,7 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('RegisterCtrl', function ($scope) {
+  .controller('RegisterCtrl', function ($scope,$location) {
 
     var ref = new Firebase("https://isct.firebaseio.com");
 
@@ -22,8 +22,10 @@ angular.module('angularSeedApp')
       }, function(error, userData) {
         if (error) {
           console.log("Error creating user:", error);
+          $scope.error = error;
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
+          $location.path("login");
         }
       });
     };

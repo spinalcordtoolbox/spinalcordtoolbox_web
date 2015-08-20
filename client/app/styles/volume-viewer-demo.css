@@ -299,6 +299,13 @@ ul{
     height: 40px;
     text-align: right;
 }
+
+.infoglyph{
+  font-size:2em;
+  color: rgb(0, 49, 247);
+  vertical-align: middle;
+}
+
 .trash-hover{
     color: #38ff00 !important;
     font-size: 3em !important;

@@ -64,10 +64,10 @@ angular.module('angularSeedApp')
         var mandatory = arg["mandatory"];
         var mandatoryClass = "";
 
-        /*if (mandatory){
+        if (mandatory){
           description = "Mandatory: "+description;
           mandatoryClass = "mandatory";
-        }*/
+        }
 
 
         if ((example) && (example.length > 1) && (typeof(example) === "object")) {

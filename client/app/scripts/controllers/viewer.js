@@ -20,14 +20,12 @@ angular.module('angularSeedApp')
     $scope.sizeBrush = 0.5; //Brush size in 3D
     $scope.setSizeBrush = function (size) {
       $scope.sizeBrush = size;
-      console.log($scope.sizeBrush);
     };
 
     //Brush for label, if == 0.5 it's deactivated
     $scope.sizeBrushLabel = 0.5; //Brush size in 3D
     $scope.setSizeBrushLabel = function (size) {
       $scope.sizeBrushLabel = size;
-      console.log($scope.sizeBrushLabel);
     };
     $scope.addLabel = function(point){
       console.log('i:'+point.i+' j:'+point.j+' k:'+point.k);
@@ -141,7 +139,6 @@ angular.module('angularSeedApp')
         viewer.volumes[volumes_files.length].display.forEach(function (panel) {
 
           var drawPixel = function () {
-            console.log(viewer.volumes[1]);
             var offset = [];
             for (var i = -$scope.sizeBrush; i <= $scope.sizeBrush; i++) {
               for (var j = -$scope.sizeBrush; j <= $scope.sizeBrush; j++) {

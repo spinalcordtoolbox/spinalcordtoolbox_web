@@ -1,8 +1,8 @@
 __author__ = 'willispinaud'
 
 from cornice import Service
-import string
-import random
+from ..controler import SCTLog
+
 
 
 logger = Service('logger',
@@ -11,4 +11,6 @@ logger = Service('logger',
 
 @logger.get(renderer="string")
 def logger_get(request):
-    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
+    test = SCTLog(1)
+
+    return test.log_tail()
