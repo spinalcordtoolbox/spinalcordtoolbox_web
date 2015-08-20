@@ -173,7 +173,9 @@ def get_platform():
 class ToolboxRunner(object):
     """
     Class that can be used to execute script
-    TODO write a parent class that will be used to build runner for other software (niak)
+    @TODO write a parent class that could be used to build runner
+    for other software (niak)
+    @TODO Have the process run by a worker, not right in the server!
     """
 
     def __init__(self, register_tool: models.RegisteredTool,
@@ -189,6 +191,15 @@ class ToolboxRunner(object):
             cfg.EXEC_DIR_TAG: bin_dir}
 
         self.process_uid = process_uid if process_uid else uuid.uuid1()
+
+
+        self.completion_time = 0
+        self.process_is_done = False
+        self.stdout_is_close = False
+        self.child = None
+        self.stdout = None
+
+
 
     def toolbox_env(self):
         """
@@ -213,9 +224,9 @@ class ToolboxRunner(object):
         return all_env
 
 
-    def run(self):
+    def run_blocking(self):
         """
-        Running mechanism that return stderr and stdout
+        Running mechanism that lock until the process ends
         :return:
         """
 
@@ -243,7 +254,7 @@ class ToolboxRunner(object):
         stdout_monitor_thread.daemon = True
         stdout_monitor_thread.start()
         # add the process and log to the registry
-        SCTLog.register_process(self.process_uid, stdout_queue, child)
+        # SCTLog.register_process(self.process_uid, stdout_queue, child)
 
         # stdout_lines = []
         while not (process_is_done or stdout_is_close):
@@ -262,7 +273,7 @@ class ToolboxRunner(object):
 
             # Once the process is done, we keep
             # receiving standard out/err up until we reach the done_timeout.
-            if (completion_time > 0) and (self.timeout_once_done > 0) and (now - completion_time > self.timeout_once_done):
+            if (completion_time > 0) and (self._timeout_once_done > 0) and (now - completion_time > self._timeout_once_done):
                 logging.info("Done-timeout reached.")
                 break
 
@@ -295,7 +306,7 @@ class ToolboxRunner(object):
         if return_code is None:
 
             if interrupt_the_process:
-                logging.info("The sidekick is running (PID {0}). Sending it an interrupt signal..."
+                logging.info("The child process is running (PID {0}). Sending it an interrupt signal..."
                              .format(child.pid))
                 child.send_signal(signal.SIGTERM)
 
@@ -309,7 +320,7 @@ class ToolboxRunner(object):
             # Force the process to die if it's still running.
             return_code = child.poll()
             if return_code is None:
-                logging.info("The sidekick is still running (PID {}). Sending it a kill signal..."
+                logging.info("The child process is still running (PID {}). Sending it a kill signal..."
                              .format(child.pid))
                 self.force_stop(child)
 
@@ -321,6 +332,62 @@ class ToolboxRunner(object):
 
         return return_code
 
+    def run(self):
+        """
+        Running mechanism that return stderr and stdout
+        :return:
+        """
+
+        cmd = self.rt.cmd.format(**self.fill_cmd_template)
+        logging.info('Executing {0}'.format(cmd))
+        cmd = "python2.7 " + cmd #@todo: fix that to be more flexible
+        self.child = subprocess.Popen(cmd.split(' '),
+                                 stderr=subprocess.STDOUT,
+                                 stdin=subprocess.PIPE,
+                                 stdout=subprocess.PIPE,
+                                 bufsize=1,
+                                 env=self.toolbox_env())
+
+
+        self.stdout_queue = queue.Queue()
+        stdout_monitor_thread = threading.Thread(
+            target=self.read_from_stream,
+            args=(self.child.stdout, self._activity, self.stdout_queue, True),
+            )
+
+        stdout_monitor_thread.daemon = True
+        stdout_monitor_thread.start()
+        # add the process and log to the registry
+        SCTLog.register_process(self.process_uid, self)
+
+        # stdout_lines = []
+
+
+    def check_status(self):
+
+        now = time.time()
+
+
+        retcode = self.child.poll()
+        if retcode is not None:
+            logging.info("Subprocess is done.")
+            self.process_is_done = True
+
+        # Handle the standard output from the child process
+        if not self.child.stdout:
+            self.stdout_is_close = True
+            self.process_is_done = True
+
+        # Start the countdown for the done_timeout
+        if self.process_is_done and not self.completion_time:
+            self.completion_time = now
+
+        return retcode
+
+
+
+    def interupt_child(self):
+        self.force_stop(self.child.pid)
 
     @staticmethod
     def read_from_stream(stream, activity, std_queue=None, echo=False):
@@ -360,23 +427,20 @@ class SCTLog(object):
 
     def __init__(self, uid):
 
-        self._uid = uid
-        # self._queue = self.registered_queue.get(uid)[0]
-        self._queue = queue.Queue # DEBUG !!!
-        # self._subprocess = self.registered_queue.get(uid)[1]
-        self._subprocess = subprocess.Popen() # DEBUG !!!
+        self.uid = uid
+        self._tr = ToolboxRunner() #DEBUG !!!
+        # self._tr = self.registered_queue.get(uid)[0]
         self._data = self._registered_process.get(uid)[2]
         if self.queue is None:
             raise KeyError("{} is not a registered queue".format(uid))
 
 
     @classmethod
-    def register_process(cls, uid, new_queue, new_subprocess):
+    def register_process(cls, uid, runner):
         """ Add new process info to the class
 
         :param uid: the process uid
-        :param new_queue: a queue.Queue() object
-        :param new_subprocess: a subprocess.POPEN() object
+        :param runner: a runner object
         :return: cls(uid)
         """
 
@@ -384,7 +448,7 @@ class SCTLog(object):
         data['registration_Time'] = time.time()
         if cls._registered_process.get(uid):
             raise KeyError("process already registered{}".format(uid))
-        cls._registered_process[uid] = (new_queue, new_subprocess, data)
+        cls._registered_process[uid] = (runner, data)
 
         return cls(uid)
 
@@ -392,16 +456,16 @@ class SCTLog(object):
     def all_uid(cls):
         return cls._registered_process.keys()
 
-    def log_tail(self, maxline = 1):
+    def log_tail(self, maxline=1):
         """ Used to get a log feed line
         :maxline: maximjum number on line returned
         :return: new log line
         """
         nline = 0
         lines = []
-        while (not self._queue.empty() or nline < maxline):
-            lines.append(self._queue.get_nowait())
-            self.data['processed'] = lines[-1]
+        while (not self._tr.stdout_queue.empty() or nline < maxline):
+            lines.append(self._tr.stdout_queue.get_nowait())
+            self._data['processed'] = lines[-1]
             nline += 1
         return lines
 
@@ -415,10 +479,17 @@ class SCTLog(object):
         """
         :return: True if process still running Flase otherwise
         """
-        return self._subprocess.poll()
+        return self._tr.child.poll()
+
+    def kill_process(self):
+        self._tr.interupt_child()
 
     @classmethod
-    def flush_garbage(cls):
+    def garbage_collect(cls):
+        """
+        This is the poor man's garbage collector
+        :return:
+        """
         for key, process in cls._registered_process.items():
             one_day = 86400
             if (time.time() - process[2]['registration_Time']) > one_day and not process[1]:

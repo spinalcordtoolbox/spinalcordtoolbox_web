@@ -2,13 +2,19 @@ __author__ = 'willispinaud'
 
 from cornice import Service
 import string
-import random
-
+from ..controler import SCTLog
 
 logger = Service('logger',
                  '/logger',
                  'Get the running SCT log and return it to the client')
 
-@logger.get(renderer="string")
+@logger.get()
 def logger_get(request):
-    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
+    uid = request.GET["uid"]
+    info = SCTLog(uid)
+
+    if request.GET["old"]:
+        log = info.old_log()
+    else:
+        log = info.log_tail()
+    return log
