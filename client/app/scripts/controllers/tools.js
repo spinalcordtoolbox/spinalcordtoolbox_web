@@ -9,14 +9,16 @@
  */
 angular.module('angularSeedApp')
   .controller('ToolsCtrl', ['$scope', '$resource', 'SharedDataService', 'getTools', function ($scope, $resource, SharedDataService, getTools) {
+    //Initalize the communication with the server on /sctoolbox
     var sctoolbox = $resource('/sctoolbox');
+    //GET all the tool
     $scope.tools = sctoolbox.query(); //Because the server return an array, if it was a real json that would be .get()
     $scope.toolSelected = {};
 
     $scope.NewFile = SharedDataService;
 
     $scope.$watch('NewFile.pathArray', function () {
-      $scope.inputs = $scope.NewFile.pathArray;
+      $scope.inputs = $scope.NewFile.pathArray; //Update a shared variable with the selected files in the tree
       //$scope.$$childTail.model['1'] = $scope.NewFile.pathArray;
     });
 
@@ -27,22 +29,16 @@ angular.module('angularSeedApp')
       console.log(args_user);
       console.log("le path des inputs:" + inputs);
       var args_tool = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
-
       for (var i in args_tool) {
-
         for (var arg_user_order in args_user) {
           var arg_tool = args_tool[i];
-
+          //Update the value in the original JSON with the value entered by the user
           if (arg_tool["order"] == arg_user_order) {
-
             arg_tool["value"] = args_user[arg_user_order];
-            console.log(arg_tool["value"])
           }
-
         }
-
       }
-
+      //Request POST to /sctoolbox in order to launch the toolbox
       sctoolbox.save({tool_name: tool_name, args: args_user, inputs: inputs});
 
     };
@@ -69,7 +65,7 @@ angular.module('angularSeedApp')
           mandatoryClass = "mandatory";
         }
 
-
+        //If the example is an array create a SELECT
         if ((example) && (example.length > 1) && (typeof(example) === "object")) {
           prop[order] = {
             "title": name,
@@ -84,6 +80,7 @@ angular.module('angularSeedApp')
             }
           };
         }
+        //Or just put the example as placeholder (information inside the input)
         else if (name) {
           prop[order] = {
             "title": name,
@@ -100,8 +97,7 @@ angular.module('angularSeedApp')
 
       }
 
-      //@TODO: fix required field
-      console.log(prop);
+      //@TODO: add required field
       $scope.schema = {
         "type": "object",
         "title": "args",
@@ -109,15 +105,14 @@ angular.module('angularSeedApp')
       }
     };
 
-
     $scope.form = [
       "*",
       {
-        "type": "submit",
-        "title": "OK"
+        //"type": "submit",
+        //"title": "OK"
 
       }
     ];
 
-    $scope.args = {};
+    $scope.args = {}; //the arguments entered by the user
   }]);

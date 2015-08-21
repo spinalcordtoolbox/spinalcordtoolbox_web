@@ -52,16 +52,6 @@ angular
         controller: 'ToolsCtrl',
         controllerAs: 'tools'
       })
-      .when('/arguments', {
-        templateUrl: 'views/arguments.html',
-        controller: 'ArgumentsCtrl',
-        controllerAs: 'arguments'
-      })
-      .when('/CallFileBrowser', {
-        templateUrl: 'views/callfilebrowser.html',
-        controller: 'CallfilebrowserCtrl',
-        controllerAs: 'CallFileBrowser'
-      })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
@@ -86,6 +76,7 @@ angular
     // Don't strip trailing slashes from calculated URLs
     $resourceProvider.defaults.stripTrailingSlashes = false;
   }])
+  /*Authentification factory*/
   .factory("Auth", ["$firebaseAuth",
     function($firebaseAuth) {
       var ref = new Firebase("https://isct.firebaseio.com");

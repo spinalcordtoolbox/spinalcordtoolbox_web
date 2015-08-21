@@ -11,8 +11,9 @@ angular.module('angularSeedApp')
   .controller('ViewerCtrl', function ($scope, $localStorage, $modal, getJSONcolors) {
 
     $scope.$storage = $localStorage;
-    var volumes_files = $scope.$storage.volumes_files;
+    var volumes_files = $scope.$storage.volumes_files; //Get the volumes to load from the local storage
 
+    //Initialize a function in order to be able to draw
     var testDraw = function (canvas_buffer, ctx, params) {
     };
 
@@ -49,6 +50,7 @@ angular.module('angularSeedApp')
       $scope.color = $scope.colorSelected.FIELD3 + "," + $scope.colorSelected.FIELD4 + "," + $scope.colorSelected.FIELD5;
     });
 
+    //Open a modal on click with the File selector..
     $scope.open = function () {
       $modal.open({
         animation: true,
@@ -57,7 +59,7 @@ angular.module('angularSeedApp')
       });
     };
 
-
+    //The argument for brainbrowser to load volumes
     var load_params = {
       volumes: volumes_files
       ,

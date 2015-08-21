@@ -406,13 +406,10 @@ app/scripts/brainbrowser/viewer/brainbrowser/workers/mniobj.worker.js
 app/scripts/brainbrowser/viewer/brainbrowser/workers/text.intensity.worker.js
 app/scripts/brainbrowser/viewer/brainbrowser/workers/wavefrontobj.worker.js
 app/scripts/brainbrowser/viewer/brainbrowser/workers/wireframe.worker.js
-app/scripts/controllers/arguments.js
 app/scripts/controllers/browser.js
-app/scripts/controllers/callfilebrowser.js
 app/scripts/controllers/file-upload.js
 app/scripts/controllers/tools.js
 app/scripts/controllers/viewer.js
-app/scripts/services/fetchfilefactory.js
 app/scripts/services/gettools.js
 app/scripts/services/shareddataservice.js
 app/styles/main.css

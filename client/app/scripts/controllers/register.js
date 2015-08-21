@@ -25,7 +25,7 @@ angular.module('angularSeedApp')
           $scope.error = error;
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
-          $location.path("login");
+          $location.path("login"); //redirect to login page on success
         }
       });
     };

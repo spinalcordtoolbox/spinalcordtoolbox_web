@@ -32,9 +32,6 @@ angular.module('angularSeedApp')
     // store the interval promise in this variable
     var promise;
 
-    // simulated items array
-    $scope.items = [];
-
     // starts the interval
     $scope.start = function() {
       // stops any running interval to avoid two intervals running at the same time
@@ -56,5 +53,4 @@ angular.module('angularSeedApp')
     $scope.$on('$destroy', function() {
       $scope.stop();
     });
-
   });

@@ -14,7 +14,7 @@ angular.module('angularSeedApp')
   .controller('ToolboxCtrl', ['$scope', '$modal', function ($scope, $modal) {
 
     $scope.console = function () {
-
+      //Call a new modal with the toolbox
       var modalInstance = $modal.open({
         animation: true,
         templateUrl: '../views/console.html',
