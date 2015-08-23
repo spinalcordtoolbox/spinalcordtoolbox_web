@@ -12,6 +12,7 @@ SCT_PYTHONPATH = ""
 SCT_TMP_PKG = "scripts" # DEBUG !!!
 EXEC_TMP = PROJECT_ROOT+'../{}'.format(SCT_TMP_PKG)
 EXEC_PATH = PROJECT_ROOT+'../../spinalcordtoolbox/scripts'
+PYHTON_NAME = "python2.7"
 
 
 # Where input files are stored

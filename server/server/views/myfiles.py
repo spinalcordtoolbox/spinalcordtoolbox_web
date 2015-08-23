@@ -11,19 +11,21 @@ import gzip
 from pyramid.httpexceptions import HTTPFound
 import shutil
 
-'''
-Getter:
-->Collection of files for an user
-->The path for a specific file
-Post:
-->Add a file for an user
-Delete:
-->Delete a specific file
-?Get:
-->Show a file into the viewer?
-'''
+# '''
+# Getter:
+# Post:
+# ->Add a file for an user
+# Delete:
+# ->Delete a specific file
+# ?Get:
+# ->Show a file into the viewer?
+# '''
+
+desc = "'''Ressource to manage user's files'''"
+
 @resource(collection_path='/users/{user_id}/files',
-          path='/users/{user_id}/files/{file_id}')
+          path='/users/{user_id}/files/{file_id}',
+          description=desc)
 class File(object):
 
     def __init__(self, request):
@@ -31,6 +33,10 @@ class File(object):
 
     @view()
     def collection_get(self):
+        '''
+        :return: ->Collection of files for an user
+->The path for a specific file
+        '''
         userid = self.request.matchdict['user_id']
         if (userid != self.request.unauthenticated_userid): #test if the logged user is trying to access his own files
             #add 'return http_forbidden'
@@ -48,16 +54,21 @@ class File(object):
 
     @view(renderer='myfiles.mako')
     def delete(self):
+        '''
+        :return: ->Delete a specific file
+        '''
         session = self.request.db
         userid = self.request.matchdict['user_id']
-        #add user_id verification
-        fileid = self.request.matchdict['file_id']
-        #Find the file in the database
-        file_to_delete = session.query(models.File).filter_by(id=fileid).first()
-        #Delete the entry
-        session.delete(file_to_delete)
-        session.commit()
-        return {'user':session.query(models.File).filter(models.File.user_id==userid).all()}
+        #This is a verification to be sur the user is the ower of the files
+        if userid == self.request.unauthenticated_userid:
+            #add user_id verification
+            fileid = self.request.matchdict['file_id']
+            #Find the file in the database
+            file_to_delete = session.query(models.File).filter_by(id=fileid).first()
+            #Delete the entry
+            session.delete(file_to_delete)
+            session.commit()
+        return {}
 
 
 @view_config(route_name='myfiles', renderer='myfiles.mako',

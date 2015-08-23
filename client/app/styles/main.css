@@ -206,3 +206,11 @@ body {
   margin-top: 10px;
 }
 /*END LOGIN FORM*/
+
+.rubber{
+  height: 2em;
+}
+.rubber:hover{
+  color: #f7172a;
+  cursor: hand;
+}

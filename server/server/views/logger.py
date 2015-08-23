@@ -1,14 +1,11 @@
 __author__ = 'willispinaud'
 
 from cornice import Service
-<<<<<<< HEAD
 from ..controler import SCTLog
 
 
-=======
 import string
 from ..controler import SCTLog
->>>>>>> origin/test_merge
 
 logger = Service('logger',
                  '/logger',
@@ -16,11 +13,13 @@ logger = Service('logger',
 
 @logger.get()
 def logger_get(request):
-<<<<<<< HEAD
+    '''
+    :param request.uid: The user uid, it's used to find the process launched by the user
+    :return: one line of the log
+    '''
     test = SCTLog(1)
 
     return test.log_tail()
-=======
     uid = request.GET["uid"]
     info = SCTLog(uid)
 
@@ -29,4 +28,3 @@ def logger_get(request):
     else:
         log = info.log_tail()
     return log
->>>>>>> origin/test_merge

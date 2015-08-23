@@ -34,6 +34,7 @@ angular.module('angularSeedApp')
         }, function(error, authData) {
           if (error) {
             console.log("Login Failed!", error);
+            $scope.error = error;
           } else {
             console.log("Authenticated successfully with payload:", authData);
           }

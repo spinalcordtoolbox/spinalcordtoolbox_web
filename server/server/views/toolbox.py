@@ -31,6 +31,10 @@ sctoolbox = Service('sctoolbox',
 
 @sctoolbox.get(renderer='string')
 def sctoolbox_get(request):
+    '''
+    :param request:
+    :return: Return a list of all the sctools which have a get_parser
+    '''
     logging.basicConfig(level=logging.DEBUG)
     session = request.db
     #PluginUpdater(session=session, script_path="/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox/scripts", reload=True)
@@ -40,6 +44,12 @@ def sctoolbox_get(request):
 
 @sctoolbox.post()
 def sctoolbox_post(request):
+    '''
+    :param request.inputs: I guess it's a useless field
+    :param request.args: Args selected by the user
+    :param request.tool_name: the tool selected by the user
+    :return:
+    '''
 
     session=request.db
 

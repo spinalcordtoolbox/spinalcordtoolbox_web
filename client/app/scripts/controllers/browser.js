@@ -27,6 +27,17 @@ angular.module('angularSeedApp')
         }
       });*/
 
+      $scope.refresh = function(){
+        $route.reload();
+      };
+
+      $scope.delete = function(path){
+        for (i in files_id){
+          var file_id = files_id[i];
+          $http.delete("/users/"+$scope.$storage.uid+"/files/"+file_id);
+        }
+      };
+
       //When the event changedCB is activated, this function add the paths of the selected FILES to the fileviewer variable
       $scope.changedCB = function (e, data) {
         var nodeChecked = [];

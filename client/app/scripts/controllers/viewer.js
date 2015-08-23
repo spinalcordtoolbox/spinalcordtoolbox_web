@@ -22,6 +22,9 @@ angular.module('angularSeedApp')
     $scope.setSizeBrush = function (size) {
       $scope.sizeBrush = size;
     };
+    $scope.setColorBrush = function (R,G,B) {
+      $scope.color = R+","+G+","+B;
+    };
 
     //Brush for label, if == 0.5 it's deactivated
     $scope.sizeBrushLabel = 0.5; //Brush size in 3D

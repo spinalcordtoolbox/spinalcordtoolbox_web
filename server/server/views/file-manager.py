@@ -9,11 +9,21 @@ import zlib
 #####
 # AngularJS - File Tree
 #####
+
+tree_desc = " ''' Service that read the database to generate a tree for a specific user'''"
+
 tree = Service('tree',
                  '/tree/{uid}',
-                 'generate the json for JSTree')
+                 'generate the json for JSTree',
+               description=tree_desc)
 
 def path_to_db(path,session,tag):
+    '''
+    :param path: the path where to scan files and folders
+    :param session: the SQL session.db
+    :param tag: a tag to identify the first iteration of the recursive loop as the root folder/file
+    :return: Register each file and each folder into the database, recursively
+    '''
     d = {'text': os.path.basename(path)}
     d['path'] = path #The absolute path, usefull to launch the SCToolbox
     d['rel_path'] = os.path.relpath(path)[7:] #The relative path, usefull to load volumes files into BrainBrowser
@@ -47,9 +57,8 @@ def path_to_db(path,session,tag):
 @tree.get()
 def tree_get(request):
     '''
-
-    :param request:
-    :return:
+    :param request.uid: The uid of the active user
+    :return: a JSON with all the files and folders of the user in order to generate the file tree
     '''
     uid = request.matchdict['uid']
     session = request.db
@@ -77,7 +86,7 @@ def tree_post(request):
     '''
     Post the new file tree and do the modification on the server side
     :param request:
-    :return:
+    :return: the updated file tree
     '''
     return {}
 
@@ -88,6 +97,10 @@ download = Service('download',
 
 @download.get()
 def download_get(request):
+    '''
+    :param request.file_id: an array of the selected files
+    :return: a ziped file with all the selected files
+    '''
     file_id = jsonpickle.loads(request.GET['id'])
     #test if the get argument is in the right format
     if type(file_id)==type([]):
