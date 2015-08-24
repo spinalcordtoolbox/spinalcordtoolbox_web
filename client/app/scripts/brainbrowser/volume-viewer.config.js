@@ -2,7 +2,7 @@
 * BrainBrowser: Web-based Neurological Visualization Tools
 * (https://brainbrowser.cbrain.mcgill.ca)
 *
-* Copyright (C) 2011 
+* Copyright (C) 2011
 * The Royal Institution for the Advancement of Learning
 * McGill University
 *
@@ -24,41 +24,41 @@
 
 (function() {
   "use strict";
-  
+
   // Custom configuration for the Volume Viewer demo app.
   BrainBrowser.config.set("color_maps", [
     {
       name: "Spectral",
-      url: "static/js/viewer/color-maps/spectral-brainview.txt",
+      url: "scripts/brainbrowser/viewer/color-maps/spectral-brainview.txt",
       cursor_color: "#FFFFFF"
     },
     {
       name: "Thermal",
-      url: "static/js/viewer/color-maps/thermal.txt",
+      url: "scripts/brainbrowser/viewer/color-maps/thermal.txt",
       cursor_color: "#FFFFFF"
     },
     {
       name: "Gray",
-      url: "static/js/viewer/color-maps/gray-scale.txt",
+      url: "scripts/brainbrowser/viewer/color-maps/gray-scale.txt",
       cursor_color: "#FF0000"
     },
     {
       name: "Blue",
-      url: "static/js/viewer/color-maps/blue.txt",
+      url: "scripts/brainbrowser/viewer/color-maps/blue.txt",
       cursor_color: "#FFFFFF"
     },
     {
       name: "Green",
-      url: "static/js/viewer/color-maps/green.txt",
+      url: "scripts/brainbrowser/viewer/color-maps/green.txt",
       cursor_color: "#FF0000"
     },
     {
       name: "Freesurfer",
-      url: "static/js/viewer/color-maps/FreeSurferColorLUT20120827.txt",
+      url: "scripts/brainbrowser/viewer/color-maps/FreeSurferColorLUT20120827.txt",
       cursor_color: "#FF0000"
     }
   ]);
-    
+
 })();
 
 

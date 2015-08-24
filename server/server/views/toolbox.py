@@ -46,7 +46,7 @@ def sctoolbox_get(request):
 def sctoolbox_post(request):
     '''
     :param request.inputs: I guess it's a useless field
-    :param request.args: Args selected by the user
+    :param request.args: Args selected by the usergit pull
     :param request.tool_name: the tool selected by the user
     :return:
     '''

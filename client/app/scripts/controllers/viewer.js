@@ -287,8 +287,8 @@ angular.module('angularSeedApp')
       //    viewer.clearVolumes();
       //    //viewer.loadVolume({
       //    //  type: "minc",
-      //    //  header_url: "static/js/viewer/models/functional.mnc.header",
-      //    //  raw_data_url: "static/js/viewer/models/functional.mnc.raw",
+      //    //  header_url: "scripts/brainbrowser/viewer/models/functional.mnc.header",
+      //    //  raw_data_url: "scripts/brainbrowser/viewer/models/functional.mnc.raw",
       //    //  template: {
       //    //    element_id: "volume-ui-template",
       //    //    viewer_insert_class: "volume-viewer-display"
@@ -304,8 +304,8 @@ angular.module('angularSeedApp')
       //      volumes: [
       //        {
       //          type: "minc",
-      //          header_url: "static/js/viewer/models/structural4.mnc.header",
-      //          raw_data_url: "static/js/viewer/models/structural4.mnc.raw",
+      //          header_url: "scripts/brainbrowser/viewer/models/structural4.mnc.header",
+      //          raw_data_url: "scripts/brainbrowser/viewer/models/structural4.mnc.raw",
       //          template: {
       //            element_id: "volume-ui-template",
       //            viewer_insert_class: "volume-viewer-display"
@@ -313,8 +313,8 @@ angular.module('angularSeedApp')
       //        },
       //        {
       //          type: 'minc',
-      //          header_url: "static/js/viewer/models/structural4.mnc.header",
-      //          raw_data_url: "static/js/viewer/models/structural4.mnc.raw",
+      //          header_url: "scripts/brainbrowser/viewer/models/structural4.mnc.header",
+      //          raw_data_url: "scripts/brainbrowser/viewer/models/structural4.mnc.raw",
       //          template: {
       //            element_id: "volume-ui-template",
       //            viewer_insert_class: "volume-viewer-display"
