@@ -1,1 +1,1 @@
-recursive-include app
+recursive-include app *
