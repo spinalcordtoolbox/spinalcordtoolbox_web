@@ -88,13 +88,13 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
 
     options = options || {};
     var overlay_options = options.overlay && typeof options.overlay === "object" ? options.overlay : {};
-          
+
     var volume_descriptions = options.volumes;
     var num_descriptions = options.volumes.length;
     var complete = options.complete;
     var num_loaded = 0;
     var i;
-        
+
     function loadVolume(i) {
       setVolume(i, volume_descriptions[i], function() {
         if (++num_loaded < num_descriptions) {
@@ -118,7 +118,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
         }
       });
     }
-    
+
     for (i = 0; i < num_descriptions; i++) {
       loadVolume(i);
     }
@@ -361,7 +361,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
   function openVolume(volume_description, callback){
     var loader = VolumeViewer.volume_loaders[volume_description.type];
     var error_message;
-    
+
     if(loader){
       loader(volume_description, callback);
     } else {
@@ -428,7 +428,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
   function setVolumeColorMap(vol_id, color_map, cursor_color, callback) {
     color_map.cursor_color = cursor_color;
     viewer.setVolumeColorMap(vol_id, color_map);
-    
+
     if (BrainBrowser.utils.isFunction(callback)) {
       callback(viewer.volumes[vol_id], color_map);
     }
@@ -438,7 +438,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
     var template = document.getElementById(template_id).innerHTML.replace(/\{\{VOLID\}\}/gm, vol_id);
     var temp = document.createElement("div");
     temp.innerHTML = template;
-    
+
     var template_elements = temp.childNodes;
     var viewer_insert = temp.getElementsByClassName(viewer_insert_class)[0];
 
@@ -467,7 +467,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
     }else{
       dom_element.appendChild(container);
     }
-    
+
 
     if(volume_description.style){
       var att = document.createAttribute("style");
@@ -476,7 +476,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
     }
 
     var volume = viewer.volumes[vol_id];
-          
+
     var display = VolumeViewer.createDisplay();
     var template_options = volume_description.template || {};
     var views = volume_description.views || ["xspace", "yspace", "zspace"];
@@ -485,7 +485,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
     display.propagateEventTo("*", volume);
 
     container.className = "volume-container";
-    
+
     views.forEach(function(axis_name) {
 
       var canvas = document.createElement("canvas");
@@ -576,14 +576,14 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
         }
       });
     }
-  
+
     ///////////////////////////////////
     // Mouse Events
     ///////////////////////////////////
-    
+
     (function() {
       var current_target = null;
-      
+
       views.forEach(function(axis_name) {
         var panel = display.getPanel(axis_name);
         var canvas = panel.canvas;
@@ -596,7 +596,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
 
           if (ctrl_key) {
             if(viewer.interaction_type === 1){
-              
+
             }else{
               viewer.volumes.forEach(function(volume) {
                 volume.display.forEach(function(panel) {
@@ -619,7 +619,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
             if (viewer.synced){
               viewer.volumes.forEach(function(synced_volume, synced_vol_id) {
                 var synced_panel;
-                
+
                 if (synced_vol_id !== vol_id) {
                   synced_panel = synced_volume.display.getPanel(axis_name);
                   synced_panel.updateVolumePosition(pointer.x, pointer.y);
@@ -657,7 +657,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
               });
             }
           }else if(ctrl_key && viewer.interaction_type === 1){
-            
+
             drag_delta = panel.followPointer(pointer);
 
             if(drag_delta.dx > 0 && panel.contrast < 2){
@@ -684,8 +684,8 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
               panel.brightness = -1;
             }
             panel.updateSlice();
-            
-            
+
+
           }else{
             panel.updateVolumePosition(pointer.x, pointer.y);
             volume.display.forEach(function(other_panel) {
@@ -697,7 +697,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
             if (viewer.synced){
               viewer.volumes.forEach(function(synced_volume, synced_vol_id) {
                 var synced_panel;
-                
+
                 if (synced_vol_id !== vol_id) {
                   synced_panel = synced_volume.display.getPanel(axis_name);
                   synced_panel.updateVolumePosition(pointer.x, pointer.y);
@@ -727,7 +727,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
             drag(panel.touches[0], panel.touches.length === views.length, event.ctrlKey);
           }
         }
-        
+
         function mouseDragEnd() {
           document.removeEventListener("mousemove", mouseDrag, false);
           document.removeEventListener("mouseup", mouseDragEnd, false);
@@ -774,12 +774,12 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
 
           last_touch_distance = null;
         }
-        
+
         canvas.addEventListener("mousedown", function(event) {
           event.preventDefault();
 
           current_target = event.target;
-          
+
           if (viewer.active_panel) {
             viewer.active_panel.updated = true;
           }
@@ -816,7 +816,7 @@ BrainBrowser.VolumeViewer.modules.loading = function(viewer) {
           }
 
         }, false);
-        
+
         function wheelHandler(event) {
           event.preventDefault();
 

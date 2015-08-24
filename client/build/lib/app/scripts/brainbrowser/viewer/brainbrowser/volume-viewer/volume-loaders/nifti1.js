@@ -24,14 +24,14 @@
 * Author: Nicolas Kassis
 * Author: Tarek Sherif <tsherif@gmail.com> (http://tareksherif.ca/)
 * Author: Robert D. Vincent <robert.d.vincent@mcgill.ca>
-* 
-* Loads NIfTI-1 files for volume viewer. For details on the NIfTI-1 format, 
+*
+* Loads NIfTI-1 files for volume viewer. For details on the NIfTI-1 format,
 * see: http://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields
 */
 
 (function() {
   "use strict";
-     
+
   var VolumeViewer = BrainBrowser.VolumeViewer;
   var image_creation_context = document.createElement("canvas").getContext("2d");
 
@@ -45,6 +45,8 @@
           url = url.slice(0, end);
         }
         if(url.indexOf(".gz") !== -1){
+          console.log("c'est un gzip...");
+          //var inflate = new Zlib.Gunzip(new Uint8Array(nii_data));
           var inflate = new Zlib.Gunzip(new Uint8Array(nii_data));
           var data = inflate.decompress();
           nii_data = data.buffer;
@@ -53,7 +55,7 @@
           createNifti1Volume(header, nii_data, callback);
         });
       }, { result_type: "arraybuffer" });
-                                        
+
     } else if (description.nii_file) {
       BrainBrowser.loader.loadFromFile(description.nii_file, function(nii_data) {
         parseNifti1Header(nii_data, function(header) {
@@ -67,7 +69,7 @@
       BrainBrowser.events.triggerEvent("error", { message: error_message });
       throw new Error(error_message);
     }
-    
+
   };
 
   function parseNifti1Header(raw_data, callback) {
@@ -149,7 +151,7 @@
     }
 
     if (sform_code > 0) {
-      /* The "Sform", if present, defines an affine transform which is 
+      /* The "Sform", if present, defines an affine transform which is
        * generally assumed to correspond to some standard coordinate
        * space (e.g. Talairach).
        */
@@ -199,7 +201,7 @@
       return Math.sqrt(dotprod);
     }
 
-    // Now that we have the transform, need to convert it to MINC-like 
+    // Now that we have the transform, need to convert it to MINC-like
     // steps and direction_cosines.
 
     var xmag = magnitude(transform[0]);
@@ -215,7 +217,7 @@
       y_dir_cosines[i] = transform[1][i] / ystep;
       z_dir_cosines[i] = transform[2][i] / zstep;
     }
-        
+
     header.xspace.step = xstep;
     header.yspace.step = ystep;
     header.zspace.step = zstep;
@@ -259,7 +261,7 @@
     var d = qd;
     var a, xd, yd, zd;
 
-    // compute a parameter from b,c,d 
+    // compute a parameter from b,c,d
 
     a = 1.0 - (b * b + c * c + d * d);
     if ( a < 1.e-7 ) {           // special case
@@ -272,7 +274,7 @@
       a = Math.sqrt(a);          // angle = 2*arccos(a)
     }
 
-    // load rotation matrix, including scaling factors for voxel sizes 
+    // load rotation matrix, including scaling factors for voxel sizes
 
     xd = (dx > 0.0) ? dx : 1.0;  // make sure are positive
     yd = (dy > 0.0) ? dy : 1.0;
@@ -356,7 +358,7 @@
         var x, y, z;
 
         // Linear offsets into volume considering an
-        // increasing number of axes: (t) time, 
+        // increasing number of axes: (t) time,
         // (z) z-axis, (y) y-axis, (x) x-axis.
         var tz_offset, tzy_offset, tzyx_offset;
 
@@ -395,10 +397,10 @@
         if(volume.border){
           slice = volume.getSliceBorder(slice);
         }
-        
+
         return slice;
       },
-      
+
 
       getSliceBorder: function(slice){
         var sliceOut = new slice.data.constructor(slice.data);
@@ -471,18 +473,18 @@
         var index =  z + (y)*movsize[0] + (x)*movsize[0]*movsize[1];
 
         return volume.data[index];
-        
+
       },
 
       setIntensityValue : function(x, y, z, value){
 
         var movsize = [ header[header.order[2]].space_length, header[header.order[1]].space_length ];
         var index =  z + (y)*movsize[0] + (x)*movsize[0]*movsize[1];
-        
+
         volume.data[index] = value;
 
       },
-      
+
       getVoxelCoords: function() {
         var header = volume.header;
         var position = {
@@ -497,24 +499,24 @@
           k: position[header.order[2]],
         };
       },
-      
+
       setVoxelCoords: function(i, j, k) {
         var header = volume.header;
         var ispace = header.order[0];
         var jspace = header.order[1];
         var kspace = header.order[2];
-        
+
         volume.position[ispace] = header[ispace].step > 0 ? i : header[ispace].space_length - i;
         volume.position[jspace] = header[jspace].step > 0 ? j : header[jspace].space_length - j;
         volume.position[kspace] = header[kspace].step > 0 ? k : header[kspace].space_length - k;
       },
-      
+
       getWorldCoords: function() {
         var voxel = volume.getVoxelCoords();
 
         return volume.voxelToWorld(voxel.i, voxel.j, voxel.k);
       },
-      
+
       setWorldCoords: function(x, y, z) {
         var voxel = volume.worldToVoxel(x, y, z);
 
@@ -594,14 +596,14 @@
         };
       }
     };
-    
+
     if (BrainBrowser.utils.isFunction(callback)) {
       callback(volume);
     }
   }
 
   function createNifti1Data(header, raw_data) {
-    
+
     var native_data = null;
 
     switch (header.datatype) {
@@ -678,5 +680,5 @@
 
     return native_data;
   }
-   
+
 }());

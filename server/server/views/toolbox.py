@@ -5,7 +5,7 @@ from ..models import models
 from cornice.resource import resource, view
 from cornice import Service
 from .. import cfg
-from ..controler import ToolboxRunner, PluginUpdater
+from .. import controler
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import jsonpickle
@@ -39,8 +39,8 @@ def sctoolbox_get(request):
     session = request.db
     #PluginUpdater(session=session, script_path="/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox/scripts", reload=True)
     rt = session.query(models.RegisteredTool).all()
-    rt_json = jsonpickle.dumps(rt)
-    return rt_json
+    # rt = session.query(models.RegisteredTool).first() #DEBUG !!!
+    return jsonpickle.dumps(rt)
 
 @sctoolbox.post()
 def sctoolbox_post(request):
@@ -55,23 +55,31 @@ def sctoolbox_post(request):
 
     plugins_path = cfg.SPINALCORD_BIN
 
-    inputs = request.json_body['inputs']
-    options = request.json_body['args']
-    tool_name = request.json_body['tool_name']
 
-    rt = session.query(models.RegisteredTool).filter(models.RegisteredTool.name == tool_name).first()
+    try:
+        inputs = request.json_body['inputs']
+        options = request.json_body['args']
+        tool_name = request.json_body['tool_name']
 
-    #update the RT object with user value
-    for o in rt.options.values():
-        for i in options:
-            if o.get("order") == int(i):
-                o["value"] = options[i]
+        rt = session.query(models.RegisteredTool).filter(models.RegisteredTool.name == tool_name).first()
 
-    tbr = ToolboxRunner(
-        rt,
-        plugins_path,
-        1
-    )
+        # update the RT object with user value
+        for o in rt.options.values():
+            for i in options:
+                if o.get("order") == int(i):
+                    o["value"] = options[i]
+
+    except KeyError:
+        rt = jsonpickle.loads(request.body.decode('utf-8'))
+
+
+
+
+    if rt:
+
+        tbr = controler.ToolboxRunner(
+        controler.SCTExec(registered_tool=rt),
+        plugins_path, 1)
 
     tbr.run()
     return {}

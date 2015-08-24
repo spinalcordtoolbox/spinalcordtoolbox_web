@@ -248,7 +248,7 @@ class ToolboxRunner(object):
         stdout_queue = queue.Queue()
         stdout_monitor_thread = threading.Thread(
             target=self.read_from_stream,
-            args=(child.stdout, self._activity, stdout_queue, True),
+            args=(child.stdout, self._activity, stdout_queue, False),
             )
 
         stdout_monitor_thread.daemon = True
@@ -352,7 +352,7 @@ class ToolboxRunner(object):
         self.stdout_queue = queue.Queue()
         stdout_monitor_thread = threading.Thread(
             target=self.read_from_stream,
-            args=(self.child.stdout, self._activity, self.stdout_queue, True),
+            args=(self.child.stdout, self._activity, self.stdout_queue, False),
             )
 
         stdout_monitor_thread.daemon = True
@@ -428,10 +428,10 @@ class SCTLog(object):
     def __init__(self, uid):
 
         self.uid = uid
-        self._tr = ToolboxRunner() #DEBUG !!!
-        # self._tr = self.registered_queue.get(uid)[0]
-        self._data = self._registered_process.get(uid)[2]
-        if self.queue is None:
+        # self._tr = ToolboxRunner() #DEBUG !!!
+        self._tr = self._registered_process.get(uid)[0]
+        self._data = self._registered_process.get(uid)[1]
+        if self._tr is None:
             raise KeyError("{} is not a registered queue".format(uid))
 
 
@@ -446,8 +446,8 @@ class SCTLog(object):
 
         data = {}
         data['registration_Time'] = time.time()
-        if cls._registered_process.get(uid):
-            raise KeyError("process already registered{}".format(uid))
+        # if cls._registered_process.get(uid):
+        #     raise KeyError("process already registered{}".format(uid)) ## DEBUG
         cls._registered_process[uid] = (runner, data)
 
         return cls(uid)
@@ -463,7 +463,7 @@ class SCTLog(object):
         """
         nline = 0
         lines = []
-        while (not self._tr.stdout_queue.empty() or nline < maxline):
+        while not self._tr.stdout_queue.empty() and nline < maxline:
             lines.append(self._tr.stdout_queue.get_nowait())
             self._data['processed'] = lines[-1]
             nline += 1
@@ -498,7 +498,7 @@ class SCTLog(object):
 
 class SCTExec(object):
 
-    def __init__(self, name, options, help_str, input_path, output_path):
+    def __init__(self, name=None, options=None, help_str=None, registered_tool=None):
         """ Has the same variable than the models.models.RegisteredTool
 
         @TODO use input and output from __init__, not  cfg.INPUT_FILE_TAG
@@ -508,9 +508,9 @@ class SCTExec(object):
         :param help_str:
         """
 
-        self.name = name
-        self.options = options
-        self.help_str = help_str
+        self.name = registered_tool.name if registered_tool else name
+        self.options = registered_tool.options if registered_tool else options
+        self.help_str = registered_tool.help_str if registered_tool else help_str
 
 
     def _parse_options(self, options, name):
@@ -538,8 +538,9 @@ class SCTExec(object):
         string of the form
         "{EXEC_DIR_TAG}/exec.ext -i {INPUT_FILE_TAG} -o {OUTPUT_DIR_TAG} [--option other_options ...] "
 
+
         """
-        opt = self._parse_options(self.options)
+        opt = self._parse_options(self.options, self.name)
 
         opt = ' '. join(['{} {}'.format(k, v)
                         for k, v in opt.items()])

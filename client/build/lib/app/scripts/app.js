@@ -15,17 +15,20 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
+    //'ngTouch',
     'jsTree.directive',
     'ngFileUpload',
     'angular-loading-bar',
     'ui.bootstrap',
-    'mgcrea.ngStrap',
-    'schemaForm'
+    //'mgcrea.ngStrap',
+    'schemaForm',
+    'firebase',
+    'ngStorage',
+    'luegg.directives'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/viewer', {
         templateUrl: 'views/viewer.html',
         controller: 'ViewerCtrl',
         controllerAs: 'viewer'
@@ -42,23 +45,45 @@ angular
       })
       .when('/toolbox', {
         templateUrl: 'views/toolbox.html',
+        controller: 'ToolboxCtrl'
       })
       .when('/tools', {
         templateUrl: 'views/tools.html',
         controller: 'ToolsCtrl',
         controllerAs: 'tools'
       })
-      .when('/arguments', {
-        templateUrl: 'views/arguments.html',
-        controller: 'ArgumentsCtrl',
-        controllerAs: 'arguments'
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
       })
-      .when('/CallFileBrowser', {
-        templateUrl: 'views/callfilebrowser.html',
-        controller: 'CallfilebrowserCtrl',
-        controllerAs: 'CallFileBrowser'
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl',
+        controllerAs: 'register'
+      })
+      .when('/console', {
+        templateUrl: 'views/console.html',
+        controller: 'ConsoleCtrl',
+        controllerAs: 'console'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/',
+        templateUrl: 'views/toolbox.html'
       });
-  });
+  })
+  .config(['$resourceProvider', function ($resourceProvider) {
+    // Don't strip trailing slashes from calculated URLs
+    $resourceProvider.defaults.stripTrailingSlashes = false;
+  }])
+  /*Authentification factory*/
+  .factory("Auth", ["$firebaseAuth",
+    function($firebaseAuth) {
+      var ref = new Firebase("https://isct.firebaseio.com");
+      return $firebaseAuth(ref);
+    }
+  ])
+  .config(['$compileProvider',
+    function ($compileProvider) {
+      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);
+    }]);
