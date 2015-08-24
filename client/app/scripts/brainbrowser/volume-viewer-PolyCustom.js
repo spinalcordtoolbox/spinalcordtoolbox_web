@@ -42,17 +42,17 @@ $(function() {
 
     var volumes_files = [{
       type: "nifti1",
-      nii_url: "static/js/viewer/models/T1.nii",
+      nii_url: "scripts/brainbrowser/viewer/models/T1.nii",
       template: {
         element_id: "volume-ui-template", viewer_insert_class: "volume-viewer-display"
       }
     }, {
       type: "nifti1",
-      nii_url: "static/js/viewer/models/T1.nii",
+      nii_url: "scripts/brainbrowser/viewer/models/T1.nii",
       template: {element_id: "volume-ui-template", viewer_insert_class: "volume-viewer-display"}
     }, {
       type: "nifti1",
-      nii_url: "static/js/viewer/models/T1_aseg2.nii",
+      nii_url: "scripts/brainbrowser/viewer/models/T1_aseg2.nii",
       template: {element_id: "volume-ui-template", viewer_insert_class: "volume-viewer-display"}
     }];
 
@@ -68,8 +68,8 @@ $(function() {
         viewer.clearVolumes();
         viewer.loadVolume({
           type: "minc",
-          header_url: "static/js/viewer/models/functional.mnc.header",
-          raw_data_url: "static/js/viewer/models/functional.mnc.raw",
+          header_url: "scripts/brainbrowser/viewer/models/functional.mnc.header",
+          raw_data_url: "scripts/brainbrowser/viewer/models/functional.mnc.raw",
           template: {
             element_id: "volume-ui-template",
             viewer_insert_class: "volume-viewer-display"
@@ -85,8 +85,8 @@ $(function() {
           volumes: [
             {
               type: "minc",
-              header_url: "static/js/viewer/models/structural4.mnc.header",
-              raw_data_url: "static/js/viewer/models/structural4.mnc.raw",
+              header_url: "scripts/brainbrowser/viewer/models/structural4.mnc.header",
+              raw_data_url: "scripts/brainbrowser/viewer/models/structural4.mnc.raw",
               template: {
                 element_id: "volume-ui-template",
                 viewer_insert_class: "volume-viewer-display"
@@ -94,8 +94,8 @@ $(function() {
             },
             {
               type: 'minc',
-              header_url: "static/js/viewer/models/structural4.mnc.header",
-              raw_data_url: "static/js/viewer/models/structural4.mnc.raw",
+              header_url: "scripts/brainbrowser/viewer/models/structural4.mnc.header",
+              raw_data_url: "scripts/brainbrowser/viewer/models/structural4.mnc.raw",
               template: {
                 element_id: "volume-ui-template",
                 viewer_insert_class: "volume-viewer-display"

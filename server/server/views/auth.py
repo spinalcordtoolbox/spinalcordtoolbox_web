@@ -58,13 +58,13 @@ class User(object):
 #     session.add(new_user)
 #     session.commit()
 #     return HTTPFound(location=request.route_url('signin'))
-
-# #
-# # @foobar.get(renderer = 'signup.mako')
-# # def foobar_get(request):
-# #     schema = RegisterForm()
-# #     myform = Form(schema, buttons=('Register',))
-# #     return {"form": myform.render(), "values": None}
+#
+#
+# @foobar.get(renderer = 'signup.mako')
+# def foobar_get(request):
+#     schema = RegisterForm()
+#     myform = Form(schema, buttons=('Register',))
+#     return {"form": myform.render(), "values": None}
 #
 # @view_config(route_name='signin', renderer='signin.mako')
 # def signin(request):
@@ -94,7 +94,6 @@ class User(object):
 #     # We are a GET not a POST
 #     return {"form": myform.render(), "values": None}
 #
-
 # @view_config(route_name='signup',
 #              renderer='signup.mako')
 # def signup(request):
