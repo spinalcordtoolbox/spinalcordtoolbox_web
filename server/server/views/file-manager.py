@@ -25,7 +25,7 @@ def path_to_db(path,session,tag):
     '''
     d = {'text': os.path.basename(path)}
     d['path'] = path #The absolute path, usefull to launch the SCToolbox
-    d['rel_path'] = os.path.relpath(path)[7:] #The relative path, usefull to load volumes files into BrainBrowser
+    d['rel_path'] = os.path.relpath(path)[14:] #The relative path, usefull to load volumes files into BrainBrowser
     if tag:
         d['parent'] = "#"
     else :

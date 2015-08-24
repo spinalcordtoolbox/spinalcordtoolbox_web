@@ -248,7 +248,7 @@ class ToolboxRunner(object):
         stdout_queue = queue.Queue()
         stdout_monitor_thread = threading.Thread(
             target=self.read_from_stream,
-            args=(child.stdout, self._activity, stdout_queue, False),
+            args=(child.stdout, self._activity, stdout_queue, True),
             )
 
         stdout_monitor_thread.daemon = True
