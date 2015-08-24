@@ -279,60 +279,60 @@ angular.module('angularSeedApp')
       // Set up global UI hooks.
       ///////////////////////////
 
-      $("#volume-type").change(function () {
-        $("#sync-volumes-wrapper,#volume-file").hide();
-
-        //@TODO: delete these options but maybe add something for 4D volume?
-        if ($(this).val() === "functional") {
-          viewer.clearVolumes();
-          viewer.loadVolume({
-            type: "minc",
-            header_url: "static/js/viewer/models/functional.mnc.header",
-            raw_data_url: "static/js/viewer/models/functional.mnc.raw",
-            template: {
-              element_id: "volume-ui-template",
-              viewer_insert_class: "volume-viewer-display"
-            }
-          }/*, function() {
-           $(".slice-display").css("display", "inline");
-           $(".volume-controls").css("width", "auto");
-           }*/);
-        } else if ($(this).val() === "structural") {
-          $("#sync-volumes-wrapper").show();
-          viewer.clearVolumes();
-          viewer.loadVolumes({
-            volumes: [
-              {
-                type: "minc",
-                header_url: "static/js/viewer/models/structural4.mnc.header",
-                raw_data_url: "static/js/viewer/models/structural4.mnc.raw",
-                template: {
-                  element_id: "volume-ui-template",
-                  viewer_insert_class: "volume-viewer-display"
-                }
-              },
-              {
-                type: 'minc',
-                header_url: "static/js/viewer/models/structural4.mnc.header",
-                raw_data_url: "static/js/viewer/models/structural4.mnc.raw",
-                template: {
-                  element_id: "volume-ui-template",
-                  viewer_insert_class: "volume-viewer-display"
-                }
-              }
-            ],
-            overlay: {
-              template: {
-                element_id: "overlay-ui-template",
-                viewer_insert_class: "overlay-viewer-display"
-              }
-            }
-          });
-        } else {
-          $("#volume-file").show();
-          viewer.clearVolumes();
-        }
-      });
+      //$("#volume-type").change(function () {
+      //  $("#sync-volumes-wrapper,#volume-file").hide();
+      //
+      //  //@TODO: delete these options but maybe add something for 4D volume?
+      //  if ($(this).val() === "functional") {
+      //    viewer.clearVolumes();
+      //    //viewer.loadVolume({
+      //    //  type: "minc",
+      //    //  header_url: "static/js/viewer/models/functional.mnc.header",
+      //    //  raw_data_url: "static/js/viewer/models/functional.mnc.raw",
+      //    //  template: {
+      //    //    element_id: "volume-ui-template",
+      //    //    viewer_insert_class: "volume-viewer-display"
+      //    //  }
+      //    //}/*, function() {
+      //    // $(".slice-display").css("display", "inline");
+      //    // $(".volume-controls").css("width", "auto");
+      //    // }*/);
+      //  } else if ($(this).val() === "structural") {
+      //    $("#sync-volumes-wrapper").show();
+      //    viewer.clearVolumes();
+      //    viewer.loadVolumes({
+      //      volumes: [
+      //        {
+      //          type: "minc",
+      //          header_url: "static/js/viewer/models/structural4.mnc.header",
+      //          raw_data_url: "static/js/viewer/models/structural4.mnc.raw",
+      //          template: {
+      //            element_id: "volume-ui-template",
+      //            viewer_insert_class: "volume-viewer-display"
+      //          }
+      //        },
+      //        {
+      //          type: 'minc',
+      //          header_url: "static/js/viewer/models/structural4.mnc.header",
+      //          raw_data_url: "static/js/viewer/models/structural4.mnc.raw",
+      //          template: {
+      //            element_id: "volume-ui-template",
+      //            viewer_insert_class: "volume-viewer-display"
+      //          }
+      //        }
+      //      ],
+      //      overlay: {
+      //        template: {
+      //          element_id: "overlay-ui-template",
+      //          viewer_insert_class: "overlay-viewer-display"
+      //        }
+      //      }
+      //    });
+      //  } else {
+      //    $("#volume-file").show();
+      //    viewer.clearVolumes();
+      //  }
+      //});
 
       // Display only the volume selected.
       // @TODO: add a 'on-click' function for the file explorer to display the right control panel if a volume is selected
