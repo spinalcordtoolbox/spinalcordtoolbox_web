@@ -24,5 +24,6 @@ def logger_get(request):
     if request.GET["old"]:
         log = info.old_log()
     else:
-        log = info.log_tail()
+        log = info.log_tail(maxline=100)
+
     return log

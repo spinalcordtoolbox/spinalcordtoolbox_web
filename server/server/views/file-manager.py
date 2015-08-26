@@ -1,4 +1,4 @@
-import os, zipfile
+import os, zipfile, logging
 import io
 from ..cfg import FILE_REP_TMP
 from cornice import Service
@@ -25,7 +25,7 @@ def path_to_db(path,session,tag):
     '''
     d = {'text': os.path.basename(path)}
     d['path'] = path #The absolute path, usefull to launch the SCToolbox
-    d['rel_path'] = os.path.relpath(path)[7:] #The relative path, usefull to load volumes files into BrainBrowser
+    d['rel_path'] = os.path.relpath(path)[14:] #The relative path, usefull to load volumes files into BrainBrowser
     if tag:
         d['parent'] = "#"
     else :
@@ -39,7 +39,7 @@ def path_to_db(path,session,tag):
         d['icon'] = "glyphicon glyphicon-file"
         d['children'] = ""
 
-    print (d['parent'])
+    logging.info(d['parent'])
     u = models.tree(rel_path = d['rel_path'],
             size = 0,
             text = d['text'],

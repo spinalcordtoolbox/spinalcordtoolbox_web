@@ -2,6 +2,17 @@
 
 This project is awesome.
 
+-------
+TODO:
+Missing pieces to get out of beta mode:
+	- A module queueing system to restrinct the number of running process
+	- A database or file system organisation to store info including logs of every running jobs
+	- A view that shows all the jobs sent by a user
+
+	** Extra feature
+	- An Angular JS layer for brain browser 
+-------
+
 # Setting Up
 
 ## Contents
@@ -69,16 +80,12 @@ ln -s ../../../../../client/app app
 ```
 
 
-
-
-
-
 Some library are needed to have the server running they are include in the setup.py file
 Runnig 'python setup.py develop' should install all that you need in your virtual environement
 Did not forget to add the package you add for additional developpement in the setup.py file
 
 
-You need nodeJS to be installed so potential js goodies will work, the database is sqlite3, do not ferget to have that install too.
+You need nodeJS to be installed so potential js goodies will work, the database is sqlite3, do not forget to have that install too.
 
 
 lib that need to be there to compyle numpy, scipy, matplotlib...

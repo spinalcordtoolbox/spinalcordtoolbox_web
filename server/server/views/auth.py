@@ -7,11 +7,11 @@ from pyramid.security import remember, forget
 from deform_bootstrap import Form
 from cornice.resource import resource, view
 from pyramid.view import view_config
-from server.models import models
+
 from cornice import Service
-
-
 import simplejson as json
+
+from ..models import models
 
 '''RESTful users ressources'''
 
@@ -93,7 +93,6 @@ class User(object):
 #                          headers=headers)
 #     # We are a GET not a POST
 #     return {"form": myform.render(), "values": None}
-#
 #
 # @view_config(route_name='signup',
 #              renderer='signup.mako')

@@ -1,4 +1,4 @@
-from pyramid.view import view_config
+import logging
 import os
 import uuid
 import shutil
@@ -7,6 +7,8 @@ from ..models import models
 # from ..forms import form_render
 from ..cfg import FILE_REP_TMP
 import gzip
+
+from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound
 from cornice import Service
 
@@ -19,7 +21,7 @@ from cornice import Service
 def upload(request):
     try:
         filename = request.POST['file'].filename
-        print (filename)
+        logging.info(filename)
     finally:
         return {}
 
@@ -50,7 +52,7 @@ def upload_post(request):
     try:
         os.mkdir(os.path.join(FILE_REP_TMP,str(userid)))
     except FileExistsError:
-        print ('The folder already exist.')
+        logging.error('The folder already exist.')
 
     filename = request.POST['file'].filename
     file_ext = os.path.splitext(filename)[1]
@@ -77,7 +79,7 @@ def upload_post(request):
         input_file.seek(0)
         size = len(input_file.read())
     elif file_ext == '.gz':
-        print ("It's a Gzip file, let's unzip it!")
+        logging.info("It's a Gzip file, let's unzip it!")
         filename = os.path.splitext(filename)[0] # To delete the .gz extension in the file name
         file_path = os.path.join(os.path.join(FILE_REP_TMP,str(userid)), filename)
         # We first write to a temporary file to prevent incomplete files from
@@ -100,7 +102,7 @@ def upload_post(request):
 
         file_ext = os.path.splitext(filename)[1]
     else:
-        print ('Your file is neither a NIFI nor a MNC file !!! ')
+        logging.warning('Your file is neither a NIFI nor a MNC file !!! ')
         return HTTPFound(location=request.route_url('upload'))
 
     file_path_local = 'static/tmp/'+str(userid)+'/'+ filename #@TODO: Fix that - Dirty but will be deleted soon
@@ -129,7 +131,7 @@ def upload_nii(request):
     try:
         os.mkdir(os.path.join(FILE_REP_TMP,str(userid)))
     except FileExistsError:
-        print ('The folder already exist.')
+        logging.error('The folder already exist.')
 
     filename = request.POST['files-nii'].filename
     file_ext = os.path.splitext(filename)[1]
@@ -156,7 +158,7 @@ def upload_nii(request):
         input_file.seek(0)
         size = len(input_file.read())
     elif file_ext == '.gz':
-        print ("It's a Gzip file, let's unzip it!")
+        logging.info("It's a Gzip file, let's unzip it!")
         filename = os.path.splitext(filename)[0] # To delete the .gz extension in the file name
         file_path = os.path.join(os.path.join(FILE_REP_TMP,str(userid)), filename)
         # We first write to a temporary file to prevent incomplete files from
@@ -179,7 +181,7 @@ def upload_nii(request):
 
         file_ext = os.path.splitext(filename)[1]
     else:
-        print ('Your file is neither a NIFI nor a MNC file !!! ')
+        logging.warning('Your file is neither a NIFI nor a MNC file !!! ')
         return HTTPFound(location=request.route_url('upload'))
 
     file_path_local = 'static/tmp/'+str(userid)+'/'+ filename #@TODO: Fix that - Dirty but will be deleted soon
