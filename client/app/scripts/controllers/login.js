@@ -21,6 +21,7 @@ angular.module('angularSeedApp')
       auth.$onAuth(function(authData) {
         $scope.authData = authData;
         $scope.$storage.uid = authData.uid.split(':')[1];
+        $scope.$storage.name = authData.password.email.replace(/@.*/, '');
 
       });
 

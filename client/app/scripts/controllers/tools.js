@@ -8,7 +8,10 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('ToolsCtrl', ['$scope', '$resource', 'SharedDataService', 'getTools', function ($scope, $resource, SharedDataService, getTools) {
+  .controller('ToolsCtrl', ['$scope', '$resource', 'SharedDataService', 'getTools', '$localStorage', function ($scope, $resource, SharedDataService, getTools, $localStorage) {
+
+    $scope.$storage = $localStorage;   //Initialization of the local storage
+
     //Initalize the communication with the server on /sctoolbox
     var sctoolbox = $resource('/sctoolbox');
     //GET all the tool
@@ -19,7 +22,7 @@ angular.module('angularSeedApp')
 
     $scope.$watch('NewFile.pathArray', function () {
       $scope.inputs = $scope.NewFile.pathArray; //Update a shared variable with the selected files in the tree
-      //$scope.$$childTail.model['1'] = $scope.NewFile.pathArray;
+      $scope.$$childTail.model['1'] = $scope.NewFile.pathArray;
     });
 
     //Launch the tool with the user's config

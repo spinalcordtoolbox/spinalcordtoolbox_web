@@ -24,7 +24,9 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <!--TODO: Add a HeaderCntrl to control active view and  update  the menu-->
+    <div class="header" ng-controller="HeaderCtrl">
+
       <nav class="navbar navbar-default" role="navigation" bs-navbar>
         <div class="navbar-header">
           <a class="navbar-brand" href="#/"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> iSCToolbox</a>
@@ -34,10 +36,12 @@
           <li data-match-route="/toolbox"><a href="#/toolbox">Toolbox</a></li>
           <li data-match-route="/browser"><a href="#/browser">Browser</a></li>
           <li data-match-route="/file-upload"><a href="#/file-upload">File Upload</a></li>
+
+
           <li ng-show="authData" data-match-route="/login" ng-click="auth.$unauth()"><a ng-click="auth.$unauth()" href="#/login">Logout</a></li>
           <li ng-hide="authData" data-match-route="/login"><a href="#/login">Login</a></li>
           <li ng-hide="authData" data-match-route="/register"><a href="#/register">Register</a></li>
-
+          {{is_active(actif,"/browser")}}
         </ul>
       </nav>
     </div>
@@ -108,6 +112,7 @@
         <script src="scripts/controllers/register.js"></script>
         <script src="scripts/controllers/console.js"></script>
         <script src="scripts/controllers/toolbox.js"></script>
+        <script src="scripts/controllers/header.js"></script>
         <!-- endbuild -->
 </body>
 </html>

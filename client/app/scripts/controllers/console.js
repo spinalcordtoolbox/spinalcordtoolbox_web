@@ -8,13 +8,15 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('ConsoleCtrl', function ($scope, $http, $interval) {
+  .controller('ConsoleCtrl', function ($scope, $http, $interval, $localStorage) {
+
+    $scope.$storage = $localStorage;   //Initialization of the local storage
 
     var log = "";
     $scope.log = ". . : : Welcome on the iSCT logger : : . .\n\n\n";
 
 
-    var getLog = function(){$http.get('/logger').
+    var getLog = function(){$http.get('/logger?uid='+$scope.$storage.uid).
       then(function(response) {
         // this callback will be called asynchronously
         // when the response is available
@@ -55,7 +57,7 @@ angular.module('angularSeedApp')
       $scope.stop();
     });
 
-    var init = function(){$http.get('/logger?old=1').
+    var init = function(){$http.get('/logger?old=1&uid='+$scope.$storage.uid).
       then(function(response) {
         // this callback will be called asynchronously
         // when the response is available

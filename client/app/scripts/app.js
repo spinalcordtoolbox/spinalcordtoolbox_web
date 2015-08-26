@@ -83,6 +83,13 @@ angular
       return $firebaseAuth(ref);
     }
   ])
+  .filter('capitalize', function() {
+    return function(input, scope) {
+      if (input!=null)
+        input = input.toLowerCase();
+      return input.substring(0,1).toUpperCase()+input.substring(1);
+    }
+  })
   .config(['$compileProvider',
     function ($compileProvider) {
       $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);

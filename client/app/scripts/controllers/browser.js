@@ -28,7 +28,7 @@ angular.module('angularSeedApp')
       });*/
 
       $scope.refresh = function(){
-        $route.reload();
+        $window.location.reload();
       };
 
       $scope.delete = function(path){

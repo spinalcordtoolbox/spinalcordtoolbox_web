@@ -17,9 +17,7 @@ def logger_get(request):
     :param request.uid: The user uid, it's used to find the process launched by the user
     :return: one line of the log
     '''
-    test = SCTLog(1)
 
-    return test.log_tail()
     uid = request.GET["uid"]
     info = SCTLog(uid)
 
