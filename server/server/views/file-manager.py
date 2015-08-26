@@ -1,4 +1,4 @@
-import os, zipfile
+import os, zipfile, logging
 import io
 from ..cfg import FILE_REP_TMP
 from cornice import Service
@@ -39,7 +39,7 @@ def path_to_db(path,session,tag):
         d['icon'] = "glyphicon glyphicon-file"
         d['children'] = ""
 
-    print (d['parent'])
+    logging.info(d['parent'])
     u = models.tree(rel_path = d['rel_path'],
             size = 0,
             text = d['text'],

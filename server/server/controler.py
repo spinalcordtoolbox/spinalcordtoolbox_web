@@ -95,7 +95,7 @@ class PluginUpdater(object):
             get_parser = getattr(getattr(module, mod_name.split('_')[1].capitalize()+"Script", None), cfg.GET_PARSER, None)
             if get_parser:
                 try:
-                    print(mod_name)
+                    logging.info(mod_name)
                     parser = get_parser()
                     options = {}
                     for o in parser.options.values():
@@ -114,7 +114,7 @@ class PluginUpdater(object):
             get_parser = getattr(getattr(module, "ScriptProcessSegmentation", None), cfg.GET_PARSER, None)
             if get_parser:
                 try:
-                    print(mod_name)
+                    logging.info(mod_name)
                     parser = get_parser()
                     options = {}
                     for o in parser.options.values():
@@ -352,7 +352,7 @@ class ToolboxRunner(object):
         self.stdout_queue = queue.Queue()
         stdout_monitor_thread = threading.Thread(
             target=self.read_from_stream,
-            args=(self.child.stdout, self._activity, self.stdout_queue, False),
+            args=(self.child.stdout, self._activity, self.stdout_queue, True),
             )
 
         stdout_monitor_thread.daemon = True
@@ -396,7 +396,8 @@ class ToolboxRunner(object):
                 std_queue.put(line)
             activity['last'] = time.time()
             if echo:
-                sys.stderr.write(line.decode('utf-8'))
+                # sys.stderr.write(line.decode('utf-8'))
+                logging.info(line.decode('utf-8'))
         stream.close()
 
     @staticmethod
