@@ -45,7 +45,7 @@ def sctoolbox_get(request):
 @sctoolbox.post()
 def sctoolbox_post(request):
     '''
-    :param request.inputs: I guess it's a useless field
+    :param request.uid: User uid
     :param request.args: Args selected by the usergit pull
     :param request.tool_name: the tool selected by the user
     :return:
@@ -55,7 +55,7 @@ def sctoolbox_post(request):
 
     plugins_path = cfg.SPINALCORD_BIN
 
-    inputs = request.json_body['inputs']
+    uid = request.json_body['uid']
     options = request.json_body['args']
     tool_name = request.json_body['tool_name']
 
@@ -70,7 +70,7 @@ def sctoolbox_post(request):
     tbr = ToolboxRunner(
         rt,
         plugins_path,
-        1
+        uid
     )
 
     tbr.run()

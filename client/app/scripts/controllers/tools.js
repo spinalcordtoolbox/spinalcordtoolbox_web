@@ -25,9 +25,6 @@ angular.module('angularSeedApp')
     //Launch the tool with the user's config
     $scope.compute = function (tool_name, args_user, inputs) {
       //envoyer les arg à la fonction choisie sur le server !
-      console.log("le nom du tool:" + tool_name);
-      console.log(args_user);
-      console.log("le path des inputs:" + inputs);
       var args_tool = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
       for (var i in args_tool) {
         for (var arg_user_order in args_user) {
@@ -39,7 +36,7 @@ angular.module('angularSeedApp')
         }
       }
       //Request POST to /sctoolbox in order to launch the toolbox
-      sctoolbox.save({tool_name: tool_name, args: args_user, inputs: inputs});
+      sctoolbox.save({tool_name: tool_name, args: args_user, uid: $scope.$storage.uid});
 
     };
 

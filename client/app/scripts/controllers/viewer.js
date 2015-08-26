@@ -49,6 +49,7 @@ angular.module('angularSeedApp')
     };
     $scope.color = $scope.colorSelected.FIELD3 + "," + $scope.colorSelected.FIELD4 + "," + $scope.colorSelected.FIELD5;
     $scope.$watch('colorSelected', function () {
+      console.log($scope.colorSelected);
       $scope.colorSelected = JSON.parse($scope.colorSelected);
       $scope.color = $scope.colorSelected.FIELD3 + "," + $scope.colorSelected.FIELD4 + "," + $scope.colorSelected.FIELD5;
     });

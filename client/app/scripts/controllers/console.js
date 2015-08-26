@@ -13,19 +13,20 @@ angular.module('angularSeedApp')
     var log = "";
     $scope.log = ". . : : Welcome on the iSCT logger : : . .\n\n\n";
 
+
     var getLog = function(){$http.get('/logger').
       then(function(response) {
         // this callback will be called asynchronously
         // when the response is available
         if (response.data!=""){
           log = response.data;
-          $scope.log = $scope.log + log + "\n";}
+          $scope.log = $scope.log + log;}
       }, function(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         if (response.data!=""){
         log = 'Communication error with the server: HTTP status='+response.status+' data='+response.data;
-        $scope.log = $scope.log + log + "\n";}
+        $scope.log = $scope.log + log;}
       })};
 
 
@@ -53,4 +54,21 @@ angular.module('angularSeedApp')
     $scope.$on('$destroy', function() {
       $scope.stop();
     });
+
+    var init = function(){$http.get('/logger?old=1').
+      then(function(response) {
+        // this callback will be called asynchronously
+        // when the response is available
+        if (response.data!=""){
+          log = response.data;
+          $scope.log = $scope.log + log;}
+      }, function(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        if (response.data!=""){
+          log = 'Communication error with the server: HTTP status='+response.status+' data='+response.data;
+          $scope.log = $scope.log + log;}
+      })};
+    init();
+
   });
