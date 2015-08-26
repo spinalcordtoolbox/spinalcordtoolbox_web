@@ -74,12 +74,20 @@ def sctoolbox_post(request):
 
 
 
+    uid = 1 ## DEBUG
 
     if rt:
+        try:
+            process = controler.SCTLog(uid)
+            if process._tr.check_status() is None:
+                logging.warning("process {} is still running, waiting for it to end".format(process._tr.rt.name))
+                return "Process is still running"
+        except KeyError:
+            pass
 
         tbr = controler.ToolboxRunner(
         controler.SCTExec(registered_tool=rt),
-        plugins_path, 1)
+        plugins_path, uid)
 
     tbr.run()
     return {}

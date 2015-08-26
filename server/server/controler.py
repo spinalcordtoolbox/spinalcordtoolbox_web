@@ -358,6 +358,7 @@ class ToolboxRunner(object):
         stdout_monitor_thread.daemon = True
         stdout_monitor_thread.start()
         # add the process and log to the registry
+
         SCTLog.register_process(self.process_uid, self)
 
         # stdout_lines = []
