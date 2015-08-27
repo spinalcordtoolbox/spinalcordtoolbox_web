@@ -1,11 +1,9 @@
-# PROJECT_ROOT = '/Users/willispinaud/Dropbox/Amerique/Montreal/angular-python-spinalcord/spinalcordweb/'
-#PROJECT_ROOT = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/'
-PROJECT_ROOT = '/home/poquirion/neuropoly/spinalcordtoolbox_web/server/'
+PROJECT_ROOT = '/home/isct/spinalcordtoolbox_web/server/'
 
 # TOOLBOX PATH
-#SPINALCORDTOOLBOX = "/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox"
-SPINALCORDTOOLBOX = "/home/poquirion/neuropoly/spinalcordtoolbox"
+SPINALCORDTOOLBOX = "/home/isct/spinalcordtoolbox"
 SPINALCORD_BIN = "{}/bin".format(SPINALCORDTOOLBOX)
+SPINALCORD_SCRIPTS = "{}/scripts".format(SPINALCORDTOOLBOX)
 
 # Executable/plugins
 # SCT_TMP_PKG = "sct_scripts" # should be final name
@@ -15,14 +13,8 @@ EXEC_TMP = PROJECT_ROOT+'../{}'.format(SCT_TMP_PKG)
 EXEC_PATH = PROJECT_ROOT+'../../spinalcordtoolbox/scripts'
 PYHTON_NAME = "python2.7 "
 
-
 # Where input files are stored
 FILE_REP_TMP = PROJECT_ROOT+'server/static/tmp/'
-# INPUT_PATH = '/toolbox/input'
-#INPUT_PATH = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/server/static/js/viewer/models'
-# Where results are stored
-#OUTPUT_PATH = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/server/static/tmp/willis'
-
 
 PROCESS_LOOP_SLEEP = 0.05
 

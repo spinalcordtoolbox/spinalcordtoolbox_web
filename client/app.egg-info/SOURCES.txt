@@ -7,13 +7,13 @@ app/__init__.py
 app/bower.json
 app/favicon.ico
 app/index.html
-app/npm-debug.log
 app/robots.txt
 app.egg-info/PKG-INFO
 app.egg-info/SOURCES.txt
 app.egg-info/dependency_links.txt
 app.egg-info/not-zip-safe
 app.egg-info/top_level.txt
+app/__pycache__/__init__.cpython-34.pyc
 app/bower_components/angular/.bower.json
 app/bower_components/angular/README.md
 app/bower_components/angular/angular-csp.css
@@ -1457,6 +1457,7 @@ app/scripts/brainbrowser/viewer/models/t2.nii.gz
 app/scripts/controllers/browser.js
 app/scripts/controllers/console.js
 app/scripts/controllers/file-upload.js
+app/scripts/controllers/header.js
 app/scripts/controllers/login.js
 app/scripts/controllers/register.js
 app/scripts/controllers/toolbox.js

@@ -41,7 +41,7 @@ angular.module('angularSeedApp')
       $scope.stop();
 
       // store the interval promise
-      promise = $interval(getLog, 1000);
+      promise = $interval(getLog, 500);
     };
 
     // stops the interval
