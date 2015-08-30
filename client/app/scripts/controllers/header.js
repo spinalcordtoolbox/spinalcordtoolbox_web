@@ -8,14 +8,14 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('HeaderCtrl', function ($scope,$location,$localStorage) {
+  .controller('HeaderCtrl', function ($scope,$location,$localStorage,Auth) {
 
     $scope.$storage = $localStorage;   //Initialization of the local storage
 
     $scope.actif = $location.path();
 
     $scope.logout = function(){
-      auth.$unauth();
+      Auth.$unauth();
       $scope.$storage.uid = null;
     };
 
