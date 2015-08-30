@@ -38,9 +38,9 @@
           <li data-match-route="/file-upload"><a href="#/file-upload">File Upload</a></li>
 
 
-          <li ng-show="authData" data-match-route="/login" ng-click="auth.$unauth()"><a ng-click="auth.$unauth()" href="#/login">Logout</a></li>
-          <li ng-hide="authData" data-match-route="/login"><a href="#/login">Login</a></li>
-          <li ng-hide="authData" data-match-route="/register"><a href="#/register">Register</a></li>
+          <li class="{{logout_class}}" data-match-route="/login"><a ng-click="logout()" href="#/login">Logout</a></li>
+          <li class="{{login_class}}" data-match-route="/login"><a href="#/login">Login</a></li>
+          <li class="{{login_class}}" data-match-route="/register"><a href="#/register">Register</a></li>
           {{is_active(actif,"/browser")}}
         </ul>
       </nav>
