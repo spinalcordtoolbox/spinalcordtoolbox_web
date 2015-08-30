@@ -20,7 +20,7 @@ angular
     'ngFileUpload',
     'angular-loading-bar',
     'ui.bootstrap',
-    //'mgcrea.ngStrap',
+    'mgcrea.ngStrap.navbar',
     'schemaForm',
     'firebase',
     'ngStorage',
