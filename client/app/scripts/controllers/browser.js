@@ -16,7 +16,15 @@ angular.module('angularSeedApp')
       $scope.$storage = $localStorage;   //Initialization of the local storage
       $scope.NewFile = SharedDataService; //it's use to connect uploadCntrl & browserCntrl to detect changes then refresh the tree
 
-      $scope.tree_path = "/tree/"+$scope.$storage.uid;  //The path to GET the tree with the user's uid
+      if ($scope.$storage.uid === null){
+        $scope.tree_path = "/tree/"+"You have to be logged to use this functionnality";
+      }
+      else{
+        $scope.tree_path = "/tree/"+$scope.$storage.uid;  //The path to GET the tree with the user's uid
+
+      }
+
+
 
       $scope.fileViewer = 'Please select a file to view its path';  //Information for debugging
       $scope.relative_path = '';

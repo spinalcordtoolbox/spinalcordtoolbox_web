@@ -8,7 +8,7 @@
           <form class="form-signin">
             <h1>Hello, {{ $storage.name | capitalize }}</h1>
             <br>
-            <button class="btn btn-lg btn-alert btn-block" type="submit" ng-click="auth.$unauth()">
+            <button class="btn btn-lg btn-alert btn-block" type="submit" ng-click="logout()">
               Logout</button>
             <label class="checkbox pull-left">
               <p ng-if="authData">Logged in user: <strong>{{ authData.uid }}</strong></p>

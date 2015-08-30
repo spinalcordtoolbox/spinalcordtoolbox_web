@@ -25,6 +25,11 @@ angular.module('angularSeedApp')
 
       });
 
+      $scope.logout = function(){
+        Auth.$unauth();
+        $scope.$storage.uid = null;
+      };
+
       $scope.login = function() {
         $scope.authData = null;
         $scope.error = null;
