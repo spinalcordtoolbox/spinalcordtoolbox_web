@@ -21,10 +21,7 @@ angular.module('angularSeedApp')
         controller: 'ConsoleCtrl',
         size:'xl'
       });
-
-      modalInstance.result.then(
-      );
-    }  ;
+    };
 
 
 
