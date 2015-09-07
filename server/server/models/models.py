@@ -110,7 +110,20 @@ class User(Base):
                % (self.id,self.first_name, self.last_name, self.email)
 
 
-
+class local_user(Base):
+    email = Column(Unicode(1024), unique=True)
+    password_ = Column('password', Unicode(60)) # Hash from bcrypt
+    @property
+    def password(self):
+        return self.password_
+    @password.setter
+    def password(self, password):
+        self.password_ = str(crypt.encode(password))
+    password = synonym('password_', descriptor=password)
+    @classmethod
+    def verify_password(self, password):
+        'Return True if we have a matching password'
+        return crypt.check(self.password, password)
 
 class File(Base):
     filename = Column(Unicode(1024), unique=False)
@@ -136,7 +149,6 @@ class tree(Base):
     size = Column(Float, unique=False)
     text = Column(Unicode(1024), unique=False)
     type = Column(Unicode(1024), unique=False)
-    # children = Column(Unicode(1024), unique=False)
     icon = Column(Unicode(1024), unique=False)
 
 

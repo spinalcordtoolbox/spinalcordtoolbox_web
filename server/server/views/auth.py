@@ -119,8 +119,32 @@ class User(object):
 #     # We are a GET not a POST
 #     return {"form": myform.render(), "values": None}
 
-@view_config(route_name='signout', renderer='string')
-def sign_out(request):
-    headers = forget(request)
-    return HTTPFound(location=request.route_url('home'),
-                     headers=headers)\
+# @view_config(route_name='signout', renderer='string')
+# def sign_out(request):
+#     headers = forget(request)
+#     return HTTPFound(location=request.route_url('home'),
+#                      headers=headers)\
+
+login = Service('login','/login', 'Identify a user on the website')
+register = Service('register', '/register', 'add a new user into the db')
+#The model for this user registration is models.local_user
+
+@register.post()
+def register_post(request):
+    form = request.POST['form']
+    session = request.db
+
+    session.add()
+    session.commit()
+
+    #Add mailler
+    return {}
+
+@login.get()
+def login_get(request):
+    mail = request.GET['mail']
+    password = request.GET['password']
+
+    session = request.db
+    #verify if the user correspond to the password in the db
+    return {}

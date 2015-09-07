@@ -94,6 +94,8 @@ download = Service('download',
                  '/download',
                  'Download a file or a folder')
 
+#@TODO: a transformer en POST pour ajouter la vérification de l'utilisateur
+#Les args seront: uid, file_path(s)
 @download.get()
 def download_get(request):
     '''
@@ -115,3 +117,50 @@ def download_get(request):
         return response.FileResponse("isct_download.zip", request=request, cache_max_age=3000)
     else:
         return {'error':'argument error'}
+
+@download.post()
+def download_post(request):
+    '''
+    :param request.file_id: an array of the selected files
+    :return: a ziped file with all the selected files
+    '''
+    files_id = jsonpickle.loads(request.POST['files_id'])
+    user_id = request.POST['uid']
+    return {'files_id':files_id[0], 'user_id':user_id}
+    # #test if the get argument is in the right format
+    # if type(file_id)==type([]):
+    #     zip_filename = "isct_download.zip"
+    #     # The zip compressor
+    #     zf = zipfile.ZipFile(zip_filename, "w")
+    #     for fpath in file_id:
+    #         # Add files, rename it and add compression (zipfile.ZIP_DEFLATED)
+    #         zf.write(fpath, arcname=os.path.basename(fpath), compress_type=zipfile.ZIP_DEFLATED)
+    #     # Must close zip for all contents to be written
+    #     zf.close()
+    #     #TODO fix the file response, should have a real file not just the name of the zipfile in the root
+    #     return response.FileResponse("isct_download.zip", request=request, cache_max_age=3000)
+    # else:
+    #     return {'error':'argument error'}
+
+
+delete = Service('delete',
+                 '/delete',
+                 'Mark a file or a folder as deleted')
+@delete.post()
+def delete_post(request):
+    '''
+    Delete a selected file or folder with a user verification
+    :return: void
+    '''
+    files_id = jsonpickle.loads(request.POST['files_id'])
+    user_id = request.POST['uid']
+    session = request.db
+    #This is a verification to be sur the user is the ower of the files
+    if user_id == request.unauthenticated_userid:
+        for file_id in files_id:
+            #Find the file in the database
+            file_to_delete = session.query(models.tree).filter_by(id=file_id).first()
+            #Delete the entry
+            session.delete(file_to_delete)
+            session.commit()
+    return {}

@@ -10,8 +10,8 @@
  * It uses a JSTree directive to represent the folder tree.
  */
 angular.module('angularSeedApp')
-  .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService', '$localStorage','$location','$window','$timeout',
-    function ($scope, $route, SharedDataService, $localStorage, $location, $window, $timeout) {
+  .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService', '$localStorage','$location','$window','$resource',
+    function ($scope, $route, SharedDataService, $localStorage, $location, $window, $resource) {
 
       //@TODO: Refresh only for the AJAX request, not the whole page.
 
@@ -37,11 +37,33 @@ angular.module('angularSeedApp')
         }
       });*/
 
-
-      //TODO: the refresh should update only the AJAX call for the tree
+      var tree = $resource($scope.tree_path);
       $scope.refresh = function(){
-        $window.location.reload();
+        //$window.location.reload();
+        tree.query(function(data) {
+          $scope.treeModel = JSON.parse(JSON.stringify(data));
+        });
       };
+      tree.query(function(data) {
+        $scope.treeModel = JSON.parse(JSON.stringify(data));
+      });
+
+      $scope.treeModel_test = [
+        {
+          "id": "ajson1",
+          "parent": "#",
+          "text": "Simple root node"
+        }, {
+          "id": "ajson2",
+          "parent": "#",
+          "text": "Root node 2"
+        },
+        {"text":"1",
+          "id":"/home/poquirion/neuropoly/spinalcordtoolbox_web/server/server/static/tmp/1",
+          "parent":"#"}
+      ];
+
+
 
       $scope.delete = function(path){
         for (i in files_id){
