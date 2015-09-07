@@ -28,6 +28,12 @@ angular.module('angularSeedApp')
           $location.path("login"); //redirect to login page on success
         }
       });
+
+      //Add function to send infos with http.post
+      $http.post('/register', {mail:$scope.email, password:$scope.password}).
+        then(function(response) {
+          //@TODO: Go to the login page or automatically log the new user
+        });
     };
 
 

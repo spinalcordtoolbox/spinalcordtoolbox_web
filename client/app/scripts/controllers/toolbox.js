@@ -23,8 +23,4 @@ angular.module('angularSeedApp')
       });
     };
 
-
-
-
-
   }]);

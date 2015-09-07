@@ -37,7 +37,7 @@
             Sign in</button>
           <label class="checkbox pull-left">
             <p ng-if="authData">Logged in user: <strong>{{ authData.uid }}</strong></p>
-            <p ng-if="error">Error: <strong>{{ error }}</strong></p>
+            <p ng-if="error">Error: <strong>{{ error.code }}</strong></p>
           </label>
           <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
         </form>

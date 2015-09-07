@@ -13,11 +13,13 @@ angular.module('angularSeedApp')
   .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService', '$localStorage','$location','$window','$timeout',
     function ($scope, $route, SharedDataService, $localStorage, $location, $window, $timeout) {
 
+      //@TODO: Refresh only for the AJAX request, not the whole page.
+
       $scope.$storage = $localStorage;   //Initialization of the local storage
       $scope.NewFile = SharedDataService; //it's use to connect uploadCntrl & browserCntrl to detect changes then refresh the tree
 
       if ($scope.$storage.uid === null){
-        $scope.tree_path = "/tree/"+"You have to be logged to use this functionnality";
+        $scope.tree_path = "/tree/"+"You have to be logged to use this functionality";
       }
       else{
         $scope.tree_path = "/tree/"+$scope.$storage.uid;  //The path to GET the tree with the user's uid
@@ -26,7 +28,7 @@ angular.module('angularSeedApp')
 
 
 
-      $scope.fileViewer = 'Please select a file to view its path';  //Information for debugging
+      $scope.filesPath = 'Please select a file to view its path';  //Information for debugging
       $scope.relative_path = '';
 
       /*$scope.$watch('NewFile.state', function () {
@@ -35,6 +37,8 @@ angular.module('angularSeedApp')
         }
       });*/
 
+
+      //TODO: the refresh should update only the AJAX call for the tree
       $scope.refresh = function(){
         $window.location.reload();
       };
@@ -46,7 +50,7 @@ angular.module('angularSeedApp')
         }
       };
 
-      //When the event changedCB is activated, this function add the paths of the selected FILES to the fileviewer variable
+      //When the event changedCB is activated, this function add the paths of the selected FILES to the filesPath variable
       $scope.changedCB = function (e, data) {
         var nodeChecked = [];
         var nodePath = [];
@@ -60,7 +64,7 @@ angular.module('angularSeedApp')
 
         }
         $scope.$apply(function () {
-          $scope.fileViewer = nodePath; //fileViewer has an array with absolute paths for the toolbox
+          $scope.filesPath = nodePath; //filesPath has an array with absolute paths for the toolbox
           $scope.NewFile.pathArray = nodePath;
           $scope.relative_path = relative_nodePath; //relative_path has an array with relative paths for the viewer
           $scope.NewFile.relative_pathArray = relative_nodePath;
@@ -92,6 +96,22 @@ angular.module('angularSeedApp')
           $location.path("viewer");
         }
       };
+
+      $scope.delete = function(){
+        //@TODO: ajouter une alerte pour valider la suppression des fichiers avec un if
+        $http.post('/delete', {files_id:$scope.filesPath, uid:$scope.$storage.uid}).
+          then(function(response) {
+            //@TODO: alert('Your selection is delete !')
+          });
+      };
+
+      $scope.download = function(){
+        $http.post('/download', {files_id:$scope.filesPath, uid:$scope.$storage.uid}).
+          then(function(response) {
+            //@TODO: execute the download of the response.data ?
+          });
+      };
+
     }
   ]);
 

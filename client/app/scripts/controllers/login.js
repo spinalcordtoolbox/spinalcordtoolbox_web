@@ -12,6 +12,20 @@ angular.module('angularSeedApp')
     function($scope, Auth, $localStorage) {
       $scope.$storage = $localStorage;
 
+      /*
+      * Idées pour le login/register/logout
+      *
+      * 1) register avec un POST qui va ajouter une entrée utilisateur dans la base de donnée.
+      * login avec un get qui va vérifier user/clé cryptée et si la réponse est ok alors écrire dans le local storage
+      * sinon renvoie une erreur et log l'ip avec le nombre d'essais dans la base de donnée?
+      * logout supprimer la variable dans le localstorage
+      * Recuperer le password -> mail à l'admin ou envoi d'un mail avec lien et token unique
+      *
+      * 2) ajouter un envoie de mail pour valider le compte lorsque l'étape d'enregistrement est terminée
+      *
+      * 3)..sinon personae ?
+      * */
+
       var auth = Auth;
       $scope.auth = Auth;
       var ref = new Firebase("https://isct.firebaseio.com");
@@ -45,6 +59,12 @@ angular.module('angularSeedApp')
             console.log("Authenticated successfully with payload:", authData);
           }
         });
+
+        //Add function to send infos with http.post
+        $http.post('/login', {mail:$scope.email, password:$scope.password}).
+          then(function(response) {
+            //@TODO: Go to the toolbox page and add a case if the response is wrong
+          });
       };
     }
   ]);

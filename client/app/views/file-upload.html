@@ -1,7 +1,7 @@
 <div ng-controller="FileUploadCtrl">
   <br/>
   <!--<input type="text" class="form-control" placeholder="{{authData.uid.split(':')[1]}}"  ng-model="username"></br>-->
-
+  <div ng-if="authData">
   <div class="btn btn-default" ngf-select ng-model="file" ngf-multiple="false" style="display: none"><span
     class="glyphicon glyphicon-fire text-warning" aria-hidden="true"></span> Select File
   </div>
@@ -24,4 +24,8 @@
   </ul>
   Upload Log:
   <pre>{{log}}</pre>
+</div>
+</div>
+<div ng-if="!authData">
+  Please Register or Log-in.
 </div>
