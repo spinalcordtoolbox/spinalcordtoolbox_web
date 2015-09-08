@@ -165,4 +165,4 @@ def delete_post(request):
             #Delete the entry
             session.delete(file_to_delete)
             session.commit()
-    return {}        return {'error':'argument error'}
+    return {}
