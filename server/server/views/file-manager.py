@@ -1,5 +1,6 @@
 import os, zipfile, logging
 import io
+import re
 from ..cfg import FILE_REP_TMP
 from cornice import Service
 import jsonpickle
@@ -25,7 +26,8 @@ def path_to_db(path,session,tag):
     '''
     d = {'text': os.path.basename(path)}
     d['path'] = path #The absolute path, usefull to launch the SCToolbox
-    d['rel_path'] = os.path.relpath(path)[14:] #The relative path, usefull to load volumes files into BrainBrowser
+    d['rel_path'] = re.match(".*server/server/(static.*)", path).groups()[0]
+    #d['rel_path'] = os.path.relpath(path)[52:] #The relative path, usefull to load volumes files into BrainBrowser
     if tag:
         d['parent'] = "#"
     else :
@@ -163,4 +165,4 @@ def delete_post(request):
             #Delete the entry
             session.delete(file_to_delete)
             session.commit()
-    return {}
+    return {}        return {'error':'argument error'}

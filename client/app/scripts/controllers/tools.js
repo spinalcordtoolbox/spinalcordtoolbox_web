@@ -22,7 +22,7 @@ angular.module('angularSeedApp')
 
     $scope.$watch('NewFile.pathArray', function () {
       $scope.inputs = $scope.NewFile.pathArray; //Update a shared variable with the selected files in the tree
-      $scope.$$childTail.model['1'] = $scope.NewFile.pathArray;
+      //$scope.$$childTail.model['1'] = $scope.NewFile.pathArray;
     });
 
     //Launch the tool with the user's config

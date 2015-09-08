@@ -79,16 +79,31 @@ def sctoolbox_post(request):
             if process._tr.check_status() is None:
                 logging.warning("process {} is still running, waiting for it to end".format(process._tr.rt.name))
                 return "Process is still running"
-        except KeyError:
+        except TypeError:
             pass
-
         tbr = controler.ToolboxRunner(
         controler.SCTExec(registered_tool=rt),
-        plugins_path, uid)
+        plugins_path, process_uid=uid)
 
     tbr.run()
     return {}
 
 
 
+plugin_update =  Service('plugin_update',
+                 '/plugin_update',
+                 'update the sct list')
+
+@plugin_update.get()
+def plugin_update_get(request):
+    '''
+    :param request:
+    :return: Return a list of all the sctools which have a get_parser
+    '''
+
+    logging.basicConfig(level=logging.DEBUG)
+
+    session = request.db
+    controler.PluginUpdater(session=session, script_path=cfg.SPINALCORD_SCRIPTS, reload=True)
+    return "Ok"
 

@@ -1,8 +1,9 @@
 __author__ = 'willispinaud'
 
+import logging 
+
 from cornice import Service
 from ..controler import SCTLog
-
 
 import string
 from ..controler import SCTLog
@@ -18,12 +19,17 @@ def logger_get(request):
     :return: one line of the log
     '''
 
-    uid = request.GET["uid"]
+    uid = request.GET.get("uid")
+    if uid is None:
+        logging.info("User not logged")
+        return "User not logged"
     info = SCTLog(uid)
 
-    if request.GET["old"]:
+    if request.GET.get("old", None):
+        logging.info("Returning old log")
         log = info.old_log()
     else:
-        log = info.log_tail(maxline=100)
+        logging.info("Returning tail log")
+        log = info.log_tail(maxline=10)
 
     return log

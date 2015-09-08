@@ -1,6 +1,7 @@
 """
 This module is ...
 """
+import collections
 import importlib
 import logging
 import os
@@ -61,14 +62,13 @@ class PluginUpdater(object):
 
     def _load_plugins(self, config, script_path, reload=False):
 
-
         # all_script = os.listdir(script_path)
         if reload or not os.path.isdir(cfg.EXEC_TMP):
             shutil.rmtree(cfg.EXEC_TMP, ignore_errors=True)
             shutil.copytree(script_path, cfg.EXEC_TMP)
-            subprocess.call(["/usr/bin/env", "2to3-3.4",  "-w", cfg.EXEC_TMP])
+            subprocess.call(["2to3",  "-w", cfg.EXEC_TMP])
 
-        modules = pkgutil.iter_modules(path=["/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/scripts"])
+        modules = pkgutil.iter_modules(path=[script_path])
         sys.path.insert(0, "{}/../".format(cfg.EXEC_TMP))
         # importlib.__import__(cfg.SCT_TMP_PKG, globals(), locals(), [], 0)
         importlib.__import__("scripts", globals(), locals(), [], 0)
@@ -430,11 +430,9 @@ class SCTLog(object):
     def __init__(self, uid):
 
         self.uid = uid
-        # self._tr = ToolboxRunner() #DEBUG !!!
+
         self._tr = self._registered_process.get(uid)[0]
         self._data = self._registered_process.get(uid)[1]
-        if self._tr is None:
-            raise KeyError("{} is not a registered queue".format(uid))
 
 
     @classmethod
@@ -446,7 +444,7 @@ class SCTLog(object):
         :return: cls(uid)
         """
 
-        data = {}
+        data = collections.defaultdict(list)
         data['registration_Time'] = time.time()
         # if cls._registered_process.get(uid):
         #     raise KeyError("process already registered{}".format(uid)) ## DEBUG
@@ -467,7 +465,7 @@ class SCTLog(object):
         lines = []
         while not self._tr.stdout_queue.empty() and nline < maxline:
             lines.append(self._tr.stdout_queue.get_nowait())
-            self._data['processed'] = lines[-1]
+            self._data['processed'].append(lines[-1])
             nline += 1
         return lines
 
@@ -475,7 +473,7 @@ class SCTLog(object):
         """
         :return: all previously logged data
         """
-        return self._data['processed']
+        return self._data.get('processed')
 
     def running(self):
         """
