@@ -26,6 +26,7 @@ angular.module('angularSeedApp')
     });
 
     //Launch the tool with the user's config
+    //TODO: Return a proper JSON with all the filled value
     $scope.compute = function (tool_name, args_user, inputs) {
       //envoyer les arg à la fonction choisie sur le server !
       var args_tool = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
@@ -38,12 +39,13 @@ angular.module('angularSeedApp')
           }
         }
       }
-      //Request POST to /sctoolbox in order to launch the toolbox
+      //POST Request on /sctoolbox in order to launch the toolbox
       sctoolbox.save({tool_name: tool_name, args: args_user, uid: $scope.$storage.uid});
 
     };
 
     //Generate the form associate with the selected tool
+    //TODO: modify the order to be: Name, description, example, inputbox
     $scope.change = function () {
       var prop = {};
       var args = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
@@ -94,7 +96,6 @@ angular.module('angularSeedApp')
             }
           };
         }
-
       }
 
       //@TODO: add required field

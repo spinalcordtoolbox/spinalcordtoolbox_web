@@ -13,8 +13,6 @@ angular.module('angularSeedApp')
   .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService', '$localStorage','$location','$window','$resource',
     function ($scope, $route, SharedDataService, $localStorage, $location, $window, $resource) {
 
-      //@TODO: Refresh only for the AJAX request, not the whole page.
-
       $scope.$storage = $localStorage;   //Initialization of the local storage
       $scope.NewFile = SharedDataService; //it's use to connect uploadCntrl & browserCntrl to detect changes then refresh the tree
 
@@ -26,43 +24,26 @@ angular.module('angularSeedApp')
 
       }
 
-
-
       $scope.filesPath = 'Please select a file to view its path';  //Information for debugging
       $scope.relative_path = '';
 
-      /*$scope.$watch('NewFile.state', function () {
-        if ($scope.NewFile.state) { //Update the tree when a file is uploaded
-          $route.reload();
-        }
-      });*/
 
+      //Tree generation (AJAX reuest)
       var tree = $resource($scope.tree_path);
-      $scope.refresh = function(){
-        //$window.location.reload();
+      var updateTree = function(){
         tree.query(function(data) {
           $scope.treeModel = JSON.parse(JSON.stringify(data));
         });
       };
-      tree.query(function(data) {
-        $scope.treeModel = JSON.parse(JSON.stringify(data));
+      updateTree();
+      $scope.refresh = function(){
+        updateTree();
+      };
+      $scope.$watch('NewFile.state', function () {
+        if ($scope.NewFile.state) { //Update the tree when a file is uploaded
+          updateTree();
+        }
       });
-
-      $scope.treeModel_test = [
-        {
-          "id": "ajson1",
-          "parent": "#",
-          "text": "Simple root node"
-        }, {
-          "id": "ajson2",
-          "parent": "#",
-          "text": "Root node 2"
-        },
-        {"text":"1",
-          "id":"/home/poquirion/neuropoly/spinalcordtoolbox_web/server/server/static/tmp/1",
-          "parent":"#"}
-      ];
-
 
 
       $scope.delete = function(path){
