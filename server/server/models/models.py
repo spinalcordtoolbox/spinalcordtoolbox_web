@@ -121,6 +121,8 @@ class local_user(Base):
         self.password_ = str(crypt.encode(password))
     password = synonym('password_', descriptor=password)
     @classmethod
+    def by_mail(cls, email, session):
+        return session.query(local_user).filter(local_user.email == email).first()
     def verify_password(self, password):
         'Return True if we have a matching password'
         return crypt.check(self.password, password)

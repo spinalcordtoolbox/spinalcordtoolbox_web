@@ -7,7 +7,7 @@ from pyramid.security import remember, forget
 from deform_bootstrap import Form
 from cornice.resource import resource, view
 from pyramid.view import view_config
-
+from sqlalchemy.exc import IntegrityError
 from cornice import Service
 import simplejson as json
 
@@ -131,20 +131,32 @@ register = Service('register', '/register', 'add a new user into the db')
 
 @register.post()
 def register_post(request):
-    form = request.POST['form']
+    email = request.json_body['email']
+    password = request.json_body['password']
     session = request.db
-
-    session.add()
-    session.commit()
+    new_user = models.local_user(
+        email=email,
+        password=password
+    )
+    try:
+        session.add(new_user)
+        session.commit()
+    except Exception:
+        return {"error":"User already exists"}
 
     #Add mailler
-    return {}
 
-@login.get()
-def login_get(request):
-    mail = request.GET['mail']
-    password = request.GET['password']
+    return {"ok":"New user added to the db"}
+
+@login.post()
+def login_post(request):
+    email = request.json_body['email']
+    password = request.json_body['password']
 
     session = request.db
-    #verify if the user correspond to the password in the db
-    return {}
+    user = models.local_user.by_mail(email, session)
+
+    if user and user.verify_password(password):
+        return {"ok":"Good password","uid":user.id}
+    else:
+        return {"error":"Wrong Password or User doesn't exist, please register"}
