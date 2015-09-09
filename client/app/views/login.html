@@ -1,5 +1,5 @@
 <div ng-controller="LoginCtrl" >
-<div ng-show="authData">
+<div ng-show="$storage.uid">
   <div class="container">
     <div class="row">
       <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -11,20 +11,19 @@
             <button class="btn btn-lg btn-alert btn-block" type="submit" ng-click="logout()">
               Logout</button>
             <label class="checkbox pull-left">
-              <p ng-if="authData">Logged in user: <strong>{{ authData.uid }}</strong></p>
+              <p ng-if="$storage.uid">Logged in user: <strong>{{ $storage.uid }}</strong></p>
               <p ng-if="error">Error: <strong>{{ error }}</strong></p>
             </label>
             <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
           </form>
         </div>
-        <a href="#/register" class="text-center new-account">Create an account </a>
       </div>
     </div>
   </div>
 
 
 </div>
-<div ng-hide="authData">
+<div ng-hide="$storage.uid">
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -36,8 +35,8 @@
           <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login()">
             Sign in</button>
           <label class="checkbox pull-left">
-            <p ng-if="authData">Logged in user: <strong>{{ authData.uid }}</strong></p>
-            <p ng-if="error">Error: <strong>{{ error.code }}</strong></p>
+            <p ng-if="$storage.uid">Logged in user: <strong>{{ $storage.name }}</strong></p>
+            <p ng-if="error">Error: <strong>{{ error }}</strong></p>
           </label>
           <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
         </form>

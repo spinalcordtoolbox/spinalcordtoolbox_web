@@ -8,8 +8,8 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('LoginCtrl', ["$scope", "Auth", "$localStorage",
-    function($scope, Auth, $localStorage) {
+  .controller('LoginCtrl', ["$scope", "Auth", "$localStorage", "$http", "$location",
+    function($scope, Auth, $localStorage, $http, $location) {
       $scope.$storage = $localStorage;
 
       /*
@@ -26,7 +26,7 @@ angular.module('angularSeedApp')
       * 3)..sinon personae ?
       * */
 
-      var auth = Auth;
+      /*var auth = Auth;
       $scope.auth = Auth;
       var ref = new Firebase("https://isct.firebaseio.com");
 
@@ -35,17 +35,17 @@ angular.module('angularSeedApp')
       auth.$onAuth(function(authData) {
         $scope.authData = authData;
         $scope.$storage.uid = authData.uid.split(':')[1];
-        $scope.$storage.name = authData.password.email.replace(/@.*/, '');
+        $scope.$storage.name = authData.password.email.replace(/@.*!/, '');
 
-      });
+      });*/
 
       $scope.logout = function(){
-        Auth.$unauth();
+        //Auth.$unauth();
         $scope.$storage.uid = null;
       };
 
       $scope.login = function() {
-        $scope.authData = null;
+        /*$scope.authData = null;
         $scope.error = null;
 
         ref.authWithPassword({
@@ -58,12 +58,20 @@ angular.module('angularSeedApp')
           } else {
             console.log("Authenticated successfully with payload:", authData);
           }
-        });
+        });*/
 
         //Add function to send infos with http.post
-        $http.post('/login', {mail:$scope.email, password:$scope.password}).
+        $http.post('/login', {email:$scope.email, password:$scope.password}).
           then(function(response) {
             //@TODO: Go to the toolbox page and add a case if the response is wrong
+            if (response.data.ok){
+              $scope.$storage.uid=response.data.uid;
+              $scope.$storage.name = $scope.email.replace(/@.*!/, '');
+            }
+            else{
+              $scope.$storage.uid=null; //to be sure
+              $scope.error = response.data.error; //display error message
+            }
           });
       };
     }

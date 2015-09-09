@@ -8,15 +8,15 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('RegisterCtrl', function ($scope,$location) {
+  .controller('RegisterCtrl', function ($scope, $http, $location) {
 
-    var ref = new Firebase("https://isct.firebaseio.com");
+    //var ref = new Firebase("https://isct.firebaseio.com");
 
     $scope.email = "";
     $scope.password = "";
 
     $scope.register = function(){
-      ref.createUser({
+      /*ref.createUser({
         email    : $scope.email,
         password : $scope.password
       }, function(error, userData) {
@@ -27,12 +27,19 @@ angular.module('angularSeedApp')
           console.log("Successfully created user account with uid:", userData.uid);
           $location.path("login"); //redirect to login page on success
         }
-      });
+      });*/
 
       //Add function to send infos with http.post
-      $http.post('/register', {mail:$scope.email, password:$scope.password}).
+      $http.post('/register', {email:$scope.email, password:$scope.password}).
         then(function(response) {
           //@TODO: Go to the login page or automatically log the new user
+          if (response.data.ok){
+            $location.path("login");
+          }
+          else{
+            $scope.$storage.uid=null; //to be sure
+          }
+
         });
     };
 
