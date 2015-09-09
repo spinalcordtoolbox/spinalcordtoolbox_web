@@ -28,7 +28,7 @@ angular.module('angularSeedApp')
       $scope.relative_path = '';
 
 
-      //Tree generation (AJAX reuest)
+      //Tree generation (AJAX request)
       var tree = $resource($scope.tree_path);
       var updateTree = function(){
         tree.query(function(data) {
@@ -44,7 +44,6 @@ angular.module('angularSeedApp')
           updateTree();
         }
       });
-
 
       $scope.delete = function(path){
         for (i in files_id){

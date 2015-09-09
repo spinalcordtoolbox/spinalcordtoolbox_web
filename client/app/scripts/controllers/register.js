@@ -8,7 +8,8 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('RegisterCtrl', function ($scope, $http, $location) {
+  .controller('RegisterCtrl', function ($scope, $http, $location, $localStorage) {
+    $scope.$storage = $localStorage;
 
     //var ref = new Firebase("https://isct.firebaseio.com");
 

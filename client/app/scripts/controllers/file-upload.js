@@ -8,16 +8,12 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-    .controller('FileUploadCtrl', ['$scope', 'Upload', '$timeout', 'SharedDataService', "Auth",
-    function ($scope, Upload, $timeout, SharedDataService, Auth) {
+    .controller('FileUploadCtrl', ['$scope', 'Upload', '$timeout', 'SharedDataService', "$localStorage",
+    function ($scope, Upload, $timeout, SharedDataService, $localStorage) {
+      $scope.$storage = $localStorage;
 
-    $scope.NewFile = SharedDataService; //Data shared between browserCntrl and updateCntrl
-    $scope.auth = Auth; //Authentification factory
 
-    // any time auth status updates, add the user data to scope
-    $scope.auth.$onAuth(function(authData) {
-      $scope.authData = authData;
-    });
+      $scope.NewFile = SharedDataService; //Data shared between browserCntrl and updateCntrl
 
     //Watch if the user try to upload a file with the button or the drag and dropé
     $scope.$watch('files', function () {
@@ -37,7 +33,7 @@ angular.module('angularSeedApp')
                 Upload.upload({
                     url: '/upload', //The server address to receive files, it's can take .nii or .gz but decompress them automatically
                     fields: {
-                        'username': $scope.authData.uid.split(':')[1] //send the uid to put the file inside the right folder
+                        'username': $scope.$storage.uid //send the uid to put the file inside the right folder
                     },
                     file: file
                 }).progress(function (evt) { //During the progression update a value in order to show a progressbar

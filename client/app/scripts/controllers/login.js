@@ -8,8 +8,8 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('LoginCtrl', ["$scope", "Auth", "$localStorage", "$http", "$location",
-    function($scope, Auth, $localStorage, $http, $location) {
+  .controller('LoginCtrl', ["$scope", "Auth", "$localStorage", "$http", "$window",
+    function($scope, Auth, $localStorage, $http, $window) {
       $scope.$storage = $localStorage;
 
       /*
@@ -67,6 +67,7 @@ angular.module('angularSeedApp')
             if (response.data.ok){
               $scope.$storage.uid=response.data.uid;
               $scope.$storage.name = $scope.email.replace(/@.*!/, '');
+              $window.location.href = '#/toolbox'
             }
             else{
               $scope.$storage.uid=null; //to be sure
