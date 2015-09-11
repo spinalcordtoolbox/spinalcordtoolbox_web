@@ -13,46 +13,43 @@ from ..models import models
 login = Service('login','/login', 'Identify a user on the website')
 logout = Service('logout','/logout', 'Logout a user on the website')
 register = Service('register', '/register', 'add a new user into the db')
-confirm = Service('confirm', '/confirm/{token}', 'confirm a user after registration.')
+confirm = Service('confirm', '/confirm', 'confirm a user after registration.')
 
 #The model for this user registration is models.local_user
 @register.post()
 def register_post(request):
     email = request.json_body['email']
     password = request.json_body['password']
-    session = request.db
-    new_user = models.local_user(
+
+    try:
+        session = request.db
+        new_user = models.local_user(
         email=email,
         password=password,
         confirmed=False
-    )
-    try:
+        )
         session.add(new_user)
         session.commit()
-    except Exception:
+    except:
         return {"error":"User already exists"}
 
-
+    #link to resend activation
     #Add mailler
     mailer = get_mailer(request)
     token = generate_confirmation_token(email)
     decryt = confirm_token(token)
 
 
-    confirm_url= request.resource_url(request.context, request, 'confirm', query={'token':token})
+    confirm_url= request.resource_url(request.context, 'confirm', query={'token':token})
 
 
     message = Message(subject="hello world",
                   sender="isctoolbox@gmail.com",
                   recipients=[email],
-                  body="<p>Welcome! Thanks for signing up. Please follow this link to activate your account:</p>\n<p>"
-                       +"<a href='"+confirm_url+"'>"+decryt+"</a></p><br>\n<p>Cheers!</p>"
+                  body="Welcome! Thanks for signing up. Please follow this link to activate your account:\n\n"
+                       +confirm_url+" \n\n Cheers!"
                       )
-    mailer.send(message)
-    try:
-        transaction.commit()
-    except:
-        pass
+    mailer.send_immediately(message, fail_silently=False)
 
     return {"ok":"New user added to the db"}
 
@@ -63,8 +60,10 @@ def confirm_get(request):
     session = request.db
     try:
         user = models.local_user.by_mail(email, session)
+        if user.confirmed:
+            return {'alert':'You are already confirmed!'}
         user.confirmed = True
-        user.confirmed_on = datetime.datetime.now
+        # user.confirmed_on = datetime.datetime.now
         session.commit()
         return {'ok':'You have confirmed your account. Thanks!'}
     except:

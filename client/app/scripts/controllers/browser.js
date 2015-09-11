@@ -20,7 +20,7 @@ angular.module('angularSeedApp')
         $scope.tree_path = "/tree/"+"You have to be logged to use this functionality";
       }
       else{
-        $scope.tree_path = "/tree/"+$scope.$storage.uid;  //The path to GET the tree with the user's uid
+        $scope.tree_path = "/tree";  //The path to GET the tree
 
       }
 

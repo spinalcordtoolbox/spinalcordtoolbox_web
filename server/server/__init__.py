@@ -6,6 +6,7 @@ from .models.models import User
 from configparser import ConfigParser
 import logging
 from .security import get_principals
+from pyramid_mailer import Mailer
 
 
 from pyramid.authentication import AuthTktAuthenticationPolicy
@@ -85,6 +86,7 @@ def main(global_config, **settings):
     config.include('pyramid_mako')
     config.include("cornice")
     config.include('pyramid_mailer')
+    config.registry['mailer'] = Mailer.from_settings(settings)
     config_db(config, settings)
     config_routes(config)
     config_auth_policy(config, settings)

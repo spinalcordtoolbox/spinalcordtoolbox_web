@@ -14,7 +14,7 @@ import zlib
 tree_desc = " ''' Service that read the database to generate a tree for a specific user'''"
 
 tree = Service('tree',
-                '/tree/{uid}',
+                '/tree',
                tree_desc)
 
 def path_to_db(path,session,tag):
