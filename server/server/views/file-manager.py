@@ -30,6 +30,7 @@ def path_to_db(path,session,tag):
     #d['rel_path'] = os.path.relpath(path)[52:] #The relative path, usefull to load volumes files into BrainBrowser
     if tag:
         d['parent'] = "#"
+        d['state'] = '{"opened" : "true","selected" : "true"}'
     else :
         d['parent'] = os.path.abspath(os.path.join(path, os.pardir))
     if os.path.isdir(path):
@@ -43,12 +44,14 @@ def path_to_db(path,session,tag):
 
     logging.info(d['parent'])
     u = models.tree(rel_path = d['rel_path'],
-            size = 0,
-            text = d['text'],
-            type = d['type'],
-            id = d['path'],
-            parent = d['parent'],
-            icon = d['icon'])
+                    size = 0,
+                    text = d['text'],
+                    type = d['type'],
+                    id = d['path'],
+                    parent = d['parent'],
+                    icon = d['icon'],
+                    state = d['state']
+                    )
 
     session.add(u)
     session.commit()
@@ -68,7 +71,6 @@ def tree_get(request):
     fileTree = session.query(models.tree).all()
     filesT = []
     for file in fileTree:
-        #print (jsonpickle.dumps(file))
         fileT = {'id': file.id}
         fileT['parent'] = file.parent
         fileT['icon'] = file.icon
@@ -76,6 +78,7 @@ def tree_get(request):
         fileT['path'] = file.id
         fileT['text'] = file.text
         fileT['rel_path'] = file.rel_path
+        fileT['state'] = jsonpickle.loads(file.state)
 
         filesT.append(fileT)
 

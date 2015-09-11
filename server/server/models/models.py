@@ -154,6 +154,7 @@ class tree(Base):
     text = Column(Unicode(1024), unique=False)
     type = Column(Unicode(1024), unique=False)
     icon = Column(Unicode(1024), unique=False)
+    state = Column(Unicode(1024), unique=False)
 
 
 class Operation(Base):
