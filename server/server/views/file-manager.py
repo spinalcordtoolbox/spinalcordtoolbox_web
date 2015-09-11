@@ -31,15 +31,18 @@ def path_to_db(path,session,tag):
     if tag:
         d['parent'] = "#"
         d['state'] = '{"opened" : "true","selected" : "true"}'
+        d['icon'] = "glyphicon glyphicon-user"
     else :
         d['parent'] = os.path.abspath(os.path.join(path, os.pardir))
     if os.path.isdir(path):
         d['type'] = "directory"
         d['children'] = [path_to_db(os.path.join(path,x),session,0) for x in os.listdir(path)]
-        d['icon'] = "glyphicon glyphicon-folder-open"
+        if tag is 0:
+            d['icon'] = "glyphicon glyphicon-folder-open"
     else:
         d['type'] = "file"
-        d['icon'] = "glyphicon glyphicon-file"
+        if tag is 0:
+            d['icon'] = "glyphicon glyphicon-file"
         d['children'] = ""
 
     logging.info(d['parent'])
