@@ -9,7 +9,7 @@ def get_principals(user_id, request):
     """
     called by authentication policy
     """
-    u = request.db.query(m.User).filter_by(id=int(user_id)).first()
+    u = request.db.query(m.local_user).filter_by(id=int(user_id)).first()
 
     if u:
         return [u, security.Authenticated]

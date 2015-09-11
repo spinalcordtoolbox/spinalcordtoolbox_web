@@ -5,12 +5,19 @@ from pyramid import authentication, authorization
 from .models.models import User
 from configparser import ConfigParser
 import logging
+from .security import get_principals
+
 
 from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from .security import SecurityFactory
 
 log = logging.getLogger(__name__)
+
+def config_auth_policy(config, settings):
+    policy = authentication.AuthTktAuthenticationPolicy(settings['auth_secret'], get_principals, cookie_name="isct_auth", hashalg="sha512")
+    config.set_authentication_policy(policy)
+    config.set_authorization_policy(authorization.ACLAuthorizationPolicy())
 
 def db(request):
     """every request will have a session associated with it. and will
@@ -80,6 +87,7 @@ def main(global_config, **settings):
     config.include('pyramid_mailer')
     config_db(config, settings)
     config_routes(config)
+    config_auth_policy(config, settings)
 
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/home')

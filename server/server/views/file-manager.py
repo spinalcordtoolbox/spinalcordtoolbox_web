@@ -132,9 +132,10 @@ def download_post(request):
     :param request.file_id: an array of the selected files
     :return: a ziped file with all the selected files
     '''
-    files_id = jsonpickle.loads(request.POST['files_id'])
-    user_id = request.POST['uid']
-    return {'files_id':files_id[0], 'user_id':user_id}
+    files_id = request.json_body['files_id']
+    user_id = request.json_body['uid']
+    auth_id = request.unauthenticated_userid
+    return {'files_id':files_id, 'user_id':user_id, 'auth_id':auth_id}
     # #test if the get argument is in the right format
     # if type(file_id)==type([]):
     #     zip_filename = "isct_download.zip"

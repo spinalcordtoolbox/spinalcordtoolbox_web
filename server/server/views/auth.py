@@ -4,12 +4,14 @@ from pyramid_mailer import get_mailer
 from pyramid_mailer.message import Message
 import transaction
 import datetime
+from pyramid.security import remember, forget
 from sqlalchemy.exc import SQLAlchemyError
 from ..token import generate_confirmation_token, confirm_token
 
 from ..models import models
 
 login = Service('login','/login', 'Identify a user on the website')
+logout = Service('logout','/logout', 'Logout a user on the website')
 register = Service('register', '/register', 'add a new user into the db')
 confirm = Service('confirm', '/confirm/{token}', 'confirm a user after registration.')
 
@@ -78,11 +80,19 @@ def login_post(request):
     user = models.local_user.by_mail(email, session)
 
     if user and user.verify_password(password):
+        headers = remember(request, user.id)
+        request.response.headerlist.extend(headers)
         return {"ok":"Good password","uid":user.id}
     else:
+        headers = forget(request)
+        request.response.headerlist.extend(headers)
         return {"error":"Wrong Password or User doesn't exist, please register"}
 
-
+@logout.get()
+def logout_get(request):
+    headers = forget(request)
+    request.response.headerlist.extend(headers)
+    return {'ok':'success logout'}
 
 
 

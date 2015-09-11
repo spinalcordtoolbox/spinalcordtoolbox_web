@@ -10,8 +10,8 @@
  * It uses a JSTree directive to represent the folder tree.
  */
 angular.module('angularSeedApp')
-  .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService', '$localStorage','$location','$window','$resource',
-    function ($scope, $route, SharedDataService, $localStorage, $location, $window, $resource) {
+  .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService', '$localStorage','$location','$window','$resource', '$http',
+    function ($scope, $route, SharedDataService, $localStorage, $location, $window, $resource, $http) {
 
       $scope.$storage = $localStorage;   //Initialization of the local storage
       $scope.NewFile = SharedDataService; //it's use to connect uploadCntrl & browserCntrl to detect changes then refresh the tree
@@ -110,7 +110,7 @@ angular.module('angularSeedApp')
       $scope.download = function(){
         $http.post('/download', {files_id:$scope.filesPath, uid:$scope.$storage.uid}).
           then(function(response) {
-            //@TODO: execute the download of the response.data ?
+            console.log(response.data);
           });
       };
 
