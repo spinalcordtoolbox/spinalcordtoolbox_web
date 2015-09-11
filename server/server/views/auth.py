@@ -7,7 +7,7 @@ import datetime
 from pyramid.security import remember, forget
 from sqlalchemy.exc import SQLAlchemyError
 from ..token import generate_confirmation_token, confirm_token
-
+import jsonpickle
 from ..models import models
 
 login = Service('login','/login', 'Identify a user on the website')
@@ -79,9 +79,13 @@ def login_post(request):
     user = models.local_user.by_mail(email, session)
 
     if user and user.verify_password(password):
-        headers = remember(request, user.id)
-        request.response.headerlist.extend(headers)
-        return {"ok":"Good password","uid":user.id}
+        if user.confirmed:
+            headers = remember(request, user.id)
+            request.response.headerlist.extend(headers)
+            return {"ok":"Good password","uid":user.id}
+        else:
+            # print (generate_confirmation_token("po@po.po")) //debug -- can be deleted
+            return {'error':'You have to confirmed your account. Click on the link in you mailbox. \n Or resend link:'}
     else:
         headers = forget(request)
         request.response.headerlist.extend(headers)
@@ -97,35 +101,35 @@ def logout_get(request):
 
 
 '''RESTful users ressources'''
-
-@resource(collection_path='/users', path='/users/{user_id}')
+#TODO:restrict for admin user
+@resource(collection_path='/users', path='/users/{user_id}', permission="authenticated")
 class User(object):
 
     def __init__(self, request):
         self.request = request
 
-    @view()
+    @view(renderer="string")
     def collection_get(self):
         session = self.request.db
-        all_user = session.query(models.User).all()
-        return [e.serialize() for e in all_user]
+        all_user = session.query(models.local_user).all()
+        return jsonpickle.dumps(all_user)
 
-    @view()
+    @view(renderer="string")
     def get(self):
         userid = self.request.matchdict['user_id']
         session = self.request.db
-        user_selected = session.query(models.User).filter_by(id=userid).first()
-        return {'user':user_selected.serialize()}
+        user_selected = session.query(models.local_user).filter_by(id=userid).first()
+        return jsonpickle.dumps(user_selected)
 
-    @view()
+    @view(renderer="string")
     def delete(self):
         userid = self.request.matchdict['user_id']
         session = self.request.db
-        selected_user = session.query(models.User).filter_by(id=userid).first()
+        selected_user = session.query(models.local_user).filter_by(id=userid).first()
         session.delete(selected_user)
         session.commit()
-        all_user = session.query(models.User).all()
-        return [e.serialize() for e in all_user]
+        all_user = session.query(models.local_user).all()
+        return jsonpickle.dumps(all_user)
 
 # foobar = Service(name="foobar", path="/foobar")
 # @foobar.post(schema=RegisterForm,
