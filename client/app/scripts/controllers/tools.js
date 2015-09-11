@@ -31,6 +31,7 @@ angular.module('angularSeedApp')
       //envoyer les arg à la fonction choisie sur le server !
       var args_tool = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
       for (var i in args_tool) {
+
         for (var arg_user_order in args_user) {
           var arg_tool = args_tool[i];
           //Update the value in the original JSON with the value entered by the user
@@ -38,6 +39,7 @@ angular.module('angularSeedApp')
             arg_tool["value"] = args_user[arg_user_order];
           }
         }
+
       }
       //POST Request on /sctoolbox in order to launch the toolbox
       sctoolbox.save({tool_name: tool_name, args: args_user, uid: $scope.$storage.uid});

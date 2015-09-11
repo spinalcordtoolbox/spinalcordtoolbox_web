@@ -63,7 +63,6 @@ angular.module('angularSeedApp')
         //Add function to send infos with http.post
         $http.post('/login', {email:$scope.email, password:$scope.password}).
           then(function(response) {
-            //@TODO: Go to the toolbox page and add a case if the response is wrong
             if (response.data.ok){
               $scope.$storage.uid=response.data.uid;
               $scope.$storage.name = $scope.email.replace(/@.*!/, '');

@@ -1,17 +1,57 @@
-from deform import ValidationFailure
-import deform
-from pyramid.view import view_config, forbidden_view_config
-# from ..forms import SigninForm, RegisterForm
-from pyramid.httpexceptions import HTTPFound
-from pyramid.security import remember, forget
-from deform_bootstrap import Form
 from cornice.resource import resource, view
-from pyramid.view import view_config
-from sqlalchemy.exc import IntegrityError
 from cornice import Service
-import simplejson as json
+from pyramid_mailer import get_mailer
+from pyramid_mailer.message import Message
 
 from ..models import models
+
+login = Service('login','/login', 'Identify a user on the website')
+register = Service('register', '/register', 'add a new user into the db')
+
+#The model for this user registration is models.local_user
+@register.post()
+def register_post(request):
+    email = request.json_body['email']
+    password = request.json_body['password']
+    session = request.db
+    new_user = models.local_user(
+        email=email,
+        password=password
+    )
+    try:
+        session.add(new_user)
+        session.commit()
+    except Exception:
+        return {"error":"User already exists"}
+
+
+    #Add mailler
+    mailer = get_mailer(request)
+    message = Message(subject="hello world",
+                  sender="admin@mysite.com",
+                  recipients=["arthur.dent@gmail.com"],
+                  body="hello, arthur")
+    mailer.send(message)
+
+    return {"ok":"New user added to the db"}
+
+@login.post()
+def login_post(request):
+    email = request.json_body['email']
+    password = request.json_body['password']
+
+    session = request.db
+    user = models.local_user.by_mail(email, session)
+
+    if user and user.verify_password(password):
+        return {"ok":"Good password","uid":user.id}
+    else:
+        return {"error":"Wrong Password or User doesn't exist, please register"}
+
+
+
+
+
 
 '''RESTful users ressources'''
 
@@ -43,7 +83,6 @@ class User(object):
         session.commit()
         all_user = session.query(models.User).all()
         return [e.serialize() for e in all_user]
-
 
 # foobar = Service(name="foobar", path="/foobar")
 # @foobar.post(schema=RegisterForm,
@@ -124,39 +163,3 @@ class User(object):
 #     headers = forget(request)
 #     return HTTPFound(location=request.route_url('home'),
 #                      headers=headers)\
-
-login = Service('login','/login', 'Identify a user on the website')
-register = Service('register', '/register', 'add a new user into the db')
-#The model for this user registration is models.local_user
-
-@register.post()
-def register_post(request):
-    email = request.json_body['email']
-    password = request.json_body['password']
-    session = request.db
-    new_user = models.local_user(
-        email=email,
-        password=password
-    )
-    try:
-        session.add(new_user)
-        session.commit()
-    except Exception:
-        return {"error":"User already exists"}
-
-    #Add mailler
-
-    return {"ok":"New user added to the db"}
-
-@login.post()
-def login_post(request):
-    email = request.json_body['email']
-    password = request.json_body['password']
-
-    session = request.db
-    user = models.local_user.by_mail(email, session)
-
-    if user and user.verify_password(password):
-        return {"ok":"Good password","uid":user.id}
-    else:
-        return {"error":"Wrong Password or User doesn't exist, please register"}

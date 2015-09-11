@@ -77,6 +77,7 @@ def main(global_config, **settings):
     config.include('pyramid_chameleon')
     config.include('pyramid_mako')
     config.include("cornice")
+    config.include('pyramid_mailer')
     config_db(config, settings)
     config_routes(config)
 
