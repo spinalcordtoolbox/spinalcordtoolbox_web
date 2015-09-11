@@ -3,7 +3,7 @@ import os
 import simplejson as json
 from uuid import uuid4
 
-from sqlalchemy import Column, Integer, UnicodeText, Unicode, DateTime, ForeignKey, Float, LargeBinary
+from sqlalchemy import Column, Integer, UnicodeText, Unicode, DateTime, ForeignKey, Float, LargeBinary, Boolean
 from sqlalchemy.ext.declarative import declared_attr, declarative_base
 from sqlalchemy.ext.mutable import Mutable
 from sqlalchemy.orm import relationship, backref, synonym
@@ -113,6 +113,8 @@ class User(Base):
 class local_user(Base):
     email = Column(Unicode(1024), unique=True)
     password_ = Column('password', Unicode(60)) # Hash from bcrypt
+    confirmed = Column(Boolean, unique=False, default=False)
+    confirmed_on = Column(DateTime, unique=False)
     @property
     def password(self):
         return self.password_

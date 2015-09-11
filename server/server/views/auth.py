@@ -2,11 +2,16 @@ from cornice.resource import resource, view
 from cornice import Service
 from pyramid_mailer import get_mailer
 from pyramid_mailer.message import Message
+import transaction
+import datetime
+from sqlalchemy.exc import SQLAlchemyError
+from ..token import generate_confirmation_token, confirm_token
 
 from ..models import models
 
 login = Service('login','/login', 'Identify a user on the website')
 register = Service('register', '/register', 'add a new user into the db')
+confirm = Service('confirm', '/confirm/{token}', 'confirm a user after registration.')
 
 #The model for this user registration is models.local_user
 @register.post()
@@ -16,7 +21,8 @@ def register_post(request):
     session = request.db
     new_user = models.local_user(
         email=email,
-        password=password
+        password=password,
+        confirmed=False
     )
     try:
         session.add(new_user)
@@ -27,13 +33,41 @@ def register_post(request):
 
     #Add mailler
     mailer = get_mailer(request)
+    token = generate_confirmation_token(email)
+    decryt = confirm_token(token)
+
+
+    confirm_url= request.resource_url(request.context, request, 'confirm', query={'token':token})
+
+
     message = Message(subject="hello world",
-                  sender="admin@mysite.com",
-                  recipients=["arthur.dent@gmail.com"],
-                  body="hello, arthur")
+                  sender="isctoolbox@gmail.com",
+                  recipients=[email],
+                  body="<p>Welcome! Thanks for signing up. Please follow this link to activate your account:</p>\n<p>"
+                       +"<a href='"+confirm_url+"'>"+decryt+"</a></p><br>\n<p>Cheers!</p>"
+                      )
     mailer.send(message)
+    try:
+        transaction.commit()
+    except:
+        pass
 
     return {"ok":"New user added to the db"}
+
+@confirm.get()
+def confirm_get(request):
+    token = request.GET['token']
+    email = confirm_token(token)
+    session = request.db
+    try:
+        user = models.local_user.by_mail(email, session)
+        user.confirmed = True
+        user.confirmed_on = datetime.datetime.now
+        session.commit()
+        return {'ok':'You have confirmed your account. Thanks!'}
+    except:
+        return {'error':'Wrong token'}
+
 
 @login.post()
 def login_post(request):
