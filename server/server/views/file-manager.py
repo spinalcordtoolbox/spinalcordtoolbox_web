@@ -67,7 +67,8 @@ def tree_get(request):
     :param request.uid: The uid of the active user
     :return: a JSON with all the files and folders of the user in order to generate the file tree
     '''
-    uid = request.matchdict['uid']
+    uid = str(request.unauthenticated_userid)
+
     session = request.db
     session.query(models.tree).delete()
     files = path_to_db(os.path.abspath(os.path.join(FILE_REP_TMP,uid)),session,1)
