@@ -9,6 +9,8 @@ from sqlalchemy.exc import SQLAlchemyError
 from ..token import generate_confirmation_token, confirm_token
 import jsonpickle
 from ..models import models
+from ..email_template import email_template
+import threading
 
 login = Service('login','/login', 'Identify a user on the website')
 logout = Service('logout','/logout', 'Logout a user on the website')
@@ -30,7 +32,7 @@ def register_post(request):
         )
         session.add(new_user)
         session.commit()
-    except:
+    except Exception:
         return {"error":"User already exists"}
 
     #link to resend activation
@@ -43,13 +45,14 @@ def register_post(request):
     confirm_url= request.resource_url(request.context, 'confirm', query={'token':token})
 
 
-    message = Message(subject="hello world",
+    message = Message(subject="Activate your iSCT Account",
                   sender="isctoolbox@gmail.com",
                   recipients=[email],
-                  body="Welcome! Thanks for signing up. Please follow this link to activate your account:\n\n"
-                       +confirm_url+" \n\n Cheers!"
+                  html=email_template(confirm_url)
                       )
-    mailer.send_immediately(message, fail_silently=False)
+
+    threading._start_new_thread(mailer.send_immediately,(message, False)) #New thread to send email
+    # mailer.send_immediately(message, fail_silently=False)
 
     return {"ok":"New user added to the db"}
 

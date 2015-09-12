@@ -16,6 +16,11 @@ angular.module('angularSeedApp')
     $scope.email = "";
     $scope.password = "";
 
+    $scope.clicked = false;
+    var clicked_on_register = function(bool){
+      $scope.clicked=bool;
+    };
+
     $scope.register = function(){
       /*ref.createUser({
         email    : $scope.email,
@@ -34,10 +39,13 @@ angular.module('angularSeedApp')
       $http.post('/register', {email:$scope.email, password:$scope.password}).
         then(function(response) {
           if (response.data.ok){
-            $location.path("login");
+            clicked_on_register(true);
+            //$location.path("login");
           }
           else{
+            clicked_on_register(false);
             $scope.$storage.uid=null; //to be sure
+            $scope.error = response.data.error;
           }
 
         });
