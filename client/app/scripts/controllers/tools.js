@@ -8,7 +8,8 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('ToolsCtrl', ['$scope', '$resource', 'SharedDataService', 'getTools', '$localStorage', function ($scope, $resource, SharedDataService, getTools, $localStorage) {
+  .controller('ToolsCtrl', ['$scope', '$resource', 'SharedDataService', 'getTools', '$localStorage',
+    function ($scope, $resource, SharedDataService, getTools, $localStorage) {
 
     $scope.$storage = $localStorage;   //Initialization of the local storage
 
