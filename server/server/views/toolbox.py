@@ -86,6 +86,7 @@ def sctoolbox_post(request):
         plugins_path, process_uid=uid)
 
     tbr.run()
+
     return {}
 
 
