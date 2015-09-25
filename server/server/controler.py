@@ -526,8 +526,14 @@ class SCTExec(object):
 
             if value:
                 ret_dict[o["name"]] = value
+                print (o["type_value"])
+                if o["type_value"]==None: #Check for flags
+                    ret_dict[o["name"]] = ""
+
             elif o["mandatory"]:
                 raise IOError("option {} in {} is mandatory but not provided".format(o["name"], name))
+
+
 
         return ret_dict
 
