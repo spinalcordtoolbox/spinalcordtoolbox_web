@@ -1,7 +1,10 @@
-PROJECT_ROOT = '/home/isct/spinalcordtoolbox_web/server/'
+# PROJECT_ROOT = '/home/isct/spinalcordtoolbox_web/server/'
+PROJECT_ROOT = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server'
 
 # TOOLBOX PATH
-SPINALCORDTOOLBOX = "/home/isct/spinalcordtoolbox"
+# SPINALCORDTOOLBOX = "/home/isct/spinalcordtoolbox"
+spinalcordtoolbox = "/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox"
+SPINALCORDTOOLBOX = "%s" % spinalcordtoolbox
 SPINALCORD_BIN = "{}/bin".format(SPINALCORDTOOLBOX)
 SPINALCORD_SCRIPTS = "{}/scripts".format(SPINALCORDTOOLBOX)
 
@@ -40,6 +43,7 @@ OPTION_TRANSMIT = \
      "name",
      "type_value",
      "order",
+     "section",
      "example")
 
 OPTION_DEPRECATED = "deprecated"

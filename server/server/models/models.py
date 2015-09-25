@@ -176,3 +176,4 @@ class RegisteredTool(Base):
     name = Column('name', Unicode(1024), unique=True)
     options = Column('options', MutableDict.as_mutable(JSONEncodedDict))
     help_str = Column('help', UnicodeText)
+    section = Column('section', UnicodeText)

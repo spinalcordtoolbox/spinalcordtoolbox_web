@@ -61,6 +61,7 @@ angular.module('angularSeedApp')
         var default_value = arg["default_value"];
         var order = arg["order"];
         var example = arg["example"];
+        var section = arg["section"];
         var mandatory = arg["mandatory"];
         var mandatoryClass = "";
 
@@ -68,7 +69,7 @@ angular.module('angularSeedApp')
           description = "Mandatory: "+description;
           mandatoryClass = "mandatory";
         }
-        console.log(type===null);
+        console.log(section);
 
         //If the example is an array create a SELECT
         if ((example) && (example.length > 1) && (typeof(example) === "object")) {

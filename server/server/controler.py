@@ -81,15 +81,23 @@ class PluginUpdater(object):
             if get_parser:
                 parser = get_parser()
                 options = {}
+
+                #TODO: Find a way to create an array with all the value
+                #of the section, each line should be egal to the order and have the name of the section
+                sections = [o[0]*o[1] for i in parser.usage.section.items()]
+
                 for o in parser.options.values():
                     if not getattr(o, cfg.OPTION_DEPRECATED, None):
                         options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
                         #add a value key for user parameters
                         options[o.name]['value']=None
+                        #add section handling
+                        options[o.name]['section']=parser.usage.section
 
                 # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                 sct_tools.append(models.RegisteredTool(name=mod_name,
                                                        help_str=parser.usage.description,
+                                                       #section=parser.usage.section,
                                                        options=options))
 
             get_parser = getattr(getattr(module, mod_name.split('_')[1].capitalize()+"Script", None), cfg.GET_PARSER, None)
@@ -103,10 +111,13 @@ class PluginUpdater(object):
                             options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
                             #add a value key for user parameters
                             options[o.name]['value']=None
+                            #add section handling
+                            options[o.name]['section']='Coucou'
 
                     # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                     sct_tools.append(models.RegisteredTool(name=mod_name,
                                                            help_str=parser.usage.description,
+                                                            #section=parser.usage.section,
                                                            options=options))
                 except:
                     continue
@@ -122,10 +133,13 @@ class PluginUpdater(object):
                             options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
                             #add a value key for user parameters
                             options[o.name]['value']=None
+                            #add section handling
+                            options[o.name]['section']='Coucou'
 
                     # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                     sct_tools.append(models.RegisteredTool(name=mod_name,
                                                            help_str=parser.usage.description,
+                                                            #section=parser.usage.section,
                                                            options=options))
                 except:
                     continue
@@ -147,12 +161,13 @@ class PluginUpdater(object):
             if script['activateScript']:
                 name = script['title']
                 help_str = 'no help yet'
+                section = 'no section here'
                 cfg_path = os.path.join(config_path, name + '_config.json')
                 if not os.path.isfile(cfg_path):
                     continue
                 with open(cfg_path) as fp:
                     options = json.load(fp)[0]
-                rtools.append(models.RegisteredTool(name=name, help_str=help_str, options=options))
+                rtools.append(models.RegisteredTool(name=name, help_str=help_str,section=section, options=options))
 
         return rtools
 
@@ -498,7 +513,7 @@ class SCTLog(object):
 
 class SCTExec(object):
 
-    def __init__(self, name=None, options=None, help_str=None, registered_tool=None):
+    def __init__(self, name=None, options=None, help_str=None, section=None, registered_tool=None):
         """ Has the same variable than the models.models.RegisteredTool
 
         @TODO use input and output from __init__, not  cfg.INPUT_FILE_TAG
@@ -511,6 +526,7 @@ class SCTExec(object):
         self.name = registered_tool.name if registered_tool else name
         self.options = registered_tool.options if registered_tool else options
         self.help_str = registered_tool.help_str if registered_tool else help_str
+        self.section = registered_tool.section if registered_tool else section
 
 
     def _parse_options(self, options, name):
