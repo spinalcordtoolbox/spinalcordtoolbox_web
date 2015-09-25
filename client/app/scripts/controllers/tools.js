@@ -68,6 +68,7 @@ angular.module('angularSeedApp')
           description = "Mandatory: "+description;
           mandatoryClass = "mandatory";
         }
+        console.log(type===null);
 
         //If the example is an array create a SELECT
         if ((example) && (example.length > 1) && (typeof(example) === "object")) {
@@ -85,10 +86,24 @@ angular.module('angularSeedApp')
           };
         }
         //Or just put the example as placeholder (information inside the input)
-        else if (name) {
+        else if (name && type!=null) {
           prop[order] = {
             "title": name,
             "type": "string",
+            "default": default_value,
+            "description": description,
+            "order": order,
+            "x-schema-form": {
+              "placeholder": example,
+              "htmlClass": mandatoryClass
+            }
+          };
+        }
+
+        else if (type===null){
+          prop[order] = {
+            "title": name,
+            "type": "boolean",
             "default": default_value,
             "description": description,
             "order": order,
