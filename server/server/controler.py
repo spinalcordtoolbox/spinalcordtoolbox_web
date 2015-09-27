@@ -84,15 +84,22 @@ class PluginUpdater(object):
 
                 #TODO: Find a way to create an array with all the value
                 #of the section, each line should be egal to the order and have the name of the section
-                sections = [o[0]*o[1] for i in parser.usage.section.items()]
-
-                for o in parser.options.values():
+                #sections = [o[0]*o[1] for i in parser.usage.section.items()]
+                old_section_name = None
+                for i,o in enumerate(parser.options.values()):
                     if not getattr(o, cfg.OPTION_DEPRECATED, None):
                         options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
                         #add a value key for user parameters
                         options[o.name]['value']=None
                         #add section handling
-                        options[o.name]['section']=parser.usage.section
+                        section_name = parser.usage.section.get(i)
+                        if not section_name and not old_section_name:
+                            options[o.name]['section']="Main Config"
+                        elif not section_name and old_section_name:
+                            options[o.name]['section']=old_section_name
+                        else:
+                            options[o.name]['section']=section_name
+                            old_section_name = section_name
 
                 # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                 sct_tools.append(models.RegisteredTool(name=mod_name,
@@ -106,13 +113,21 @@ class PluginUpdater(object):
                     logging.info(mod_name)
                     parser = get_parser()
                     options = {}
-                    for o in parser.options.values():
+                    old_section_name = None
+                    for i,o in enumerate(parser.options.values()):
                         if not getattr(o, cfg.OPTION_DEPRECATED, None):
                             options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
                             #add a value key for user parameters
                             options[o.name]['value']=None
                             #add section handling
-                            options[o.name]['section']='Coucou'
+                            section_name = parser.usage.section.get(i)
+                            if not section_name and not old_section_name:
+                                options[o.name]['section']="Main Config"
+                            elif not section_name and old_section_name:
+                                options[o.name]['section']=old_section_name
+                            else:
+                                options[o.name]['section']=section_name
+                                old_section_name = section_name
 
                     # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                     sct_tools.append(models.RegisteredTool(name=mod_name,
@@ -128,13 +143,21 @@ class PluginUpdater(object):
                     logging.info(mod_name)
                     parser = get_parser()
                     options = {}
-                    for o in parser.options.values():
+                    old_section_name = None
+                    for i,o in enumerate(parser.options.values()):
                         if not getattr(o, cfg.OPTION_DEPRECATED, None):
                             options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
                             #add a value key for user parameters
                             options[o.name]['value']=None
                             #add section handling
-                            options[o.name]['section']='Coucou'
+                            section_name = parser.usage.section.get(i)
+                            if not section_name and not old_section_name:
+                                options[o.name]['section']="Main Config"
+                            elif not section_name and old_section_name:
+                                options[o.name]['section']=old_section_name
+                            else:
+                                options[o.name]['section']=section_name
+                                old_section_name = section_name
 
                     # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                     sct_tools.append(models.RegisteredTool(name=mod_name,

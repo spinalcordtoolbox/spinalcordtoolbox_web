@@ -50,6 +50,9 @@ angular.module('angularSeedApp')
     //TODO: modify the order to be: Name, description, example, inputbox
     $scope.change = function () {
       var prop = {};
+      var sections = [];
+      var item = [];
+      var old_section = "Main Config";
       var args = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
       var requir = [];
       for (var i in args) {
@@ -69,7 +72,34 @@ angular.module('angularSeedApp')
           description = "Mandatory: "+description;
           mandatoryClass = "mandatory";
         }
-        console.log(section);
+
+        if (section===old_section){
+          item[order] = {key:order};
+        }
+        else{
+
+          //TODO: supprimer les valeurs inutiles apres j
+          var j=0;
+          for (var i in item){
+            item[j]=item[i];
+            j++;
+          }
+          console.log(item);
+          for (var i;i<=j;i++){
+            item = item.pop();
+          }
+
+          console.log(item);
+          sections.push(
+            {
+              title: old_section,
+              items: item
+            }
+          );
+          item = [];
+          item[order] = {key:order};
+        }
+        old_section = section;
 
         //If the example is an array create a SELECT
         if ((example) && (example.length > 1) && (typeof(example) === "object")) {
@@ -116,22 +146,29 @@ angular.module('angularSeedApp')
         }
       }
 
+
+
       //@TODO: add required field
       $scope.schema = {
         "type": "object",
-        "title": "args",
+        //"title": "args",
         "properties": prop
-      }
+      };
+
+      $scope.form = [
+        {
+          type: "tabs",
+          tabs: sections
+        }
+      ];
+
+
+      //console.log($scope.form);
+
     };
 
-    $scope.form = [
-      "*",
-      {
-        //"type": "submit",
-        //"title": "OK"
 
-      }
-    ];
+    $scope.form = [];
 
     $scope.args = {}; //the arguments entered by the user
   }]);
