@@ -46,12 +46,24 @@ angular.module('angularSeedApp')
 
     };
 
+    Array.prototype.move = function (old_index, new_index) {
+      if (new_index >= this.length) {
+        var k = new_index - this.length;
+        while ((k--) + 1) {
+          this.push(undefined);
+        }
+      }
+      this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+      return this; // for testing purposes
+    };
+
     //Generate the form associate with the selected tool
     //TODO: modify the order to be: Name, description, example, inputbox
     $scope.change = function () {
       var prop = {};
       var sections = [];
       var item = [];
+      var z=0;
       var old_section = "Main Config";
       var args = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
       var requir = [];
@@ -79,23 +91,21 @@ angular.module('angularSeedApp')
         else{
 
           //TODO: supprimer les valeurs inutiles apres j
-          var j=0;
-          for (var i in item){
-            item[j]=item[i];
-            j++;
+          console.log(item);
+          z = 0;
+          for (var k in item){
+            item.move(k,z);
+            k++;
           }
           console.log(item);
-          for (var i;i<=j;i++){
-            item = item.pop();
-          }
-
-          console.log(item);
+          if (typeof(item[0]) != "undefined"){
           sections.push(
             {
               title: old_section,
               items: item
             }
           );
+          }
           item = [];
           item[order] = {key:order};
         }
