@@ -91,9 +91,8 @@ angular.module('angularSeedApp')
           for (var m in sections){
 
             if(sections[m].title){ //append to title
-              if (sections[m].title===section){
-                sections[m].items.push({key:order});
-                console.log(sections[m].items.sort());
+              if (sections[m].title===section){ //verify if the title is the same as the section name
+                sections[m].items.push({key:order}); //add an item to the section
                 tag = 1;
               }
             }
@@ -101,7 +100,7 @@ angular.module('angularSeedApp')
               sections.push(
               {
                 title: section,
-                items: [{key:order}]
+                items: [{key:order}] //Add the first item
               });
             }
           }
@@ -181,5 +180,8 @@ angular.module('angularSeedApp')
 
     $scope.args = {}; //the arguments entered by the user
 
+    function sortNumber(a,b) {
+      return a - b;
+    }
 
   }]);
