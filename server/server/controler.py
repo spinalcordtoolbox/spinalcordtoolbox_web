@@ -9,6 +9,7 @@ import pkgutil
 import psutil
 import platform
 import queue
+import operator
 import shutil
 import subprocess
 import signal
@@ -92,14 +93,12 @@ class PluginUpdater(object):
                         #add a value key for user parameters
                         options[o.name]['value']=None
                         #add section handling
-                        section_name = parser.usage.section.get(i)
-                        if not section_name and not old_section_name:
-                            options[o.name]['section']="Main Config"
-                        elif not section_name and old_section_name:
-                            options[o.name]['section']=old_section_name
-                        else:
-                            options[o.name]['section']=section_name
-                            old_section_name = section_name
+                        parser.usage.section[1]="Main Config"
+                        x = parser.usage.section
+                        sorted_x = sorted(x.items(), key=operator.itemgetter(0))
+                        for i in sorted_x:
+                            if options[o.name]['order'] >= i[0]:
+                                options[o.name]['section']=i[1]
 
                 # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                 sct_tools.append(models.RegisteredTool(name=mod_name,
@@ -120,14 +119,13 @@ class PluginUpdater(object):
                             #add a value key for user parameters
                             options[o.name]['value']=None
                             #add section handling
-                            section_name = parser.usage.section.get(i)
-                            if not section_name and not old_section_name:
-                                options[o.name]['section']="Main Config"
-                            elif not section_name and old_section_name:
-                                options[o.name]['section']=old_section_name
-                            else:
-                                options[o.name]['section']=section_name
-                                old_section_name = section_name
+                            parser.usage.section[1]="Main Config"
+                            x = parser.usage.section
+                            sorted_x = sorted(x.items(), key=operator.itemgetter(0))
+                            for i in sorted_x:
+                                if options[o.name]['order'] >= i[0]:
+                                    options[o.name]['section']=i[1]
+
 
                     # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                     sct_tools.append(models.RegisteredTool(name=mod_name,
@@ -150,14 +148,12 @@ class PluginUpdater(object):
                             #add a value key for user parameters
                             options[o.name]['value']=None
                             #add section handling
-                            section_name = parser.usage.section.get(i)
-                            if not section_name and not old_section_name:
-                                options[o.name]['section']="Main Config"
-                            elif not section_name and old_section_name:
-                                options[o.name]['section']=old_section_name
-                            else:
-                                options[o.name]['section']=section_name
-                                old_section_name = section_name
+                            parser.usage.section[1]="Main Config"
+                            x = parser.usage.section
+                            sorted_x = sorted(x.items(), key=operator.itemgetter(0))
+                            for i in sorted_x:
+                                if options[o.name]['order'] >= i[0]:
+                                    options[o.name]['section']=i[1]
 
                     # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                     sct_tools.append(models.RegisteredTool(name=mod_name,

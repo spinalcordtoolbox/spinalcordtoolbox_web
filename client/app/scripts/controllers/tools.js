@@ -62,9 +62,9 @@ angular.module('angularSeedApp')
     $scope.change = function () {
       var prop = {};
       var sections = [];
+      //var item = [{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0}];
       var item = [];
       var z=0;
-      var old_section = "Main Config";
       var args = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
       var requir = [];
       for (var i in args) {
@@ -79,37 +79,35 @@ angular.module('angularSeedApp')
         var section = arg["section"];
         var mandatory = arg["mandatory"];
         var mandatoryClass = "";
+        z++;
 
         if (mandatory){
           description = "Mandatory: "+description;
           mandatoryClass = "mandatory";
         }
+        if (typeof(section)!="undefined") {
 
-        if (section===old_section){
-          item[order] = {key:order};
-        }
-        else{
+          var tag = 0;
+          for (var m in sections){
 
-          //TODO: supprimer les valeurs inutiles apres j
-          console.log(item);
-          z = 0;
-          for (var k in item){
-            item.move(k,z);
-            k++;
-          }
-          console.log(item);
-          if (typeof(item[0]) != "undefined"){
-          sections.push(
-            {
-              title: old_section,
-              items: item
+            if(sections[m].title){ //append to title
+              if (sections[m].title===section){
+                sections[m].items.push({key:order});
+                console.log(sections[m].items.sort());
+                tag = 1;
+              }
             }
-          );
+            else if (tag === 0){ //add new section
+              sections.push(
+              {
+                title: section,
+                items: [{key:order}]
+              });
+            }
           }
-          item = [];
-          item[order] = {key:order};
+
         }
-        old_section = section;
+
 
         //If the example is an array create a SELECT
         if ((example) && (example.length > 1) && (typeof(example) === "object")) {
@@ -154,6 +152,7 @@ angular.module('angularSeedApp')
             }
           };
         }
+
       }
 
 
@@ -164,7 +163,7 @@ angular.module('angularSeedApp')
         //"title": "args",
         "properties": prop
       };
-
+      sections.reverse();
       $scope.form = [
         {
           type: "tabs",
@@ -181,4 +180,6 @@ angular.module('angularSeedApp')
     $scope.form = [];
 
     $scope.args = {}; //the arguments entered by the user
+
+
   }]);
