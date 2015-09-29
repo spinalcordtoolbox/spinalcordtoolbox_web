@@ -93,4 +93,9 @@ angular
   .config(['$compileProvider',
     function ($compileProvider) {
       $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);
-    }]);
+    }])
+  .config(['$tooltipProvider', function($tooltipProvider){
+    $tooltipProvider.setTriggers({
+      'click': 'click'
+    });
+  }]);

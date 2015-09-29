@@ -64,7 +64,6 @@ angular.module('angularSeedApp')
       var sections = [];
       //var item = [{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0}];
       var item = [];
-      var z=0;
       var args = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
       var requir = [];
       for (var i in args) {
@@ -79,13 +78,14 @@ angular.module('angularSeedApp')
         var section = arg["section"];
         var mandatory = arg["mandatory"];
         var mandatoryClass = "";
-        z++;
 
         if (mandatory){
           description = "Mandatory: "+description;
           mandatoryClass = "mandatory";
         }
         if (typeof(section)!="undefined") {
+
+          console.log($scope.toolSelected.help_str);
 
           var tag = 0;
           for (var m in sections){
@@ -99,14 +99,13 @@ angular.module('angularSeedApp')
             else if (tag === 0){ //add new section
               sections.push(
               {
+                type: "fieldset",
                 title: section,
                 items: [{key:order}] //Add the first item
               });
             }
           }
-
         }
-
 
         //If the example is an array create a SELECT
         if ((example) && (example.length > 1) && (typeof(example) === "object")) {
@@ -154,8 +153,6 @@ angular.module('angularSeedApp')
 
       }
 
-
-
       //@TODO: add required field
       $scope.schema = {
         "type": "object",
@@ -163,12 +160,15 @@ angular.module('angularSeedApp')
         "properties": prop
       };
       sections.reverse();
-      $scope.form = [
-        {
-          type: "tabs",
-          tabs: sections
+      for (var i in sections){
+        console.log(i);
+
+        if (sections[i].items){
+          sections[i].items.sort(sort_by('key', false, parseInt));
         }
-      ];
+      }
+      $scope.form = sections;
+      console.log($scope.form);
 
 
       //console.log($scope.form);
@@ -180,8 +180,17 @@ angular.module('angularSeedApp')
 
     $scope.args = {}; //the arguments entered by the user
 
-    function sortNumber(a,b) {
-      return a - b;
+    var sort_by = function(field, reverse, primer){
+
+      var key = primer ?
+        function(x) {return primer(x[field])} :
+        function(x) {return x[field]};
+
+      reverse = !reverse ? 1 : -1;
+
+      return function (a, b) {
+        return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+      }
     }
 
   }]);

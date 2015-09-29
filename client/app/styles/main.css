@@ -118,12 +118,19 @@ body {
 }
 
 .popover{
-  width: 100%;
-  max-width: 100%;
+  display:block !important;
+  max-width: 400px!important;
+  width:auto;
+  white-space:pre-line;
+  display: inline;
 }
 .popover-content {
-  width: 100%;
-  max-width: 100%;
+  display:block !important;
+  max-width: 400px!important;
+  width:auto;
+  white-space:pre-line;
+  display: inline;
+
 }
 
 @media (min-width: 768px) {
