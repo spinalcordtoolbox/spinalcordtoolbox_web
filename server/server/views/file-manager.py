@@ -137,7 +137,21 @@ def download_post(request):
     files_id = request.json_body['files_id']
     user_id = request.json_body['uid']
     auth_id = request.unauthenticated_userid
-    return {'files_id':files_id, 'user_id':user_id, 'auth_id':auth_id}
+
+    if type(files_id)==type([]):
+        zip_filename = "isct_download.zip"
+        # The zip compressor
+        zf = zipfile.ZipFile(zip_filename, "w")
+        for fpath in files_id:
+            # Add files, rename it and add compression (zipfile.ZIP_DEFLATED)
+            zf.write(fpath, arcname=os.path.basename(fpath), compress_type=zipfile.ZIP_DEFLATED)
+        # Must close zip for all contents to be written
+        zf.close()
+        #TODO fix the file response, should have a real file not just the name of the zipfile in the root
+        return response.FileResponse("isct_download.zip", request=request, cache_max_age=3000, content_type='application/zip')
+    else:
+        return {'error':'argument error'}
+
     # #test if the get argument is in the right format
     # if type(file_id)==type([]):
     #     zip_filename = "isct_download.zip"

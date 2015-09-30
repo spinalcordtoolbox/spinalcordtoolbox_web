@@ -110,13 +110,22 @@ angular.module('angularSeedApp')
           });
       };
 
+      var responseType = 'arraybuffer';
       $scope.download = function(){
-        $http.post('/download', {files_id:$scope.filesPath, uid:$scope.$storage.uid}).
+        $http.post('/download', {files_id:$scope.filesPath, uid:$scope.$storage.uid},{
+          responseType: 'arraybuffer',
+          headers: {'Content-Type': 'application/zip'}
+        }).
           then(function(response) {
-            console.log(response.data);
+            openSaveAsDialog("isct_download.zip", response.data, 'application/zip');
           });
       };
 
+
+      function openSaveAsDialog(filename, content, mediaType) {
+        var blob = new Blob([content], {type: mediaType});
+        saveAs(blob, filename);
+      }
     }
   ]);
 
