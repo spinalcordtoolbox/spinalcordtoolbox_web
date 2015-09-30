@@ -112,6 +112,9 @@ class User(Base):
 
 class local_user(Base):
     email = Column(Unicode(1024), unique=True)
+    country = Column(Unicode(1024), unique=False)
+    research_center = Column(Unicode(1024), unique=False)
+    occupation = Column(Unicode(1024), unique=False)
     password_ = Column('password', Unicode(60)) # Hash from bcrypt
     confirmed = Column(Boolean, unique=False, default=False)
     confirmed_on = Column(DateTime, unique=False)
