@@ -67,6 +67,11 @@ angular
         controller: 'ConsoleCtrl',
         controllerAs: 'console'
       })
+      .when('/processMngmt', {
+        templateUrl: 'views/processmngmt.html',
+        controller: 'ProcessmngmtCtrl',
+        controllerAs: 'processMngmt'
+      })
       .otherwise({
         redirectTo: '/',
         templateUrl: 'views/toolbox.html'

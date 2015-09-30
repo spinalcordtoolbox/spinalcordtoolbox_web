@@ -23,6 +23,7 @@ def logger_get(request):
     if uid is None:
         logging.info("User not logged")
         return "User not logged"
+
     info = SCTLog(uid)
 
     if request.GET.get("old", None):

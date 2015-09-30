@@ -82,10 +82,9 @@ angular.module('angularSeedApp')
         if (mandatory){
           description = "Mandatory: "+description;
           mandatoryClass = "mandatory";
+          requir.push(order.toString());
         }
         if (typeof(section)!="undefined") {
-
-          console.log($scope.toolSelected.help_str);
 
           var tag = 0;
           for (var m in sections){
@@ -157,16 +156,21 @@ angular.module('angularSeedApp')
       $scope.schema = {
         "type": "object",
         //"title": "args",
-        "properties": prop
-      };
-      sections.reverse();
+        "properties": prop,
+        "required": requir
+    };
+      console.log(requir);
+      //sections.reverse();
       for (var i in sections){
-        console.log(i);
-
         if (sections[i].items){
           sections[i].items.sort(sort_by('key', false, parseInt));
         }
       }
+      sections.push({
+        "type": "submit",
+        "style": "btn-info",
+        "title": "RUN"
+      });
       $scope.form = sections;
       console.log($scope.form);
 
@@ -191,6 +195,22 @@ angular.module('angularSeedApp')
       return function (a, b) {
         return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
       }
-    }
+    };
+
+    $scope.onSubmit = function(form) {
+      // First we broadcast an event so all fields validate themselves
+      $scope.$broadcast('schemaFormValidate');
+
+      // Then we check if the form is valid
+      if (form.$valid) {
+        console.log("the form is valid");
+        $scope.compute($scope.toolSelected.name,$scope.args,$scope.inputs);
+      }
+      else{
+        console.log("the form is INvalid");
+      }
+    };
+
+
 
   }]);

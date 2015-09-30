@@ -32,8 +32,9 @@
           <a class="navbar-brand" href="#/"><code style="color: red;">WIP</code><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> iSCToolbox </a>
         </div>
         <ul class="nav navbar-nav">
-          <li data-match-route="/viewer"><a href="#/viewer">Viewer</a></li>
-          <li data-match-route="/toolbox"><a href="#/toolbox">Toolbox</a></li>
+          <li class="{{logout_class}}" data-match-route="/viewer"><a href="#/viewer">Viewer</a></li>
+          <li class="{{logout_class}}" data-match-route="/toolbox"><a href="#/toolbox">Toolbox</a></li>
+          <li class="{{logout_class}}" data-match-route="/processmngmt"><a href="#/processMngmt">Process</a></li>
           <!--<li data-match-route="/browser"><a href="#/browser">Browser</a></li>-->
           <!--<li data-match-route="/file-upload"><a href="#/file-upload">File Upload</a></li>-->
           <!--TODO: add documentation for the toolbox-->
@@ -113,6 +114,7 @@
         <script src="scripts/controllers/console.js"></script>
         <script src="scripts/controllers/toolbox.js"></script>
         <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/processmngmt.js"></script>
         <!-- endbuild -->
 </body>
 </html>
