@@ -11,6 +11,8 @@ import jsonpickle
 from ..models import models
 from ..email_template import email_template
 import threading
+import os, logging
+from ..cfg import FILE_REP_TMP
 
 login = Service('login','/login', 'Identify a user on the website')
 logout = Service('logout','/logout', 'Logout a user on the website')
@@ -66,6 +68,7 @@ def register_post(request):
 def confirm_get(request):
     token = request.GET['token']
     email = confirm_token(token)
+    print(email)
     session = request.db
     try:
         user = models.local_user.by_mail(email, session)
@@ -74,6 +77,11 @@ def confirm_get(request):
         user.confirmed = True
         # user.confirmed_on = datetime.datetime.now
         session.commit()
+        #Create a new folder for the file of the user
+        try:
+            os.mkdir(os.path.join(FILE_REP_TMP,str(user.id)))
+        except FileExistsError:
+            logging.error('The folder already exist.')
         return {'ok':'You have confirmed your account. Thanks!'}
     except:
         return {'error':'Wrong token'}

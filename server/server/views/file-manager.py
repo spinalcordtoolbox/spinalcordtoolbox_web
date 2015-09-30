@@ -30,10 +30,11 @@ def path_to_db(path,session,tag):
     #d['rel_path'] = os.path.relpath(path)[52:] #The relative path, usefull to load volumes files into BrainBrowser
     if tag:
         d['parent'] = "#"
-        d['state'] = '{"opened" : "true","selected" : "true"}'
+        d['state'] = '{"opened" : "true","selected" : "false"}'
         d['icon'] = "glyphicon glyphicon-user"
     else :
         d['parent'] = os.path.abspath(os.path.join(path, os.pardir))
+        d['state'] = '{"opened" : "false","selected" : "false"}'
     if os.path.isdir(path):
         d['type'] = "directory"
         d['children'] = [path_to_db(os.path.join(path,x),session,0) for x in os.listdir(path)]

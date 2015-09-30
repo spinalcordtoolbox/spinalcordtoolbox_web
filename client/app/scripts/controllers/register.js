@@ -11,21 +11,6 @@ angular.module('angularSeedApp')
   .controller('RegisterCtrl', function ($scope, $http, $location, $localStorage) {
     $scope.$storage = $localStorage;
 
-    $scope.email = "";
-    $scope.password = "";
-    $scope.country = "";
-    $scope.research_center = "";
-    $scope.occupation="";
-    $scope.occupations = { id: null, name: 'Occupation' };
-    $scope.occupations = [
-      { id: 0, name: 'Student' },
-      { id: 1, name: 'Postdoc' },
-      { id: 2, name: 'Researcher' },
-      { id: 3, name: 'Clinician' },
-      { id: 4, name: 'Other' }
-    ];
-
-
     $scope.registerSchema = {
       "type": "object",
       "title": "Comment",
@@ -124,32 +109,26 @@ angular.module('angularSeedApp')
 
       // Then we check if the form is valid
       if (form.$valid) {
-        // ... do whatever you need to do with your data.
+        //Function to send infos with http.post
+        $http.post('/register', {email:$scope.registerModel.email, password:$scope.registerModel.pass, country:$scope.registerModel.country, occupation:$scope.registerModel.occupations, research_center:$scope.registerModel.center}).
+          then(function(response) {
+            if (response.data.ok){
+              console.log(response.data.ok);
+              clicked_on_register(true);
+            }
+            else{
+              clicked_on_register(false);
+              $scope.$storage.uid=null; //to be sure
+              $scope.error = response.data.error;
+            }
+
+          });
       }
-    }
+    };
 
     $scope.clicked = false;
     var clicked_on_register = function(bool){
       $scope.clicked=bool;
-    };
-
-    $scope.register = function(){
-
-      //Add function to send infos with http.post
-      $http.post('/register', {email:$scope.email, password:$scope.password, country:$scope.country.code, occupation:$scope.occupation.name, research_center:$scope.research_center}).
-        then(function(response) {
-          if (response.data.ok){
-            console.log(response.data.ok);
-            clicked_on_register(true);
-            //$location.path("login");
-          }
-          else{
-            clicked_on_register(false);
-            $scope.$storage.uid=null; //to be sure
-            $scope.error = response.data.error;
-          }
-
-        });
     };
 
 

@@ -1,5 +1,5 @@
 # PROJECT_ROOT = '/home/isct/spinalcordtoolbox_web/server/'
-PROJECT_ROOT = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server'
+PROJECT_ROOT = '/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/'
 
 # TOOLBOX PATH
 # SPINALCORDTOOLBOX = "/home/isct/spinalcordtoolbox"
