@@ -59,10 +59,13 @@ angular.module('angularSeedApp')
         var relative_nodePath = [];
         nodeChecked = angular.element("#jstree").jstree('get_checked'); // Get the checked elements in the trees
         for (var i in nodeChecked) {
-          if (angular.element("#jstree").jstree("get_node", nodeChecked[i]).original.type === 'file'){ //Select only files
-            relative_nodePath.push(angular.element("#jstree").jstree("get_node", nodeChecked[i]).original.rel_path); //Get the relative path for the viewer
-            nodePath.push(angular.element("#jstree").jstree("get_node", nodeChecked[i]).original.path); //Get the absolute path for the toolbox
+          if (nodeChecked.hasOwnProperty(i)){
+            if (angular.element("#jstree").jstree("get_node", nodeChecked[i]).original.type === 'file'){ //Select only files
+              relative_nodePath.push(angular.element("#jstree").jstree("get_node", nodeChecked[i]).original.rel_path); //Get the relative path for the viewer
+              nodePath.push(angular.element("#jstree").jstree("get_node", nodeChecked[i]).original.path); //Get the absolute path for the toolbox
+            }
           }
+
 
         }
         $scope.$apply(function () {
