@@ -22,13 +22,19 @@ confirm = Service('confirm', '/confirm', 'confirm a user after registration.')
 def register_post(request):
     email = request.json_body['email']
     password = request.json_body['password']
+    country = request.json_body['country']
+    occupation = request.json_body['occupation']
+    research_center = request.json_body['research_center']
 
     try:
         session = request.db
         new_user = models.local_user(
         email=email,
         password=password,
-        confirmed=False
+        confirmed=False,
+        research_center=research_center,
+        occupation=occupation,
+        country=country
         )
         session.add(new_user)
         session.commit()
