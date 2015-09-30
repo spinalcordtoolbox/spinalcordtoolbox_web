@@ -44,35 +44,74 @@ angular.module('angularSeedApp')
         $scope.$storage.uid = null;
       };
 
-      $scope.login = function() {
-        /*$scope.authData = null;
-        $scope.error = null;
 
-        ref.authWithPassword({
-          email    : $scope.email,
-          password : $scope.password
-        }, function(error, authData) {
-          if (error) {
-            console.log("Login Failed!", error);
-            $scope.error = error;
-          } else {
-            console.log("Authenticated successfully with payload:", authData);
+      $scope.loginSchema = {
+        "type": "object",
+        "title": "Comment",
+        "properties": {
+          "pass": {
+            "title": "Password",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9]*$",
+            "minLength":"5",
+            "maxLength":"18"
+          },
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "pattern": "^\\S+@\\S+$",
+            "validationMessage": "Please enter your email address."
           }
-        });*/
-
-        //Add function to send infos with http.post
-        $http.post('/login', {email:$scope.email, password:$scope.password}).
-          then(function(response) {
-            if (response.data.ok){
-              $scope.$storage.uid=response.data.uid;
-              $scope.$storage.name = $scope.email.replace(/@.*!/, '');
-              $window.location.href = '#/toolbox'
-            }
-            else{
-              $scope.$storage.uid=null; //to be sure
-              $scope.error = response.data.error; //display error message
-            }
-          });
+        },
+        "required": [
+          "pass",
+          "email"
+        ]
       };
+
+      $scope.loginForm = [
+        {
+          "type": "help",
+          "helpvalue": "<div class=\"alert alert-warning\">Login into your account.</div>"
+        },
+        {
+          "key": "email"
+        },
+        {
+          "key": "pass",
+          "type":"password"
+        },
+        {
+          "type": "submit",
+          "style": "btn-info",
+          "title": "OK",
+          "icon": 'glyphicon glyphicon-icon-exclamation-sign'
+        }
+      ];
+
+      $scope.loginModel = {};
+
+      $scope.onSubmit = function(form) {
+        // First we broadcast an event so all fields validate themselves
+        $scope.$broadcast('schemaFormValidate');
+
+        // Then we check if the form is valid
+        if (form.$valid) {
+          //function to send infos with http.post
+          $http.post('/login', {email:$scope.loginModel.email, password:$scope.loginModel.pass}).
+            then(function(response) {
+              if (response.data.ok){
+                $scope.$storage.uid=response.data.uid;
+                $scope.$storage.name = $scope.email.replace(/@.*!/, '');
+                $window.location.href = '#/toolbox'
+              }
+              else{
+                $scope.$storage.uid=null; //to be sure
+                $scope.error = response.data.error; //display error message
+              }
+            });
+        }
+      };
+
     }
   ]);
