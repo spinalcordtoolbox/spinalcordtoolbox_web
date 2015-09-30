@@ -78,7 +78,10 @@ angular.module('angularSeedApp')
             "type": "section",
             "htmlClass": "col-xs-6",
             "items": [
-              "pass"
+              {
+                "key": "pass",
+                "type": "password"
+              }
             ]
           }
         ]
