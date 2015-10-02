@@ -107,6 +107,7 @@ angular.module('angularSeedApp')
         $http.post('/delete', {files_id:$scope.filesPath, uid:$scope.$storage.uid}).
           then(function(response) {
             //@TODO: alert('Your selection is delete !')
+            updateTree();
           });
       };
 

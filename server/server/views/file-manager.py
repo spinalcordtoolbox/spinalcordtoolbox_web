@@ -24,43 +24,44 @@ def path_to_db(path,session,tag):
     :param tag: a tag to identify the first iteration of the recursive loop as the root folder/file
     :return: Register each file and each folder into the database, recursively
     '''
-    d = {'text': os.path.basename(path)}
-    d['path'] = path #The absolute path, usefull to launch the SCToolbox
-    d['rel_path'] = re.match(".*server/server/(static.*)", path).groups()[0]
-    #d['rel_path'] = os.path.relpath(path)[52:] #The relative path, usefull to load volumes files into BrainBrowser
-    if tag:
-        d['parent'] = "#"
-        d['state'] = '{"opened" : "true","selected" : "false"}'
-        d['icon'] = "glyphicon glyphicon-user"
-    else :
-        d['parent'] = os.path.abspath(os.path.join(path, os.pardir))
-        d['state'] = '{"opened" : "false","selected" : "false"}'
-    if os.path.isdir(path):
-        d['type'] = "directory"
-        d['children'] = [path_to_db(os.path.join(path,x),session,0) for x in os.listdir(path)]
-        if tag is 0:
-            d['icon'] = "glyphicon glyphicon-folder-open"
-    else:
-        d['type'] = "file"
-        if tag is 0:
-            d['icon'] = "glyphicon glyphicon-file"
-        d['children'] = ""
+    if os.path.basename(path).find("deleted")<0:
+        d = {'text': os.path.basename(path)}
+        d['path'] = path #The absolute path, usefull to launch the SCToolbox
+        d['rel_path'] = re.match(".*server/server/(static.*)", path).groups()[0]
+        #d['rel_path'] = os.path.relpath(path)[52:] #The relative path, usefull to load volumes files into BrainBrowser
+        if tag:
+            d['parent'] = "#"
+            d['state'] = '{"opened" : "true","selected" : "false"}'
+            d['icon'] = "glyphicon glyphicon-user"
+        else :
+            d['parent'] = os.path.abspath(os.path.join(path, os.pardir))
+            d['state'] = '{"opened" : "false","selected" : "false"}'
+        if os.path.isdir(path):
+            d['type'] = "directory"
+            d['children'] = [path_to_db(os.path.join(path,x),session,0) for x in os.listdir(path)]
+            if tag is 0:
+                d['icon'] = "glyphicon glyphicon-folder-open"
+        else:
+            d['type'] = "file"
+            if tag is 0:
+                d['icon'] = "glyphicon glyphicon-file"
+            d['children'] = ""
 
-    logging.info(d['parent'])
-    u = models.tree(rel_path = d['rel_path'],
-                    size = 0,
-                    text = d['text'],
-                    type = d['type'],
-                    id = d['path'],
-                    parent = d['parent'],
-                    icon = d['icon'],
-                    state = d['state']
-                    )
+        logging.info(d['parent'])
+        u = models.tree(rel_path = d['rel_path'],
+                        size = 0,
+                        text = d['text'],
+                        type = d['type'],
+                        id = d['path'],
+                        parent = d['parent'],
+                        icon = d['icon'],
+                        state = d['state']
+                        )
 
-    session.add(u)
-    session.commit()
+        session.add(u)
+        session.commit()
 
-    return d
+        return d
 
 @tree.get()
 def tree_get(request):
@@ -177,8 +178,8 @@ def delete_post(request):
     Delete a selected file or folder with a user verification
     :return: void
     '''
-    files_id = jsonpickle.loads(request.POST['files_id'])
-    user_id = request.POST['uid']
+    files_id = request.json_body['files_id']
+    user_id = request.json_body['uid']
     session = request.db
     #This is a verification to be sur the user is the ower of the files
     if user_id == request.unauthenticated_userid:
@@ -186,6 +187,7 @@ def delete_post(request):
             #Find the file in the database
             file_to_delete = session.query(models.tree).filter_by(id=file_id).first()
             #Delete the entry
-            session.delete(file_to_delete)
+            print(file_to_delete.id)
+            os.rename(file_to_delete.id, (os.path.splitext(file_to_delete.id)[0]+"_deleted")+os.path.splitext(file_to_delete.id)[1])
             session.commit()
     return {}

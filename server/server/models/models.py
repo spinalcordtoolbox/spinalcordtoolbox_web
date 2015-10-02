@@ -158,6 +158,7 @@ class tree(Base):
     type = Column(Unicode(1024), unique=False)
     icon = Column(Unicode(1024), unique=False)
     state = Column(Unicode(1024), unique=False)
+    deleted = Column(Boolean, unique=False, default=False)
 
 
 class Operation(Base):
