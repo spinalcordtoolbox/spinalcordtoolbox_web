@@ -127,6 +127,12 @@ angular.module('angularSeedApp')
         var blob = new Blob([content], {type: mediaType});
         saveAs(blob, filename);
       }
+
+      $scope.alertMe = function() {
+        setTimeout(function() {
+          $window.alert('You\'ve selected the alert tab!');
+        });
+      };
     }
   ]);
 

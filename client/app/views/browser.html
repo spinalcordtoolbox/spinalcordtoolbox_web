@@ -12,7 +12,7 @@
     <span class="glyphicon glyphicon-picture"></span> Visualize</button>
     </div>
     <div class="form-group" >
-  <button type="button" class="btn btn-default center-block" ng-click="delete()">
+  <button type="button" class="btn btn-default center-block" ng-confirm-message="Are you sure to delete these files? {{filesPath}}" ng-confirm="delete()">
     <span class="glyphicon glyphicon-remove" ></span> Delete</button>
       <button type="button" class="btn btn-default center-block" ng-click="download()">
         <span class="glyphicon glyphicon-download" ></span> Download</button>
