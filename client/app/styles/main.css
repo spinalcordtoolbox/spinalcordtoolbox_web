@@ -203,3 +203,14 @@ body {
   color: #f7172a;
   cursor: hand;
 }
+
+/*table*/
+table {
+  border: 1px solid #666;
+  width: 100%;
+}
+th {
+  background: #f8f8f8;
+  font-weight: bold;
+  padding: 2px;
+}

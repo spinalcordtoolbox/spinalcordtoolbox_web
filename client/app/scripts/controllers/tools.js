@@ -80,7 +80,7 @@ angular.module('angularSeedApp')
         var mandatoryClass = "";
 
         if (mandatory){
-          description = "Mandatory: "+description;
+          description = " Mandatory: "+description;
           mandatoryClass = "mandatory";
           requir.push(order.toString());
         }
@@ -122,12 +122,29 @@ angular.module('angularSeedApp')
           };
         }
         //Or just put the example as placeholder (information inside the input)
-        else if (name && type!=null) {
+        else if (name && type!=null && order!=1) {
           prop[order] = {
             "title": name,
             "type": "string",
             "default": default_value,
             "description": description,
+            "order": order,
+            "x-schema-form": {
+              "placeholder": example,
+              "htmlClass": mandatoryClass
+            }
+          };
+        }
+
+        else if (order === 1) {
+          console.log(name);
+          prop[order] = {
+            "title": name,
+            "type": "string",
+            "default": default_value,
+            "description": description,
+            "pattern": "\/[^\s]+",
+            "validationMessage": "Please enter the complete path",
             "order": order,
             "x-schema-form": {
               "placeholder": example,
@@ -160,7 +177,7 @@ angular.module('angularSeedApp')
         "required": requir
     };
       console.log(requir);
-      //sections.reverse();
+      sections.reverse();
       for (var i in sections){
         if (sections[i].items){
           sections[i].items.sort(sort_by('key', false, parseInt));
@@ -169,7 +186,7 @@ angular.module('angularSeedApp')
       sections.push({
         "type": "submit",
         "style": "btn-info",
-        "title": "RUN"
+        "title": "Run the Script"
       });
       $scope.form = sections;
       console.log($scope.form);

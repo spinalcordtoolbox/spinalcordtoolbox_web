@@ -55,7 +55,12 @@ angular
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
-        controllerAs: 'login'
+        controllerAs: 'login',
+        access: {
+          requiresLogin: true,
+          requiredPermissions: ['Admin', 'UserManager'],
+          permissionType: 'AtLeastOne'
+        }
       })
       .when('/register', {
         templateUrl: 'views/register.html',
@@ -70,7 +75,15 @@ angular
       .when('/processMngmt', {
         templateUrl: 'views/processmngmt.html',
         controller: 'ProcessmngmtCtrl',
-        controllerAs: 'processMngmt'
+        controllerAs: 'processMngmt',
+        access: {
+          requiresLogin: true
+        }
+  })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl',
+        controllerAs: 'admin'
       })
       .otherwise({
         redirectTo: '/',
