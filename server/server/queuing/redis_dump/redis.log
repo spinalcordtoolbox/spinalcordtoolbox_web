@@ -1,0 +1,75 @@
+[6552] 29 Sep 21:50:38.913 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+[6552] 29 Sep 21:50:38.913 # Redis can't set maximum open files to 10032 because of OS error: Operation not permitted.
+[6552] 29 Sep 21:50:38.913 # Current maximum open files is 4096. maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.21 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 44444
+ |    `-._   `._    /     _.-'    |     PID: 6552
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[6552] 29 Sep 21:50:38.915 # Server started, Redis version 2.8.21
+[6552] 29 Sep 21:50:38.915 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[6552] 29 Sep 21:50:38.915 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+[6552] 29 Sep 21:50:38.915 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+[6552] 29 Sep 21:50:38.915 * The server is now ready to accept connections on port 44444
+[6552 | signal handler] (1443580959) Received SIGTERM scheduling shutdown...
+[6552] 29 Sep 22:42:39.531 # User requested shutdown...
+[6552] 29 Sep 22:42:39.531 * Saving the final RDB snapshot before exiting.
+[15157] 30 Sep 11:05:54.840 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+[15157] 30 Sep 11:05:54.841 # Redis can't set maximum open files to 10032 because of OS error: Operation not permitted.
+[15157] 30 Sep 11:05:54.841 # Current maximum open files is 4096. maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.21 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 44444
+ |    `-._   `._    /     _.-'    |     PID: 15157
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[15157] 30 Sep 11:05:54.842 # Server started, Redis version 2.8.21
+[15157] 30 Sep 11:05:54.842 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[15157] 30 Sep 11:05:54.842 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+[15157] 30 Sep 11:05:54.842 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+[15157] 30 Sep 11:05:54.842 * The server is now ready to accept connections on port 44444
+[15157] 30 Sep 11:20:55.044 * 1 changes in 900 seconds. Saving...
+[15157] 30 Sep 11:20:55.044 * Background saving started by pid 15511
+[15511] 30 Sep 11:20:55.056 * DB saved on disk
+[15511] 30 Sep 11:20:55.057 * RDB: 0 MB of memory used by copy-on-write
+[15157] 30 Sep 11:20:55.145 * Background saving terminated with success
+[15157] 30 Sep 15:16:52.712 * 1 changes in 900 seconds. Saving...
+[15157] 30 Sep 15:16:52.712 * Background saving started by pid 21217
+[21217] 30 Sep 15:16:52.717 * DB saved on disk
+[21217] 30 Sep 15:16:52.717 * RDB: 0 MB of memory used by copy-on-write
+[15157] 30 Sep 15:16:52.812 * Background saving terminated with success
+[15157] 30 Sep 15:31:53.013 * 1 changes in 900 seconds. Saving...
+[15157] 30 Sep 15:31:53.013 * Background saving started by pid 21390
+[21390] 30 Sep 15:31:53.019 * DB saved on disk
+[21390] 30 Sep 15:31:53.020 * RDB: 0 MB of memory used by copy-on-write
+[15157] 30 Sep 15:31:53.114 * Background saving terminated with success
+[15157 | signal handler] (1443670388) Received SIGINT scheduling shutdown...
+[15157] 30 Sep 23:33:08.331 # User requested shutdown...
+[15157] 30 Sep 23:33:08.331 * Saving the final RDB snapshot before exiting.
+[15157] 30 Sep 23:33:08.337 * DB saved on disk
+[15157] 30 Sep 23:33:08.337 # Redis is now ready to exit, bye bye...
