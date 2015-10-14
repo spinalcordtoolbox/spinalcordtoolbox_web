@@ -45,13 +45,13 @@ requires = [
     # 'pyramid_chameleon',
     'cornice',
     'jsonpickle',
-
     'numpy',
     'scipy',
     'nibabel',
     'matplotlib',
     'sympy',
-    'dipy'
+    'dipy',
+    'redis'
 
     ]
 

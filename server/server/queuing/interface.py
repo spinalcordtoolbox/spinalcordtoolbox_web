@@ -5,15 +5,17 @@ This module is ...
 __author__ = 'Pierre-Olivier Quirion <pioliqui@gmail.com>'
 
 import logging
+import jsonpickle
 import os
 import subprocess
+import sys
 
 import redis
 
 # REDIS KEY
 
 # The last UID that was used
-UID = "UID"
+UID = "LAST:UID"
 
 # Process status
 READY = "STATUS:READY"
@@ -60,17 +62,26 @@ class Queue(object):
         logging.info("adding {} to queue as process {}".format(new_process, uid))
 
         pipe = self.cli.pipeline()
-        self.cli.zadd(READY, priority, uid)
-        self.cli.hset(STORE, uid, new_process.serialize())
-        self.cli.sadd(STORE, uid, new_process.dependency_graph())
+        pipe.zadd(READY, priority, uid)
+        pipe.hset(STORE, uid, new_process.serialize())
+        pipe.hset(STATUS, uid, new_process.dependency_graph())
+        pipe.execute()
 
-
-    def get_process(self):
+    def get_process(self, queue_filter=None):
         """
         Get process to be executed
-        Get the oldest process in the queue
+        if filter is None Get the oldest or highest priority process in the queue
         """
-        pass
+
+        if queue_filter is None:
+
+
+            self.cli.zrangebyscore(READY,"-inf", "+inf")
+
+            pipe = self.cli.pipeline()
+
+
+
 
     def failed(self):
         """
@@ -103,19 +114,33 @@ class Process(object):
 
     def serialize(self):
         """
-            Should be able to serialize basic python type and let got objects
+            Should be able to serialize basic python types
         """
-        pass
+
+        return jsonpickle.dumps(self)
+
 
     def deserialize(self):
         """
-            Should be able to serialize basic python type and let got objects
+            Should be able to deserialize to a type "Process"
         """
         pass
 
 
     def dependency_graph(self):
-        pass
+        """
+        A dico containing the dependency of subprocess part of a process
+        This is meant to be overwritten by the specific execution class
+        the dico is of the following type:
+
+        {child1:[parent1,parent2, ...], child2: None, child3: [parent1, patent4], ...}
+        None means that the subprocess has no dependency
+        if there is no dependency then :  {self.name: 'None'} should do the job
+
+        """
+
+        return jsonpickle.dumps({self.name: 'None'})
+
 
     def run(self):
         """
@@ -130,6 +155,7 @@ class CmdLineProcess(Process):
 
         if name is None:
             name = os.path.basename(cmdline.split()[0])
+
         self.cmdline = cmdline
         self.env = env
         self.cwd = cwd
@@ -143,7 +169,9 @@ class CmdLineProcess(Process):
         if isinstance(self.cmdline, str):
             cmdline = self.cmdline.split()
 
+        logging.info("Running cmdline {}".format(cmdline))
         return subprocess.call(cmdline, env=self.env, cwd=self.cwd)
+
 
 
 def test_process(cmd):
@@ -161,14 +189,19 @@ def test_add_queue(process):
 
 
 def test_get_queue():
-    pass
-    # return process
+
+
+    myq = Queue()
+
+    myq.get_process()
+
 
 def test_compare_process(p1, p2):
     pass
 
 if __name__ == "__main__":
 
+    logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
     process1 = test_process("env -0")
     test_add_queue(process1)
     # process2 = test_get_queue()
