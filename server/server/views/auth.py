@@ -119,7 +119,7 @@ def logout_get(request):
 
 '''RESTful users ressources'''
 #TODO:restrict for admin user
-@resource(collection_path='/users', path='/users/{user_id}', permission="authenticated")
+@resource(collection_path='/users', path='/users/{user_id}')#, permission="authenticated")
 class User(object):
 
     def __init__(self, request):
@@ -138,7 +138,7 @@ class User(object):
         user_selected = session.query(models.local_user).filter_by(id=userid).first()
         return jsonpickle.dumps(user_selected)
 
-    @view(renderer="string")
+    @view()
     def delete(self):
         userid = self.request.matchdict['user_id']
         session = self.request.db
@@ -146,7 +146,7 @@ class User(object):
         session.delete(selected_user)
         session.commit()
         all_user = session.query(models.local_user).all()
-        return jsonpickle.dumps(all_user)
+        return {'success':'ok'}
 
 # foobar = Service(name="foobar", path="/foobar")
 # @foobar.post(schema=RegisterForm,
