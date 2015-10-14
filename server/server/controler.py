@@ -465,8 +465,11 @@ class SCTLog(object):
 
         self.uid = uid
 
-        self._tr = self._registered_process.get(uid)[0]
-        self._data = self._registered_process.get(uid)[1]
+        if self._registered_process.get(uid):
+            self._tr = self._registered_process.get(uid)[0]
+            self._data = self._registered_process.get(uid)[1]
+        else:
+            raise LookupError('Process {} does not exist'.format(uid))
 
 
     @classmethod
