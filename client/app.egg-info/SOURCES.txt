@@ -14,6 +14,8 @@ app.egg-info/SOURCES.txt
 app.egg-info/dependency_links.txt
 app.egg-info/not-zip-safe
 app.egg-info/top_level.txt
+app/__pycache__/__init__.cpython-34.pyc
+app/__pycache__/__init__.cpython-35.pyc
 app/bower_components/angular/.bower.json
 app/bower_components/angular/README.md
 app/bower_components/angular/angular-csp.css
@@ -1502,10 +1504,7 @@ app/template/tooltip/tooltip-popup.html
 app/template/tooltip/tooltip-template-popup.html
 app/template/typeahead/typeahead-match.html
 app/template/typeahead/typeahead-popup.html
-<<<<<<< HEAD
 app/views/.DS_Store
-=======
->>>>>>> origin/master
 app/views/admin.html
 app/views/browser.html
 app/views/console.html
