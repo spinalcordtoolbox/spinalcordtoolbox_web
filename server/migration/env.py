@@ -2,6 +2,7 @@ from __future__ import with_statement
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
+import sys, os
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -15,6 +16,10 @@ fileConfig(config.get_main_option('pyramid_config_file'))
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
+mydir = os.path.dirname(__file__) or '.'
+full  = os.path.abspath(mydir)
+model_path = '{0}/..'.format(full)
+sys.path.append(model_path)
 from server.models.models import Base
 target_metadata = Base.metadata
 

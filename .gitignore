@@ -1,3 +1,4 @@
+virtual_env
 /server/build
 /server/tmp*
 /python_virtual
@@ -18,3 +19,4 @@ __pycache__/
 /server/server/static/tmp
 *.egg*
 isct_download.zip
+/server/server/queuing/redis_dump
