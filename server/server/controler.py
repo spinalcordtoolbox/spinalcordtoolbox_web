@@ -80,9 +80,21 @@ class PluginUpdater(object):
             if get_parser:
                 parser = get_parser()
                 options = {}
-                for o in parser.options.values():
+                for i, o in enumerate(parser.options.values()):
                     if not getattr(o, cfg.OPTION_DEPRECATED, None):
                         options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
+                        #add a value key for user parameters
+                        options[o.name]['value']=None
+                        #add section handling
+                        parser.usage.section[1]="Main Config"
+                        x = parser.usage.section
+                        sorted_x = sorted(x.items(), key=operator.itemgetter(0))
+                        for i in sorted_x:
+                            if options[o.name]['order'] >= i[0]:
+                                options[o.name]['section']=i[1]
+
+
+
 
                 # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                 sct_tools.append(models.RegisteredTool(name=mod_name,
