@@ -12,7 +12,7 @@ from cryptacular import bcrypt
 
 try:
     from server import cfg
-except SystemError:
+except ImportError:
     import cfg
 
 

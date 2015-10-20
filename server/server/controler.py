@@ -67,6 +67,34 @@ class PluginUpdater(object):
         if reload or not os.path.isdir(cfg.EXEC_TMP):
             shutil.rmtree(cfg.EXEC_TMP, ignore_errors=True)
             shutil.copytree(script_path, cfg.EXEC_TMP)
+            subprocess.call(["/usr/bin/env", "2to3-3.4",  "-w", cfg.EXEC_TMP])
+
+        modules = pkgutil.iter_modules([cfg.EXEC_TMP])
+        sys.path.insert(0, "{}/../".format(cfg.EXEC_TMP))
+        sys.path.insert(0, "{}/".format(cfg.EXEC_TMP))
+        importlib.__import__(cfg.SCT_TMP_PKG, globals(), locals(), [], 0)
+        sct_tools = []
+        for loader, mod_name, ispkg in modules:
+            module = importlib.import_module('.'+mod_name, package=cfg.SCT_TMP_PKG)
+            get_parser = getattr(module, cfg.GET_PARSER, None)
+            if get_parser:
+                parser = get_parser()
+                options = {}
+                for o in parser.options.values():
+                    if not getattr(o, cfg.OPTION_DEPRECATED, None):
+                        options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
+
+                # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
+                sct_tools.append(models.RegisteredTool(name=mod_name,
+                                                       help_str=parser.usage.description,
+                                                       options=options))
+
+        return sct_tools
+
+        # all_script = os.listdir(script_path)
+        if reload or not os.path.isdir(cfg.EXEC_TMP):
+            shutil.rmtree(cfg.EXEC_TMP, ignore_errors=True)
+            shutil.copytree(script_path, cfg.EXEC_TMP)
             subprocess.call(["2to3",  "-w", cfg.EXEC_TMP])
 
         modules = pkgutil.iter_modules(path=[script_path])
@@ -601,23 +629,23 @@ if __name__ == "__main__":
 
     logging.basicConfig(level=logging.DEBUG)
 
-    # engine = create_engine("sqlite:////home/pquirion/travail/neuropoly/spinalcordtoolbox_web/spinalcordweb/db.sqlite")
-    engine = create_engine("sqlite:////Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/db.sqlite")
+    engine = create_engine("sqlite:////home/poquirion/neuropoly/spinalcordtoolbox_web/server/db.sqlite")
+    # engine = create_engine("sqlite:////Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox_web/server/db.sqlite")
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # pu = PluginUpdater(session=session, script_path="../../../spinalcordtoolbox/scripts", reload=False)
-    pu = PluginUpdater(session=session, script_path="/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox/scripts", reload=True)
+    pu = PluginUpdater(session=session, script_path="../../../spinalcordtoolbox/scripts", reload=False)
+    # pu = PluginUpdater(session=session, script_path="/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox/scripts", reload=True)
 
     #pu._load_plugins(None, "/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox/scripts")
 
 
 
-    rt = session.query(models.RegisteredTool).filter(models.RegisteredTool.name == 'sct_propseg').first()
-    print(jsonpickle.dumps(rt))
-    plugins_path = cfg.SPINALCORD_BIN
+    # rt = session.query(models.RegisteredTool).filter(models.RegisteredTool.name == 'sct_propseg').first()
+    # print(jsonpickle.dumps(rt))
+    # plugins_path = cfg.SPINALCORD_BIN
 
-    tbr = ToolboxRunner(
-        rt, plugins_path, '{}/t2.nii'.format(cfg.INPUT_PATH), cfg.OUTPUT_PATH)
-
-    tbr.run()
+    # tbr = ToolboxRunner(
+    #     rt, plugins_path, '{}/t2.nii'.format(cfg.INPUT_PATH), cfg.OUTPUT_PATH)
+    #
+    # tbr.run()

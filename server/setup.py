@@ -46,12 +46,14 @@ requires = [
     'cornice',
     'jsonpickle',
     'numpy',
-    'scipy',
+    'scipy==0.14.1',
     'nibabel',
     'matplotlib',
     'sympy',
     'dipy',
-    'redis'
+    'redis',
+    'pandas',
+    'pillow'
 
     ]
 
