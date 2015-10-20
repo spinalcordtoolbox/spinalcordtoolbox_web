@@ -1,0 +1,56 @@
+<div class="container">
+
+  <div class="col-lg-8 col-sm-12 col-md-8">
+    <div class="row">
+      <h3>Dashboard</h3>
+
+      <h4>Users</h4>
+      <div class="btn-toolbar">
+        <button class="btn btn-primary">New User</button>
+        <button class="btn">Import</button>
+        <button class="btn">Export</button>
+      </div>
+      <div class="well">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Country</th>
+            <th>Research Center</th>
+            <th>occupation</th>
+            <th style="width: 36px;"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-class=" user.confirmed ? 'success' : 'warning' " ng-repeat="user in users">
+            <td>{{user.id}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.country}}</td>
+            <td>{{user.research_center}}</td>
+            <td>{{user.occupation}}</td>
+            <td>
+              <a role="button" ng-click="edit()"><i class="glyphicon glyphicon-pencil"></i></a>
+              <a role="button" ng-confirm-message="Are you sure you want to delete the user?" ng-confirm="delete(user.id)"><i class="glyphicon glyphicon-remove"></i></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <ul>
+          <li><a href="#">Prev</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">Next</a></li>
+        </ul>
+      </div>
+
+      <h5>Process</h5>
+      {{process}}
+
+      <h5>General stats</h5>
+      {{stats}}
+
+    </div>
+  </div>
+</div>
