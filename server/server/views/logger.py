@@ -27,6 +27,7 @@ def logger_get(request):
     try:
         info = SCTLog(uid)
     except LookupError:
+        logging.info("No process for user {}".format(uid))
         return None
 
     if request.GET.get("old", None):

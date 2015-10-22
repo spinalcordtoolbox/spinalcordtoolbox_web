@@ -399,13 +399,13 @@ class SCTLog(object):
 
     def __init__(self, uid):
 
-        self.uid = uid
+        self.uid = int(uid)
 
-        if self._registered_process.get(uid):
-            self._tr = self._registered_process.get(uid)[0]
-            self._data = self._registered_process.get(uid)[1]
+        if self._registered_process.get(self.uid):
+            self._tr = self._registered_process.get(self.uid)[0]
+            self._data = self._registered_process.get(self.uid)[1]
         else:
-            raise LookupError('Process {} does not exist'.format(uid))
+            raise LookupError('Process {} does not exist'.format(self.uid))
 
 
     @classmethod
@@ -422,7 +422,7 @@ class SCTLog(object):
         data['registration_Time'] = time.time()
         # if cls._registered_process.get(uid):
         #     raise KeyError("process already registered{}".format(uid)) ## DEBUG
-        cls._registered_process[uid] = (runner, data)
+        cls._registered_process[int(uid)] = (runner, data)
 
         return cls(uid)
 
