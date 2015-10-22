@@ -33,6 +33,7 @@ angular.module('angularSeedApp')
       var updateTree = function(){
         tree.query(function(data) {
           $scope.treeModel = JSON.parse(JSON.stringify(data));
+          
         });
       };
       updateTree();
@@ -73,6 +74,7 @@ angular.module('angularSeedApp')
           $scope.NewFile.pathArray = nodePath;
           $scope.relative_path = relative_nodePath; //relative_path has an array with relative paths for the viewer
           $scope.NewFile.relative_pathArray = relative_nodePath;
+
         });
 
       };
@@ -85,12 +87,14 @@ angular.module('angularSeedApp')
           var path = pathArray[i];
           var volume = {
             type: "nifti1",
-            nii_url: path,
+            nii_url: path + '',
             template: {
               element_id: "volume-ui-template", viewer_insert_class: "volume-viewer-display"
             }
           };
           volumes_files.push(volume);
+          console.log(volumes_files);
+
         }
         $scope.$storage.volumes_files = volumes_files; //Update the localStorage with the new array of volumes
         //Redirection the the viewer

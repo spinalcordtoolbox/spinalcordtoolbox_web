@@ -38,7 +38,7 @@ angular.module('angularSeedApp')
 
     var layer_id = 0; //volume id of the selected layer
 
-    $scope.JSONColors = getJSONcolors.getdata();
+    //$scope.JSONColors = getJSONcolors.getdata();
     $scope.colorSelected = {
       "FIELD1": "0",
       "FIELD2": "Unknown",
@@ -50,7 +50,7 @@ angular.module('angularSeedApp')
     $scope.color = $scope.colorSelected.FIELD3 + "," + $scope.colorSelected.FIELD4 + "," + $scope.colorSelected.FIELD5;
     $scope.$watch('colorSelected', function () {
       console.log($scope.colorSelected);
-      $scope.colorSelected = JSON.parse($scope.colorSelected);
+      //$scope.colorSelected = JSON.parse($scope.colorSelected);
       $scope.color = $scope.colorSelected.FIELD3 + "," + $scope.colorSelected.FIELD4 + "," + $scope.colorSelected.FIELD5;
     });
 

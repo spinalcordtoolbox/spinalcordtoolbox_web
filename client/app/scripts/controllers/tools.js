@@ -14,6 +14,7 @@ angular.module('angularSeedApp')
 
     //Initalize the communication with the server on /sctoolbox
     var sctoolbox = $resource('/sctoolbox');
+
     //GET all the tool
     $scope.tools = sctoolbox.query(); //Because the server return an array, if it was a real json that would be .get()
     $scope.toolSelected = {};
@@ -46,25 +47,17 @@ angular.module('angularSeedApp')
 
     };
 
-    Array.prototype.move = function (old_index, new_index) {
-      if (new_index >= this.length) {
-        var k = new_index - this.length;
-        while ((k--) + 1) {
-          this.push(undefined);
-        }
-      }
-      this.splice(new_index, 0, this.splice(old_index, 1)[0]);
-      return this; // for testing purposes
-    };
+    //Array.prototype.move = "";
 
     //Generate the form associate with the selected tool
     //TODO: modify the order to be: Name, description, example, inputbox
     $scope.change = function () {
       var prop = {};
       var sections = [];
-      //var item = [{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0}];
+      //var sections = [{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0}];
       var item = [];
       var args = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
+      console.log(args);
       var requir = [];
       for (var i in args) {
         var arg = args[i];
@@ -84,11 +77,22 @@ angular.module('angularSeedApp')
           mandatoryClass = "mandatory";
           requir.push(order.toString());
         }
+
         if (typeof(section)!="undefined") {
-
+          console.log(section);
+          
           var tag = 0;
-          for (var m in sections){
 
+          if (!sections.length){
+            sections.push(
+              {
+                type: "fieldset",
+                title: section,
+                items: [{key:order}] //Add the first item
+              });
+          }
+
+          for (var m in sections){
             if(sections[m].title){ //append to title
               if (sections[m].title===section){ //verify if the title is the same as the section name
                 sections[m].items.push({key:order}); //add an item to the section
@@ -103,7 +107,19 @@ angular.module('angularSeedApp')
                 items: [{key:order}] //Add the first item
               });
             }
+            else { //add new section
+              sections.push(
+              {
+                type: "fieldset",
+                title: section,
+                items: [{key:order}] //Add the first item
+              });
+            }
+            
           }
+
+          
+
         }
 
         //If the example is an array create a SELECT
@@ -176,7 +192,7 @@ angular.module('angularSeedApp')
         "properties": prop,
         "required": requir
     };
-      console.log(requir);
+      //console.log(requir);
       sections.reverse();
       for (var i in sections){
         if (sections[i].items){
@@ -188,8 +204,9 @@ angular.module('angularSeedApp')
         "style": "btn-info",
         "title": "Run the Script"
       });
+
       $scope.form = sections;
-      console.log($scope.form);
+      console.log(sections);
 
 
       //console.log($scope.form);
