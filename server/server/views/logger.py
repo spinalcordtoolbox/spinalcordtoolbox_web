@@ -24,7 +24,10 @@ def logger_get(request):
         logging.info("User not logged")
         return "User not logged"
 
-    info = SCTLog(uid)
+    try:
+        info = SCTLog(uid)
+    except LookupError:
+        return None
 
     if request.GET.get("old", None):
         logging.info("Returning old log")

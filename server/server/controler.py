@@ -103,109 +103,6 @@ class PluginUpdater(object):
 
         return sct_tools
 
-        # all_script = os.listdir(script_path)
-        if reload or not os.path.isdir(cfg.EXEC_TMP):
-            shutil.rmtree(cfg.EXEC_TMP, ignore_errors=True)
-            shutil.copytree(script_path, cfg.EXEC_TMP)
-            subprocess.call(["2to3",  "-w", cfg.EXEC_TMP])
-
-        modules = pkgutil.iter_modules(path=[script_path])
-        sys.path.insert(0, "{}/../".format(cfg.EXEC_TMP))
-        # importlib.__import__(cfg.SCT_TMP_PKG, globals(), locals(), [], 0)
-        importlib.__import__("scripts", globals(), locals(), [], 0)
-        sct_tools = []
-        for loader, mod_name, ispkg in modules:
-
-            module = importlib.import_module('.'+mod_name, package=cfg.SCT_TMP_PKG)
-
-            get_parser = getattr(getattr(module, "Script", None), cfg.GET_PARSER, None)
-            if get_parser:
-                parser = get_parser()
-                options = {}
-
-                #TODO: Find a way to create an array with all the value
-                #of the section, each line should be egal to the order and have the name of the section
-                #sections = [o[0]*o[1] for i in parser.usage.section.items()]
-                old_section_name = None
-                for i,o in enumerate(parser.options.values()):
-                    if not getattr(o, cfg.OPTION_DEPRECATED, None):
-                        options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
-                        #add a value key for user parameters
-                        options[o.name]['value']=None
-                        #add section handling
-                        parser.usage.section[1]="Main Config"
-                        x = parser.usage.section
-                        sorted_x = sorted(x.items(), key=operator.itemgetter(0))
-                        for i in sorted_x:
-                            if options[o.name]['order'] >= i[0]:
-                                options[o.name]['section']=i[1]
-
-                # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
-                sct_tools.append(models.RegisteredTool(name=mod_name,
-                                                       help_str=parser.usage.description,
-                                                       #section=parser.usage.section,
-                                                       options=options))
-
-            get_parser = getattr(getattr(module, mod_name.split('_')[1].capitalize()+"Script", None), cfg.GET_PARSER, None)
-            if get_parser:
-                try:
-                    logging.info(mod_name)
-                    parser = get_parser()
-                    options = {}
-                    old_section_name = None
-                    for i,o in enumerate(parser.options.values()):
-                        if not getattr(o, cfg.OPTION_DEPRECATED, None):
-                            options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
-                            #add a value key for user parameters
-                            options[o.name]['value']=None
-                            #add section handling
-                            parser.usage.section[1]="Main Config"
-                            x = parser.usage.section
-                            sorted_x = sorted(x.items(), key=operator.itemgetter(0))
-                            for i in sorted_x:
-                                if options[o.name]['order'] >= i[0]:
-                                    options[o.name]['section']=i[1]
-
-
-                    # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
-                    sct_tools.append(models.RegisteredTool(name=mod_name,
-                                                           help_str=parser.usage.description,
-                                                            #section=parser.usage.section,
-                                                           options=options))
-                except:
-                    continue
-
-            get_parser = getattr(getattr(module, "ScriptProcessSegmentation", None), cfg.GET_PARSER, None)
-            if get_parser:
-                try:
-                    logging.info(mod_name)
-                    parser = get_parser()
-                    options = {}
-                    old_section_name = None
-                    for i,o in enumerate(parser.options.values()):
-                        if not getattr(o, cfg.OPTION_DEPRECATED, None):
-                            options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
-                            #add a value key for user parameters
-                            options[o.name]['value']=None
-                            #add section handling
-                            parser.usage.section[1]="Main Config"
-                            x = parser.usage.section
-                            sorted_x = sorted(x.items(), key=operator.itemgetter(0))
-                            for i in sorted_x:
-                                if options[o.name]['order'] >= i[0]:
-                                    options[o.name]['section']=i[1]
-
-                    # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
-                    sct_tools.append(models.RegisteredTool(name=mod_name,
-                                                           help_str=parser.usage.description,
-                                                            #section=parser.usage.section,
-                                                           options=options))
-                except:
-                    continue
-
-        return sct_tools
-
-
 
     def _load_old_plugins(self, config):
 
@@ -253,7 +150,7 @@ class ToolboxRunner(object):
     """
 
     def __init__(self, register_tool: models.RegisteredTool,
-                 bin_dir: str, process_uid=None):
+                 bin_dir: str, process_uid=None, user_id= None):
 
         self.rt = register_tool
 
@@ -272,6 +169,7 @@ class ToolboxRunner(object):
         self.stdout_is_close = False
         self.child = None
         self.stdout = None
+        self.user_id = user_id
 
 
 
@@ -327,8 +225,6 @@ class ToolboxRunner(object):
 
         stdout_monitor_thread.daemon = True
         stdout_monitor_thread.start()
-        # add the process and log to the registry
-        # SCTLog.register_process(self.process_uid, stdout_queue, child)
 
         # stdout_lines = []
         while not (process_is_done or stdout_is_close):
@@ -433,7 +329,7 @@ class ToolboxRunner(object):
         stdout_monitor_thread.start()
         # add the process and log to the registry
 
-        SCTLog.register_process(self.process_uid, self)
+        SCTLog.register_process(self.user_id, self.process_uid,  self)
 
         # stdout_lines = []
 
@@ -471,8 +367,8 @@ class ToolboxRunner(object):
                 std_queue.put(line)
             activity['last'] = time.time()
             if echo:
-                # sys.stderr.write(line.decode('utf-8'))
-                logging.info(line.decode('utf-8'))
+                sys.stderr.write(line.decode('utf-8'))
+                # logging.info(line.decode('utf-8'))
         stream.close()
 
     @staticmethod
@@ -495,7 +391,7 @@ class SCTLog(object):
     """ Store and retrieve information about a toolbox subprocess
 
         This class is somehow dangerous since it keeps growing and growing
-        The flush_garbage method should be called in the server periodically
+        The garbage_collect method should be called in the server periodically
         TODO: Store the info in a database
     """
 
@@ -513,10 +409,11 @@ class SCTLog(object):
 
 
     @classmethod
-    def register_process(cls, uid, runner):
+    def register_process(cls, uid, pid, runner):
         """ Add new process info to the class
 
-        :param uid: the process uid
+        :param pid: the process id
+        :param uid: the user id
         :param runner: a runner object
         :return: cls(uid)
         """
@@ -630,7 +527,7 @@ class SCTExec(object):
                         for k, v in opt.items()])
 
 
-        return "{{{0}}}/{1} {2}".format(cfg.EXEC_DIR_TAG, self.name, opt)
+        return "{{{0}}}/{1}.py {2}".format(cfg.EXEC_DIR_TAG, self.name, opt)
         # return "echo 33 "
 
 

@@ -53,7 +53,7 @@ def sctoolbox_post(request):
 
     session=request.db
 
-    plugins_path = cfg.SPINALCORD_BIN
+    plugins_path = cfg.SPINALCORD_SCRIPTS
 
     try:
         uid = request.json_body['uid']
@@ -79,11 +79,11 @@ def sctoolbox_post(request):
             if process._tr.check_status() is None:
                 logging.warning("process {} is still running, waiting for it to end".format(process._tr.rt.name))
                 return "Process is still running"
-        except TypeError:
+        except LookupError:
             pass
         tbr = controler.ToolboxRunner(
         controler.SCTExec(registered_tool=rt),
-        plugins_path, process_uid=uid)
+        plugins_path, user_id=uid, process_uid=None)
 
     tbr.run()
 
