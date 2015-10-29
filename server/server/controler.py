@@ -66,7 +66,9 @@ class PluginUpdater(object):
         # all_script = os.listdir(script_path)
         if reload or not os.path.isdir(cfg.EXEC_TMP):
             shutil.rmtree(cfg.EXEC_TMP, ignore_errors=True)
-            shutil.copytree(script_path, cfg.EXEC_TMP)
+            def ignore(src, names):
+                    return [name for name in names if "pyc" in name]
+            shutil.copytree(script_path, cfg.EXEC_TMP, ignore=ignore)
             subprocess.call(["/usr/bin/env", "2to3-3.4",  "-w", cfg.EXEC_TMP])
 
         modules = pkgutil.iter_modules([cfg.EXEC_TMP])
@@ -82,19 +84,17 @@ class PluginUpdater(object):
                 options = {}
                 for i, o in enumerate(parser.options.values()):
                     if not getattr(o, cfg.OPTION_DEPRECATED, None):
-                        options.update({o.name: {k: v for k, v in o.__dict__.items() if k in cfg.OPTION_TRANSMIT}})
+                        options.update({o.name: {k: v for k, v in o.__dict__.items()
+                                                 if k in cfg.OPTION_TRANSMIT}})
                         #add a value key for user parameters
                         options[o.name]['value']=None
                         #add section handling
-                        parser.usage.section[1]="Main Config"
+                        parser.usage.section[1] = "Main Config"
                         x = parser.usage.section
                         sorted_x = sorted(x.items(), key=operator.itemgetter(0))
                         for i in sorted_x:
                             if options[o.name]['order'] >= i[0]:
-                                options[o.name]['section']=i[1]
-
-
-
+                                options[o.name]['section'] = i[1]
 
                 # options.sort(key=lambda e: e[cfg.OPTION_ORDER])
                 sct_tools.append(models.RegisteredTool(name=mod_name,

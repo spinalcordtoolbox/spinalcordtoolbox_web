@@ -9,40 +9,37 @@ from .. import controler
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import jsonpickle
+
+import inspect
 import importlib
 import logging
-import os
-import pkgutil
-import psutil
-import platform
-import queue
-import shutil
-import subprocess
-import signal
-import sys
-import time
-import threading
-import json
-import pickle
+
+def access_info(route):
+    def new_route(request, *args, **kwargs):
+        logging.info("access to {} by {} from {}".format(route.__name__, request.authenticated_userid, request.client_addr))
+        route(request, *args, **kwargs)
+    return new_route
+
 
 sctoolbox = Service('sctoolbox',
                  '/sctoolbox',
                  'communication with the toolbox')
 
 @sctoolbox.get(renderer='string')
+@access_info
 def sctoolbox_get(request):
     '''
     :param request:
     :return: Return a list of all the sctools which have a get_parser
     '''
-    logging.basicConfig(level=logging.DEBUG)
+    # logging.info("access to {} route".format(inspect.stack()[1][3]))
+
     session = request.db
-    #PluginUpdater(session=session, script_path="/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox/scripts", reload=True)
     rt = session.query(models.RegisteredTool).all()
-    # rt = session.query(models.RegisteredTool).first() #DEBUG !!!
     return jsonpickle.dumps(rt)
 
 @sctoolbox.post()
+@access_info
 def sctoolbox_post(request):
     '''
     :param request.uid: User uid
@@ -51,10 +48,8 @@ def sctoolbox_post(request):
     :return:
     '''
 
-    session=request.db
-
+    session = request.db
     plugins_path = cfg.SPINALCORD_SCRIPTS
-
     try:
         uid = request.json_body['uid']
         options = request.json_body['args']
@@ -96,13 +91,12 @@ plugin_update =  Service('plugin_update',
                  'update the sct list')
 
 @plugin_update.get()
+@access_info
 def plugin_update_get(request):
     '''
     :param request:
     :return: Return a list of all the sctools which have a get_parser
     '''
-
-    logging.basicConfig(level=logging.DEBUG)
 
     session = request.db
     controler.PluginUpdater(session=session, script_path=cfg.SPINALCORD_SCRIPTS, reload=True)

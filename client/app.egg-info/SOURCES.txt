@@ -1,6 +1,5 @@
 MANIFEST.in
 setup.py
-app/.DS_Store
 app/.buildignore
 app/.htaccess
 app/404.html
@@ -15,7 +14,6 @@ app.egg-info/dependency_links.txt
 app.egg-info/not-zip-safe
 app.egg-info/top_level.txt
 app/__pycache__/__init__.cpython-34.pyc
-app/__pycache__/__init__.cpython-35.pyc
 app/bower_components/angular/.bower.json
 app/bower_components/angular/README.md
 app/bower_components/angular/angular-csp.css
@@ -115,6 +113,7 @@ app/bower_components/angular-schema-form/src/directives/array.js
 app/bower_components/angular-schema-form/src/directives/changed.js
 app/bower_components/angular-schema-form/src/directives/field.js
 app/bower_components/angular-schema-form/src/directives/message.js
+app/bower_components/angular-schema-form/src/directives/newArray.js
 app/bower_components/angular-schema-form/src/directives/schema-form.js
 app/bower_components/angular-schema-form/src/directives/schema-validate.js
 app/bower_components/angular-schema-form/src/directives/decorators/bootstrap/actions-trcl.html
@@ -945,6 +944,7 @@ app/bower_components/jquery-ui/themes/vader/images/ui-icons_c98000_256x240.png
 app/bower_components/jquery-ui/themes/vader/images/ui-icons_cccccc_256x240.png
 app/bower_components/jquery-ui/themes/vader/images/ui-icons_cd0a0a_256x240.png
 app/bower_components/jquery-ui/themes/vader/images/ui-icons_f29a00_256x240.png
+app/bower_components/jquery-ui/ui/.DS_Store
 app/bower_components/jquery-ui/ui/.jshintrc
 app/bower_components/jquery-ui/ui/accordion.js
 app/bower_components/jquery-ui/ui/autocomplete.js
@@ -1348,7 +1348,6 @@ app/bower_components/tv4/tv4.js
 app/images/ajax-loader.gif
 app/images/hover.png
 app/images/neuropoly-logo.png
-app/scripts/.DS_Store
 app/scripts/app.js
 app/scripts/brainbrowser/volume-viewer-PolyCustom.js
 app/scripts/brainbrowser/volume-viewer.config.js
@@ -1504,7 +1503,6 @@ app/template/tooltip/tooltip-popup.html
 app/template/tooltip/tooltip-template-popup.html
 app/template/typeahead/typeahead-match.html
 app/template/typeahead/typeahead-popup.html
-app/views/.DS_Store
 app/views/admin.html
 app/views/browser.html
 app/views/console.html

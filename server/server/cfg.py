@@ -1,10 +1,10 @@
 # PROJECT_ROOT = '/home/isct/spinalcordtoolbox_web/server/'
-PROJECT_ROOT = '/Users/willispinaud/Dropbox/spinalcordtoolbox_web/server/'
-#PROJECT_ROOT = '/home/poquirion/neuropoly/spinalcordtoolbox_web/server/'
+# PROJECT_ROOT = '/Users/willispinaud/Dropbox/spinalcordtoolbox_web/server/'
+PROJECT_ROOT = '/home/poquirion/neuropoly/spinalcordtoolbox_web/server/'
 # TOOLBOX PATH
 # SPINALCORDTOOLBOX = "/home/isct/spinalcordtoolbox"
-spinalcordtoolbox = "/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox"
-#spinalcordtoolbox = "/home/poquirion/neuropoly/spinalcordtoolbox"
+# spinalcordtoolbox = "/Users/willispinaud/Dropbox/Amerique/Montreal/spinalcordtoolbox"
+spinalcordtoolbox = "/home/poquirion/neuropoly/spinalcordtoolbox"
 SPINALCORDTOOLBOX = "%s" % spinalcordtoolbox
 SPINALCORD_BIN = "{}/bin".format(SPINALCORDTOOLBOX)
 SPINALCORD_SCRIPTS = "{}/scripts".format(SPINALCORDTOOLBOX)
