@@ -33,12 +33,12 @@ angular.module('angularSeedApp')
       var updateTree = function(){
         tree.query(function(data) {
           $scope.treeModel = JSON.parse(JSON.stringify(data));
-          
         });
       };
       updateTree();
       $scope.refresh = function(){
         updateTree();
+
       };
       $scope.$watch('NewFile.state', function () {
         if ($scope.NewFile.state) { //Update the tree when a file is uploaded

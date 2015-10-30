@@ -42,6 +42,7 @@ angular.module('angularSeedApp')
       $scope.logout = function(){
         //Auth.$unauth();
         $scope.$storage.uid = null;
+        $scope.$storage.name = null;
       };
 
 
@@ -102,7 +103,7 @@ angular.module('angularSeedApp')
             then(function(response) {
               if (response.data.ok){
                 $scope.$storage.uid=response.data.uid;
-                $scope.$storage.name = $scope.email.replace(/@.*!/, '');
+                $scope.$storage.name = $scope.loginModel.email.replace(/@.*!/, '');
                 $window.location.href = '#/toolbox'
               }
               else{

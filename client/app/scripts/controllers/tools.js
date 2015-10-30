@@ -8,7 +8,7 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('ToolsCtrl', ['$scope', '$resource', 'SharedDataService', 'getTools', '$localStorage', function ($scope, $resource, SharedDataService, getTools, $localStorage) {
+  .controller('ToolsCtrl', ['$scope', '$resource', 'SharedDataService', '$localStorage', function ($scope, $resource, SharedDataService, $localStorage) {
 
     $scope.$storage = $localStorage;   //Initialization of the local storage
 
@@ -100,46 +100,6 @@ angular.module('angularSeedApp')
                 items: [{key:order}] //Add the first item
               });
           }
-
-
-/*
-          if (!sections.length){
-            sections.push(
-              {
-                type: "fieldset",
-                title: section,
-                items: [{key:order}] //Add the first item
-              });
-          }
-
-          for (var m in sections){
-            if(sections[m].title){ //append to title
-              if (sections[m].title===section){ //verify if the title is the same as the section name
-                sections[m].items.push({key:order}); //add an item to the section
-                tag = 1;
-              }
-            }
-            else if (tag === 0){ //add new section
-              sections.push(
-              {
-                type: "fieldset",
-                title: section,
-                items: [{key:order}] //Add the first item
-              });
-            }
-            else { //add new section
-              sections.push(
-              {
-                type: "fieldset",
-                title: section,
-                items: [{key:order}] //Add the first item
-              });
-            }
-
-            
-          }*/
-
-          
 
         }
 
