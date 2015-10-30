@@ -26,7 +26,7 @@ sctoolbox = Service('sctoolbox',
                  'communication with the toolbox')
 
 @sctoolbox.get(renderer='string')
-@access_info
+#@access_info
 def sctoolbox_get(request):
     '''
     :param request:
@@ -99,6 +99,7 @@ def plugin_update_get(request):
     '''
 
     session = request.db
-    controler.PluginUpdater(session=session, script_path=cfg.SPINALCORD_SCRIPTS, reload=True)
+    #controler.PluginUpdater(session=session, script_path=cfg.SPINALCORD_SCRIPTS, reload=True)
+    controler.PluginUpdater(session=session, script_path=cfg.SPINALCORD_SCRIPTS, reload=False) #DEBUG
     return "Ok"
 

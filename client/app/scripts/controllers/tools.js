@@ -57,7 +57,6 @@ angular.module('angularSeedApp')
       //var sections = [{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0},{key:0}];
       var item = [];
       var args = $scope.toolSelected['_sa_instance_state']['py/state']['ext.mutable.values'][0];
-      console.log(args);
       var requir = [];
       for (var i in args) {
         var arg = args[i];
@@ -79,10 +78,31 @@ angular.module('angularSeedApp')
         }
 
         if (typeof(section)!="undefined") {
-          console.log(section);
-          
+
+
           var tag = 0;
 
+          if (sections.length){
+            for(var i = 0; i<=sections.length; i++) {
+              if (typeof(sections[i])!="undefined") {
+                if (sections[i].title === section) {
+                  sections[i].items.push({key: order});
+                  tag = 1;
+                }
+              }
+            }
+          }
+          if(!tag) {
+            sections.push(
+              {
+                type: "fieldset",
+                title: section,
+                items: [{key:order}] //Add the first item
+              });
+          }
+
+
+/*
           if (!sections.length){
             sections.push(
               {
@@ -115,8 +135,9 @@ angular.module('angularSeedApp')
                 items: [{key:order}] //Add the first item
               });
             }
+
             
-          }
+          }*/
 
           
 
@@ -153,7 +174,6 @@ angular.module('angularSeedApp')
         }
 
         else if (order === 1) {
-          console.log(name);
           prop[order] = {
             "title": name,
             "type": "string",
@@ -206,7 +226,6 @@ angular.module('angularSeedApp')
       });
 
       $scope.form = sections;
-      console.log(sections);
 
 
       //console.log($scope.form);

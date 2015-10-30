@@ -69,7 +69,8 @@ class PluginUpdater(object):
             def ignore(src, names):
                     return [name for name in names if "pyc" in name]
             shutil.copytree(script_path, cfg.EXEC_TMP, ignore=ignore)
-            subprocess.call(["/usr/bin/env", "2to3-3.4",  "-w", cfg.EXEC_TMP])
+            #subprocess.call(["/usr/bin/env", "2to3-3.4",  "-w", cfg.EXEC_TMP])
+            subprocess.call(["/usr/bin/env", "2to3",  "-w", cfg.EXEC_TMP]) #DEBUG
 
         modules = pkgutil.iter_modules([cfg.EXEC_TMP])
         sys.path.insert(0, "{}/../".format(cfg.EXEC_TMP))
