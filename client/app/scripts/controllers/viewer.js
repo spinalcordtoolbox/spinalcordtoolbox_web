@@ -534,6 +534,7 @@ angular.module('angularSeedApp')
             '" data-cursor-color="' + color_map.cursor_color + '">' +
             color_map.name + '</option>'
           );
+
         });
 
         $("#color-map-" + vol_id).append(color_map_select);
@@ -1052,7 +1053,7 @@ angular.module('angularSeedApp')
             min: volume.min,
             max: volume.max,
             contrast: panel.contrast,
-            brightness: panel.brightness,
+            brightness: panel.brightness
           }))
           .html(Math.floor(value));
 
@@ -1069,8 +1070,7 @@ angular.module('angularSeedApp')
       //////////////////////////////
       // Load the default color map.
       //////////////////////////////
-      viewer.loadDefaultColorMapFromURL(color_map_config.url, color_map_config.cursor_color);
-
+      viewer.loadDefaultColorMapFromURL(BrainBrowser.config.get("color_maps")[2].url, color_map_config.cursor_color);
       ////////////////////////////////////////
       // Set the size of slice display panels.
       ////////////////////////////////////////

@@ -18,6 +18,7 @@
             <th>Country</th>
             <th>Research Center</th>
             <th>Occupation</th>
+            <!--<th>Created on</th>-->
             <th style="width: 36px;"></th>
           </tr>
           </thead>
@@ -28,6 +29,7 @@
             <td>{{user.country}}</td>
             <td>{{user.research_center}}</td>
             <td>{{user.occupation}}</td>
+            <!--<td>{{user.created_on}}</td>-->
             <td>
               <a role="button" ng-click="edit()"><i class="glyphicon glyphicon-pencil"></i></a>
               <a role="button" ng-confirm-message="Are you sure you want to delete the user?" ng-confirm="delete(user.id)"><i class="glyphicon glyphicon-remove"></i></a>
