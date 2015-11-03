@@ -16,15 +16,14 @@ angular
     'ngRoute',
     'ngSanitize',
     //'ngTouch',
-    //'jsTree.directive',
+    'jsTree.directive',
     'ngFileUpload',
     'angular-loading-bar',
     'ui.bootstrap',
     'mgcrea.ngStrap.navbar',
     'schemaForm',
     'ngStorage',
-    'luegg.directives',
-    'ngJsTree'
+    'luegg.directives'
   ])
   .config(function ($routeProvider) {
     $routeProvider
