@@ -170,11 +170,11 @@ angular.module('angularSeedApp')
       //console.log(requir);
       //sections.reverse();
 
-      /*for (var i in sections){
+      for (var i in sections){
         if (sections[i].items){
           sections[i].items.sort(sort_by('key', false, parseInt));
         }
-      }*/
+      }
 
       for (var i in sections){
         if (sections[i].title){
