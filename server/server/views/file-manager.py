@@ -31,11 +31,11 @@ def path_to_db(path,session,tag):
         #d['rel_path'] = os.path.relpath(path)[52:] #The relative path, usefull to load volumes files into BrainBrowser
         if tag:
             d['parent'] = "#"
-            d['state'] = '{"opened" : false, "selected" : false, "undetermined" : true, "disabled"  : true }'
+            d['state'] = '{"opened" : true, "selected" : false, "disabled"  : true }'
             d['icon'] = "glyphicon glyphicon-user"
         else :
             d['parent'] = os.path.abspath(os.path.join(path, os.pardir))
-            d['state'] = '{"opened" : false,"selected" : false, "undetermined" : true, "disabled"  : false }'
+            d['state'] = '{"opened" : false,"selected" : false, "disabled"  : false }'
         if os.path.isdir(path):
             d['type'] = "directory"
             d['children'] = [path_to_db(os.path.join(path,x),session,0) for x in os.listdir(path)]
@@ -70,7 +70,6 @@ def tree_get(request):
     :return: a JSON with all the files and folders of the user in order to generate the file tree
     '''
     uid = str(request.unauthenticated_userid)
-
     session = request.db
     session.query(models.tree).delete()
     files = path_to_db(os.path.abspath(os.path.join(FILE_REP_TMP,uid)),session,1)

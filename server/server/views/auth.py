@@ -140,12 +140,13 @@ class User(object):
 
     @view()
     def delete(self):
-        userid = self.request.matchdict['user_id']
-        session = self.request.db
-        selected_user = session.query(models.local_user).filter_by(id=userid).first()
-        session.delete(selected_user)
-        session.commit()
-        all_user = session.query(models.local_user).all()
+        if (request.unauthenticated_userid == 28):
+            userid = self.request.matchdict['user_id']
+            session = self.request.db
+            selected_user = session.query(models.local_user).filter_by(id=userid).first()
+            session.delete(selected_user)
+            session.commit()
+            all_user = session.query(models.local_user).all()
         return {'success':'ok'}
 
 # foobar = Service(name="foobar", path="/foobar")

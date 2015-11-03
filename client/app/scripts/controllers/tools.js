@@ -44,10 +44,7 @@ angular.module('angularSeedApp')
       }
       //POST Request on /sctoolbox in order to launch the toolbox
       sctoolbox.save({tool_name: tool_name, args: args_user, uid: $scope.$storage.uid});
-
     };
-
-    //Array.prototype.move = "";
 
     //Generate the form associate with the selected tool
     //TODO: modify the order to be: Name, description, example, inputbox
@@ -162,10 +159,8 @@ angular.module('angularSeedApp')
             }
           };
         }
-
       }
 
-      //@TODO: add required field
       $scope.schema = {
         "type": "object",
         //"title": "args",
@@ -173,12 +168,24 @@ angular.module('angularSeedApp')
         "required": requir
     };
       //console.log(requir);
-      sections.reverse();
-      for (var i in sections){
+      //sections.reverse();
+
+      /*for (var i in sections){
         if (sections[i].items){
           sections[i].items.sort(sort_by('key', false, parseInt));
         }
+      }*/
+
+      for (var i in sections){
+        if (sections[i].title){
+          if (sections[i].title==="Main Config"){
+            sections.push(sections[0]);
+            sections.splice(0,1,sections[i]);
+            sections.splice(i,1);
+          }
+        }
       }
+
       sections.push({
         "type": "submit",
         "style": "btn-info",
