@@ -51,6 +51,11 @@ angular
         controller: 'ToolsCtrl',
         controllerAs: 'tools'
       })
+        .when('/cmsg/:title/:msg', {
+        templateUrl: 'views/customMsg.html',
+        controller: 'customMsgCtrl',
+        controllerAs: 'customMsg'
+      })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',

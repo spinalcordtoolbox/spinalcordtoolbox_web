@@ -8,7 +8,7 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('RegisterCtrl', function ($scope, $http, $location, $localStorage) {
+  .controller('RegisterCtrl', function ($scope, $http, $location, $localStorage, $window) {
     $scope.$storage = $localStorage;
 
     $scope.registerSchema = {
@@ -117,7 +117,7 @@ angular.module('angularSeedApp')
           then(function(response) {
             if (response.data.ok){
               console.log(response.data.ok);
-              clicked_on_register(true);
+              $window.location.href = "/#/cmsg/Confirm%20your%20account/Wonderful,%20You%20are%20registered.%20Last%20step,%20you%20have%20to%20confirm%20your%20account%20with%20the%20link%20sent%20in%20your%20mailbox.";
             }
             else{
               clicked_on_register(false);
