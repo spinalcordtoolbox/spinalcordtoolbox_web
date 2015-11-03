@@ -31,7 +31,8 @@ angular.module('angularSeedApp')
         },
         "center": {
           "title": "Indicate your research center",
-          "type": "string"
+          "type": "string",
+          "default": ""
         },
         "occupations": {
           "title": "Your occupation",

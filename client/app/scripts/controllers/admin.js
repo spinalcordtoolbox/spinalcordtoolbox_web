@@ -56,7 +56,8 @@ angular.module('angularSeedApp')
         },
         "center": {
           "title": "Indicate your research center",
-          "type": "string"
+          "type": "string",
+          "default": ""
         },
         "occupations": {
           "title": "Your occupation",
@@ -133,6 +134,7 @@ angular.module('angularSeedApp')
 
       // Then we check if the form is valid
       if (form.$valid) {
+
         //Function to send infos with http.post
         $http.post('/register', {email:$scope.registerModel.email, password:$scope.registerModel.pass, country:$scope.registerModel.country, occupation:$scope.registerModel.occupations, research_center:$scope.registerModel.center}).
           then(function(response) {
