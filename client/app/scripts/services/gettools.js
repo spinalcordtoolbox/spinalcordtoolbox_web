@@ -2,14 +2,32 @@
 
 /**
  * @ngdoc service
- * @name angularSeedApp.getTools
+ * @name angularSeedApp.FilesTree
  * @description
- * # getTools
+ * # FilesTree
  * Service in the angularSeedApp.
  */
+/*
+
+if ($scope.$storage.uid === null){
+        $scope.tree_path = "/tree/"+"You have to be logged to use this functionality";
+      }
+      else{
+        $scope.tree_path = "/tree";  //The path to GET the tree
+
+      }
+*/
+
+
 angular.module('angularSeedApp')
-  .factory('getTools', ['$resource',
-    function($resource){
-      return $resource('/tree').query();
-    }]
-  );
+  .factory('FilesTree', function($resource){
+    return $resource('/tree');
+})
+
+  .service('FilesTreeService', function ($rootScope, FilesTree) {
+  var filesTree = [];
+  this.getFilesTree = function() {
+    filesTree = FilesTree.query();
+    return filesTree;
+  };
+});

@@ -16,15 +16,15 @@ angular
     'ngRoute',
     'ngSanitize',
     //'ngTouch',
-    'jsTree.directive',
+    //'jsTree.directive',
     'ngFileUpload',
     'angular-loading-bar',
     'ui.bootstrap',
     'mgcrea.ngStrap.navbar',
     'schemaForm',
-    'firebase',
     'ngStorage',
-    'luegg.directives'
+    'luegg.directives',
+    'ngJsTree'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -94,13 +94,6 @@ angular
     // Don't strip trailing slashes from calculated URLs
     $resourceProvider.defaults.stripTrailingSlashes = false;
   }])
-  /*Authentification factory*/
-  .factory("Auth", ["$firebaseAuth",
-    function($firebaseAuth) {
-      var ref = new Firebase("https://isct.firebaseio.com");
-      return $firebaseAuth(ref);
-    }
-  ])
   .filter('capitalize', function() {
     return function(input, scope) {
       if (input!=null)

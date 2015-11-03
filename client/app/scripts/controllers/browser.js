@@ -10,31 +10,51 @@
  * It uses a JSTree directive to represent the folder tree.
  */
 angular.module('angularSeedApp')
-  .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService', '$localStorage','$location','$window','$resource', '$http',
-    function ($scope, $route, SharedDataService, $localStorage, $location, $window, $resource, $http) {
+  .controller('BrowserCtrl', ['$scope', '$route', 'SharedDataService', '$localStorage','$location','$window','FilesTree','$http', '$resource',
+      function ($scope, $route, SharedDataService, $localStorage, $location, $window, FilesTree, $http, $resource) {
 
       $scope.$storage = $localStorage;   //Initialization of the local storage
       $scope.NewFile = SharedDataService; //it's use to connect uploadCntrl & browserCntrl to detect changes then refresh the tree
 
-      if ($scope.$storage.uid === null){
-        $scope.tree_path = "/tree/"+"You have to be logged to use this functionality";
-      }
-      else{
-        $scope.tree_path = "/tree";  //The path to GET the tree
-
-      }
-
       $scope.filesPath = 'Please select a file to view its path';  //Information for debugging
       $scope.relative_path = '';
 
+        $scope.treeConfig = {
+            core : {
+                multiple : false,
+                animation: true,
+                error : function(error) {
+                    $log.error('treeCtrl: error from js tree - ' + angular.toJson(error));
+                },
+                check_callback : true,
+                worker : true
+            },
+            types : {
+                default : {
+                    icon : 'glyphicon glyphicon-flash'
+                },
+                star : {
+                    icon : 'glyphicon glyphicon-star'
+                },
+                cloud : {
+                    icon : 'glyphicon glyphicon-cloud'
+                }
+            },
+            version : 1,
+            plugins : ['types','checkbox']
+        };
 
       //Tree generation (AJAX request)
-      var tree = $resource($scope.tree_path);
       var updateTree = function(){
-        tree.query(function(data) {
-          $scope.treeModel = JSON.parse(JSON.stringify(data));
-        });
+        //$scope.treeModel = JSON.parse(JSON.stringify(FilesTree.query()));
+        $http.get('/tree').
+          then(function(response) {
+            $scope.treeModel=response.data;
+          });
+        console.log($scope.treeModel);
+        //$scope.treeModel = [{"parent":"#","path":"/Users/willispinaud/Dropbox/spinalcordtoolbox_web/server/server/static/tmp/None","text":"None","state":{"opened":"true","selected":"false"},"icon":"glyphicon glyphicon-user","type":"file","id":"/Users/willispinaud/Dropbox/spinalcordtoolbox_web/server/server/static/tmp/None","rel_path":"static/tmp/None"}];
       };
+
       updateTree();
       $scope.refresh = function(){
         updateTree();
@@ -94,8 +114,21 @@ angular.module('angularSeedApp')
           };
           volumes_files.push(volume);
           console.log(volumes_files);
-
         }
+         //if 1 file selected
+          if(pathArray.length===1) {
+            //Populate the array with relatives path and the right structure
+            var path = pathArray[0];
+            var volume = {
+              type: "nifti1",
+              nii_url: path + '',
+              template: {
+                element_id: "volume-ui-template", viewer_insert_class: "volume-viewer-display"
+              }
+            };
+            volumes_files.push(volume);
+            console.log("one file mode");
+          }
         $scope.$storage.volumes_files = volumes_files; //Update the localStorage with the new array of volumes
         //Redirection the the viewer
         if ($location.path()==="/viewer"){

@@ -8,8 +8,8 @@
  * Controller of the angularSeedApp
  */
 angular.module('angularSeedApp')
-  .controller('LoginCtrl', ["$scope", "Auth", "$localStorage", "$http", "$window",
-    function($scope, Auth, $localStorage, $http, $window) {
+  .controller('LoginCtrl', ["$scope", "$localStorage", "$http", "$window",
+    function($scope, $localStorage, $http, $window) {
       $scope.$storage = $localStorage;
 
       /*
