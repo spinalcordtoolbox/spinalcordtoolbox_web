@@ -17,7 +17,7 @@
             <th>Email</th>
             <th>Country</th>
             <th>Research Center</th>
-            <th>occupation</th>
+            <th>Occupation</th>
             <th style="width: 36px;"></th>
           </tr>
           </thead>
@@ -36,10 +36,15 @@
           </tbody>
         </table>
         <div class="btn-toolbar">
-        <button class="btn btn-primary">New User</button>
+        <button class="btn btn-primary" ng-click="new_user = !new_user">New User</button>
         <button class="btn">Import</button>
         <button class="btn">Export</button>
           <button class="btn btn-primary">Delete Unconfirmed</button>
+          <div ng-show="new_user">
+              <div class="form-signin">
+              <form name="registerF" sf-schema="registerSchema" sf-form="registerForm" sf-model="registerModel" ng-submit="onSubmit(registerF)"></form>
+              </div>
+          </div>
       </div>
       </div>
       </div>
