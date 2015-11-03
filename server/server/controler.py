@@ -205,7 +205,8 @@ class ToolboxRunner(object):
 
         cmd = self.rt.cmd.format(**self.fill_cmd_template)
         logging.info('Executing {0}'.format(cmd))
-        cmd = "python2.7 " + cmd #@todo: fix that to be more flexible
+        #cmd = "python2.7 " + cmd #@todo: fix that to be more flexible DEBUG
+        cmd = cmd #@todo: fix that to be more flexible
         child = subprocess.Popen(cmd.split(' '),
                                  stderr=subprocess.STDOUT,
                                  stdin=subprocess.PIPE,
