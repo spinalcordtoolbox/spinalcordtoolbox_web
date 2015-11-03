@@ -140,7 +140,7 @@ class User(object):
 
     @view()
     def delete(self):
-        if (request.unauthenticated_userid == 28):
+        if (self.request.unauthenticated_userid == 28):
             userid = self.request.matchdict['user_id']
             session = self.request.db
             selected_user = session.query(models.local_user).filter_by(id=userid).first()
