@@ -1,5 +1,6 @@
 virtual_env
 /server/build
+/server/db.sqlite
 /server/tmp*
 /python_virtual
 /virtual_env
@@ -18,6 +19,7 @@ __pycache__/
 /client/dist
 /client/bower_components
 /server/server/static/tmp
-*.egg*
+*.egg*/
+*.egg-info/
 isct_download.zip
 /server/server/queuing/redis_dump
