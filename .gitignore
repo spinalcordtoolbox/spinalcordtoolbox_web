@@ -23,3 +23,4 @@ __pycache__/
 *.egg-info/
 isct_download.zip
 /server/server/queuing/redis_dump
+demo.mp4
