@@ -61,7 +61,7 @@ def upload_post(request):
     input_file = request.POST['file'].file
 
 
-    if file_ext == '.nii':
+    if file_ext == '.nii' or file_ext == '.gz':
         file_path = os.path.join(os.path.join(FILE_REP_TMP,str(userid)), filename)
 
         # We first write to a temporary file to prevent incomplete files from
@@ -77,29 +77,30 @@ def upload_post(request):
         os.rename(temp_file_path, file_path)
         input_file.seek(0)
         size = len(input_file.read())
-    elif file_ext == '.gz':
-        logging.info("It's a Gzip file, let's unzip it!")
-        filename = os.path.splitext(filename)[0] # To delete the .gz extension in the file name
-        file_path = os.path.join(os.path.join(FILE_REP_TMP,str(userid)), filename)
-        # We first write to a temporary file to prevent incomplete files from
-        # being used.
-        temp_file_path = file_path + '~'
-
-        #extract the file from the gzip
-        input_file.seek(0)
-        unzip_input_file = gzip.open(input_file, 'rb')
-
-        # Finally write the data to a temporary file
-        unzip_input_file.seek(0)
-        with open(temp_file_path, 'wb') as output_file:
-            shutil.copyfileobj(unzip_input_file, output_file)
-
-        # Now that we know the file has been fully saved to disk move it into place.
-        os.rename(temp_file_path, file_path)
-        unzip_input_file.seek(0)
-        size = len(unzip_input_file.read())
-
-        file_ext = os.path.splitext(filename)[1]
+        #this can be an option to unizp files
+    # elif file_ext == '.gz':
+    #     logging.info("It's a Gzip file, let's unzip it!")
+    #     filename = os.path.splitext(filename)[0] # To delete the .gz extension in the file name
+    #     file_path = os.path.join(os.path.join(FILE_REP_TMP,str(userid)), filename)
+    #     # We first write to a temporary file to prevent incomplete files from
+    #     # being used.
+    #     temp_file_path = file_path + '~'
+    #
+    #     #extract the file from the gzip
+    #     input_file.seek(0)
+    #     unzip_input_file = gzip.open(input_file, 'rb')
+    #
+    #     # Finally write the data to a temporary file
+    #     unzip_input_file.seek(0)
+    #     with open(temp_file_path, 'wb') as output_file:
+    #         shutil.copyfileobj(unzip_input_file, output_file)
+    #
+    #     # Now that we know the file has been fully saved to disk move it into place.
+    #     os.rename(temp_file_path, file_path)
+    #     unzip_input_file.seek(0)
+    #     size = len(unzip_input_file.read())
+    #
+    #     file_ext = os.path.splitext(filename)[1]
     else:
         logging.warning('Your file is neither a NIFI nor a MNC file !!! ')
         return HTTPFound(location=request.route_url('upload'))
