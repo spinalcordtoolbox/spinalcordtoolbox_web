@@ -99,7 +99,7 @@ def plugin_update_get(request):
     '''
 
     session = request.db
-    #controler.PluginUpdater(session=session, script_path=cfg.SPINALCORD_SCRIPTS, reload=True)
-    controler.PluginUpdater(session=session, script_path=cfg.SPINALCORD_SCRIPTS, reload=False) #DEBUG
+    controler.PluginUpdater(session=session, script_path=cfg.SPINALCORD_SCRIPTS, reload=True)
+    #controler.PluginUpdater(session=session, script_path=cfg.SPINALCORD_SCRIPTS, reload=False) #DEBUG
     return "Ok"
 

@@ -79,6 +79,13 @@ Delete the app directory or rename it
 ln -s ../../../../../client/app app
 ```
 
+If bower_components are missing, do not forget to run bower in the `client/` dir:
+
+```
+cd client
+bower install
+``` 
+
 
 Some library are needed to have the server running they are include in the setup.py file
 Runnig 'python setup.py develop' should install all that you need in your virtual environement
