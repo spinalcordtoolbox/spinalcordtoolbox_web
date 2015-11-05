@@ -22,7 +22,7 @@ confirm = Service('confirm', '/confirm', 'confirm a user after registration.')
 #The model for this user registration is models.local_user
 @register.post()
 def register_post(request):
-    email = request.json_body['email']
+    email = request.json_body['email'].lower()
     password = request.json_body['password']
     country = request.json_body['country']
     occupation = request.json_body['occupation']
@@ -40,6 +40,7 @@ def register_post(request):
         )
         session.add(new_user)
         session.commit()
+
     except Exception:
         return {"error":"User already exists"}
 
@@ -89,7 +90,7 @@ def confirm_get(request):
 
 @login.post()
 def login_post(request):
-    email = request.json_body['email']
+    email = request.json_body['email'].lower()
     password = request.json_body['password']
 
     session = request.db
@@ -113,7 +114,6 @@ def logout_get(request):
     headers = forget(request)
     request.response.headerlist.extend(headers)
     return {'ok':'success logout'}
-
 
 
 
