@@ -20,9 +20,14 @@ angular.module('angularSeedApp')
     //User management
     $scope.users = all_users.query();
 
+
     $scope.delete = function(id){
       users.delete({userId:id});
       $scope.users = all_users.query();
+    };
+
+    $scope.reconfirm = function(email){
+      $http.get("reconfirm?email="+email);
     };
 
     //Process management

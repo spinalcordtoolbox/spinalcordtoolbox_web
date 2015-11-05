@@ -18,6 +18,7 @@ login = Service('login','/login', 'Identify a user on the website')
 logout = Service('logout','/logout', 'Logout a user on the website')
 register = Service('register', '/register', 'add a new user into the db')
 confirm = Service('confirm', '/confirm', 'confirm a user after registration.')
+reconfirm = Service('reconfirm', '/reconfirm', 'resend confirm email to a user.')
 
 #The model for this user registration is models.local_user
 @register.post()
@@ -114,6 +115,27 @@ def logout_get(request):
     headers = forget(request)
     request.response.headerlist.extend(headers)
     return {'ok':'success logout'}
+
+@reconfirm.get()
+def reconfirm_get(request):
+    email = request.GET['email'].lower()
+
+    #link to resend activation
+    #Add mailler
+    mailer = get_mailer(request)
+    token = generate_confirmation_token(email)
+    decryt = confirm_token(token)
+
+    confirm_url= request.resource_url(request.context, 'confirm', query={'token':token})
+
+    message = Message(subject="Activate your iSCT Account",
+                  sender="isctoolbox@gmail.com",
+                  recipients=[email],
+                  html=email_template(confirm_url)
+                      )
+    threading._start_new_thread(mailer.send_immediately,(message, False)) #New thread to send email
+
+    return {"ok":"Mail sent"}
 
 
 

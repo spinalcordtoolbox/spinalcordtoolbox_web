@@ -31,7 +31,8 @@
             <td>{{user.occupation}}</td>
             <!--<td>{{user.created_on}}</td>-->
             <td>
-              <a role="button" ng-click="edit()"><i class="glyphicon glyphicon-pencil"></i></a>
+              <a ng-hide="user.confirmed" role="button" ng-confirm-message="Do you want to resend the confirmation link by email?" ng-confirm="reconfirm(user.email)" ><i class="glyphicon glyphicon-refresh"></i></a>
+              <a role="button" href="mailto:{{user.email}}"><i class="glyphicon glyphicon-envelope"></i></a>
               <a role="button" ng-confirm-message="Are you sure you want to delete the user?" ng-confirm="delete(user.id)"><i class="glyphicon glyphicon-remove"></i></a>
             </td>
           </tr>
